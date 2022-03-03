@@ -2,6 +2,8 @@
 
 Component Box is a multiplatform server-driven UI framework.
 
+![Component Box Desktop](.github/componentbox.gif)
+
 [Learn how to use Component Box in your project](https://componentbox.io/docs/getting-started).
 
 ## Installation
