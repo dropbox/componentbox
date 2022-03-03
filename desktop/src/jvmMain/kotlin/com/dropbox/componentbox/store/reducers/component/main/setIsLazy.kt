@@ -1,0 +1,26 @@
+package com.dropbox.componentbox.store.reducers.component.main
+
+import com.dropbox.componentbox.models.Component
+import com.dropbox.componentbox.store.actions.ComponentAction
+import com.dropbox.componentbox.store.reducers.component.helpers.getComponentById
+import com.dropbox.componentbox.store.state.ComponentState
+
+internal fun ComponentState.setIsLazy(action: ComponentAction.SetIsLazy): ComponentState {
+    return apply {
+        val component = idToComponent[action.id]
+        component?.setIsLazy(action.isLazy)
+
+        val rootComponent = rootComponents.getComponentById(action.id)
+        rootComponent?.setIsLazy(action.isLazy)
+    }
+}
+
+private fun Component.setIsLazy(isLazy: Boolean): Component {
+    return apply {
+        when (this) {
+            is Component.Column -> this.isLazy = isLazy
+            is Component.Row -> this.isLazy = isLazy
+            else -> {}
+        }
+    }
+}

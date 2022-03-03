@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">Home</string>
+    <string name="files_tab">Files</string>
+    <string name="photos_tab">Photos</string>
+    <string name="plans_tab">Plans</string>
+    <string name="account_tab">Account</string>
+</resources>
