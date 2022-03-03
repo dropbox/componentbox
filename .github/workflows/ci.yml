@@ -69,7 +69,7 @@ jobs:
         run: echo "VERSION_NAME=$(./gradlew -q  printVersionName)" >> $GITHUB_ENV
 
       - name: Publish Release
-        run: ./gradlew closeAndReleaseRepository --repository comdropbox-1260 --no-daemon --no-parallel
+        run: ./gradlew closeAndReleaseRepository --no-daemon --no-parallel
         if: success() && !endsWith(env.VERSION_NAME, '-SNAPSHOT')
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.SONATYPE_USERNAME }}
