@@ -39,7 +39,7 @@ allprojects {
 
     plugins.withId("com.vanniktech.maven.publish.base") {
         configure<MavenPublishBaseExtension> {
-            publishToMavenCentral(SonatypeHost.DEFAULT)
+            publishToMavenCentral(SonatypeHost.S01)
             signAllPublications()
             pom {
                 description.set("Component Box is a multiplatform server-driven UI framework")
