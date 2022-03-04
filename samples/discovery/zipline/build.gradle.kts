@@ -7,7 +7,7 @@ plugins {
     id("org.jetbrains.compose") version Version.composeMultiplatform
 }
 
-group = "com.dropbox.componentbox.discovery.presenters"
+group = "com.dropbox.componentbox.discovery"
 
 kotlin {
     android()

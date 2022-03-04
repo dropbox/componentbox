@@ -1,3 +1,8 @@
+import com.vanniktech.maven.publish.JavadocJar.Dokka
+import com.vanniktech.maven.publish.KotlinMultiplatform
+import com.vanniktech.maven.publish.MavenPublishBaseExtension
+import org.jetbrains.dokka.gradle.DokkaTask
+
 plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization")
@@ -51,4 +56,18 @@ kotlin {
 
 android {
     compileSdkVersion(Version.androidCompileSdk)
+}
+
+tasks.withType<DokkaTask>().configureEach {
+    dokkaSourceSets.configureEach {
+        reportUndocumented.set(false)
+        skipDeprecated.set(true)
+        jdkVersion.set(8)
+    }
+}
+
+configure<MavenPublishBaseExtension> {
+    configure(
+        KotlinMultiplatform(javadocJar = Dokka("dokkaGfm"))
+    )
 }

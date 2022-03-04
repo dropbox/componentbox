@@ -7,7 +7,7 @@ plugins {
     kotlin("plugin.serialization")
 }
 
-group = "com.dropbox.componentbox.desktop"
+group = "com.dropbox.componentbox"
 
 kotlin {
     jvm {

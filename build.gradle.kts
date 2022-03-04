@@ -29,6 +29,8 @@ plugins {
 apply(plugin = "com.vanniktech.maven.publish.base")
 
 allprojects {
+    version = project.property("VERSION_NAME") as String
+
     repositories {
         google()
         mavenCentral()
