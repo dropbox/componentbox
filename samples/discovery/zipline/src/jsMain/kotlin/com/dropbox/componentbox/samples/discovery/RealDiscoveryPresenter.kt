@@ -1,7 +1,5 @@
 package com.dropbox.componentbox.samples.discovery
 
-import app.cash.zipline.FlowReference
-import app.cash.zipline.asFlowReference
 import com.dropbox.componentbox.models.ComponentBox
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
@@ -14,13 +12,12 @@ class RealDiscoveryPresenter(
 ) : DiscoveryPresenter {
     private lateinit var screen: ComponentBox.Screen
 
-    override suspend fun produceModels(): FlowReference<DiscoveryScreenViewModel> {
+    override suspend fun produceModels(): Flow<DiscoveryScreenViewModel> {
         return coroutineScope {
-            val flow: Flow<DiscoveryScreenViewModel> = channelFlow {
+            channelFlow {
                 loadComponentIndex()
                 send(produceModel())
             }
-            flow.asFlowReference()
         }
     }
 

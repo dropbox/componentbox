@@ -1,7 +1,6 @@
 package com.dropbox.componentbox.samples.discovery
 
 import app.cash.zipline.Zipline
-import app.cash.zipline.asFlowReference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
@@ -31,10 +30,7 @@ class DiscoveryZipline {
             zipline.bind<HostApi>("hostApi", hostApi)
             zipline.quickJs.evaluate(PREPARE_PRESENTERS_SCRIPT)
             val presenter = zipline.take<DiscoveryPresenter>("discoveryPresenter")
-            val eventsFlowReference = eventFlow.asFlowReference()
-            val modelsFlowReference = presenter.produceModels()
-
-            val modelsFlow = modelsFlowReference.take()
+            val modelsFlow = presenter.produceModels()
             modelsStateFlow.emitAll(modelsFlow)
         }
 
