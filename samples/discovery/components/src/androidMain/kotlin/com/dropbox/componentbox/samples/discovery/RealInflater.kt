@@ -24,12 +24,6 @@ actual class RealInflater : Inflater {
                 title = Strings.home_tab
             ),
             BottomTab(
-                id = DiscoveryDestination.Files,
-                iconSelected = discoveryIcons.twinkle2.fill ?: discoveryIcons.twinkle2.line,
-                iconNotSelected = discoveryIcons.twinkle2.line,
-                title = Strings.files_tab
-            ),
-            BottomTab(
                 id = DiscoveryDestination.Photos,
                 iconSelected = discoveryIcons.twinkle2.fill ?: discoveryIcons.twinkle2.line,
                 iconNotSelected = discoveryIcons.twinkle2.line,

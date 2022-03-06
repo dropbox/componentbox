@@ -50,4 +50,8 @@ object Deps {
     object Ok {
         const val okhttp = "com.squareup.okhttp3:okhttp:4.9.2"
     }
+
+    object Mavericks {
+        const val mavericksCompose = "com.airbnb.android:mavericks-compose:${Version.mavericksCompose}"
+    }
 }
