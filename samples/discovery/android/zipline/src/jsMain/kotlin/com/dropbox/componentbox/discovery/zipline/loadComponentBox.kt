@@ -1,4 +1,4 @@
-package com.dropbox.componentbox.samples.discovery
+package com.dropbox.componentbox.discovery.zipline
 
 import app.cash.zipline.Zipline
 import com.dropbox.componentbox.models.ComponentBox

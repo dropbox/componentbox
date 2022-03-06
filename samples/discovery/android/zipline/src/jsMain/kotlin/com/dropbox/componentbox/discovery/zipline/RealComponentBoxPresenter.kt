@@ -1,29 +1,28 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package com.dropbox.componentbox.samples.discovery
+package com.dropbox.componentbox.discovery.zipline
 
 import com.dropbox.componentbox.models.ComponentBox
 import com.dropbox.componentbox.models.ComponentBoxType
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.channelFlow
+import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 class RealComponentBoxPresenter<C : ComponentBox>(
     private val hostApi: HostApi
 ) : ComponentBoxPresenter<C> {
-    private var componentBox: C? = null
 
     override suspend fun produceModels(id: String, type: ComponentBoxType?): Flow<ComponentBoxViewModel<C>> {
         return coroutineScope {
             channelFlow {
-                loadComponentBox(id, type)
-                send(produceModel())
+                send(loadComponentBox(id, type))
             }
         }
     }
 
-    private suspend fun loadComponentBox(id: String, type: ComponentBoxType?) {
+    private suspend fun loadComponentBox(id: String, type: ComponentBoxType?): ComponentBoxViewModel<C> {
         val endpoint = when (type) {
             ComponentBoxType.Screen -> "screens"
             ComponentBoxType.Modal -> "modals"
@@ -31,15 +30,15 @@ class RealComponentBoxPresenter<C : ComponentBox>(
             else -> "fallbacks"
         }
 
-        val url = "$ROOT_API_URL/$API_VERSION/$endpoint/$id"
+        val url = "$ROOT_API_URL/$endpoint/$id"
+        println("API URL, $url")
         val headers = mapOf<String, String>()
 
         val response = hostApi.httpCall(url = url, headers = headers)
-        componentBox = Json.decodeFromString(ComponentBox.serializer(), response) as C
-    }
-
-    private fun produceModel(): ComponentBoxViewModel<C> {
-        return ComponentBoxViewModel(componentBox!!)
+        println("Response, $response")
+        val c = Json.decodeFromString<ComponentBox>(response)
+        println("Component Box, $c")
+        return ComponentBoxViewModel(c as C)
     }
 }
 

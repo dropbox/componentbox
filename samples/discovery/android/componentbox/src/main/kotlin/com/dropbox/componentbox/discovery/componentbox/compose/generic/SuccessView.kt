@@ -8,7 +8,7 @@ import com.dropbox.componentbox.discovery.componentbox.compose.screen.ScreenSucc
 import com.dropbox.componentbox.discovery.componentbox.compose.ComponentBoxRoot
 import com.dropbox.componentbox.discovery.componentbox.compose.banner.BannerSuccessView
 import com.dropbox.componentbox.models.ComponentBox
-import com.dropbox.componentbox.samples.discovery.ComponentBoxViewModel
+import com.dropbox.componentbox.discovery.zipline.ComponentBoxViewModel
 
 @Composable
 inline fun <reified C : ComponentBox> SuccessView(

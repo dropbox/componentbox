@@ -54,6 +54,10 @@ dependencies {
     annotationProcessor("androidx.hilt:hilt-compiler:1.0.0")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
+    with(Deps.Mavericks){
+        implementation(mavericksCompose)
+    }
+
     with(Deps.Compose) {
         implementation(accompanistNavigationAnimation)
         implementation(coilCompose)

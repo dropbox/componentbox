@@ -1,4 +1,4 @@
-package com.dropbox.componentbox.samples.discovery
+package com.dropbox.componentbox.discovery.zipline
 
 import app.cash.zipline.Zipline
 import com.dropbox.componentbox.models.ComponentBox
@@ -63,4 +63,4 @@ private const val MODULE_NAME = "zipline"
 private const val ROOT_URL = "http://10.0.2.2:8080"
 private const val FILE = "$MODULE_NAME.js"
 private const val LOAD_COMPONENT_BOX_SCRIPT =
-    "require('$MODULE_NAME').com.dropbox.componentbox.discovery.android.zipline.componentbox.loadComponentBox()"
+    "require('$MODULE_NAME').com.dropbox.componentbox.discovery.zipline.loadComponentBox()"

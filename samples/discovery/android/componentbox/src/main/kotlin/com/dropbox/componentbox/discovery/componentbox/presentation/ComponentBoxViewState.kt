@@ -1,7 +1,7 @@
 package com.dropbox.componentbox.discovery.componentbox.presentation
 
 import com.dropbox.componentbox.models.ComponentBox
-import com.dropbox.componentbox.samples.discovery.ComponentBoxViewModel
+import com.dropbox.componentbox.discovery.zipline.ComponentBoxViewModel
 
 sealed class ComponentBoxViewState {
     object Loading : ComponentBoxViewState()

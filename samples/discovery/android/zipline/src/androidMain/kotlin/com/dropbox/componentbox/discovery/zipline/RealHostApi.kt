@@ -1,4 +1,4 @@
-package com.dropbox.componentbox.samples.discovery
+package com.dropbox.componentbox.discovery.zipline
 
 import kotlinx.coroutines.suspendCancellableCoroutine
 import okhttp3.Call
