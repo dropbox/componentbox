@@ -20,16 +20,9 @@ sealed class ComponentBox {
     ) : ComponentBox()
 
     @Serializable
-    data class HorizontalBanner(
+    data class Banner(
         val verticalArrangement: Arrangement,
         val horizontalAlignment: Alignment,
-        val components: List<Component>
-    ) : ComponentBox()
-
-    @Serializable
-    data class VerticalBanner(
-        val horizontalArrangement: Arrangement,
-        val verticalAlignment: Alignment,
         val components: List<Component>
     ) : ComponentBox()
 }
