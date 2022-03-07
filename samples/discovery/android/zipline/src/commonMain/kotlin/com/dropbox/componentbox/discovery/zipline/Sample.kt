@@ -16,5 +16,5 @@ object Sample {
     )
     private val screen = ComponentBox.Screen(TITLE, verticalArrangement, horizontalAlignment, components)
 
-    val viewModel = ComponentBoxViewModel(screen)
+    val viewModel = ComponentBoxScreenViewModel(screen)
 }
