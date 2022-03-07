@@ -16,31 +16,31 @@ class ComponentBoxPresenter(
     initialState: ComponentBoxState,
     private val zipline: ComponentBoxZipline,
 ) : MavericksViewModel<ComponentBoxState>(initialState) {
+    val bannerModels = MutableStateFlow(ComponentBoxBannerViewModel())
+    val modalsModels = MutableStateFlow(ComponentBoxModalViewModel())
+    val screenModels = MutableStateFlow(ComponentBoxScreenViewModel())
 
     fun loadBanner(id: String) {
-        val models = MutableStateFlow(ComponentBoxBannerViewModel())
         val scope = MainScope()
-        zipline.produceModelsInBanner(id, scope, models)
+        zipline.produceModelsInBanner(id, scope, bannerModels)
         setState {
-            ComponentBoxState(ComponentBoxViewState.Success(models.value))
+            ComponentBoxState(ComponentBoxViewState.Success)
         }
     }
 
     fun loadModal(id: String) {
-        val models = MutableStateFlow(ComponentBoxModalViewModel())
         val scope = MainScope()
-        zipline.produceModelsInModal(id, scope, models)
+        zipline.produceModelsInModal(id, scope, modalsModels)
         setState {
-            ComponentBoxState(ComponentBoxViewState.Success(models.value))
+            ComponentBoxState(ComponentBoxViewState.Success)
         }
     }
 
     fun loadScreen(id: String) {
-        val models = MutableStateFlow(ComponentBoxScreenViewModel())
         val scope = MainScope()
-        zipline.produceModelsInScreen(id, scope, models)
+        zipline.produceModelsInScreen(id, scope, screenModels)
         setState {
-            ComponentBoxState(ComponentBoxViewState.Success(models.value))
+            ComponentBoxState(ComponentBoxViewState.Success)
         }
     }
 

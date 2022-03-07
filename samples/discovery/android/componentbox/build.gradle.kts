@@ -35,6 +35,8 @@ android {
 dependencies {
 
     implementation(project(":componentbox"))
+    implementation(project(":util"))
+    implementation(project(":samples:discovery:components"))
     implementation(project(":samples:discovery:android:zipline"))
 
     with(Deps.Mavericks){
