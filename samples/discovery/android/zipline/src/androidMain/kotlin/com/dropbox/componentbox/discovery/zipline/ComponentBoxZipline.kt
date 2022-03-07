@@ -24,7 +24,7 @@ class ComponentBoxZipline {
         modelsStateFlow: MutableStateFlow<ComponentBoxScreenViewModel>
     ) {
         val job = coroutineScope.launch(dispatcher) {
-            val componentBoxJs = hostApi.httpCall("$ROOT_URL/$FILE", mapOf())
+            val componentBoxJs = hostApi.httpCall("$ROOT_URL/$MODULE_NAME/$id.js", mapOf())
             zipline.loadJsModule(componentBoxJs, MODULE_NAME)
             zipline.bind<HostApi>("hostApi", hostApi)
             zipline.quickJs.evaluate(LOAD_COMPONENT_BOX_SCRIPT)
@@ -46,7 +46,7 @@ class ComponentBoxZipline {
         modelsStateFlow: MutableStateFlow<ComponentBoxBannerViewModel>
     ) {
         val job = coroutineScope.launch(dispatcher) {
-            val componentBoxJs = hostApi.httpCall("$ROOT_URL/$FILE", mapOf())
+            val componentBoxJs = hostApi.httpCall("$ROOT_URL/$MODULE_NAME/$id.js", mapOf())
             zipline.loadJsModule(componentBoxJs, MODULE_NAME)
             zipline.bind<HostApi>("hostApi", hostApi)
             zipline.quickJs.evaluate(LOAD_COMPONENT_BOX_SCRIPT)
@@ -68,7 +68,7 @@ class ComponentBoxZipline {
         modelsStateFlow: MutableStateFlow<ComponentBoxModalViewModel>
     ) {
         val job = coroutineScope.launch(dispatcher) {
-            val componentBoxJs = hostApi.httpCall("$ROOT_URL/$FILE", mapOf())
+            val componentBoxJs = hostApi.httpCall("$ROOT_URL/$MODULE_NAME/$id.$FILE_TYPE", mapOf())
             zipline.loadJsModule(componentBoxJs, MODULE_NAME)
             zipline.bind<HostApi>("hostApi", hostApi)
             zipline.quickJs.evaluate(LOAD_COMPONENT_BOX_SCRIPT)
@@ -86,10 +86,10 @@ class ComponentBoxZipline {
 
     companion object {
         private const val MODULE_NAME = "zipline"
-        private const val ROOT_URL = "http://10.0.2.2:8080"
-        private const val FILE = "$MODULE_NAME.js"
+        private const val ROOT_URL = "https://api.componentbox.io"
         private const val LOAD_COMPONENT_BOX_SCRIPT =
             "require('$MODULE_NAME').com.dropbox.componentbox.discovery.zipline.loadComponentBox()"
+        private const val FILE_TYPE = "js"
     }
 }
 

@@ -20,7 +20,7 @@ class RealComponentBoxScreenPresenter(
     }
 
     private suspend fun loadComponentBox(id: String): ComponentBoxScreenViewModel {
-        val url = "$ROOT_API_URL/$ENDPOINT/$id"
+        val url = "$ROOT_API_URL/$ENDPOINT/$id.$FILE_TYPE"
         val headers = mapOf<String, String>()
 
         val response = hostApi.httpCall(url = url, headers = headers)
@@ -32,5 +32,6 @@ class RealComponentBoxScreenPresenter(
         private const val ROOT_API_URL = "https://api.componentbox.io"
         private const val API_VERSION = "0.0.1-alpha"
         private const val ENDPOINT = "screens"
+        private const val FILE_TYPE = "json"
     }
 }
