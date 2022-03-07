@@ -1,7 +1,6 @@
 package com.dropbox.componentbox.discovery.zipline
 
 import app.cash.zipline.Zipline
-import com.dropbox.componentbox.models.ComponentBox
 import com.dropbox.componentbox.models.ComponentBoxType
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.asCoroutineDispatcher
@@ -19,29 +18,19 @@ class ComponentBoxZipline {
     private val client = OkHttpClient()
     private val hostApi = RealHostApi(client)
 
-    inline fun <reified C : ComponentBox> load(
+    fun produceModelsInScreen(
         id: String,
         coroutineScope: CoroutineScope,
-        modelsStateFlow: MutableStateFlow<ComponentBoxViewModel<C>>
+        modelsStateFlow: MutableStateFlow<ComponentBoxScreenViewModel>
     ) {
-        produceModelsIn(id, componentBoxType<C>(), coroutineScope, modelsStateFlow)
-    }
-
-    fun <C : ComponentBox> produceModelsIn(
-        id: String,
-        type: ComponentBoxType?,
-        coroutineScope: CoroutineScope,
-        modelsStateFlow: MutableStateFlow<ComponentBoxViewModel<C>>
-    ) {
-
         val job = coroutineScope.launch(dispatcher) {
             val componentBoxJs = hostApi.httpCall("$ROOT_URL/$FILE", mapOf())
             zipline.loadJsModule(componentBoxJs, MODULE_NAME)
             zipline.bind<HostApi>("hostApi", hostApi)
             zipline.quickJs.evaluate(LOAD_COMPONENT_BOX_SCRIPT)
 
-            val presenter = zipline.take<ComponentBoxPresenter<C>>(type.presenterName())
-            val modelsFlow = presenter.produceModels(id, type)
+            val presenter = zipline.take<ComponentBoxScreenPresenter>(ComponentBoxType.Screen.presenterName())
+            val modelsFlow = presenter.produceModels(id)
             modelsStateFlow.emitAll(modelsFlow)
         }
 
@@ -50,17 +39,57 @@ class ComponentBoxZipline {
             executorService.shutdown()
         }
     }
+
+    fun produceModelsInBanner(
+        id: String,
+        coroutineScope: CoroutineScope,
+        modelsStateFlow: MutableStateFlow<ComponentBoxBannerViewModel>
+    ) {
+        val job = coroutineScope.launch(dispatcher) {
+            val componentBoxJs = hostApi.httpCall("$ROOT_URL/$FILE", mapOf())
+            zipline.loadJsModule(componentBoxJs, MODULE_NAME)
+            zipline.bind<HostApi>("hostApi", hostApi)
+            zipline.quickJs.evaluate(LOAD_COMPONENT_BOX_SCRIPT)
+
+            val presenter = zipline.take<ComponentBoxBannerPresenter>(ComponentBoxType.Banner.presenterName())
+            val modelsFlow = presenter.produceModels(id)
+            modelsStateFlow.emitAll(modelsFlow)
+        }
+
+        job.invokeOnCompletion {
+            dispatcher.dispatch(EmptyCoroutineContext) { zipline.close() }
+            executorService.shutdown()
+        }
+    }
+
+    fun produceModelsInModal(
+        id: String,
+        coroutineScope: CoroutineScope,
+        modelsStateFlow: MutableStateFlow<ComponentBoxModalViewModel>
+    ) {
+        val job = coroutineScope.launch(dispatcher) {
+            val componentBoxJs = hostApi.httpCall("$ROOT_URL/$FILE", mapOf())
+            zipline.loadJsModule(componentBoxJs, MODULE_NAME)
+            zipline.bind<HostApi>("hostApi", hostApi)
+            zipline.quickJs.evaluate(LOAD_COMPONENT_BOX_SCRIPT)
+
+            val presenter = zipline.take<ComponentBoxModalPresenter>(ComponentBoxType.Modal.presenterName())
+            val modelsFlow = presenter.produceModels(id)
+            modelsStateFlow.emitAll(modelsFlow)
+        }
+
+        job.invokeOnCompletion {
+            dispatcher.dispatch(EmptyCoroutineContext) { zipline.close() }
+            executorService.shutdown()
+        }
+    }
+
+    companion object {
+        private const val MODULE_NAME = "zipline"
+        private const val ROOT_URL = "http://10.0.2.2:8080"
+        private const val FILE = "$MODULE_NAME.js"
+        private const val LOAD_COMPONENT_BOX_SCRIPT =
+            "require('$MODULE_NAME').com.dropbox.componentbox.discovery.zipline.loadComponentBox()"
+    }
 }
 
-inline fun <reified C : ComponentBox> componentBoxType() = when (C::class) {
-    ComponentBox.Modal::class -> ComponentBoxType.Modal
-    ComponentBox.Screen::class -> ComponentBoxType.Screen
-    ComponentBox.Banner::class -> ComponentBoxType.Banner
-    else -> null
-}
-
-private const val MODULE_NAME = "zipline"
-private const val ROOT_URL = "http://10.0.2.2:8080"
-private const val FILE = "$MODULE_NAME.js"
-private const val LOAD_COMPONENT_BOX_SCRIPT =
-    "require('$MODULE_NAME').com.dropbox.componentbox.discovery.zipline.loadComponentBox()"

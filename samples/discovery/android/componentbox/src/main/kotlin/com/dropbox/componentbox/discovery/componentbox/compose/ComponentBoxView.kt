@@ -18,7 +18,12 @@ inline fun <reified C : ComponentBox> ComponentBoxView(
     noinline CustomFallback: (@Composable () -> Unit)? = null,
 ) {
     val presenter: ComponentBoxPresenter = mavericksViewModel()
-    presenter.load<C>(id)
+
+    when (C::class) {
+        ComponentBox.Banner::class -> presenter.loadBanner(id)
+        ComponentBox.Modal::class -> presenter.loadModal(id)
+        ComponentBox.Screen::class -> presenter.loadScreen(id)
+    }
 
     when (val state = presenter.collectAsState().value.viewState) {
         ComponentBoxViewState.Failure -> FailureView<C>(CustomFallback)

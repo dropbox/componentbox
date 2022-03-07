@@ -1,9 +1,8 @@
 package com.dropbox.componentbox.discovery.componentbox.compose.modal
 
 import androidx.compose.runtime.Composable
-import com.dropbox.componentbox.models.ComponentBox
-import com.dropbox.componentbox.discovery.zipline.ComponentBoxViewModel
+import com.dropbox.componentbox.discovery.zipline.ComponentBoxModalViewModel
 
 @Composable
-fun ModalSuccessView(viewModel: ComponentBoxViewModel<ComponentBox.Modal>) {
+fun ModalSuccessView(viewModel: ComponentBoxModalViewModel) {
 }
