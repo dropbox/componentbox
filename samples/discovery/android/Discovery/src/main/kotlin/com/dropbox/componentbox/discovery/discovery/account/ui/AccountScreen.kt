@@ -10,6 +10,8 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -18,18 +20,44 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
+import com.airbnb.mvrx.compose.mavericksViewModel
+import com.dropbox.componentbox.discovery.componentbox.compose.ComponentBoxView
+import com.dropbox.componentbox.discovery.discovery.account.presentation.DiscoveryPresenter
+import com.dropbox.componentbox.discovery.discovery.campaigns.data.Campaign
+import com.dropbox.componentbox.discovery.discovery.campaigns.data.componentBoxId
 import com.dropbox.componentbox.discovery.discovery.scaffold.ScaffoldCallback
+import com.dropbox.componentbox.discovery.discovery.util.setUpScreen
 import com.dropbox.componentbox.discovery.theme.R
+import com.dropbox.componentbox.models.ComponentBox
 import com.dropbox.componentbox.samples.discovery.color.standardBackgroundElevated
 import com.dropbox.componentbox.samples.discovery.color.standardText
 
+
+private const val TITLE = "Account"
+
 @Composable
-fun AccountScreen(callback: ScaffoldCallback) {
-    callback.setTitle("Account")
-    callback.setTopBarActions(listOf {
+fun AccountScreen(scaffoldCallback: ScaffoldCallback) {
+
+    scaffoldCallback.setUpScreen(TITLE, listOf {
         GearIcon()
     })
 
+    val presenter: DiscoveryPresenter = mavericksViewModel()
+
+    val bestBanner = remember { mutableStateOf(presenter.getBestCampaign<Campaign.Banner>()) }
+    val bestModal = remember { mutableStateOf(presenter.getBestCampaign<Campaign.Modal>()) }
+
+    Box {
+        AccountScreenLazyColumn {
+            ComponentBoxView<ComponentBox.Banner>(id = bestBanner.value.componentBoxId())
+        }
+
+        ComponentBoxView<ComponentBox.Modal>(id = bestModal.value.componentBoxId())
+    }
+}
+
+@Composable
+fun AccountScreenLazyColumn(Banner: (@Composable () -> Unit) = {}) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -37,33 +65,15 @@ fun AccountScreen(callback: ScaffoldCallback) {
         verticalArrangement = Arrangement.SpaceBetween
     ) {
 
-        item {
-            Row(modifier = Modifier.fillMaxWidth()) {
-                AccountInfo()
-            }
-        }
-
-
-        item {
-            Row(modifier = Modifier.fillMaxWidth()) {
-                AccountDetails()
-            }
-        }
-
-        item {
-            Row(modifier = Modifier.fillMaxWidth()) {
-                AccountFeatures()
-            }
-        }
-
-        item {
-            Row(modifier = Modifier.fillMaxWidth()) {
-                AccountSettings()
-            }
+        items(1) {
+            Banner()
+            AccountInfo()
+            AccountDetails()
+            AccountFeatures()
+            AccountSettings()
         }
     }
 }
-
 
 @Composable
 fun GearIcon() {

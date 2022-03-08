@@ -2,34 +2,30 @@ package com.dropbox.componentbox.discovery.discovery.scaffold
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import com.dropbox.componentbox.Inflater
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun Scaffold(inflater: Inflater) {
-    val tabs = inflater.bottomTabs()
-
-    val (selectedTab, setSelectedTab) = remember { mutableStateOf(tabs[3]) }
-    val title = remember { mutableStateOf("") }
-    val topBarActions = remember { mutableStateListOf<@Composable () -> Unit>() }
+fun Scaffold() {
+    val presenter: ScaffoldPresenter = hiltViewModel()
+    presenter.load()
 
     val callback = object : ScaffoldCallback {
         override fun setTitle(value: String) {
-            title.value = value
+            presenter.title = value
         }
 
         override fun setTopBarActions(value: List<@Composable () -> Unit>) {
-            topBarActions.clear()
-            topBarActions.addAll(value)
+            presenter.topBarActions.clear()
+            presenter.topBarActions.addAll(value)
         }
     }
 
-    Scaffold(
-        topBar = topBar(title.value, topBarActions),
-        bottomBar = bottomBar(tabs, selectedTab) { tab -> setSelectedTab(tab) }
-    ) { innerPadding ->
-        Screen(innerPadding, selectedTab, callback)
+    if (presenter.tabs.isNotEmpty() && presenter.selectedTab != null) {
+        Scaffold(
+            topBar = topBar(presenter.title, presenter.topBarActions),
+            bottomBar = bottomBar(presenter.tabs, presenter.selectedTab!!) { presenter.selectedTab = it }
+        ) { innerPadding ->
+            Screen(innerPadding, presenter.selectedTab!!, callback)
+        }
     }
 }

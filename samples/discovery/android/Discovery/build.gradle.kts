@@ -5,6 +5,7 @@ plugins {
     kotlin("kapt")
     id("com.android.application")
     id("org.jetbrains.compose") version Version.composeMultiplatform
+    kotlin("plugin.serialization")
     id("dagger.hilt.android.plugin")
 }
 

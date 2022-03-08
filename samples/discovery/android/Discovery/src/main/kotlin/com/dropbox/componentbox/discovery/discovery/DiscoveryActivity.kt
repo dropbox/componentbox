@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.dropbox.componentbox.discovery.discovery.scaffold.Scaffold
-import com.dropbox.componentbox.samples.discovery.RealInflater
 import com.dropbox.componentbox.samples.discovery.discoveryTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -12,10 +11,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class DiscoveryActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val inflater = RealInflater()
         setContent {
             discoveryTheme(false) {
-                Scaffold(inflater)
+                Scaffold()
             }
         }
     }

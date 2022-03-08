@@ -13,11 +13,13 @@ import com.dropbox.componentbox.models.ComponentBox
 
 @Composable
 inline fun <reified C : ComponentBox> ComponentBoxView(
-    id: String,
+    id: String?,
     noinline CustomLoading: (@Composable () -> Unit)? = null,
     noinline CustomSuccess: (@Composable () -> Unit)? = null,
     noinline CustomFallback: (@Composable () -> Unit)? = null,
 ) {
+    if (id == null) return
+
     val presenter: ComponentBoxPresenter = mavericksViewModel()
 
     when (C::class) {
