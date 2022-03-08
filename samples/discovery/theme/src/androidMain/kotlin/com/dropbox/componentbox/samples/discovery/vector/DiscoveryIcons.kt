@@ -27,9 +27,40 @@ actual class DiscoveryIcons : Icons {
         spot = null,
     )
 
+    actual val home = Icon(
+        line = RealVectorRes("Home.Line", R.drawable.ic_dig_home_line),
+        fill = RealVectorRes("Home.fill", R.drawable.ic_dig_home_fill),
+        pictogram = null,
+        spot = null
+    )
+
+    actual val image = Icon(
+        line = RealVectorRes("Image.Line", R.drawable.ic_dig_image_line),
+        fill = RealVectorRes("Image.fill", R.drawable.ic_dig_image_fill),
+        pictogram = null,
+        spot = null
+    )
+    actual val upgrade = Icon(
+        line = RealVectorRes("Upgrade.Line", R.drawable.ic_dig_upgrade_line),
+        fill = null,
+        pictogram = null,
+        spot = null
+    )
+    actual val person = Icon(
+        line = RealVectorRes("Home.Line", R.drawable.ic_dig_person_line),
+        fill = RealVectorRes("Home.fill", R.drawable.ic_dig_person_fill),
+        pictogram = null,
+        spot = null
+    )
+
+
     override fun list() = mutableListOf(
         checkmarkCircle,
         fail,
-        twinkle2
+        twinkle2,
+        home,
+        image,
+        upgrade,
+        person
     )
 }

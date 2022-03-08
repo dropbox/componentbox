@@ -27,6 +27,15 @@ actual class DiscoveryIcons : Icons {
         spot = null,
     )
 
+    actual val home: Icon
+        get() = TODO("Not yet implemented")
+    actual val image: Icon
+        get() = TODO("Not yet implemented")
+    actual val upgrade: Icon
+        get() = TODO("Not yet implemented")
+    actual val person: Icon
+        get() = TODO("Not yet implemented")
+
     override fun list() = mutableListOf(
         checkmarkCircle,
         fail,
