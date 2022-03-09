@@ -51,7 +51,7 @@ fun AccountDetails() {
                 Text(
                     text = "Account details",
                     color = MaterialTheme.colors.standardText,
-                    style = MaterialTheme.typography.h6,
+                    style = MaterialTheme.typography.button,
                     modifier = Modifier.padding(vertical = 4.dp)
                 )
             }
@@ -59,7 +59,6 @@ fun AccountDetails() {
 
     }
 }
-
 
 @Composable
 fun EffectivePlan(planName: String, Button: (@Composable () -> Unit)? = null) {
@@ -93,13 +92,12 @@ fun EffectivePlan(planName: String, Button: (@Composable () -> Unit)? = null) {
     }
 }
 
-
 @Composable
 fun EffectivePlanStats(storageUsed: String, connectedDevices: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .heightIn(min = 40.dp, max = 80.dp),
+            .heightIn(min = 40.dp, max = 60.dp),
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -111,10 +109,10 @@ fun EffectivePlanStats(storageUsed: String, connectedDevices: String) {
                 tint = MaterialTheme.colors.standardText
             )
 
-            Column {
-                Text(text = storageUsed, style = MaterialTheme.typography.h4)
+            Column(modifier = Modifier.padding(start = 8.dp)) {
+                Text(text = storageUsed, style = MaterialTheme.typography.h6)
 
-                Text(text = "Storage used", style = MaterialTheme.typography.body1)
+                Text(text = "Storage used", style = MaterialTheme.typography.body2)
             }
         }
 
@@ -133,15 +131,14 @@ fun EffectivePlanStats(storageUsed: String, connectedDevices: String) {
                 tint = MaterialTheme.colors.standardText
             )
 
-            Column {
-                Text(text = connectedDevices, style = MaterialTheme.typography.h4)
+            Column(modifier = Modifier.padding(start = 8.dp)) {
+                Text(text = connectedDevices, style = MaterialTheme.typography.h6)
 
-                Text(text = "Devices linked", style = MaterialTheme.typography.body1)
+                Text(text = "Devices linked", style = MaterialTheme.typography.body2)
             }
         }
     }
 }
-
 
 @Composable
 fun UpgradeButton() {

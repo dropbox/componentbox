@@ -22,7 +22,11 @@ fun AccountFeatures() {
             .fillMaxWidth()
             .background(MaterialTheme.colors.background)
     ) {
-        Text(text = "Your features", style = MaterialTheme.typography.h6)
+        Text(
+            text = "Your features",
+            style = MaterialTheme.typography.h6,
+            modifier = Modifier.padding(start = 16.dp, bottom = 16.dp)
+        )
 
         AccountFeature(
             iconStart = R.drawable.ic_dig_syncing_line,
@@ -58,7 +62,6 @@ fun AccountFeatures() {
     }
 }
 
-
 @Composable
 fun AccountFeature(
     @DrawableRes iconStart: Int,
@@ -70,10 +73,10 @@ fun AccountFeature(
 
     Row(
         modifier = Modifier
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = 16.dp, vertical = 4.dp)
             .fillMaxWidth()
             .background(MaterialTheme.colors.standardBackgroundElevated)
-            .padding(horizontal = 16.dp),
+            .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
 
@@ -85,9 +88,9 @@ fun AccountFeature(
                 modifier = Modifier.size(24.dp)
             )
 
-            Column {
-                Text(text = title, style = MaterialTheme.typography.body2, color = contentColor)
-                Text(text = caption, style = MaterialTheme.typography.caption, color = contentColor)
+            Column(modifier = Modifier.padding(start = 16.dp)) {
+                Text(text = title, style = MaterialTheme.typography.body1, color = contentColor)
+                Text(text = caption, style = MaterialTheme.typography.body2, color = contentColor)
             }
         }
 

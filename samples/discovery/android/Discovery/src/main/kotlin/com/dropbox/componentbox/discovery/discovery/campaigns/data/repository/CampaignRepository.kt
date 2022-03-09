@@ -1,8 +1,8 @@
 package com.dropbox.componentbox.discovery.discovery.campaigns.data.repository
 
-import com.dropbox.componentbox.discovery.discovery.campaigns.data.BannerStyle
-import com.dropbox.componentbox.discovery.discovery.campaigns.data.Campaign
-import com.dropbox.componentbox.discovery.discovery.campaigns.data.CampaignAction
+import com.dropbox.componentbox.discovery.discovery.campaigns.data.entities.BannerStyle
+import com.dropbox.componentbox.discovery.discovery.campaigns.data.entities.Campaign
+import com.dropbox.componentbox.discovery.discovery.campaigns.data.entities.CampaignAction
 
 interface CampaignRepository {
     fun getBestCampaigns(): List<Campaign>
@@ -10,15 +10,14 @@ interface CampaignRepository {
 
 class FakeCampaignRepository : CampaignRepository {
     override fun getBestCampaigns() = listOf(
-        Campaign.Banner(
+        Campaign.Banner.PromptBanner(
             "1",
-            "",
-            "",
+            "Turn on camera uploads",
+            "Keep all your photos safe and sound",
             BannerStyle.Promotion,
             CampaignAction.OpenUpsellScreen,
-            iconStart = "Info.Line",
-            iconEnd = "Close.Line",
-            componentBoxId = "1"
+            iconStart = "CameraUpload.Line",
+            iconEnd = "ArrowRight.Line",
         )
     )
 }

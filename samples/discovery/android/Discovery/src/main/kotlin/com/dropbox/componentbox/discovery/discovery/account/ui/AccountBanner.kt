@@ -2,7 +2,13 @@ package com.dropbox.componentbox.discovery.discovery.account.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
@@ -38,25 +44,24 @@ fun AccountBanner(callback: () -> Unit) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(horizontal = 16.dp)
         ) {
             Text(
                 text = "You are almost out of storage",
-                style = MaterialTheme.typography.h6,
-                modifier = Modifier.padding(vertical = 8.dp)
+                style = MaterialTheme.typography.h6
             )
 
             Text(
                 text = "Try Dropbox Plus free for 30 days, then pay \$11.99/month for the space you need to keep your files safe.",
                 style = MaterialTheme.typography.body1,
-                modifier = Modifier.padding(vertical = 8.dp)
+                modifier = Modifier.padding(vertical = 4.dp)
             )
 
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceAround
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
 
                 Button(
@@ -65,7 +70,7 @@ fun AccountBanner(callback: () -> Unit) {
                     colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.disabledBackground),
                     modifier = Modifier
                         .padding(end = 2.dp)
-                        .width(156.dp),
+                        .width(160.dp),
                     elevation = ButtonDefaults.elevation(0.dp)
                 ) {
                     Text(text = "Dismiss", modifier = Modifier.padding(vertical = 4.dp, horizontal = 16.dp))
@@ -77,7 +82,7 @@ fun AccountBanner(callback: () -> Unit) {
                     colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary),
                     modifier = Modifier
                         .padding(start = 2.dp)
-                        .width(156.dp),
+                        .width(160.dp),
                     elevation = ButtonDefaults.elevation(0.dp)
                 ) {
                     Text(
@@ -88,7 +93,6 @@ fun AccountBanner(callback: () -> Unit) {
                 }
             }
         }
-
 
     }
 }
