@@ -6,6 +6,7 @@ import androidx.compose.runtime.collectAsState
 import com.airbnb.mvrx.compose.mavericksViewModel
 import com.dropbox.componentbox.discovery.discovery.DiscoveryPresenter
 import com.dropbox.componentbox.discovery.discovery.campaigns.data.entities.Campaign
+import com.dropbox.componentbox.discovery.discovery.campaigns.ui.compose.Inflate
 import com.dropbox.componentbox.discovery.discovery.scaffold.ScaffoldCallback
 import com.dropbox.componentbox.discovery.discovery.util.setUpScreen
 

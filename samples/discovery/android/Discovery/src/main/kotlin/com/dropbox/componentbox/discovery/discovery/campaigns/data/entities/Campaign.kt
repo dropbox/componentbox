@@ -1,7 +1,5 @@
 package com.dropbox.componentbox.discovery.discovery.campaigns.data.entities
 
-import androidx.annotation.DrawableRes
-
 sealed class Campaign {
     interface PromptCampaign {
         val id: String
@@ -23,16 +21,31 @@ sealed class Campaign {
             val iconEnd: String,
         ) : Banner(), PromptCampaign
 
+        data class PromptBigBanner(
+            override val id: String,
+            val imageUrl: String,
+            val text: String,
+            val subtext: String,
+            val style: BannerStyle,
+            val action: CampaignAction,
+            val confirmText: String
+        ) : Banner(), PromptCampaign
+
         data class ComponentBoxBanner(
             override val promptCampaign: PromptBanner,
             override val componentBoxId: String
         ) : Banner(), ComponentBoxCampaign<PromptBanner>
+
+        data class ComponentBoxBigBanner(
+            override val promptCampaign: PromptBigBanner,
+            override val componentBoxId: String
+        ) : Banner(), ComponentBoxCampaign<PromptBigBanner>
     }
 
     sealed class Modal : Campaign() {
         data class PromptModal(
             override val id: String,
-            @DrawableRes val image: Int,
+            val imageUrl: String,
             val text: String,
             val subtext: String,
             val action: CampaignAction,
@@ -40,7 +53,7 @@ sealed class Campaign {
             val dismissText: String
         ) : Modal(), PromptCampaign
 
-        data class ComponentBox(
+        data class ComponentBoxModal(
             override val promptCampaign: PromptModal,
             override val componentBoxId: String
         ) : Modal(), ComponentBoxCampaign<PromptModal>

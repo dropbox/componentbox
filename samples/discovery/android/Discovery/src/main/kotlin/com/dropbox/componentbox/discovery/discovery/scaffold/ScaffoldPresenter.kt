@@ -7,8 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class ScaffoldPresenter @Inject constructor(val appScope: AppScope) : ViewModel() {
-
+class ScaffoldPresenter @Inject constructor(appScope: AppScope) : ViewModel() {
     val inflater: Inflater
 
     init {
