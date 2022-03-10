@@ -1,8 +1,7 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
-
 plugins {
     kotlin("android")
     kotlin("kapt")
+    kotlin("plugin.serialization")
     id("com.android.application")
     id("org.jetbrains.compose") version Version.composeMultiplatform
     id("dagger.hilt.android.plugin")
@@ -54,7 +53,7 @@ dependencies {
     annotationProcessor("androidx.hilt:hilt-compiler:1.0.0")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
-    with(Deps.Mavericks){
+    with(Deps.Mavericks) {
         implementation(mavericksCompose)
     }
 
@@ -72,6 +71,9 @@ dependencies {
     with(Deps.AndroidX) {
         implementation(appCompat)
     }
+
+    implementation(Deps.Kotlinx.serializationCore)
+    implementation(Deps.Kotlinx.serializationJson)
 
     with(Deps.Zipline) {
         implementation(ziplineSnapshot)

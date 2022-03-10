@@ -3,10 +3,9 @@ package com.dropbox.componentbox.samples.discovery.type
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.dropbox.componentbox.models.TextStyle
 import com.dropbox.componentbox.models.RealTextStyle
+import com.dropbox.componentbox.models.TextStyle
 import com.dropbox.componentbox.models.Typography
-
 
 actual object DiscoveryTypography : Typography {
     override val h1: TextStyle = RealTextStyle(
@@ -153,3 +152,17 @@ fun TextStyle.textStyle(): androidx.compose.ui.text.TextStyle = when (this) {
     )
     else -> androidx.compose.ui.text.TextStyle(fontFamily = fontFamily, fontSize = fontSize, fontWeight = fontWeight)
 }
+
+@Composable
+fun Typography.materialTheme() = androidx.compose.material.Typography(
+    h1 = this.h1.textStyle(),
+    h2 = this.h2.textStyle(),
+    h3 = this.h3.textStyle(),
+    h4 = this.h4.textStyle(),
+    h5 = this.h5.textStyle(),
+    h6 = this.h6.textStyle(),
+    body1 = this.body1.textStyle(),
+    body2 = this.body2.textStyle(),
+    caption = this.caption.textStyle(),
+    button = this.button.textStyle()
+)

@@ -19,26 +19,26 @@ actual class RealInflater : Inflater {
         return listOf(
             BottomTab(
                 id = DiscoveryDestination.Home,
-                iconSelected = discoveryIcons.twinkle2.fill ?: discoveryIcons.twinkle2.line,
-                iconNotSelected = discoveryIcons.twinkle2.line,
+                iconSelected = discoveryIcons.home.fill ?: discoveryIcons.home.line,
+                iconNotSelected = discoveryIcons.home.line,
                 title = Strings.home_tab
             ),
             BottomTab(
                 id = DiscoveryDestination.Photos,
-                iconSelected = discoveryIcons.twinkle2.fill ?: discoveryIcons.twinkle2.line,
-                iconNotSelected = discoveryIcons.twinkle2.line,
+                iconSelected = discoveryIcons.image.fill ?: discoveryIcons.image.line,
+                iconNotSelected = discoveryIcons.image.line,
                 title = Strings.photos_tab
             ),
             BottomTab(
                 id = DiscoveryDestination.Plans,
-                iconSelected = discoveryIcons.twinkle2.fill ?: discoveryIcons.twinkle2.line,
-                iconNotSelected = discoveryIcons.twinkle2.line,
+                iconSelected = discoveryIcons.upgrade.fill ?: discoveryIcons.upgrade.line,
+                iconNotSelected = discoveryIcons.upgrade.line,
                 title = Strings.plans_tab
             ),
             BottomTab(
                 id = DiscoveryDestination.Account,
-                iconSelected = discoveryIcons.twinkle2.fill ?: discoveryIcons.twinkle2.line,
-                iconNotSelected = discoveryIcons.twinkle2.line,
+                iconSelected = discoveryIcons.person.fill ?: discoveryIcons.person.line,
+                iconNotSelected = discoveryIcons.person.line,
                 title = Strings.account_tab
             )
         )

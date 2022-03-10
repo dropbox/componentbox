@@ -7,4 +7,8 @@ expect class DiscoveryIcons : Icons {
     val checkmarkCircle: Icon
     val fail: Icon
     val twinkle2: Icon
+    val home: Icon
+    val image: Icon
+    val upgrade: Icon
+    val person: Icon
 }

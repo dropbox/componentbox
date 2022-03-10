@@ -39,7 +39,7 @@ object DiscoveryColors : ComponentBoxColors {
     override val onBackground = ComponentBoxColor(title = "On background", light = 0xFF1E1919, dark = 0xFFFFFFFF)
     override val onSurface = ComponentBoxColor(title = "On surface", light = 0xFF2B2929, dark = 0xFFFBFAF9)
     override val onError = ComponentBoxColor(title = "On error", light = 0xFFF7F5F2, dark = 0xFF1E1915)
-    val disabledBackground = ComponentBoxColor(title = "Disabled background", light = 0xFFC0BBB4, dark = 0xFFD8D3CB)
+    val disabledBackground = ComponentBoxColor(title = "Disabled background", light = 0xFFF3F0EB, dark = 0xFFD8D3CB)
     val standardBackgroundElevated =
         ComponentBoxColor(title = "Standard background elevated", light = 0xFFFBFAF9, dark = 0xFF2B2929)
     val successFill = ComponentBoxColor(title = "Success fill", light = 0xFFB4DC19, dark = 0xFFB4DC19)

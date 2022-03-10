@@ -11,6 +11,8 @@ import com.dropbox.componentbox.discovery.discovery.scaffold.ScaffoldCallback
 
 @Composable
 fun PlansScreen(callback: ScaffoldCallback) {
+    callback.setTitle("Upgrade to Dropbox Plus")
+    callback.setTopBarActions(listOf())
     val id = "1"
     ComponentBoxView<ComponentBox.Screen>(
         id = id,

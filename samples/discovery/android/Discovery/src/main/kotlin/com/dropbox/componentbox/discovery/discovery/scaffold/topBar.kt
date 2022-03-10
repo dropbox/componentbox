@@ -13,12 +13,17 @@ import androidx.compose.ui.unit.dp
 import com.dropbox.componentbox.discovery.android.R
 
 @Composable
-fun topBar(title: String): @Composable () -> Unit {
+fun topBar(title: String, actions: List<@Composable () -> Unit>): @Composable () -> Unit {
     return {
         TopAppBar(
             backgroundColor = MaterialTheme.colors.background,
             navigationIcon = topBarNavigationIcon(),
-            title = topBarTitle(title)
+            title = topBarTitle(title),
+            actions = {
+                actions.forEach { action ->
+                    action()
+                }
+            }
         )
     }
 }
@@ -29,7 +34,7 @@ private fun topBarTitle(title: String): @Composable () -> Unit {
         Text(
             text = title,
             color = MaterialTheme.colors.onBackground,
-            style = MaterialTheme.typography.h6,
+            style = MaterialTheme.typography.h5,
             textAlign = TextAlign.Start
         )
     }
