@@ -7,7 +7,9 @@ import com.airbnb.mvrx.ViewModelContext
 import com.dropbox.componentbox.discovery.discovery.campaigns.data.entities.Campaign
 import com.dropbox.componentbox.discovery.discovery.scoping.UserScope
 import com.dropbox.componentbox.discovery.discovery.scoping.userScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
 
 class DiscoveryPresenter(
     initialState: DiscoveryState,
@@ -22,7 +24,11 @@ class DiscoveryPresenter(
 
     init {
         bestBanner.value = getBestCampaign()
-        bestModal.value = getBestCampaign()
+
+        viewModelScope.launch {
+            delay(3000)
+            bestModal.value = getBestCampaign()
+        }
     }
 
     inline fun <reified C : Campaign> getBestCampaign(): C? =

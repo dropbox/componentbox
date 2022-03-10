@@ -29,6 +29,7 @@ fun DiscoveryScreen(
             }
         }
 
+
         presenter.bestModal.collectAsState().value?.Inflate {
             presenter.dismissCampaign<Campaign.Modal>()
         }

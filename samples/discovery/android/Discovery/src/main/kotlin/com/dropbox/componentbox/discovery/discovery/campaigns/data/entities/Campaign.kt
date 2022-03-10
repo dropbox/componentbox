@@ -1,5 +1,7 @@
 package com.dropbox.componentbox.discovery.discovery.campaigns.data.entities
 
+import androidx.annotation.DrawableRes
+
 sealed class Campaign {
     interface PromptCampaign {
         val id: String
@@ -30,6 +32,7 @@ sealed class Campaign {
     sealed class Modal : Campaign() {
         data class PromptModal(
             override val id: String,
+            @DrawableRes val image: Int,
             val text: String,
             val subtext: String,
             val action: CampaignAction,
