@@ -12,15 +12,47 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 abstract class ComponentBoxPresenter(private val hostApi: HostApi) : ComponentBoxZiplineService {
-    override suspend fun <C : ComponentBox> produceModels(type: ComponentBoxType, url: String, headers: Map<String, String>): Flow<ComponentBoxViewModel<C>> {
+    override suspend fun produceModelsInBanner(
+        type: ComponentBoxType,
+        url: String,
+        headers: Map<String, String>
+    ): Flow<ComponentBoxViewModel<ComponentBox.Banner>> {
         return coroutineScope {
             channelFlow {
-                send(loadComponentBox<C>(type, url, headers))
+                send(loadComponentBox<ComponentBox.Banner>(type, url, headers))
             }
         }
     }
 
-    private suspend fun <C : ComponentBox> loadComponentBox(type: ComponentBoxType, url: String, headers: Map<String, String> = mapOf()): ComponentBoxViewModel<C> {
+    override suspend fun produceModelsInModal(
+        type: ComponentBoxType,
+        url: String,
+        headers: Map<String, String>
+    ): Flow<ComponentBoxViewModel<ComponentBox.Modal>> {
+        return coroutineScope {
+            channelFlow {
+                send(loadComponentBox<ComponentBox.Modal>(type, url, headers))
+            }
+        }
+    }
+
+    override suspend fun produceModelsInScreen(
+        type: ComponentBoxType,
+        url: String,
+        headers: Map<String, String>
+    ): Flow<ComponentBoxViewModel<ComponentBox.Screen>> {
+        return coroutineScope {
+            channelFlow {
+                send(loadComponentBox<ComponentBox.Screen>(type, url, headers))
+            }
+        }
+    }
+
+    private suspend fun <C : ComponentBox> loadComponentBox(
+        type: ComponentBoxType,
+        url: String,
+        headers: Map<String, String> = mapOf()
+    ): ComponentBoxViewModel<C> {
         val response = hostApi.httpCall(url, headers)
         val root = when (type) {
             ComponentBoxType.Banner -> Json.decodeFromString<ComponentBox.Banner>(response)
