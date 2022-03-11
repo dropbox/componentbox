@@ -5,6 +5,7 @@ import com.dropbox.componentbox.compose.ComponentBoxView
 import com.dropbox.componentbox.discovery.discovery.plans.presentation.PlansScreenPresenter
 import com.dropbox.componentbox.discovery.discovery.scaffold.ScaffoldCallback
 import com.dropbox.componentbox.discovery.discovery.scoping.appScope
+import com.dropbox.componentbox.discovery.zipline.LOAD_COMPONENT_BOX_SCRIPT
 import com.dropbox.componentbox.zipline.ComponentBoxZipline
 
 @Composable
@@ -13,7 +14,7 @@ fun PlansScreen(callback: ScaffoldCallback) {
     val topBarActions = listOf<@Composable () -> Unit>()
     val ziplineUrl = "https://api.componentbox.io/zipline/1.js"
     val componentBoxUrl = "https://api.componentbox.io/screens/1.json"
-    val zipline = ComponentBoxZipline(ziplineUrl)
+    val zipline = ComponentBoxZipline(ziplineUrl = ziplineUrl, script = LOAD_COMPONENT_BOX_SCRIPT)
     val presenter = PlansScreenPresenter(zipline)
 
     callback.setTitle(title)
@@ -23,7 +24,7 @@ fun PlansScreen(callback: ScaffoldCallback) {
         componentBoxUrl = componentBoxUrl,
         presenter = presenter,
         context = appScope().context,
-        Loading = { TODO() },
-        Fallback = { TODO() }
+        Loading = { },
+        Fallback = { }
     )
 }
