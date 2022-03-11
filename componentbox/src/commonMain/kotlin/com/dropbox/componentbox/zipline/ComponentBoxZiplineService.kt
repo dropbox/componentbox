@@ -7,5 +7,21 @@ import com.dropbox.componentbox.presentation.ComponentBoxViewModel
 import kotlinx.coroutines.flow.Flow
 
 interface ComponentBoxZiplineService : ZiplineService {
-    suspend fun <C : ComponentBox> produceModels(type: ComponentBoxType, url: String, headers: Map<String, String> = mapOf()): Flow<ComponentBoxViewModel<C>>
+    suspend fun produceModelsInBanner(
+        type: ComponentBoxType,
+        url: String,
+        headers: Map<String, String> = mapOf()
+    ): Flow<ComponentBoxViewModel<ComponentBox.Banner>>
+
+    suspend fun produceModelsInModal(
+        type: ComponentBoxType,
+        url: String,
+        headers: Map<String, String> = mapOf()
+    ): Flow<ComponentBoxViewModel<ComponentBox.Modal>>
+
+    suspend fun produceModelsInScreen(
+        type: ComponentBoxType,
+        url: String,
+        headers: Map<String, String> = mapOf()
+    ): Flow<ComponentBoxViewModel<ComponentBox.Screen>>
 }
