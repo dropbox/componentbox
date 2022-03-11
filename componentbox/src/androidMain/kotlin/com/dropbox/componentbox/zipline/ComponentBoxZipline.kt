@@ -42,17 +42,17 @@ class ComponentBoxZipline(
             val presenter: ComponentBoxZiplineService = zipline.take(COMPONENT_BOX_ZIPLINE_SERVICE)
 
             val modelsFlow: Flow<ComponentBoxViewModel<C>>? = when (C::class) {
-                ComponentBox.Banner::class -> presenter.produceModels<ComponentBox.Banner>(
+                ComponentBox.Banner::class -> presenter.produceModelsInBanner(
                     ComponentBoxType.Banner,
                     componentBoxUrl,
                     headers
                 ) as Flow<ComponentBoxViewModel<C>>
-                ComponentBox.Modal::class -> presenter.produceModels<ComponentBox.Modal>(
+                ComponentBox.Modal::class -> presenter.produceModelsInModal(
                     ComponentBoxType.Modal,
                     componentBoxUrl,
                     headers
                 ) as Flow<ComponentBoxViewModel<C>>
-                ComponentBox.Screen::class -> presenter.produceModels<ComponentBox.Screen>(
+                ComponentBox.Screen::class -> presenter.produceModelsInScreen(
                     ComponentBoxType.Screen,
                     componentBoxUrl,
                     headers
