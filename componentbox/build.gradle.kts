@@ -73,6 +73,14 @@ kotlin {
 
 android {
     compileSdkVersion(Version.androidCompileSdk)
+
+    lintOptions {
+        disable += "ComposableModifierFactory"
+        disable += "ModifierFactoryExtensionFunction"
+        disable += "ModifierFactoryReturnType"
+        disable += "ModifierFactoryUnreferencedReceiver"
+    }
+
 }
 
 dependencies {

@@ -3,6 +3,7 @@
 package com.dropbox.componentbox.zipline
 
 import app.cash.zipline.Zipline
+import com.dropbox.componentbox.foundation.COMPONENT_BOX_ZIPLINE_SCRIPT
 import com.dropbox.componentbox.foundation.COMPONENT_BOX_ZIPLINE_SERVICE
 import com.dropbox.componentbox.foundation.ComponentBox
 import com.dropbox.componentbox.foundation.ComponentBoxType
@@ -19,8 +20,8 @@ import kotlin.coroutines.EmptyCoroutineContext
 
 class ComponentBoxZipline(
     val ziplineUrl: String,
-    val headers: Map<String, String>,
-    val script: String
+    val headers: Map<String, String> = mapOf(),
+    val script: String = COMPONENT_BOX_ZIPLINE_SCRIPT
 ) {
     val executorService = Executors.newSingleThreadExecutor { Thread(it, "Zipline") }
     val dispatcher = executorService.asCoroutineDispatcher()
