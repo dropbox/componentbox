@@ -1,7 +1,7 @@
 package com.dropbox.componentbox
 
-import com.dropbox.componentbox.models.Alignment
-import com.dropbox.componentbox.models.Arrangement
+import com.dropbox.componentbox.foundation.Alignment
+import com.dropbox.componentbox.foundation.Arrangement
 import androidx.compose.foundation.layout.Arrangement as RealArrangement
 import androidx.compose.ui.Alignment as RealAlignment
 

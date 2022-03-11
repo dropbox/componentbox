@@ -1,8 +1,8 @@
 package com.dropbox.componentbox.samples.discovery
 
 import com.dropbox.componentbox.discovery.R
-import com.dropbox.componentbox.models.RealStringRes
-import com.dropbox.componentbox.models.StringRes
+import com.dropbox.componentbox.foundation.RealStringRes
+import com.dropbox.componentbox.foundation.StringRes
 
 actual object Strings {
     actual val home_tab: StringRes = RealStringRes(R.string.home_tab)

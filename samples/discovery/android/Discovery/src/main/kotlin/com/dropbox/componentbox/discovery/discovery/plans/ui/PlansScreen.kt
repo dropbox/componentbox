@@ -6,7 +6,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.dropbox.componentbox.discovery.componentbox.compose.ComponentBoxView
-import com.dropbox.componentbox.models.ComponentBox
+import com.dropbox.componentbox.foundation.ComponentBox
 import com.dropbox.componentbox.discovery.discovery.scaffold.ScaffoldCallback
 
 @Composable

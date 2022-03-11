@@ -6,9 +6,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.ui.unit.dp
-import com.dropbox.componentbox.models.Margin
-import com.dropbox.componentbox.models.Modifier
-import com.dropbox.componentbox.models.Padding
+import com.dropbox.componentbox.foundation.Margin
+import com.dropbox.componentbox.foundation.Modifier
+import com.dropbox.componentbox.foundation.Padding
 import androidx.compose.ui.Modifier as RealModifier
 
 fun Modifier?.build(customModifiers: List<RealModifier>? = null): RealModifier {

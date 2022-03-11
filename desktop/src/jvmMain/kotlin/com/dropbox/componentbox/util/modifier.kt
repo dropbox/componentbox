@@ -1,8 +1,8 @@
 package com.dropbox.componentbox.util
 
-import com.dropbox.componentbox.models.Component
-import com.dropbox.componentbox.models.Margin
-import com.dropbox.componentbox.models.Padding
+import com.dropbox.componentbox.foundation.Component
+import com.dropbox.componentbox.foundation.Margin
+import com.dropbox.componentbox.foundation.Padding
 
 internal fun Component?.margin() = when (this) {
     is Component.Box -> this.modifier?.margin ?: Margin()

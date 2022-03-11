@@ -20,7 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.dropbox.componentbox.Themer
+import com.dropbox.componentbox.foundation.Themer
 import com.dropbox.componentbox.data.entities.Context
 import com.dropbox.componentbox.ui.surfaces.inspector.panels.export.exportPanel
 import com.dropbox.componentbox.ui.surfaces.inspector.panels.main.mainPanel

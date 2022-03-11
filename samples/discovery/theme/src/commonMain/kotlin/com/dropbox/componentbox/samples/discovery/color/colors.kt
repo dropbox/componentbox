@@ -4,8 +4,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.material.Colors as MaterialColors
 import androidx.compose.ui.graphics.Color as ComposeColor
-import com.dropbox.componentbox.models.Color as ComponentBoxColor
-import com.dropbox.componentbox.models.Colors as ComponentBoxColors
+import com.dropbox.componentbox.foundation.Color as ComponentBoxColor
+import com.dropbox.componentbox.foundation.Colors as ComponentBoxColors
 
 object DiscoveryColors : ComponentBoxColors {
     override val primary =

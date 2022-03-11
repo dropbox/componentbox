@@ -25,8 +25,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.dropbox.componentbox.Themer
-import com.dropbox.componentbox.models.Color
+import com.dropbox.componentbox.foundation.Themer
+import com.dropbox.componentbox.foundation.Color
 import com.dropbox.componentbox.store.actions.ComponentAction
 import com.dropbox.componentbox.store.store
 import com.dropbox.componentbox.store.subscriptions.syncActiveNode

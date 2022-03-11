@@ -1,9 +1,9 @@
 package com.dropbox.componentbox.util
 
 import androidx.compose.runtime.Composable
-import com.dropbox.componentbox.Inflater
-import com.dropbox.componentbox.models.Component
-import com.dropbox.componentbox.models.ComponentType
+import com.dropbox.componentbox.foundation.Inflater
+import com.dropbox.componentbox.foundation.Component
+import com.dropbox.componentbox.foundation.ComponentType
 import com.dropbox.componentbox.store.state.ComponentState
 
 internal fun ComponentType.iconResourcePath() = when (this) {

@@ -16,7 +16,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.dropbox.componentbox.data.entities.Node
-import com.dropbox.componentbox.models.ComponentType
+import com.dropbox.componentbox.foundation.ComponentType
 import com.dropbox.componentbox.store.actions.ComponentAction
 import com.dropbox.componentbox.store.actions.ScreenAction
 import com.dropbox.componentbox.store.store

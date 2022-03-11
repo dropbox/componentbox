@@ -7,7 +7,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.dropbox.componentbox.models.ComponentBox
+import com.dropbox.componentbox.foundation.ComponentBox
 import com.dropbox.componentbox.store.state.AppState
 import com.dropbox.componentbox.store.store
 import com.dropbox.componentbox.ui.theme.inverseStandardBackground

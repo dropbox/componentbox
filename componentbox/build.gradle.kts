@@ -35,6 +35,13 @@ kotlin {
                     api(serializationCore)
                     api(serializationJson)
                 }
+
+                with(Deps.Zipline) {
+                    implementation(ziplineSnapshot)
+                    implementation(ziplineLoader)
+                }
+
+
             }
         }
 
@@ -49,6 +56,16 @@ kotlin {
             dependencies {
                 api(compose.material)
                 api(compose.ui)
+                api(compose.foundation)
+                implementation(Deps.Compose.coilCompose)
+
+                with(Deps.Mavericks) {
+                    implementation(mavericksCompose)
+                }
+
+                with(Deps.Ok) {
+                    implementation(okhttp)
+                }
             }
         }
     }
@@ -56,6 +73,10 @@ kotlin {
 
 android {
     compileSdkVersion(Version.androidCompileSdk)
+}
+
+dependencies {
+    add(org.jetbrains.kotlin.gradle.plugin.PLUGIN_CLASSPATH_CONFIGURATION_NAME, Deps.Zipline.pluginSnapshot)
 }
 
 tasks.withType<DokkaTask>().configureEach {

@@ -15,7 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.dropbox.componentbox.data.entities.Node
-import com.dropbox.componentbox.models.ComponentType
+import com.dropbox.componentbox.foundation.ComponentType
 import com.dropbox.componentbox.store.actions.ComponentAction
 import com.dropbox.componentbox.store.store
 import com.dropbox.componentbox.store.subscriptions.syncActiveNode

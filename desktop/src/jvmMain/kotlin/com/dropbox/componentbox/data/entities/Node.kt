@@ -1,6 +1,6 @@
 package com.dropbox.componentbox.data.entities
 
-import com.dropbox.componentbox.models.ComponentType
+import com.dropbox.componentbox.foundation.ComponentType
 
 data class Node(
     val id: String,

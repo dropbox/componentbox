@@ -1,6 +1,6 @@
 package com.dropbox.componentbox.samples.discovery
 
-import com.dropbox.componentbox.models.Destination
+import com.dropbox.componentbox.foundation.Destination
 
 sealed class DiscoveryDestination : Destination() {
     object Home : DiscoveryDestination()

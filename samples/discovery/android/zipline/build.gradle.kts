@@ -51,7 +51,7 @@ kotlin {
                 }
             }
             dependencies {
-                with(Deps.Zipline){
+                with(Deps.Zipline) {
                     implementation(ziplineSnapshot)
                     implementation(ziplineLoader)
                 }
@@ -64,9 +64,10 @@ android {
     compileSdkVersion(Version.androidCompileSdk)
 }
 
-rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin::class.java) {
-    rootProject.the<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension>().versions.webpackCli.version =
-        "4.9.0"
+rootProject.plugins.withType<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin> {
+    val nodeJsRootExtension = rootProject.the<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension>()
+    nodeJsRootExtension.versions.webpackCli.version = "4.9.0"
+    nodeJsRootExtension.nodeVersion = "16.0.0"
 }
 
 val compilerConfiguration by configurations.creating {}

@@ -1,7 +1,7 @@
 package com.dropbox.componentbox.store.actions
 
-import com.dropbox.componentbox.models.Alignment
-import com.dropbox.componentbox.models.Arrangement
+import com.dropbox.componentbox.foundation.Alignment
+import com.dropbox.componentbox.foundation.Arrangement
 
 sealed class ScreenAction {
     data class SetTitle(val title: String) : ScreenAction()

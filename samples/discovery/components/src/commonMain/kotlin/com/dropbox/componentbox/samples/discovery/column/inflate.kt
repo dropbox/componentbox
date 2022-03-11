@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.dropbox.componentbox.build
 import com.dropbox.componentbox.horizontal
-import com.dropbox.componentbox.models.Component
+import com.dropbox.componentbox.foundation.Component
 import com.dropbox.componentbox.samples.discovery.Inflate
 import com.dropbox.componentbox.samples.discovery.color.color
 import com.dropbox.componentbox.samples.discovery.color.discoveryColor

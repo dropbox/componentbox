@@ -2,9 +2,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import com.dropbox.componentbox.Inflater
-import com.dropbox.componentbox.ResourceProvider
-import com.dropbox.componentbox.Themer
+import com.dropbox.componentbox.foundation.Inflater
+import com.dropbox.componentbox.foundation.ResourceProvider
+import com.dropbox.componentbox.foundation.Themer
 import com.dropbox.componentbox.data.entities.Context
 import com.dropbox.componentbox.store.actions.ThemeAction
 import com.dropbox.componentbox.store.store

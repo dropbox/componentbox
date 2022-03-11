@@ -3,7 +3,7 @@ package com.dropbox.componentbox.samples.discovery.text
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import com.dropbox.componentbox.build
-import com.dropbox.componentbox.models.Component
+import com.dropbox.componentbox.foundation.Component
 import com.dropbox.componentbox.samples.discovery.color.color
 import com.dropbox.componentbox.samples.discovery.color.discoveryColor
 import com.dropbox.componentbox.samples.discovery.type.textStyle

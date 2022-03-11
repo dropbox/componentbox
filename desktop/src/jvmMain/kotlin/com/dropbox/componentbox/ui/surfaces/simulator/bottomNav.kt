@@ -18,8 +18,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.dropbox.componentbox.Inflater
-import com.dropbox.componentbox.models.BottomTab
+import com.dropbox.componentbox.foundation.Inflater
+import com.dropbox.componentbox.foundation.BottomTab
 import com.dropbox.componentbox.ui.theme.faintText
 import com.dropbox.componentbox.ui.theme.standardBackgroundElevated
 

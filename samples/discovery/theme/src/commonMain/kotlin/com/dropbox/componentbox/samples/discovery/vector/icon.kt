@@ -1,7 +1,7 @@
 package com.dropbox.componentbox.samples.discovery.vector
 
-import com.dropbox.componentbox.models.Icon
-import com.dropbox.componentbox.models.IconType
+import com.dropbox.componentbox.foundation.Icon
+import com.dropbox.componentbox.foundation.IconType
 
 fun DiscoveryIcons.get(name: String?) = when (name) {
     "CheckmarkCircle" -> checkmarkCircle

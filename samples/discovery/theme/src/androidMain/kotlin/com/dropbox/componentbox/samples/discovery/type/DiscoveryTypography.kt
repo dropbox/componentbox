@@ -3,9 +3,9 @@ package com.dropbox.componentbox.samples.discovery.type
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.dropbox.componentbox.models.RealTextStyle
-import com.dropbox.componentbox.models.TextStyle
-import com.dropbox.componentbox.models.Typography
+import com.dropbox.componentbox.foundation.RealTextStyle
+import com.dropbox.componentbox.foundation.TextStyle
+import com.dropbox.componentbox.foundation.Typography
 
 actual object DiscoveryTypography : Typography {
     override val h1: TextStyle = RealTextStyle(

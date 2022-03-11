@@ -1,21 +1,17 @@
 package com.dropbox.componentbox.discovery.zipline
 
+
 import app.cash.zipline.Zipline
-import com.dropbox.componentbox.models.ComponentBoxType
-import kotlinx.serialization.ExperimentalSerializationApi
+import com.dropbox.componentbox.foundation.COMPONENT_BOX_ZIPLINE_SERVICE
+import com.dropbox.componentbox.zipline.ComponentBoxZiplineService
+import com.dropbox.componentbox.zipline.HostApi
+
 
 private val zipline by lazy { Zipline.get() }
 
-@OptIn(ExperimentalSerializationApi::class)
 @JsExport
 fun loadComponentBox() {
-    val hostApi = zipline.take<HostApi>(name = "hostApi")
-
-    val bannerPresenter: ComponentBoxBannerPresenter = RealComponentBoxBannerPresenter(hostApi)
-    val modalPresenter: ComponentBoxModalPresenter = RealComponentBoxModalPresenter(hostApi)
-    val screenPresenter: ComponentBoxScreenPresenter = RealComponentBoxScreenPresenter(hostApi)
-
-    zipline.bind(ComponentBoxType.Banner.presenterName(), bannerPresenter)
-    zipline.bind(ComponentBoxType.Modal.presenterName(), modalPresenter)
-    zipline.bind(ComponentBoxType.Screen.presenterName(), screenPresenter)
+    val hostApi = zipline.take<HostApi>("hostApi")
+    val componentBoxPresenter = RealComponentBoxPresenter(hostApi)
+    zipline.bind<ComponentBoxZiplineService>(COMPONENT_BOX_ZIPLINE_SERVICE, componentBoxPresenter)
 }

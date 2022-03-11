@@ -1,6 +1,6 @@
 package com.dropbox.componentbox.store.actions
 
-import com.dropbox.componentbox.models.Color
+import com.dropbox.componentbox.foundation.Color
 
 sealed class ThemeAction {
     object ToggleNightMode : ThemeAction()

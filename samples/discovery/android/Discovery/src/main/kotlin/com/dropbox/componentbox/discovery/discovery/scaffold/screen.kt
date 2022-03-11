@@ -10,7 +10,7 @@ import com.dropbox.componentbox.discovery.discovery.account.ui.AccountScreen
 import com.dropbox.componentbox.discovery.discovery.home.ui.HomeScreen
 import com.dropbox.componentbox.discovery.discovery.photos.ui.PhotosScreen
 import com.dropbox.componentbox.discovery.discovery.plans.ui.PlansScreen
-import com.dropbox.componentbox.models.BottomTab
+import com.dropbox.componentbox.foundation.BottomTab
 import com.dropbox.componentbox.samples.discovery.DiscoveryDestination
 
 @Composable

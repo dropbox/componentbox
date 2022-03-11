@@ -9,8 +9,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
-import com.dropbox.componentbox.Inflater
-import com.dropbox.componentbox.models.Component
+import com.dropbox.componentbox.foundation.Inflater
+import com.dropbox.componentbox.foundation.Component
 import com.dropbox.componentbox.store.store
 import com.dropbox.componentbox.store.subscriptions.syncComponents
 import com.dropbox.componentbox.store.subscriptions.syncScreenHorizontalAlignment

@@ -1,6 +1,6 @@
 package com.dropbox.componentbox.store.state
 
-import com.dropbox.componentbox.models.Color
+import com.dropbox.componentbox.foundation.Color
 
 data class ThemeState(
     var isNightMode: Boolean = true,
