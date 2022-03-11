@@ -1,7 +1,7 @@
 package com.dropbox.componentbox.samples.discovery.vector
 
-import com.dropbox.componentbox.models.Icon
-import com.dropbox.componentbox.models.Icons
+import com.dropbox.componentbox.foundation.Icon
+import com.dropbox.componentbox.foundation.Icons
 
 expect class DiscoveryIcons : Icons {
     val checkmarkCircle: Icon

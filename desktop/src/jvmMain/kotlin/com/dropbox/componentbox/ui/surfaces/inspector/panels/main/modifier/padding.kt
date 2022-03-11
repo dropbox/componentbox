@@ -1,7 +1,7 @@
 package com.dropbox.componentbox.ui.surfaces.inspector.panels.main.modifier
 
 import androidx.compose.runtime.Composable
-import com.dropbox.componentbox.models.Padding
+import com.dropbox.componentbox.foundation.Padding
 import com.dropbox.componentbox.store.actions.ComponentAction
 import com.dropbox.componentbox.store.store
 import com.dropbox.componentbox.util.getComponentById

@@ -1,10 +1,10 @@
 package com.dropbox.componentbox.util
 
-import com.dropbox.componentbox.models.Alignment
-import com.dropbox.componentbox.models.Arrangement
-import com.dropbox.componentbox.models.Image
-import com.dropbox.componentbox.models.MultiplatformRes
-import com.dropbox.componentbox.models.TextStyle
+import com.dropbox.componentbox.foundation.Alignment
+import com.dropbox.componentbox.foundation.Arrangement
+import com.dropbox.componentbox.foundation.Image
+import com.dropbox.componentbox.foundation.MultiplatformRes
+import com.dropbox.componentbox.foundation.TextStyle
 
 internal fun <T> T.name(): String {
     return when (this) {

@@ -12,7 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.dropbox.componentbox.Inflater
+import com.dropbox.componentbox.foundation.Inflater
 import com.dropbox.componentbox.store.store
 import com.dropbox.componentbox.store.subscriptions.syncBottomTabs
 import com.dropbox.componentbox.store.subscriptions.syncNightMode

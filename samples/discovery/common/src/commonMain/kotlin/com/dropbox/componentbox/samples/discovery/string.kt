@@ -1,6 +1,6 @@
 package com.dropbox.componentbox.samples.discovery
 
-import com.dropbox.componentbox.models.StringRes
+import com.dropbox.componentbox.foundation.StringRes
 
 expect object Strings {
     val home_tab: StringRes

@@ -1,7 +1,7 @@
 package com.dropbox.componentbox.store.reducers.component.helpers
 
 import com.dropbox.componentbox.data.entities.ChildAndParentComponent
-import com.dropbox.componentbox.models.Component
+import com.dropbox.componentbox.foundation.Component
 
 internal fun MutableList<Component>.getChildAndParentComponentById(id: String): ChildAndParentComponent? {
     val queue = toMutableList()

@@ -1,7 +1,7 @@
 package com.dropbox.componentbox.ui.surfaces.inspector.panels.main
 
 import androidx.compose.runtime.Composable
-import com.dropbox.componentbox.Themer
+import com.dropbox.componentbox.foundation.Themer
 import com.dropbox.componentbox.data.entities.Context
 import com.dropbox.componentbox.ui.surfaces.inspector.panels.main.children.children
 import com.dropbox.componentbox.ui.surfaces.inspector.panels.main.content.content

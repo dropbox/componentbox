@@ -1,8 +1,8 @@
 package com.dropbox.componentbox.store.reducers.component.helpers
 
-import com.dropbox.componentbox.models.Component
-import com.dropbox.componentbox.models.ComponentType
-import com.dropbox.componentbox.models.Modifier
+import com.dropbox.componentbox.foundation.Component
+import com.dropbox.componentbox.foundation.ComponentType
+import com.dropbox.componentbox.foundation.Modifier
 
 internal fun ComponentType.build(id: String): Component {
     return when (this) {

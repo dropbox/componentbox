@@ -1,9 +1,9 @@
 package com.dropbox.componentbox.samples.discovery.drawable
 
-import com.dropbox.componentbox.models.Image
-import com.dropbox.componentbox.models.Images
-import com.dropbox.componentbox.models.RealImage
-import com.dropbox.componentbox.models.RealMultiplatformRes
+import com.dropbox.componentbox.foundation.Image
+import com.dropbox.componentbox.foundation.Images
+import com.dropbox.componentbox.foundation.RealImage
+import com.dropbox.componentbox.foundation.RealMultiplatformRes
 
 actual class DiscoveryImages : Images {
 

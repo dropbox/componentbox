@@ -2,8 +2,8 @@ package com.dropbox.componentbox.samples.discovery
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import com.dropbox.componentbox.Themer
-import com.dropbox.componentbox.models.Color
+import com.dropbox.componentbox.foundation.Themer
+import com.dropbox.componentbox.foundation.Color
 import com.dropbox.componentbox.samples.discovery.color.DiscoveryColors
 import com.dropbox.componentbox.samples.discovery.color.disabledBackground
 import com.dropbox.componentbox.samples.discovery.color.faintText

@@ -15,7 +15,6 @@ include(":componentbox")
 include(":desktop")
 include(":util")
 
-include(":samples:discovery:android:componentbox")
 include(":samples:discovery:android:Discovery")
 include(":samples:discovery:android:zipline")
 

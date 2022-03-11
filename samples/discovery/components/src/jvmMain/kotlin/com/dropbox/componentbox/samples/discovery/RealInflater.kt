@@ -1,9 +1,9 @@
 package com.dropbox.componentbox.samples.discovery
 
 import androidx.compose.runtime.Composable
-import com.dropbox.componentbox.Inflater
-import com.dropbox.componentbox.models.BottomTab
-import com.dropbox.componentbox.models.Component
+import com.dropbox.componentbox.foundation.Inflater
+import com.dropbox.componentbox.foundation.BottomTab
+import com.dropbox.componentbox.foundation.Component
 import com.dropbox.componentbox.samples.discovery.vector.DiscoveryIcons
 
 actual class RealInflater : Inflater {

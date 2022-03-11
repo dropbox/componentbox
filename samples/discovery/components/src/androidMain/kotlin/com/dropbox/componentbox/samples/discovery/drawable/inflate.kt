@@ -1,12 +1,9 @@
 package com.dropbox.componentbox.samples.discovery.drawable
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import com.dropbox.componentbox.models.Component
+import com.dropbox.componentbox.foundation.Component
 
 @Composable
 actual fun Component.Drawable.Inflate() {

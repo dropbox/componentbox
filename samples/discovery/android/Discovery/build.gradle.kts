@@ -44,7 +44,6 @@ dependencies {
     implementation(project(":samples:discovery:common"))
     implementation(project(":samples:discovery:components"))
     implementation(project(":samples:discovery:theme"))
-    implementation(project(":samples:discovery:android:componentbox"))
     implementation(project(":samples:discovery:android:zipline"))
 
     implementation("com.google.dagger:hilt-android:2.40.3")

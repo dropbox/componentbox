@@ -10,6 +10,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.dropbox.componentbox.data.entities.Context
+import com.dropbox.componentbox.foundation.Inflater
+import com.dropbox.componentbox.foundation.Themer
 import com.dropbox.componentbox.ui.surfaces.explorer.explorer
 import com.dropbox.componentbox.ui.surfaces.inspector.inspector
 import com.dropbox.componentbox.ui.surfaces.simulator.simulator

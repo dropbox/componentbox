@@ -1,12 +1,12 @@
 package com.dropbox.componentbox.store.actions
 
 import com.dropbox.componentbox.data.entities.Node
-import com.dropbox.componentbox.models.Alignment
-import com.dropbox.componentbox.models.Arrangement
-import com.dropbox.componentbox.models.ContentScale
-import com.dropbox.componentbox.models.Margin
-import com.dropbox.componentbox.models.Modifier
-import com.dropbox.componentbox.models.Padding
+import com.dropbox.componentbox.foundation.Alignment
+import com.dropbox.componentbox.foundation.Arrangement
+import com.dropbox.componentbox.foundation.ContentScale
+import com.dropbox.componentbox.foundation.Margin
+import com.dropbox.componentbox.foundation.Modifier
+import com.dropbox.componentbox.foundation.Padding
 
 sealed class ComponentAction {
 

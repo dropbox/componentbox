@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.dropbox.componentbox.models.BottomTab
+import com.dropbox.componentbox.foundation.BottomTab
 import com.dropbox.componentbox.samples.discovery.color.standardBackgroundElevated
 
 @Composable

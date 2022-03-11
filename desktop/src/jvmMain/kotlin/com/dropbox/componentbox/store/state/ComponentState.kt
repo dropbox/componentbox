@@ -1,7 +1,7 @@
 package com.dropbox.componentbox.store.state
 
 import com.dropbox.componentbox.data.entities.Node
-import com.dropbox.componentbox.models.Component
+import com.dropbox.componentbox.foundation.Component
 
 data class ComponentState(
     var nodes: MutableList<Node> = mutableListOf(),
