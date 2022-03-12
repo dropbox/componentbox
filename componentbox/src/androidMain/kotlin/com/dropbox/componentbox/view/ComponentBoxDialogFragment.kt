@@ -30,7 +30,7 @@ abstract class ComponentBoxDialogFragment(
             setContent {
                 componentBoxContext.themer?.Theme(isSystemInDarkTheme()) {
                     Dialog(onDismiss) {
-                        ComponentBoxView(componentBoxUrl, componentBoxPresenter, componentBoxContext, Loading, Fallback)
+                        ComponentBoxView(componentBoxPresenter, componentBoxContext, Loading, Fallback)
                     }
                 }
             }

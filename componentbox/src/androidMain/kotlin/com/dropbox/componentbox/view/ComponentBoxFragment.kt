@@ -31,7 +31,7 @@ abstract class ComponentBoxFragment(
             setContent {
                 componentBoxContext.themer?.Theme(isSystemInDarkTheme()) {
                     Column(modifier = Modifier.fillMaxSize()) {
-                        ComponentBoxView(componentBoxUrl, componentBoxPresenter, componentBoxContext, Loading, Fallback)
+                        ComponentBoxView(componentBoxPresenter, componentBoxContext, Loading, Fallback)
                     }
                 }
             }
