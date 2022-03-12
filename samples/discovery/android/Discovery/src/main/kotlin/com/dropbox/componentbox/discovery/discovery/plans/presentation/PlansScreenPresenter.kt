@@ -30,7 +30,7 @@ class PlansScreenPresenter(zipline: ComponentBoxZipline, componentBoxUrl: String
 
         override fun create(viewModelContext: ViewModelContext, state: ComponentBoxState): PlansScreenPresenter? {
 
-            val ziplineUrl = "http://10.0.2.2:8080/zipline.js"
+            val ziplineUrl = "https://api.componentbox.io/zipline/1.js"
             val componentBoxUrl = "https://api.componentbox.io/screens/1.json"
             val zipline = ComponentBoxZipline(ziplineUrl = ziplineUrl, script = LOAD_COMPONENT_BOX_SCRIPT)
             return PlansScreenPresenter(
