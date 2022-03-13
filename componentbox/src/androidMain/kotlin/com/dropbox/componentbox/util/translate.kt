@@ -3,6 +3,12 @@ package com.dropbox.componentbox.util
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
+import com.dropbox.componentbox.foundation.ButtonVariant
+
+// This module targets JS
+// Until material and foundation are supported on JS
+// Changes to this file should be duplicated in jvmMain
+// TODO(https://github.com/dropbox/componentbox/issues/25)
 
 @Composable
 inline fun <reified T> String?.translate(): T? = when (T::class) {
@@ -18,6 +24,14 @@ inline fun <reified T> String?.translate(): T? = when (T::class) {
         "BUTTON" -> MaterialTheme.typography.button as T
         "CAPTION" -> MaterialTheme.typography.caption as T
         else -> MaterialTheme.typography.body2 as T
+    }
+
+    ButtonVariant::class -> when (this) {
+        ButtonVariant.Contained.name -> ButtonVariant.Contained as T
+        ButtonVariant.Text.name -> ButtonVariant.Text as T
+        ButtonVariant.Outlined.name -> ButtonVariant.Outlined as T
+        ButtonVariant.Icon.name -> ButtonVariant.Icon as T
+        else -> ButtonVariant.Contained as T
     }
 
     else -> null

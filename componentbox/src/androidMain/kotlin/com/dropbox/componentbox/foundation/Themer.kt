@@ -21,5 +21,5 @@ actual abstract class Themer {
     abstract fun getColorResId(name: String?): Int?
 
     @Composable
-    abstract fun getTextStyle(name: String?): TextStyle
+    abstract fun getTextStyle(name: String?): TextStyle?
 }

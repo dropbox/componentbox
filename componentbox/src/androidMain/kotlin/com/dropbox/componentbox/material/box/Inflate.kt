@@ -7,6 +7,11 @@ import com.dropbox.componentbox.foundation.Context
 import com.dropbox.componentbox.material.Inflate
 import com.dropbox.componentbox.util.build
 
+// This module targets JS
+// Until material and foundation are supported on JS
+// Changes to this file should be duplicated in jvmMain
+// TODO(https://github.com/dropbox/componentbox/issues/25)
+
 @Composable
 fun Component.Box.Inflate(context: Context?) {
     Box(modifier = modifier.build()) {

@@ -1,5 +1,8 @@
 package com.dropbox.componentbox.foundation
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Color(
     val title: String,
     val light: Long,

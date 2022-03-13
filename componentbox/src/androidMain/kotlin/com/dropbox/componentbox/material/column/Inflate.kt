@@ -14,6 +14,11 @@ import com.dropbox.componentbox.util.build
 import com.dropbox.componentbox.util.horizontal
 import com.dropbox.componentbox.util.vertical
 
+// This module targets JS
+// Until material and foundation are supported on JS
+// Changes to this file should be duplicated in jvmMain
+// TODO(https://github.com/dropbox/componentbox/issues/25)
+
 @Composable
 fun Component.Column.Inflate(context: Context?) {
     when (this.isLazy) {

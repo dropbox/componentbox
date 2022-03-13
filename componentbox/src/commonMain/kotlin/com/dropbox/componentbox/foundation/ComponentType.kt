@@ -15,4 +15,5 @@ enum class ComponentType {
     Table,
     Text,
     Vector,
+    Surface
 }

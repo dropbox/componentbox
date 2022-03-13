@@ -11,6 +11,11 @@ import com.dropbox.componentbox.foundation.Modifier
 import com.dropbox.componentbox.foundation.Padding
 import androidx.compose.ui.Modifier as RealModifier
 
+// This module targets JS
+// Until material and foundation are supported on JS
+// Changes to this file should be duplicated in jvmMain
+// TODO(https://github.com/dropbox/componentbox/issues/25)
+
 fun Modifier?.build(customModifiers: List<RealModifier>? = null): RealModifier {
     var modifier: RealModifier = RealModifier
 

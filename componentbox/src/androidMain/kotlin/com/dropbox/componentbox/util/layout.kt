@@ -5,6 +5,11 @@ import com.dropbox.componentbox.foundation.Arrangement
 import androidx.compose.foundation.layout.Arrangement as RealArrangement
 import androidx.compose.ui.Alignment as RealAlignment
 
+// This module targets JS
+// Until material and foundation are supported on JS
+// Changes to this file should be duplicated in jvmMain
+// TODO(https://github.com/dropbox/componentbox/issues/25)
+
 fun Alignment?.horizontal(): RealAlignment.Horizontal = when (this) {
     Alignment.Start -> RealAlignment.Start
     Alignment.CenterHorizontally -> RealAlignment.CenterHorizontally
