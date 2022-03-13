@@ -7,6 +7,7 @@ import com.dropbox.componentbox.samples.discovery.button.Inflate
 import com.dropbox.componentbox.samples.discovery.column.Inflate
 import com.dropbox.componentbox.samples.discovery.drawable.Inflate
 import com.dropbox.componentbox.samples.discovery.row.Inflate
+import com.dropbox.componentbox.samples.discovery.surface.Inflate
 import com.dropbox.componentbox.samples.discovery.switch.Inflate
 import com.dropbox.componentbox.samples.discovery.text.Inflate
 import com.dropbox.componentbox.samples.discovery.vector.Inflate
@@ -22,5 +23,6 @@ actual fun Component.Inflate() {
         is Component.Switch -> this.Inflate()
         is Component.Text -> this.Inflate()
         is Component.Vector -> this.Inflate()
+        is Component.Surface -> this.Inflate()
     }
 }

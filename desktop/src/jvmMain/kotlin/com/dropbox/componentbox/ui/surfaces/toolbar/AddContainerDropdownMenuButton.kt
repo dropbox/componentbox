@@ -23,7 +23,7 @@ import com.dropbox.componentbox.ui.theme.ComponentBoxIcon
 import com.dropbox.componentbox.ui.theme.buttonBackground
 import com.dropbox.componentbox.ui.theme.inverseStandardBackground
 import com.dropbox.componentbox.ui.theme.resourcePath
-import com.dropbox.componentbox.util.node
+import com.dropbox.componentbox.utils.node
 
 @Composable
 fun AddContainerDropdownMenuButton() {

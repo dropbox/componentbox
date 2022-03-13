@@ -26,6 +26,7 @@ private fun Component?.setWidth(width: Int): Component? {
             is Component.Switch -> modifier?.width = width
             is Component.Text -> modifier?.width = width
             is Component.Vector -> modifier?.width = width
+            is Component.Surface -> modifier?.width = width
             else -> {}
         }
     }

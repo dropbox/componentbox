@@ -30,6 +30,7 @@ private fun Component?.setMargin(margin: Margin): Component? {
             is Component.Switch -> modifier?.margin = margin.copy()
             is Component.Text -> modifier?.margin = margin.copy()
             is Component.Vector -> modifier?.margin = margin.copy()
+            is Component.Surface -> modifier?.margin = margin.copy()
             else -> {}
         }
     }

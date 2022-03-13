@@ -24,7 +24,7 @@ import com.dropbox.componentbox.store.subscriptions.syncActiveNode
 import com.dropbox.componentbox.ui.theme.ComponentBoxIcon
 import com.dropbox.componentbox.ui.theme.resourcePath
 import com.dropbox.componentbox.ui.theme.standardBackgroundElevated
-import com.dropbox.componentbox.util.node
+import com.dropbox.componentbox.utils.node
 
 @Composable
 fun Toolbar() {

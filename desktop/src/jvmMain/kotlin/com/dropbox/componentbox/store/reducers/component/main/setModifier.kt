@@ -27,6 +27,7 @@ private fun Component.setModifier(modifier: Modifier): Component {
             is Component.Switch -> this.modifier = modifier
             is Component.Text -> this.modifier = modifier
             is Component.Vector -> this.modifier = modifier
+            is Component.Surface -> this.modifier = modifier
         }
     }
 }

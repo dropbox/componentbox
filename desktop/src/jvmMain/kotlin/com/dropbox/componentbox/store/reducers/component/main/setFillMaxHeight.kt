@@ -26,6 +26,7 @@ private fun Component?.setFillMaxHeight(fillMaxHeight: Boolean): Component? {
             is Component.Switch -> modifier?.fillMaxHeight = fillMaxHeight
             is Component.Text -> modifier?.fillMaxHeight = fillMaxHeight
             is Component.Vector -> modifier?.fillMaxHeight = fillMaxHeight
+            is Component.Surface -> modifier?.fillMaxHeight = fillMaxHeight
             else -> {}
         }
     }

@@ -9,6 +9,7 @@ internal fun Component.getComponentChildren(): MutableList<Component>? {
             is Component.Button -> component.components
             is Component.Column -> component.components
             is Component.Row -> component.components
+            is Component.Surface -> component.components
             else -> null
         }
     }

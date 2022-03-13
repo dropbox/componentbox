@@ -5,7 +5,7 @@ import com.dropbox.componentbox.store.state.AppState
 import com.dropbox.componentbox.store.state.ComponentState
 import com.dropbox.componentbox.store.state.ScreenState
 import com.dropbox.componentbox.store.state.ThemeState
-import com.dropbox.componentbox.util.id
+import com.dropbox.componentbox.utils.id
 import org.reduxkotlin.createThreadSafeStore
 
 val store = createThreadSafeStore(

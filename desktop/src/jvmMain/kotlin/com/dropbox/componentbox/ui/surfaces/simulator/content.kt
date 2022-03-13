@@ -15,10 +15,10 @@ import com.dropbox.componentbox.store.store
 import com.dropbox.componentbox.store.subscriptions.syncComponents
 import com.dropbox.componentbox.store.subscriptions.syncScreenHorizontalAlignment
 import com.dropbox.componentbox.store.subscriptions.syncScreenVerticalArrangement
-import com.dropbox.componentbox.util.copy
-import com.dropbox.componentbox.util.horizontal
-import com.dropbox.componentbox.util.inflate
-import com.dropbox.componentbox.util.vertical
+import com.dropbox.componentbox.utils.copy
+import com.dropbox.componentbox.utils.horizontal
+import com.dropbox.componentbox.utils.inflate
+import com.dropbox.componentbox.utils.vertical
 
 @Composable
 fun content(inflater: Inflater, height: Dp) {

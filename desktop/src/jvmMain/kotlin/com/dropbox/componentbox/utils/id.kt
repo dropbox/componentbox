@@ -1,4 +1,4 @@
-package com.dropbox.componentbox.util
+package com.dropbox.componentbox.utils
 
 import java.util.UUID
 

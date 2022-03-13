@@ -26,6 +26,7 @@ private fun Component?.setHeight(height: Int): Component? {
             is Component.Switch -> modifier?.height = height
             is Component.Text -> modifier?.height = height
             is Component.Vector -> modifier?.height = height
+            is Component.Surface -> modifier?.height = height
             else -> {}
         }
     }

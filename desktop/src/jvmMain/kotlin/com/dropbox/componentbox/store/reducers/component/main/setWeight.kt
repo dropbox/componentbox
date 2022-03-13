@@ -26,6 +26,7 @@ private fun Component?.setWeight(weight: Float): Component? {
             is Component.Switch -> modifier?.weight = weight
             is Component.Text -> modifier?.weight = weight
             is Component.Vector -> modifier?.weight = weight
+            is Component.Surface -> modifier?.weight = weight
             else -> {}
         }
     }

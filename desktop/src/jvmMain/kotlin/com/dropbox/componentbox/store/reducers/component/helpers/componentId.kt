@@ -11,5 +11,6 @@ internal fun Component?.componentId() = when (this) {
     is Component.Switch -> this.id
     is Component.Text -> this.id
     is Component.Vector -> this.id
+    is Component.Surface -> this.id
     else -> null
 }

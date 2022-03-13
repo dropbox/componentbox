@@ -26,6 +26,7 @@ private fun Component?.setBackground(background: String): Component? {
             is Component.Switch -> modifier?.background = background
             is Component.Text -> modifier?.background = background
             is Component.Vector -> modifier?.background = background
+            is Component.Surface -> modifier?.background = background
             else -> {}
         }
     }

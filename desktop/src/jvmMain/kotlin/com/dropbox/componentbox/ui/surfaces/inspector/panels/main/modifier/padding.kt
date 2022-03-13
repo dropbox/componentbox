@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import com.dropbox.componentbox.foundation.Padding
 import com.dropbox.componentbox.store.actions.ComponentAction
 import com.dropbox.componentbox.store.store
-import com.dropbox.componentbox.util.getComponentById
-import com.dropbox.componentbox.util.padding
+import com.dropbox.componentbox.utils.getComponentById
+import com.dropbox.componentbox.utils.padding
 
 @Composable
 fun padding() {

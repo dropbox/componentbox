@@ -27,6 +27,7 @@ private fun Component?.setPadding(padding: Padding): Component? {
             is Component.Switch -> modifier?.padding = padding
             is Component.Text -> modifier?.padding = padding
             is Component.Vector -> modifier?.padding = padding
+            is Component.Surface -> modifier?.padding = padding
             else -> {}
         }
     }

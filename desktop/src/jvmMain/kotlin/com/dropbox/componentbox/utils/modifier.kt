@@ -1,4 +1,4 @@
-package com.dropbox.componentbox.util
+package com.dropbox.componentbox.utils
 
 import com.dropbox.componentbox.foundation.Component
 import com.dropbox.componentbox.foundation.Margin
@@ -13,6 +13,7 @@ internal fun Component?.margin() = when (this) {
     is Component.Switch -> this.modifier?.margin ?: Margin()
     is Component.Text -> this.modifier?.margin ?: Margin()
     is Component.Vector -> this.modifier?.margin ?: Margin()
+    is Component.Surface -> this.modifier?.margin ?: Margin()
     else -> Margin()
 }
 
@@ -25,5 +26,6 @@ internal fun Component?.padding() = when (this) {
     is Component.Switch -> this.modifier?.padding ?: Padding()
     is Component.Text -> this.modifier?.padding ?: Padding()
     is Component.Vector -> this.modifier?.padding ?: Padding()
+    is Component.Surface -> this.modifier?.padding ?: Padding()
     else -> Padding()
 }

@@ -18,7 +18,7 @@ import com.dropbox.componentbox.store.subscriptions.syncActiveNode
 import com.dropbox.componentbox.store.subscriptions.syncChildrenNodes
 import com.dropbox.componentbox.ui.surfaces.inspector.panels.section
 import com.dropbox.componentbox.ui.theme.successFill
-import com.dropbox.componentbox.util.iconResourcePath
+import com.dropbox.componentbox.utils.iconResourcePath
 
 @Composable
 fun children() {

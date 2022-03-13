@@ -1,4 +1,4 @@
-package com.dropbox.componentbox.util
+package com.dropbox.componentbox.utils
 
 import androidx.compose.runtime.Composable
 import com.dropbox.componentbox.foundation.Inflater

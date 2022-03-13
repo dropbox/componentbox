@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import com.dropbox.componentbox.ui.theme.buttonBackground
 import com.dropbox.componentbox.ui.theme.disabledBackground
 import com.dropbox.componentbox.ui.theme.inverseStandardBackground
-import com.dropbox.componentbox.util.name
+import com.dropbox.componentbox.utils.name
 import androidx.compose.foundation.layout.Arrangement as RealArrangement
 
 @Composable
