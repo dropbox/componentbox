@@ -76,5 +76,6 @@ val containerTypes = listOf(
     ComponentType.Row,
     ComponentType.LazyRow,
     ComponentType.Column,
-    ComponentType.LazyColumn
+    ComponentType.LazyColumn,
+    ComponentType.Surface
 )

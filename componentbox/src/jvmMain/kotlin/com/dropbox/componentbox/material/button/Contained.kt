@@ -11,7 +11,7 @@ import com.dropbox.componentbox.util.build
 
 // This module targets JS
 // Until material and foundation are supported on JS
-// Changes to this file should be duplicated in jvmMain
+// Changes to this file should be duplicated in androidMain
 // TODO(https://github.com/dropbox/componentbox/issues/25)
 
 @Composable

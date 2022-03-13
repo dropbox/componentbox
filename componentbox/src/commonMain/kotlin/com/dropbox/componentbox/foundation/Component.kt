@@ -85,5 +85,17 @@ sealed class Component {
         var contentScale: ContentScale? = null,
         var color: String? = null
     ) : Component()
+
+    @Serializable
+    data class Surface(
+        val id: String,
+        var modifier: Modifier? = null,
+        var shape: Shape? = null,
+        var color: Color? = null,
+        var contentColor: Color? = null,
+        var borderStroke: BorderStroke? = null,
+        var elevation: Int? = null,
+        var components: MutableList<Component>? = null,
+    ) : Component()
 }
 
