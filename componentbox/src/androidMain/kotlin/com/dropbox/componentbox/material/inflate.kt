@@ -28,6 +28,7 @@ actual fun Component.Inflate(context: Context?) {
         is Component.Switch -> TODO()
         is Component.Text -> Inflate(context)
         is Component.Vector -> TODO()
+        is Component.Surface -> Inflate(context)
     }
 }
 

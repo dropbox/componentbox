@@ -17,5 +17,6 @@ internal fun ComponentType.build(id: String): Component {
         ComponentType.Table -> Component.Column(id, isLazy = true, isTable = true, modifier = Modifier())
         ComponentType.Text -> Component.Text(id, modifier = Modifier())
         ComponentType.Vector -> Component.Vector(id, modifier = Modifier())
+        ComponentType.Surface -> Component.Surface(id, modifier = Modifier())
     }
 }

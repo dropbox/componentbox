@@ -7,6 +7,7 @@ import com.dropbox.componentbox.foundation.ComponentType
 import com.dropbox.componentbox.store.state.ComponentState
 
 internal fun ComponentType.iconResourcePath() = when (this) {
+    ComponentType.Surface,
     ComponentType.Row,
     ComponentType.LazyRow,
     ComponentType.Column,
@@ -34,6 +35,7 @@ internal fun Component.copy(): Component = when (this) {
     is Component.Switch -> copy(modifier = this.modifier!!.copy())
     is Component.Text -> copy(modifier = this.modifier!!.copy())
     is Component.Vector -> copy(modifier = this.modifier!!.copy())
+    is Component.Surface -> copy(components = components?.copy(), modifier = this.modifier!!.copy())
 }
 
 internal fun MutableList<Component>.copy(): MutableList<Component> = this.map { it.copy() }.toMutableList()
