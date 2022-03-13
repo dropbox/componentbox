@@ -9,7 +9,7 @@
         android:label="Discovery"
         android:allowBackup="false"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light" android:icon="@mipmap/icon" android:roundIcon="@mipmap/icon_round"
+        android:theme="@style/Theme.AppCompat.Light" android:icon="@mipmap/componentbox" android:roundIcon="@mipmap/componentbox"
         android:usesCleartextTraffic="true">
 
         <activity android:name="com.dropbox.componentbox.discovery.discovery.DiscoveryActivity" android:exported="true">
