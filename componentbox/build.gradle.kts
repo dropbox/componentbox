@@ -49,6 +49,8 @@ kotlin {
             dependencies {
                 api(compose.material)
                 api(compose.ui)
+                api(compose.foundation)
+                implementation(Deps.Compose.coilCompose)
             }
         }
 
