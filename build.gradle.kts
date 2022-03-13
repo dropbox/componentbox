@@ -44,7 +44,7 @@ allprojects {
             publishToMavenCentral(SonatypeHost.S01)
             signAllPublications()
             pom {
-                description.set("Component Box is a multiplatform server-driven UI framework")
+                description.set("A Kotlin multiplatform library for building dynamic server-driven UI")
                 name.set(project.name)
                 url.set("https://github.com/dropbox/componentbox/")
                 licenses {
