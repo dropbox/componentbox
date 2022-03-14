@@ -68,6 +68,9 @@ kotlin {
                 with(Deps.Ok) {
                     implementation(okhttp)
                 }
+
+                implementation("com.airbnb.android:lottie-compose:5.0.3")
+
             }
         }
     }
