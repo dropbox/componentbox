@@ -1,12 +1,7 @@
 package com.dropbox.desktop.componentbox.store.actions
 
+import com.dropbox.componentbox.foundation.*
 import com.dropbox.desktop.componentbox.data.entities.Node
-import com.dropbox.componentbox.foundation.Alignment
-import com.dropbox.componentbox.foundation.Arrangement
-import com.dropbox.componentbox.foundation.ContentScale
-import com.dropbox.componentbox.foundation.Margin
-import com.dropbox.componentbox.foundation.Modifier
-import com.dropbox.componentbox.foundation.Padding
 
 sealed class ComponentAction {
 
@@ -35,7 +30,7 @@ sealed class ComponentAction {
 
     data class SetColor(
         val id: String,
-        val color: String,
+        val color: Color,
     ) : ComponentAction()
 
     data class SetContentScale(
@@ -153,7 +148,7 @@ sealed class ComponentAction {
 
         data class SetBackground(
             val id: String,
-            val background: String
+            val background: Color
         ) : ModifierAction()
 
         data class SetWeight(

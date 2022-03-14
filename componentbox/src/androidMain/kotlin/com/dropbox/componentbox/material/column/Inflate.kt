@@ -12,6 +12,7 @@ import com.dropbox.componentbox.foundation.Context
 import com.dropbox.componentbox.material.Inflate
 import com.dropbox.componentbox.util.build
 import com.dropbox.componentbox.util.horizontal
+import com.dropbox.componentbox.util.compose
 import com.dropbox.componentbox.util.vertical
 
 // This module targets JS
@@ -31,7 +32,7 @@ fun Component.Column.Inflate(context: Context?) {
 fun Component.Column.Column(context: Context?) {
     val components = this.components
     val customModifiers = listOf(
-        Modifier.background(context?.themer?.toColor(modifier?.background) ?: MaterialTheme.colors.background)
+        Modifier.background(modifier?.background.compose() ?: MaterialTheme.colors.background)
     )
 
     Column(
@@ -49,7 +50,7 @@ fun Component.Column.Column(context: Context?) {
 fun Component.Column.LazyColumn(context: Context?) {
     val components = this.components
     val customModifiers = listOf(
-        Modifier.background(context?.themer?.toColor(modifier?.background) ?: MaterialTheme.colors.background)
+        Modifier.background(modifier?.background.compose() ?: MaterialTheme.colors.background)
     )
 
     LazyColumn(

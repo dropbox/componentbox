@@ -52,7 +52,7 @@ fun color(themer: Themer) {
             store.dispatch(
                 ComponentAction.SetColor(
                     id = activeNode.value!!.id,
-                    color = color.value.title
+                    color = color.value
                 )
             )
         }

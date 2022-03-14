@@ -11,7 +11,7 @@ data class Modifier(
     var width: Int? = null,
     var padding: Padding? = null,
     var margin: Margin? = null,
-    var background: String? = null,
+    var background: Color? = null,
     var weight: Float? = null
 )
 

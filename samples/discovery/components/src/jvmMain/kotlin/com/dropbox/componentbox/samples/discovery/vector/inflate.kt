@@ -1,12 +1,12 @@
 package com.dropbox.componentbox.samples.discovery.vector
 
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import com.dropbox.componentbox.build
+import com.dropbox.componentbox.compose
 import com.dropbox.componentbox.foundation.Component
-import com.dropbox.componentbox.samples.discovery.color.color
-import com.dropbox.componentbox.samples.discovery.color.discoveryColor
 
 @Composable
 actual fun Component.Vector.Inflate() {
@@ -15,6 +15,6 @@ actual fun Component.Vector.Inflate() {
         painter = painterResource(resourcePath),
         null,
         modifier = modifier.build(),
-        tint = modifier?.background.discoveryColor().color()
+        tint = modifier?.background.compose() ?: MaterialTheme.colors.onBackground
     )
 }
