@@ -5,14 +5,7 @@ package com.dropbox.desktop.componentbox.ui.surfaces.inspector.panels.main.style
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.material.DropdownMenu
@@ -25,8 +18,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.dropbox.componentbox.foundation.Themer
 import com.dropbox.componentbox.foundation.Color
+import com.dropbox.componentbox.foundation.Themer
+import com.dropbox.componentbox.util.compose
 import com.dropbox.desktop.componentbox.store.actions.ComponentAction
 import com.dropbox.desktop.componentbox.store.store
 import com.dropbox.desktop.componentbox.store.subscriptions.syncActiveNode
@@ -79,7 +73,7 @@ fun color(themer: Themer) {
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Box(
-                    modifier = Modifier.background(color = themer.toMaterialTheme(color.value)).height(18.dp)
+                    modifier = Modifier.background(color = color.value.compose()).height(18.dp)
                         .width(18.dp)
                 )
 
@@ -87,7 +81,7 @@ fun color(themer: Themer) {
 
                     Text(
                         text = color.value.title,
-                        color = themer.toMaterialTheme(color.value),
+                        color = color.value.compose(),
                         modifier = Modifier.clickable { isExpanded.value = true }
                             .background(color = MaterialTheme.colors.buttonBackground).fillMaxWidth()
                     )
@@ -107,7 +101,7 @@ fun color(themer: Themer) {
                                 contentPadding = PaddingValues(0.dp)
                             ) {
                                 Box(
-                                    modifier = Modifier.background(color = themer.toMaterialTheme(color)).height(15.dp)
+                                    modifier = Modifier.background(color = color.compose()).height(15.dp)
                                         .width(15.dp)
                                 )
                                 Text(text = color.title, color = MaterialTheme.colors.inverseStandardBackground)

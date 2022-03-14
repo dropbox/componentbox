@@ -9,6 +9,11 @@ import androidx.compose.ui.graphics.Color
 // Changes to this file should be duplicated in androidMain
 // TODO(https://github.com/dropbox/componentbox/issues/25)
 
+@Composable
+fun com.dropbox.componentbox.foundation.Color.compose(): Color {
+    return if (MaterialTheme.colors.isLight) Color(light) else Color(dark)
+}
+
 
 @Composable
 fun com.dropbox.componentbox.foundation.Color?.compose(): Color? {

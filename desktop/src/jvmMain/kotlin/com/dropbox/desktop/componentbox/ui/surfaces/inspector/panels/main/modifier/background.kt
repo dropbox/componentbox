@@ -20,12 +20,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.dropbox.componentbox.foundation.Color
 import com.dropbox.componentbox.foundation.Themer
+import com.dropbox.componentbox.util.compose
 import com.dropbox.desktop.componentbox.store.actions.ComponentAction
 import com.dropbox.desktop.componentbox.store.store
 import com.dropbox.desktop.componentbox.store.subscriptions.syncActiveNode
 import com.dropbox.desktop.componentbox.ui.theme.buttonBackground
 import com.dropbox.desktop.componentbox.ui.theme.disabledBackground
 import com.dropbox.desktop.componentbox.ui.theme.inverseStandardBackground
+import com.dropbox.desktop.componentbox.ui.theme.standardText
 
 @Composable
 fun background(themer: Themer) {
@@ -72,7 +74,9 @@ fun background(themer: Themer) {
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Box(
-                    modifier = Modifier.background(color = themer.toMaterialTheme(color.value)).height(18.dp)
+                    modifier = Modifier
+                        .background(color = color.value.compose())
+                        .height(18.dp)
                         .width(18.dp)
                 )
 
@@ -80,7 +84,7 @@ fun background(themer: Themer) {
 
                     Text(
                         text = color.value.title,
-                        color = themer.toMaterialTheme(color.value),
+                        color = color.value.compose() ?: MaterialTheme.colors.standardText,
                         modifier = Modifier.clickable { isExpanded.value = true }
                             .background(color = MaterialTheme.colors.buttonBackground).fillMaxWidth()
                     )
@@ -100,7 +104,7 @@ fun background(themer: Themer) {
                                 contentPadding = PaddingValues(0.dp)
                             ) {
                                 Box(
-                                    modifier = Modifier.background(color = themer.toMaterialTheme(color)).height(15.dp)
+                                    modifier = Modifier.background(color = color.compose()).height(15.dp)
                                         .width(15.dp)
                                 )
                                 Text(text = color.title, color = MaterialTheme.colors.inverseStandardBackground)
