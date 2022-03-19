@@ -21,6 +21,7 @@ kotlin {
             dependencies {
                 implementation(project(":componentbox"))
                 implementation(project(":util"))
+                api(project(":samples:discovery:theme"))
 
                 api(compose.desktop.currentOs)
                 api(compose.preview)
