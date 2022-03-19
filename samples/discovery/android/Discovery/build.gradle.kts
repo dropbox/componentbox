@@ -40,6 +40,7 @@ android {
 
 dependencies {
     implementation(project(":componentbox"))
+    implementation(project(":ui"))
     implementation(project(":util"))
     implementation(project(":samples:discovery:common"))
     implementation(project(":samples:discovery:components"))

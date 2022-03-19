@@ -6,7 +6,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.dropbox.componentbox.compose
+import com.dropbox.componentbox.util.compose
 import com.dropbox.componentbox.foundation.Component
 import com.dropbox.componentbox.foundation.Context
 import com.dropbox.componentbox.material.Inflate
@@ -38,7 +38,7 @@ private fun Component.Row.Row(context: Context?) {
         modifier = modifier.build(customModifiers)
     ) {
         components?.forEach { component ->
-            component.Inflate()
+            component.Inflate(context)
         }
     }
 }
@@ -60,7 +60,7 @@ private fun Component.Row.LazyRow(context: Context?) {
     ) {
         if (components != null) {
             items(components!!) { component ->
-                component.Inflate()
+                component.Inflate(context)
             }
         }
     }

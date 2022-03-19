@@ -15,6 +15,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(":componentbox"))
+                implementation(project(":util"))
 
                 implementation(compose.runtime)
                 implementation(compose.ui)

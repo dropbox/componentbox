@@ -13,14 +13,10 @@ import com.dropbox.componentbox.material.button.Inflate
 import com.dropbox.componentbox.material.column.Inflate
 import com.dropbox.componentbox.material.drawable.Inflate
 import com.dropbox.componentbox.material.row.Inflate
+import com.dropbox.componentbox.material.surface.Inflate
 import com.dropbox.componentbox.material.text.Inflate
 import com.dropbox.componentbox.util.horizontal
 import com.dropbox.componentbox.util.vertical
-
-// This module targets JS
-// Until material and foundation are supported on JS
-// Changes to this file should be duplicated in jvmMain
-// TODO(https://github.com/dropbox/componentbox/issues/25)
 
 @Composable
 actual fun Component.Inflate(context: Context?) {
@@ -38,7 +34,7 @@ actual fun Component.Inflate(context: Context?) {
 }
 
 @Composable
-fun ComponentBox.Inflate(context: Context) {
+actual fun ComponentBox.Inflate(context: Context) {
     when (this) {
         is ComponentBox.Banner ->
             Row(
@@ -46,7 +42,7 @@ fun ComponentBox.Inflate(context: Context) {
                 horizontalArrangement = verticalArrangement.horizontal()
             ) {
                 components.forEach { component ->
-                    context.inflater?.Inflate(component) ?: component.Inflate()
+                    context.inflater?.Inflate(component) ?: component.Inflate(context)
                 }
             }
 
@@ -56,7 +52,7 @@ fun ComponentBox.Inflate(context: Context) {
                 verticalArrangement = verticalArrangement.vertical()
             ) {
                 components.forEach { component ->
-                    context.inflater?.Inflate(component) ?: component.Inflate()
+                    context.inflater?.Inflate(component) ?: component.Inflate(context)
                 }
             }
 
@@ -67,7 +63,7 @@ fun ComponentBox.Inflate(context: Context) {
                 verticalArrangement = verticalArrangement.vertical()
             ) {
                 components.forEach { component ->
-                    context.inflater?.Inflate(component) ?: component.Inflate()
+                    context.inflater?.Inflate(component) ?: component.Inflate(context)
                 }
             }
     }

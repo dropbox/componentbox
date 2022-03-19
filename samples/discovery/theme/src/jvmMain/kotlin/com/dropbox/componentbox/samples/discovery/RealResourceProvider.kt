@@ -7,7 +7,7 @@ import com.dropbox.componentbox.samples.discovery.drawable.DiscoveryImages
 import com.dropbox.componentbox.samples.discovery.type.DiscoveryTypography
 import com.dropbox.componentbox.samples.discovery.vector.DiscoveryIcons
 
-actual class RealResourceProvider : ResourceProvider {
+class RealResourceProvider : ResourceProvider {
     @Composable
     override fun icons() = DiscoveryIcons()
 

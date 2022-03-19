@@ -21,6 +21,7 @@ kotlin {
             dependencies {
                 implementation(project(":componentbox"))
                 implementation(project(":util"))
+                implementation(project(":material"))
                 api(compose.runtime)
                 api(compose.material)
                 api(compose.ui)

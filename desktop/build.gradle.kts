@@ -20,6 +20,7 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(project(":componentbox"))
+                implementation(project(":util"))
 
                 api(compose.desktop.currentOs)
                 api(compose.preview)

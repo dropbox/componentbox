@@ -20,6 +20,7 @@ kotlin {
     jvm()
     js {
         browser()
+        binaries.executable()
     }
 
     val iosTarget: (String, org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget.() -> Unit) -> org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget =
@@ -38,8 +39,6 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-
-
 
                 with(Deps.Kotlinx) {
                     api(serializationCore)
@@ -91,6 +90,12 @@ kotlin {
 
             }
         }
+
+        val jsMain by getting {
+            dependencies {
+                api(compose.runtime)
+            }
+        }
     }
 }
 
@@ -106,6 +111,7 @@ android {
 
     composeOptions {
         kotlinCompilerExtensionVersion = Version.composeCompiler
+        kotlinCompilerVersion = Version.baseKotlin
     }
 
 }

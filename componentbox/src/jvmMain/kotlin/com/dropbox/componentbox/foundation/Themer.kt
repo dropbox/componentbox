@@ -5,7 +5,7 @@ import androidx.compose.ui.text.TextStyle
 
 actual abstract class Themer {
     @Composable
-    actual abstract fun Theme(isNightMode: Boolean, content: @Composable () -> Unit)
+    abstract fun Theme(isNightMode: Boolean, content: @Composable () -> Unit)
 
     @Composable
     abstract fun getDrawableResPath(name: String?): String?

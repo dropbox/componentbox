@@ -4,6 +4,7 @@ import com.dropbox.componentbox.discovery.discovery.DiscoveryManager
 import com.dropbox.componentbox.discovery.discovery.DiscoveryThemer
 import com.dropbox.componentbox.foundation.Context
 import com.dropbox.componentbox.foundation.Inflater
+import com.dropbox.componentbox.foundation.ResourceProvider
 import com.dropbox.componentbox.samples.discovery.RealInflater
 import com.dropbox.componentbox.samples.discovery.RealResourceProvider
 
