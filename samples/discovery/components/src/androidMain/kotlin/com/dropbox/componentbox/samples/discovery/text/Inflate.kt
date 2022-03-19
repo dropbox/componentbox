@@ -15,6 +15,6 @@ actual fun Component.Text.Inflate() {
         text = this.text.toString(),
         style = this.textStyle.textStyle().textStyle(),
         modifier = this.modifier.build(),
-        color = this.color.compose() ?: MaterialTheme.colors.standardText
+        color = this.color.compose() ?: this.modifier?.background.compose() ?: MaterialTheme.colors.standardText
     )
 }

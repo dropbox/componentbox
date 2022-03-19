@@ -12,6 +12,6 @@ actual fun Component.Vector.Inflate() {
     Icon(
         painter = painterResource(this.name.iconRes().resId),
         contentDescription = null,
-        tint = this.color.compose() ?: MaterialTheme.colors.onBackground
+        tint = this.color.compose() ?: this.modifier?.background.compose() ?: MaterialTheme.colors.onBackground
     )
 }
