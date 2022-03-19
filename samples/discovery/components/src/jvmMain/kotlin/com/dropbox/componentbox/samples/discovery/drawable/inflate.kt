@@ -4,7 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
-import com.dropbox.componentbox.build
+import com.dropbox.componentbox.util.build
 import com.dropbox.componentbox.foundation.Component
 
 @Composable

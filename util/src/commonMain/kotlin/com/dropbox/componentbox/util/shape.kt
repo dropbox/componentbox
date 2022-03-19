@@ -1,4 +1,4 @@
-package com.dropbox.componentbox
+package com.dropbox.componentbox.util
 
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape

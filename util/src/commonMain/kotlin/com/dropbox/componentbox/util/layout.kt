@@ -1,4 +1,4 @@
-package com.dropbox.componentbox
+package com.dropbox.componentbox.util
 
 import com.dropbox.componentbox.foundation.Alignment
 import com.dropbox.componentbox.foundation.Arrangement

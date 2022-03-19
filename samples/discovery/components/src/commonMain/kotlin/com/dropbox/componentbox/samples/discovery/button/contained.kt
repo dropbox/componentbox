@@ -6,7 +6,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
-import com.dropbox.componentbox.build
+import com.dropbox.componentbox.util.build
 import com.dropbox.componentbox.foundation.Component
 import com.dropbox.componentbox.samples.discovery.Inflate
 import com.dropbox.componentbox.samples.discovery.action

@@ -13,6 +13,7 @@ rootProject.name = "componentbox"
 
 include(":componentbox")
 include(":desktop")
+include(":material")
 include(":util")
 
 include(":samples:discovery:android:Discovery")

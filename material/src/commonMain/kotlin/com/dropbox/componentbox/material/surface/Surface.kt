@@ -1,18 +1,25 @@
-package com.dropbox.componentbox.samples.discovery.surface
+package com.dropbox.componentbox.material.surface
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.dropbox.componentbox.util.build
 import com.dropbox.componentbox.foundation.Component
-import com.dropbox.componentbox.samples.discovery.Inflate
+import com.dropbox.componentbox.foundation.Context
+import com.dropbox.componentbox.material.Inflate
+import com.dropbox.componentbox.util.build
 import com.dropbox.componentbox.util.translate
 
+// This module targets JS
+// Until material and foundation are supported on JS
+// Changes to this file should be duplicated in jvmMain
+// TODO(https://github.com/dropbox/componentbox/issues/25)
+
 @Composable
-fun Component.Surface.Inflate() {
-    val isDark = !MaterialTheme.colors.isLight
+fun Component.Surface.Inflate(context: Context?) {
+    val isDark = isSystemInDarkTheme() || !MaterialTheme.colors.isLight
 
     val color = if (this.color?.dark != null && this.color?.light != null) {
         if (isDark) Color(this.color!!.dark) else Color(this.color!!.light)
@@ -37,7 +44,7 @@ fun Component.Surface.Inflate() {
         elevation = elevation
     ) {
         components?.forEach { component ->
-            component.Inflate()
+            component.Inflate(context)
         }
     }
 }
