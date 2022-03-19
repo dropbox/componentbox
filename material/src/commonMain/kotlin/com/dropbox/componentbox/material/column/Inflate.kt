@@ -7,17 +7,13 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.dropbox.componentbox.compose
 import com.dropbox.componentbox.foundation.Component
 import com.dropbox.componentbox.foundation.Context
 import com.dropbox.componentbox.material.Inflate
 import com.dropbox.componentbox.util.build
 import com.dropbox.componentbox.util.horizontal
 import com.dropbox.componentbox.util.vertical
-
-// This module targets JS
-// Until material and foundation are supported on JS
-// Changes to this file should be duplicated in jvmMain
-// TODO(https://github.com/dropbox/componentbox/issues/25)
 
 @Composable
 fun Component.Column.Inflate(context: Context?) {
@@ -31,7 +27,7 @@ fun Component.Column.Inflate(context: Context?) {
 fun Component.Column.Column(context: Context?) {
     val components = this.components
     val customModifiers = listOf(
-        Modifier.background(context?.themer?.toColor(modifier?.background) ?: MaterialTheme.colors.background)
+        Modifier.background(modifier?.background.compose() ?: MaterialTheme.colors.background)
     )
 
     Column(
@@ -49,7 +45,7 @@ fun Component.Column.Column(context: Context?) {
 fun Component.Column.LazyColumn(context: Context?) {
     val components = this.components
     val customModifiers = listOf(
-        Modifier.background(context?.themer?.toColor(modifier?.background) ?: MaterialTheme.colors.background)
+        Modifier.background(modifier?.background.compose() ?: MaterialTheme.colors.background)
     )
 
     LazyColumn(

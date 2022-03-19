@@ -1,7 +1,6 @@
 package com.dropbox.componentbox.samples.discovery
 
 import androidx.compose.runtime.Composable
-import com.dropbox.componentbox.foundation.ResourceProvider
 import com.dropbox.componentbox.foundation.Colors
 import com.dropbox.componentbox.foundation.Images
 import com.dropbox.componentbox.foundation.Typography

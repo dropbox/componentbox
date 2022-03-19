@@ -1,6 +1,5 @@
 package com.dropbox.componentbox.discovery.discovery
 
-import com.dropbox.componentbox.foundation.ResourceProvider
 import com.dropbox.componentbox.discovery.discovery.scoping.AppScope
 import com.dropbox.componentbox.discovery.discovery.scoping.UserScope
 import com.dropbox.componentbox.discovery.discovery.scoping.appScope

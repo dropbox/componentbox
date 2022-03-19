@@ -4,6 +4,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import com.dropbox.componentbox.compose
 import com.dropbox.componentbox.foundation.Component
 import com.dropbox.componentbox.foundation.Context
 import com.dropbox.componentbox.material.Inflate
@@ -14,7 +15,7 @@ fun Component.Button.Contained(context: Context? = null) {
     Button(
         modifier = modifier.build(),
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = context?.themer?.toColor(modifier?.background) ?: MaterialTheme.colors.primary,
+            backgroundColor = modifier?.background.compose() ?: MaterialTheme.colors.primary,
         ),
         onClick = { context?.manager?.run(action) }
     ) {

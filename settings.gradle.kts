@@ -15,6 +15,7 @@ include(":componentbox")
 include(":desktop")
 include(":material")
 include(":util")
+include(":ui")
 
 include(":samples:discovery:android:Discovery")
 include(":samples:discovery:android:zipline")

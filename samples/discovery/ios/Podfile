@@ -1,0 +1,3 @@
+target 'ios' do
+    pod 'componentbox', :path => '../../../componentbox'
+end

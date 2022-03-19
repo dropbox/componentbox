@@ -11,19 +11,7 @@ import com.dropbox.componentbox.util.horizontal
 import com.dropbox.componentbox.util.vertical
 
 @Composable
-fun Component.Inflate(context: Context?) {
-    when (this) {
-        is Component.Box -> Inflate(context)
-        is Component.Button -> Inflate(context)
-        is Component.Column -> Inflate(context)
-        is Component.Drawable -> Inflate(context)
-        is Component.Row -> Inflate(context)
-        is Component.Switch -> TODO()
-        is Component.Text -> Inflate(context)
-        is Component.Vector -> TODO()
-        is Component.Surface -> Inflate(context)
-    }
-}
+expect fun Component.Inflate(context: Context?)
 
 @Composable
 fun ComponentBox.Inflate(context: Context) {
