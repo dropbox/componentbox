@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330711CA0C41B2223CA5388E /* color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330713464ED0DCE6E6133003 /* color.swift */; };
 		330713C483CD34503563A155 /* FilesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33071B0076B2646701D871A4 /* FilesScreen.swift */; };
 		330713FB089A1390000E9315 /* DiscoveryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33071FD0F45C1302364055B5 /* DiscoveryApp.swift */; };
 		330716033243182DE88F151F /* Scaffold.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3307171BAE8B3F9780CF6A26 /* Scaffold.swift */; };
@@ -19,6 +20,10 @@
 		7555FF8B242A565B00829871 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7555FF89242A565B00829871 /* LaunchScreen.storyboard */; };
 		7555FF96242A565B00829871 /* iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF95242A565B00829871 /* iosTests.swift */; };
 		7555FFA1242A565B00829871 /* iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FFA0242A565B00829871 /* iosUITests.swift */; };
+		C95CD01127E547E200B0986F /* AtlasGroteskMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C95CD00F27E547E200B0986F /* AtlasGroteskMedium.ttf */; };
+		C95CD01227E547E200B0986F /* SharpGroteskBook.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C95CD01027E547E200B0986F /* SharpGroteskBook.ttf */; };
+		C95CD01427E5564300B0986F /* SharpGroteskMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C95CD01327E5564300B0986F /* SharpGroteskMedium.ttf */; };
+		C95CD01627E5575800B0986F /* AtlasGroteskRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C95CD01527E5575800B0986F /* AtlasGroteskRegular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		33071206F5D3CBC31B9A9765 /* AccountScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountScreen.swift; sourceTree = "<group>"; };
+		330713464ED0DCE6E6133003 /* color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = color.swift; sourceTree = "<group>"; };
 		33071576A17B16DDA1042633 /* PhotosScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosScreen.swift; sourceTree = "<group>"; };
 		3307171BAE8B3F9780CF6A26 /* Scaffold.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scaffold.swift; sourceTree = "<group>"; };
 		33071B0076B2646701D871A4 /* FilesScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesScreen.swift; sourceTree = "<group>"; };
@@ -57,6 +63,10 @@
 		7555FF9C242A565B00829871 /* iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FFA0242A565B00829871 /* iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosUITests.swift; sourceTree = "<group>"; };
 		7555FFA2242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C95CD00F27E547E200B0986F /* AtlasGroteskMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AtlasGroteskMedium.ttf; sourceTree = "<group>"; };
+		C95CD01027E547E200B0986F /* SharpGroteskBook.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SharpGroteskBook.ttf; sourceTree = "<group>"; };
+		C95CD01327E5564300B0986F /* SharpGroteskMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SharpGroteskMedium.ttf; sourceTree = "<group>"; };
+		C95CD01527E5575800B0986F /* AtlasGroteskRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AtlasGroteskRegular.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +100,14 @@
 				33071B0076B2646701D871A4 /* FilesScreen.swift */,
 			);
 			path = files;
+			sourceTree = "<group>";
+		};
+		330711327315E23F11D441F7 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				330713464ED0DCE6E6133003 /* color.swift */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 		330713FB20911EC7D21CB7F5 /* home */ = {
@@ -148,9 +166,10 @@
 			isa = PBXGroup;
 			children = (
 				7555FF84242A565B00829871 /* Assets.xcassets */,
+				C95CD00E27E5463300B0986F /* Font */,
+				7555FF86242A565B00829871 /* Preview Content */,
 				7555FF89242A565B00829871 /* LaunchScreen.storyboard */,
 				7555FF8C242A565B00829871 /* Info.plist */,
-				7555FF86242A565B00829871 /* Preview Content */,
 				33071FD0F45C1302364055B5 /* DiscoveryApp.swift */,
 				3307171BAE8B3F9780CF6A26 /* Scaffold.swift */,
 				330713FB20911EC7D21CB7F5 /* home */,
@@ -158,6 +177,7 @@
 				330715E7FD921243761E9119 /* plans */,
 				33071003ABD804162C92B6C1 /* files */,
 				33071B7763BFF56C81D8ADF3 /* photos */,
+				330711327315E23F11D441F7 /* util */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -186,6 +206,17 @@
 				7555FFA2242A565B00829871 /* Info.plist */,
 			);
 			path = iosUITests;
+			sourceTree = "<group>";
+		};
+		C95CD00E27E5463300B0986F /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				C95CD01527E5575800B0986F /* AtlasGroteskRegular.ttf */,
+				C95CD01327E5564300B0986F /* SharpGroteskMedium.ttf */,
+				C95CD00F27E547E200B0986F /* AtlasGroteskMedium.ttf */,
+				C95CD01027E547E200B0986F /* SharpGroteskBook.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,9 +323,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C95CD01227E547E200B0986F /* SharpGroteskBook.ttf in Resources */,
+				C95CD01627E5575800B0986F /* AtlasGroteskRegular.ttf in Resources */,
 				7555FF8B242A565B00829871 /* LaunchScreen.storyboard in Resources */,
 				7555FF88242A565B00829871 /* Preview Assets.xcassets in Resources */,
+				C95CD01427E5564300B0986F /* SharpGroteskMedium.ttf in Resources */,
 				7555FF85242A565B00829871 /* Assets.xcassets in Resources */,
+				C95CD01127E547E200B0986F /* AtlasGroteskMedium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +361,7 @@
 				33071932281A6A16230C3841 /* HomeScreen.swift in Sources */,
 				33071ED5854FEB12779EB378 /* PhotosScreen.swift in Sources */,
 				3307172787A93E2EC9271942 /* PlansScreen.swift in Sources */,
+				330711CA0C41B2223CA5388E /* color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +526,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ios/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
@@ -510,6 +547,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ios/Preview Content\"";
 				ENABLE_PREVIEWS = YES;

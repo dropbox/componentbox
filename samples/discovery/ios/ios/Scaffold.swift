@@ -10,6 +10,7 @@ import SwiftUI
 struct Scaffold: View {
 
     @State private var selectedTab = 0
+    @Environment(\.colorScheme) var colorScheme
 
     var handler: Binding<Int> {
         Binding(
@@ -22,14 +23,21 @@ struct Scaffold: View {
         )
     }
 
+    init() {
+        UITabBar.appearance().barTintColor = .systemBackground
+        UITabBar.appearance().unselectedItemTintColor = UIColor(named: "OnBackground")
+        UITabBar.appearance().tintColor = UIColor(named: "OnBackground")
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont(name: "SharpGroteskDBCyrBook20", size: 28)!]
+    }
+
 
     var body: some View {
         TabView(selection: handler) {
             HomeScreen().tabItem {
                         if (selectedTab == 0) {
-                            Image("Home.Fill")
+                            Image("Home.Fill").renderingMode(.template)
                         } else {
-                            Image("Home.Line")
+                            Image("Home.Line").renderingMode(.template)
                         }
 
                         Text("Home")
@@ -39,9 +47,9 @@ struct Scaffold: View {
 
             FilesScreen().tabItem {
                         if (selectedTab == 1) {
-                            Image("Folder.Fill")
+                            Image("Folder.Fill").renderingMode(.template)
                         } else {
-                            Image("Folder.Line")
+                            Image("Folder.Line").renderingMode(.template)
                         }
 
                         Text("Files")
@@ -50,9 +58,9 @@ struct Scaffold: View {
 
             PhotosScreen().tabItem {
                         if (selectedTab == 2) {
-                            Image("Image.Fill")
+                            Image("Image.Fill").renderingMode(.template)
                         } else {
-                            Image("Image.Line")
+                            Image("Image.Line").renderingMode(.template)
                         }
 
                         Text("Photos")
@@ -61,9 +69,9 @@ struct Scaffold: View {
 
             PlansScreen().tabItem {
                         if (selectedTab == 3) {
-                            Image("Upgrade.Line")
+                            Image("Upgrade.Line").renderingMode(.template)
                         } else {
-                            Image("Upgrade.Line")
+                            Image("Upgrade.Line").renderingMode(.template)
                         }
 
                         Text("Plans")
@@ -72,15 +80,15 @@ struct Scaffold: View {
 
             AccountScreen().tabItem {
                         if (selectedTab == 4) {
-                            Image("Person.Fill")
+                            Image("Person.Fill").renderingMode(.template)
                         } else {
-                            Image("Person.Line")
+                            Image("Person.Line").renderingMode(.template)
                         }
 
                         Text("Account")
                     }
                     .tag(4)
         }
-                .accentColor(Color.black)
+                .accentColor(colorScheme == .dark ? Color.white : Color.black)
     }
 }
