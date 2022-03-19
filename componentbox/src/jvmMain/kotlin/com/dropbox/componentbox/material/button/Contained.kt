@@ -8,6 +8,7 @@ import com.dropbox.componentbox.foundation.Component
 import com.dropbox.componentbox.foundation.Context
 import com.dropbox.componentbox.material.Inflate
 import com.dropbox.componentbox.util.build
+import com.dropbox.componentbox.util.compose
 
 // This module targets JS
 // Until material and foundation are supported on JS
@@ -19,7 +20,7 @@ fun Component.Button.Contained(context: Context? = null) {
     Button(
         modifier = modifier.build(),
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = context?.themer?.toColor(modifier?.background) ?: MaterialTheme.colors.primary,
+            backgroundColor = modifier?.background.compose() ?: MaterialTheme.colors.primary
         ),
         onClick = { context?.manager?.run(action) }
     ) {

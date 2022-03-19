@@ -6,13 +6,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.dropbox.componentbox.util.build
-import com.dropbox.componentbox.util.horizontal
+import com.dropbox.componentbox.build
+import com.dropbox.componentbox.compose
 import com.dropbox.componentbox.foundation.Component
+import com.dropbox.componentbox.horizontal
 import com.dropbox.componentbox.samples.discovery.Inflate
-import com.dropbox.componentbox.samples.discovery.color.color
-import com.dropbox.componentbox.samples.discovery.color.discoveryColor
-import com.dropbox.componentbox.util.vertical
+import com.dropbox.componentbox.vertical
 
 @Composable
 fun Component.Column.Inflate() {
@@ -24,15 +23,19 @@ fun Component.Column.Inflate() {
 
 @Composable
 fun Component.Column.Column() {
-    val components = this.components
-    val customModifiers = listOf(
-        Modifier.background(this.modifier?.background.discoveryColor().color())
-    )
+    val components = components
+
+    val backgroundColor = modifier?.background.compose()
+    val customModifiers = if (backgroundColor != null) {
+        listOf(Modifier.background(backgroundColor))
+    } else {
+        listOf()
+    }
 
     Column(
         verticalArrangement = verticalArrangement.vertical(),
         horizontalAlignment = horizontalAlignment.horizontal(),
-        modifier = this.modifier.build(customModifiers)
+        modifier = modifier.build(customModifiers)
     ) {
         components?.forEach { component ->
             component.Inflate()
@@ -42,10 +45,14 @@ fun Component.Column.Column() {
 
 @Composable
 fun Component.Column.LazyColumn() {
-    val components = this.components
-    val customModifiers = listOf(
-        Modifier.background(this.modifier?.background.discoveryColor().color())
-    )
+    val components = components
+
+    val backgroundColor = modifier?.background.compose()
+    val customModifiers = if (backgroundColor != null) {
+        listOf(Modifier.background(backgroundColor))
+    } else {
+        listOf()
+    }
 
     LazyColumn(
         verticalArrangement = verticalArrangement.vertical(),

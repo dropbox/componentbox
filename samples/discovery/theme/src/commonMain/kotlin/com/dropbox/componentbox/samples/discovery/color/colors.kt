@@ -1,6 +1,5 @@
 package com.dropbox.componentbox.samples.discovery.color
 
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.material.Colors as MaterialColors
 import androidx.compose.ui.graphics.Color as ComposeColor
@@ -122,47 +121,4 @@ val MaterialColors.faintText: ComposeColor
 val MaterialColors.standardText: ComposeColor
     @Composable
     get() = if (isLight) ComposeColor(DiscoveryColors.standardText.light) else ComposeColor(DiscoveryColors.standardText.dark)
-
-fun String?.discoveryColor() = when (this) {
-    DiscoveryColors.primary.title -> DiscoveryColors.primary
-    DiscoveryColors.primaryVariant.title -> DiscoveryColors.primaryVariant
-    DiscoveryColors.secondary.title -> DiscoveryColors.secondary
-    DiscoveryColors.secondaryVariant.title -> DiscoveryColors.secondaryVariant
-    DiscoveryColors.background.title -> DiscoveryColors.background
-    DiscoveryColors.surface.title -> DiscoveryColors.surface
-    DiscoveryColors.error.title -> DiscoveryColors.error
-    DiscoveryColors.onPrimary.title -> DiscoveryColors.onPrimary
-    DiscoveryColors.onSecondary.title -> DiscoveryColors.onSecondary
-    DiscoveryColors.onBackground.title -> DiscoveryColors.onBackground
-    DiscoveryColors.onSurface.title -> DiscoveryColors.onSurface
-    DiscoveryColors.onError.title -> DiscoveryColors.onError
-    DiscoveryColors.disabledBackground.title -> DiscoveryColors.disabledBackground
-    DiscoveryColors.standardBackgroundElevated.title -> DiscoveryColors.standardBackgroundElevated
-    DiscoveryColors.successFill.title -> DiscoveryColors.successFill
-    DiscoveryColors.faintText.title -> DiscoveryColors.faintText
-    DiscoveryColors.standardText.title -> DiscoveryColors.standardText
-    else -> DiscoveryColors.standardText
-}
-
-@Composable
-fun ComponentBoxColor.color() = when (this) {
-    DiscoveryColors.primary -> MaterialTheme.colors.primary
-    DiscoveryColors.primaryVariant -> MaterialTheme.colors.primaryVariant
-    DiscoveryColors.secondary -> MaterialTheme.colors.secondary
-    DiscoveryColors.secondaryVariant -> MaterialTheme.colors.secondaryVariant
-    DiscoveryColors.background -> MaterialTheme.colors.background
-    DiscoveryColors.surface -> MaterialTheme.colors.surface
-    DiscoveryColors.error -> MaterialTheme.colors.error
-    DiscoveryColors.onPrimary -> MaterialTheme.colors.onPrimary
-    DiscoveryColors.onSecondary -> MaterialTheme.colors.onSecondary
-    DiscoveryColors.onBackground -> MaterialTheme.colors.onBackground
-    DiscoveryColors.onSurface -> MaterialTheme.colors.onSurface
-    DiscoveryColors.onError -> MaterialTheme.colors.onError
-    DiscoveryColors.disabledBackground -> MaterialTheme.colors.disabledBackground
-    DiscoveryColors.standardBackgroundElevated -> MaterialTheme.colors.standardBackgroundElevated
-    DiscoveryColors.successFill -> MaterialTheme.colors.successFill
-    DiscoveryColors.faintText -> MaterialTheme.colors.faintText
-    DiscoveryColors.standardText -> MaterialTheme.colors.standardText
-    else -> MaterialTheme.colors.standardText
-}
 

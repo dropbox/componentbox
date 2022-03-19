@@ -11,6 +11,7 @@ import com.dropbox.componentbox.foundation.Context
 import com.dropbox.componentbox.material.Inflate
 import com.dropbox.componentbox.util.build
 import com.dropbox.componentbox.util.horizontal
+import com.dropbox.componentbox.util.compose
 import com.dropbox.componentbox.util.vertical
 
 // This module targets JS
@@ -28,7 +29,7 @@ fun Component.Row.Inflate(context: Context?) {
 
 @Composable
 private fun Component.Row.Row(context: Context?) {
-    val backgroundColor = context?.themer?.toColor(modifier?.background)
+    val backgroundColor = modifier?.background.compose()
 
     val customModifiers = if (backgroundColor != null) {
         listOf(Modifier.background(backgroundColor))
@@ -49,7 +50,7 @@ private fun Component.Row.Row(context: Context?) {
 
 @Composable
 private fun Component.Row.LazyRow(context: Context?) {
-    val backgroundColor = context?.themer?.toColor(modifier?.background)
+    val backgroundColor = modifier?.background.compose()
 
     val customModifiers = if (backgroundColor != null) {
         listOf(Modifier.background(backgroundColor))

@@ -43,7 +43,7 @@ sealed class Component {
         val id: String,
         var modifier: Modifier? = null,
         var text: String? = null,
-        var color: String? = null,
+        var color: Color? = null,
         var textStyle: String? = null
     ) : Component()
 
@@ -83,7 +83,7 @@ sealed class Component {
         var modifier: Modifier? = null,
         var alignment: Alignment? = null,
         var contentScale: ContentScale? = null,
-        var color: String? = null
+        var color: Color? = null
     ) : Component()
 
     @Serializable

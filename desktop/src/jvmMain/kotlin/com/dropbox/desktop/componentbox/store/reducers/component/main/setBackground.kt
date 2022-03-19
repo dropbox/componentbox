@@ -1,5 +1,6 @@
 package com.dropbox.desktop.componentbox.store.reducers.component.main
 
+import com.dropbox.componentbox.foundation.Color
 import com.dropbox.componentbox.foundation.Component
 import com.dropbox.desktop.componentbox.store.actions.ComponentAction
 import com.dropbox.desktop.componentbox.store.reducers.component.helpers.getComponentById
@@ -15,7 +16,7 @@ internal fun ComponentState.setBackground(action: ComponentAction.ModifierAction
     }
 }
 
-private fun Component?.setBackground(background: String): Component? {
+private fun Component?.setBackground(background: Color): Component? {
     return apply {
         when (this) {
             is Component.Box -> modifier?.background = background

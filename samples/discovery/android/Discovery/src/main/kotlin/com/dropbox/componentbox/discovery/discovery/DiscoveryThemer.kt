@@ -11,17 +11,8 @@ class DiscoveryThemer : Themer() {
         TODO("Not yet implemented")
     }
 
-    override fun toColor(name: String?): Color {
-        TODO("Not yet implemented")
-    }
-
     @Composable
     override fun getDrawableResId(name: String?): Int? {
-        TODO("Not yet implemented")
-    }
-
-    @Composable
-    override fun getColorResId(name: String?): Int? {
         TODO("Not yet implemented")
     }
 
