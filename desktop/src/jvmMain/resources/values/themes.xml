@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.ComponentBox" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowSplashScreenBackground">@color/color__standard__background</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/dig_dropbox_logo</item>
+    </style>
+</resources>
