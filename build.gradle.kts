@@ -23,7 +23,7 @@ plugins {
         classpath("com.vanniktech:gradle-maven-publish-plugin:0.18.0")
         classpath("org.jetbrains.kotlinx:kover:0.5.0")
         classpath("org.jetbrains.kotlinx:kotlinx-cli:0.3.4")
-
+        classpath("com.rickclephas.kmp:kmp-nativecoroutines-gradle-plugin:0.11.3")
     }
 }
 

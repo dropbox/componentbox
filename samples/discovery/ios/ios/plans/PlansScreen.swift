@@ -5,12 +5,16 @@
 
 import Foundation
 import SwiftUI
+import componentbox
 
 @available(iOS 14.0, *)
 struct PlansScreen: View {
+    
+    @State private var viewModel = PlansScreenViewModel()
+    
     var body: some View {
         NavigationView {
-            Content()
+            Content(screen: viewModel.screen)
                     .navigationTitle("Plans")
                     .toolbar {
                         ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
@@ -24,8 +28,13 @@ struct PlansScreen: View {
 }
 
 private struct Content: View {
+    
+    let screen: ComponentBox.Screen?
+    
     var body: some View {
         VStack {
+            
+            Text(screen?.title ?? "No title")
 
         }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: Alignment.top).padding()
