@@ -22,13 +22,10 @@ class PlansScreenViewModel: ObservableObject {
     func fetchComponentBox() {
         Task {
             do {
-                let response = try await asyncResult(for: client.fetchScreenNative(url: "https://api.componentbox.io/screens/1.json"))
+                let response = try await  asyncResult(for: client.fetchScreenNative(url: "https://api.componentbox.io/screens/1.json"))
                 
-                guard case let .success(val) = response  else {
-                    return
-                }
-                screen = val
-                
+                guard case let .success(screen) = response  else { return }
+                self.screen = screen
                 
             } catch {
                 print("FAILED \(error)")
