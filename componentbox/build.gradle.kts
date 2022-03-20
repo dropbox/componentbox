@@ -2,6 +2,7 @@ import com.vanniktech.maven.publish.JavadocJar.Dokka
 import com.vanniktech.maven.publish.KotlinMultiplatform
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import org.jetbrains.dokka.gradle.DokkaTask
+import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 
 plugins {
     kotlin("multiplatform")
@@ -11,6 +12,7 @@ plugins {
     id("com.vanniktech.maven.publish.base")
     id("org.jetbrains.dokka")
     id("org.jetbrains.kotlin.native.cocoapods")
+    id("com.rickclephas.kmp.nativecoroutines")
 }
 
 group = "com.dropbox.componentbox"
@@ -23,13 +25,13 @@ kotlin {
         binaries.executable()
     }
 
-    val iosTarget: (String, org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget.() -> Unit) -> org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget =
-        when {
-            System.getenv("SDK_NAME")?.startsWith("iphoneos") == true -> ::iosArm64
-            System.getenv("NATIVE_ARCH")?.startsWith("arm") == true -> ::iosSimulatorArm64
-            else -> ::iosX64
+    val xcf = XCFramework("componentbox")
+    listOf(iosX64(), iosArm64(), iosSimulatorArm64()).forEach {
+        it.binaries.framework {
+            baseName = "componentbox"
+            xcf.add(this)
         }
-    iosTarget("iOS") {}
+    }
 
     cocoapods {
         summary = "ComponentBox"
@@ -50,7 +52,11 @@ kotlin {
                     implementation(ziplineLoader)
                 }
 
-
+                implementation("io.ktor:ktor-client-core:2.0.0-beta-1")
+                implementation("io.ktor:ktor-client-serialization:2.0.0-beta-1")
+                implementation("io.ktor:ktor-client-content-negotiation:2.0.0-beta-1")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:2.0.0-beta-1")
+                implementation("io.ktor:ktor-client-logging:2.0.0-beta-1")
             }
         }
 
@@ -95,6 +101,27 @@ kotlin {
             dependencies {
                 api(compose.runtime)
             }
+        }
+
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        val iosMain by creating {
+            dependsOn(commonMain)
+
+            dependencies {
+                implementation("io.ktor:ktor-client-ios:2.0.0-beta-1")
+
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt") {
+                    version {
+                        strictly("1.6.0-native-mt")
+                    }
+                }
+            }
+
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
         }
     }
 }
