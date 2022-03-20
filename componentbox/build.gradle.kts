@@ -23,13 +23,17 @@ kotlin {
         binaries.executable()
     }
 
-    val iosTarget: (String, org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget.() -> Unit) -> org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget =
-        when {
-            System.getenv("SDK_NAME")?.startsWith("iphoneos") == true -> ::iosArm64
-            System.getenv("NATIVE_ARCH")?.startsWith("arm") == true -> ::iosSimulatorArm64
-            else -> ::iosX64
+
+
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
+            baseName = "componentbox"
         }
-    iosTarget("iOS") {}
+    }
 
     cocoapods {
         summary = "ComponentBox"
@@ -49,6 +53,11 @@ kotlin {
                     implementation(ziplineSnapshot)
                     implementation(ziplineLoader)
                 }
+
+                implementation("io.ktor:ktor-client-core:2.0.0-beta-1")
+                implementation("io.ktor:ktor-client-serialization:2.0.0-beta-1")
+                implementation("io.ktor:ktor-client-content-negotiation:2.0.0-beta-1")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:2.0.0-beta-1")
 
 
             }
@@ -71,6 +80,9 @@ kotlin {
                     api(appCompat)
                     api(coreKtx)
                 }
+
+                implementation("io.ktor:ktor-client-android:2.0.0-beta-1")
+
 
                 api(compose.runtime)
                 api(compose.material)
@@ -95,6 +107,27 @@ kotlin {
             dependencies {
                 api(compose.runtime)
             }
+        }
+
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        val iosMain by creating {
+            dependsOn(commonMain)
+
+            dependencies {
+                implementation("io.ktor:ktor-client-ios:2.0.0-beta-1")
+
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt") {
+                    version {
+                        strictly("1.6.0-native-mt")
+                    }
+                }
+            }
+
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
         }
     }
 }
