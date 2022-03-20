@@ -15,7 +15,7 @@ struct PlansScreen: View {
     var body: some View {
         NavigationView {
             Content(screen: viewModel.screen)
-                    .navigationTitle("Plans")
+                .navigationTitle(viewModel.screen?.title ?? "Plans")
                     .toolbar {
                         ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
                             Image("Notification.Line").resizable().frame(width: 32.0, height: 32.0)
