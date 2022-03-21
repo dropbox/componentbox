@@ -1,5 +1,6 @@
 package com.dropbox.componentbox
 
+import com.dropbox.componentbox.foundation.Color
 import com.dropbox.componentbox.foundation.ComponentBox
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -34,3 +35,5 @@ public object ComponentBoxClient {
 }
 
 fun <T> T.freeze(): T = this.freeze()
+
+fun Long?.toHexString(): String = this.toHexString()

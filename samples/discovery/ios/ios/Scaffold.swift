@@ -9,7 +9,7 @@ import SwiftUI
 @available(iOS 14.0, *)
 struct Scaffold: View {
 
-    @State private var selectedTab = 0
+    @State private var selectedTab = 4
     @Environment(\.colorScheme) var colorScheme
 
     var handler: Binding<Int> {

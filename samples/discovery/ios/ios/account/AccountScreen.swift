@@ -219,8 +219,8 @@ struct FeatureCardView: View {
                 Image(model.imageNameLeading).renderingMode(.template).foregroundColor(model.accentColor.ui())
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(model.text).atlasGrotesk(style: .body, weight: .regular, color: model.accentColor.ui())
-                    Text(model.subtext).atlasGrotesk(style: .caption1, weight: .regular, color: model.accentColor == "Primary" ? model.accentColor.ui() : Color.ui.faintText)
+                    SwiftUI.Text(model.text).atlasGrotesk(style: .body, weight: .regular, color: model.accentColor.ui())
+                    SwiftUI.Text(model.subtext).atlasGrotesk(style: .caption1, weight: .regular, color: model.accentColor == "Primary" ? model.accentColor.ui() : Color.ui.faintText)
                 }
             }
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -251,23 +251,39 @@ extension Color {
         let onBackground = Color("OnBackground")
         let opacity1 = Color("Opacity1")
         let faintText = Color("FaintText")
+        let successFill = Color("SuccessFill")
+        let background = Color("Background")
+        let onPrimary = Color("OnPrimary")
     }
 }
 
 extension String {
     func ui() -> Color {
         switch self {
-        case "Opacity1":
+            
+        case "Standard background elevated":
+            return Color.ui.backgroundElevated
+            
+        case "Opacity 1":
             return Color.ui.opacity1
 
-        case "OnBackground":
+        case "On background":
             return Color.ui.onBackground
+            
+        case "Success fill":
+            return Color.ui.successFill
 
         case "Primary":
             return Color.ui.primary
 
-        case "FaintText":
+        case "Faint text":
             return Color.ui.faintText
+            
+        case "Background":
+            return Color.ui.background
+            
+        case "On primary":
+            return Color.ui.onPrimary
 
         default:
             return Color.ui.onBackground

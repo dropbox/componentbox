@@ -27,15 +27,14 @@ struct PlansScreen: View {
 
 }
 
+@available(iOS 14.0, *)
 private struct Content: View {
     
     let screen: ComponentBox.Screen?
     
     var body: some View {
         VStack {
-            
-            Text(screen?.title ?? "No title")
-
+            ComponentBoxScreenView(id: UUID().uuidString , title: screen?.title, verticalArrangement: screen?.verticalArrangement, horizontalAlignment: screen?.horizontalAlignment, components: screen?.components as [Component]?)
         }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: Alignment.top).padding()
     }
