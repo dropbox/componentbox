@@ -21,7 +21,7 @@ import com.dropbox.componentbox.server.main as startServer
 @Composable
 fun app(inflater: Inflater, themer: Themer, resourceProvider: ResourceProvider) = MaterialTheme {
     startServer()
-    Runtime.getRuntime().exec("emulator @PIXEL_4_API_30")
+    startEmulators()
 
     val isNightMode = remember { mutableStateOf(store.state.themeState.isNightMode) }
 
@@ -82,4 +82,25 @@ fun app(inflater: Inflater, themer: Themer, resourceProvider: ResourceProvider) 
     }
 }
 
+fun startEmulators() {
+    val USER_HOME = System.getProperty("user.home")
+    val ANDROID_EMULATOR_HOME = "${USER_HOME}/Library/Android/sdk/emulator/emulator"
 
+    val androidEmulators = listOf(
+        "PIXEL_4_API_30"
+    )
+    val iosEmulators = listOf(
+        "30E16CAF-E5A4-44D7-B810-8EB04D29F2F1", // iPhone 13 Pro Max (15.4)
+    )
+
+    androidEmulators.forEach { emulator ->
+        Runtime.getRuntime().exec("$ANDROID_EMULATOR_HOME -avd $emulator")
+        Runtime.getRuntime()
+            .exec("$USER_HOME/Library/Android/sdk/platform-tools/adb shell monkey -p com.dropbox.componentbox.android -c android.intent.category.LAUNCHER 1")
+    }
+
+    Runtime.getRuntime().exec("open -a Simulator.app")
+    iosEmulators.forEach { emulator ->
+        Runtime.getRuntime().exec("xcrun simctl boot $emulator")
+    }
+}
