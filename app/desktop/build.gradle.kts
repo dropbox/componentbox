@@ -17,11 +17,28 @@ kotlin {
         withJava()
     }
     sourceSets {
-        val jvmMain by getting {
+        val commonMain by getting {
+
             dependencies {
+                implementation("io.ktor:ktor-client-core:2.0.0-beta-1")
                 implementation(project(":componentbox"))
                 implementation(project(":util"))
                 api(project(":samples:discovery:theme"))
+                implementation(project(":app:server"))
+
+
+                implementation("io.ktor:ktor-client-serialization:2.0.0-beta-1")
+                implementation("io.ktor:ktor-client-content-negotiation:2.0.0-beta-1")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:2.0.0-beta-1")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:0.20.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+                implementation("io.ktor:ktor-client-serialization:2.0.0-beta-1")
+                implementation("io.ktor:ktor-client-logging:2.0.0-beta-1")
+            }
+        }
+
+        val jvmMain by getting {
+            dependencies {
 
                 api(compose.desktop.currentOs)
                 api(compose.preview)
@@ -30,6 +47,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:0.20.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
                 implementation("org.reduxkotlin:redux-kotlin-threadsafe-jvm:0.5.5")
+                implementation("io.ktor:ktor-client-apache:2.0.0-beta-1")
             }
         }
     }

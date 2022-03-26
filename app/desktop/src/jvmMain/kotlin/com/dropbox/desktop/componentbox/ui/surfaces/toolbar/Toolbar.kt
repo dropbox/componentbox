@@ -11,12 +11,16 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.dropbox.desktop.componentbox.data.entities.Node
+import com.dropbox.componentbox.PreviewApi
+import com.dropbox.componentbox.foundation.Alignment
+import com.dropbox.componentbox.foundation.ComponentBox
 import com.dropbox.componentbox.foundation.ComponentType
+import com.dropbox.desktop.componentbox.data.entities.Node
 import com.dropbox.desktop.componentbox.store.actions.ComponentAction
 import com.dropbox.desktop.componentbox.store.actions.ScreenAction
 import com.dropbox.desktop.componentbox.store.store
@@ -25,6 +29,8 @@ import com.dropbox.desktop.componentbox.ui.theme.ComponentBoxIcon
 import com.dropbox.desktop.componentbox.ui.theme.resourcePath
 import com.dropbox.desktop.componentbox.ui.theme.standardBackgroundElevated
 import com.dropbox.desktop.componentbox.util.node
+import io.ktor.client.HttpClient
+import kotlinx.coroutines.launch
 
 @Composable
 fun Toolbar() {
@@ -39,11 +45,17 @@ fun Toolbar() {
 
 @Composable
 private fun ToolbarButtons() {
+    val api = PreviewApi()
     val activeNode = remember { mutableStateOf<Node?>(null) }
     fun subscribe() {
         syncActiveNode(activeNode, store.state)
     }
+
+    val coroutineScope = rememberCoroutineScope()
+
     store.subscribe { subscribe() }
+
+
 
     Row {
         BasicToolbarButton(iconResourcePath = ComponentBoxIcon.ListView.Line.resourcePath())
@@ -86,11 +98,17 @@ private fun ToolbarButtons() {
         BasicToolbarButton(iconResourcePath = ComponentBoxIcon.Share.Line.resourcePath())
         BasicToolbarButton(iconResourcePath = ComponentBoxIcon.Heart.Line.resourcePath())
 
-        BasicToolbarButton(iconResourcePath = ComponentBoxIcon.Delete.Line.resourcePath(), tint = MaterialTheme.colors.error) {
+        BasicToolbarButton(
+            iconResourcePath = ComponentBoxIcon.Delete.Line.resourcePath(),
+            tint = MaterialTheme.colors.error
+        ) {
             store.dispatch(ComponentAction.Clear)
         }
 
-        BasicToolbarButton(iconResourcePath = ComponentBoxIcon.Twinkle1.Line.resourcePath(), tint = MaterialTheme.colors.primary) {
+        BasicToolbarButton(
+            iconResourcePath = ComponentBoxIcon.Twinkle1.Line.resourcePath(),
+            tint = MaterialTheme.colors.primary
+        ) {
             store.dispatch(ComponentAction.ClearActiveNode)
         }
     }

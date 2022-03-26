@@ -23,6 +23,8 @@ repositories {
 }
 
 dependencies {
+    implementation(project(":componentbox"))
+
     implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-host-common-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-cors-jvm:$ktor_version")
