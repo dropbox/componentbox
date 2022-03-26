@@ -13,5 +13,5 @@ fun main() {
         configureHTTP()
         configureSerialization()
         configureSockets()
-    }.start(wait = true)
+    }.start()
 }
