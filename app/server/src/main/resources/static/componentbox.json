@@ -1,0 +1,333 @@
+{
+  "title": "Upgrade to Dropbox Plus",
+  "verticalArrangement": "SpaceBetween",
+  "horizontalAlignment": "CenterHorizontally",
+  "components": [
+    {
+      "type": "com.dropbox.componentbox.foundation.Component.Column",
+      "id": "5913d6ad",
+      "components": [
+        {
+          "type": "com.dropbox.componentbox.foundation.Component.Drawable",
+          "id": "2b9fb4f5",
+          "name": "TrafficRoadBlocked",
+          "modifier": {
+            "height": 200
+          }
+        },
+        {
+          "type": "com.dropbox.componentbox.foundation.Component.Text",
+          "id": "bb3e1132",
+          "modifier": {},
+          "text": "Do more with Dropbox Plus",
+          "textStyle": "h5"
+        },
+        {
+          "type": "com.dropbox.componentbox.foundation.Component.Text",
+          "id": "28d768ff",
+          "modifier": {
+            "margin": {
+              "top": 8
+            }
+          },
+          "text": "Share, store, and access all your files on the go.",
+          "color": {
+            "title": "Faint text",
+            "light": 3344058942,
+            "dark": 2583164406
+          },
+          "textStyle": "body2"
+        },
+        {
+          "type": "com.dropbox.componentbox.foundation.Component.Row",
+          "id": "750f79f6",
+          "components": [
+            {
+              "type": "com.dropbox.componentbox.foundation.Component.Vector",
+              "id": "3523774a",
+              "name": "CheckmarkCircle.Fill",
+              "modifier": {
+                "background": {
+                  "title": "Success fill",
+                  "light": 4290042905,
+                  "dark": 4290042905
+                }
+              }
+            },
+            {
+              "type": "com.dropbox.componentbox.foundation.Component.Text",
+              "id": "17dd49e6",
+              "modifier": {
+                "margin": {
+                  "start": 8
+                }
+              },
+              "text": "Automatically back up your camera roll to keep your photos and videos safe",
+              "textStyle": "body2"
+            }
+          ],
+          "modifier": {
+            "fillMaxWidth": true,
+            "margin": {
+              "top": 16
+            }
+          },
+          "verticalAlignment": "CenterVertically"
+        },
+        {
+          "type": "com.dropbox.componentbox.foundation.Component.Row",
+          "id": "c45eca56",
+          "components": [
+            {
+              "type": "com.dropbox.componentbox.foundation.Component.Vector",
+              "id": "0dd98e3d",
+              "name": "CheckmarkCircle.Fill",
+              "modifier": {
+                "background": {
+                  "title": "Success fill",
+                  "light": 4290042905,
+                  "dark": 4290042905
+                }
+              }
+            },
+            {
+              "type": "com.dropbox.componentbox.foundation.Component.Text",
+              "id": "237af47a",
+              "modifier": {
+                "margin": {
+                  "start": 8
+                }
+              },
+              "text": "2 TB (2,000 GB) of space for all your important memories and work"
+            }
+          ],
+          "modifier": {
+            "fillMaxWidth": true,
+            "margin": {
+              "top": 8
+            }
+          },
+          "verticalAlignment": "CenterVertically"
+        },
+        {
+          "type": "com.dropbox.componentbox.foundation.Component.Row",
+          "id": "a815de65",
+          "components": [
+            {
+              "type": "com.dropbox.componentbox.foundation.Component.Vector",
+              "id": "021844d7",
+              "name": "CheckmarkCircle.Fill",
+              "modifier": {
+                "background": {
+                  "title": "Success fill",
+                  "light": 4290042905,
+                  "dark": 4290042905
+                }
+              }
+            },
+            {
+              "type": "com.dropbox.componentbox.foundation.Component.Text",
+              "id": "838aebe7",
+              "modifier": {
+                "margin": {
+                  "start": 8
+                }
+              },
+              "text": "Easily save, view, and share files on your phone and computer anywhere"
+            }
+          ],
+          "modifier": {
+            "fillMaxWidth": true,
+            "margin": {
+              "top": 8
+            }
+          },
+          "verticalAlignment": "CenterVertically"
+        },
+        {
+          "type": "com.dropbox.componentbox.foundation.Component.Row",
+          "id": "9bcf6c8f",
+          "components": [
+            {
+              "type": "com.dropbox.componentbox.foundation.Component.Vector",
+              "id": "34f3719f",
+              "name": "CheckmarkCircle.Fill",
+              "modifier": {
+                "background": {
+                  "title": "Success fill",
+                  "light": 4290042905,
+                  "dark": 4290042905
+                }
+              }
+            },
+            {
+              "type": "com.dropbox.componentbox.foundation.Component.Text",
+              "id": "35a2d6c1",
+              "modifier": {
+                "margin": {
+                  "start": 8
+                }
+              },
+              "text": "Access files and folders offline from more than 3 devices"
+            }
+          ],
+          "modifier": {
+            "fillMaxWidth": true,
+            "margin": {
+              "top": 8
+            }
+          },
+          "verticalAlignment": "CenterVertically"
+        },
+        {
+          "type": "com.dropbox.componentbox.foundation.Component.Row",
+          "id": "17755c26",
+          "components": [
+            {
+              "type": "com.dropbox.componentbox.foundation.Component.Vector",
+              "id": "e9b18e66",
+              "name": "CheckmarkCircle.Fill",
+              "modifier": {
+                "background": {
+                  "title": "Success fill",
+                  "light": 4290042905,
+                  "dark": 4290042905
+                }
+              }
+            },
+            {
+              "type": "com.dropbox.componentbox.foundation.Component.Text",
+              "id": "158d657f",
+              "modifier": {
+                "margin": {
+                  "start": 8
+                }
+              },
+              "text": "Offline folder access and 30 days to undo any change"
+            }
+          ],
+          "modifier": {
+            "fillMaxWidth": true,
+            "margin": {
+              "top": 8
+            }
+          },
+          "verticalAlignment": "CenterVertically"
+        }
+      ],
+      "modifier": {
+        "fillMaxWidth": true,
+        "height": 440,
+        "padding": {
+          "start": 16,
+          "top": 16,
+          "end": 16,
+          "bottom": 16
+        }
+      },
+      "horizontalAlignment": "CenterHorizontally",
+      "isLazy": true
+    },
+    {
+      "type": "com.dropbox.componentbox.foundation.Component.Column",
+      "id": "c0da6d93",
+      "components": [
+        {
+          "type": "com.dropbox.componentbox.foundation.Component.Text",
+          "id": "168b4f27",
+          "modifier": {},
+          "text": "$11.99/month",
+          "textStyle": "h6"
+        },
+        {
+          "type": "com.dropbox.componentbox.foundation.Component.Text",
+          "id": "38074a71",
+          "modifier": {
+            "margin": {
+              "top": 4
+            }
+          },
+          "text": "First 30 days free, cancel anytime",
+          "color": {
+            "title": "Faint text",
+            "light": 3344058942,
+            "dark": 2583164406
+          },
+          "textStyle": "body2"
+        },
+        {
+          "type": "com.dropbox.componentbox.foundation.Component.Button",
+          "id": "cc2d000a",
+          "components": [
+            {
+              "type": "com.dropbox.componentbox.foundation.Component.Text",
+              "id": "abfbcb9f",
+              "modifier": {},
+              "text": "Try free for 30 days",
+              "textStyle": "button",
+              "color": {
+                "title": "On primary",
+                "light": 4294440434,
+                "dark": 4280162583
+              }
+            }
+          ],
+          "modifier": {
+            "fillMaxWidth": true,
+            "margin": {
+              "top": 8,
+              "bottom": 8
+            }
+          }
+        },
+        {
+          "type": "com.dropbox.componentbox.foundation.Component.Row",
+          "id": "59ec902f",
+          "components": [
+            {
+              "type": "com.dropbox.componentbox.foundation.Component.Text",
+              "id": "711c5b74",
+              "modifier": {},
+              "text": "Cancel anytime. ",
+              "color": {
+                "title": "Faint text",
+                "light": 3344058942,
+                "dark": 2583164406
+              },
+              "textStyle": "body2"
+            },
+            {
+              "type": "com.dropbox.componentbox.foundation.Component.Text",
+              "id": "24adcf26",
+              "modifier": {},
+              "text": "View subscription details",
+              "color": {
+                "title": "Primary",
+                "light": 4278215166,
+                "dark": 4281959679
+              },
+              "textStyle": "body2"
+            }
+          ],
+          "modifier": {}
+        }
+      ],
+      "modifier": {
+        "fillMaxWidth": true,
+        "padding": {
+          "start": 16,
+          "top": 16,
+          "end": 16,
+          "bottom": 16
+        },
+        "background": {
+          "title": "Standard background elevated",
+          "light": 4294703865,
+          "dark": 4281018665
+        }
+      },
+      "verticalArrangement": "SpaceBetween",
+      "horizontalAlignment": "CenterHorizontally"
+    }
+  ]
+}
