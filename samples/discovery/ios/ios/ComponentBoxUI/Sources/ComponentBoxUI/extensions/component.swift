@@ -46,6 +46,10 @@ public extension Component {
             let ui = ComponentBoxUI.Image(id: image.id, name: image.name, url: image.url, contentDescription: image.contentDescription, modifier: image.modifier, alignment: image.alignment, contentScale: image.contentScale)
             return AnyView(ui.inflate())
             
+        case let icon as Component.Vector:
+            let ui = ComponentBoxUI.Icon(id: icon.id, name: icon.name, modifier: icon.modifier, alignment: icon.alignment, contentScale: icon.contentScale, color: icon.color)
+            return AnyView(ui.inflate())
+            
         case let row as Component.Row:
             let ui = ComponentBoxUI.Row(
                 id: row.id,

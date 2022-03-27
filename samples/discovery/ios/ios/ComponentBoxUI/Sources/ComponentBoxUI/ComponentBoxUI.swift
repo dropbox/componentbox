@@ -40,6 +40,15 @@ enum ComponentBoxUI {
         contentScale: componentbox.ContentScale?
     )
     
+    case Icon(
+        id: String,
+        name: String?,
+        modifier: componentbox.Modifier?,
+        alignment: componentbox.Alignment?,
+        contentScale: componentbox.ContentScale?,
+        color: componentbox.Color?
+    )
+    
     case Row(
         id: String,
         components: [componentbox.Component]?,
@@ -67,6 +76,9 @@ enum ComponentBoxUI {
             
         case let .Image(id, name, url, contentDescription, modifier, alignment, contentScale):
             return AnyView(ComponentBoxUIImage(id: id, name: name, url: url, contentDescription: contentDescription, modifier: modifier, alignment: alignment, contentScale: contentScale))
+            
+        case let .Icon(id, name, modifier, alignment, contentScale, color):
+            return AnyView(ComponentBoxUIIcon(id: id, name: name, modifier: modifier, alignment: alignment, contentScale: contentScale, color: color))
             
         case let .Row(id, components, modifier, horizontalArrangement, verticalAlignment, action, isLazy):
             return AnyView(ComponentBoxUIRow(id: id, components: components, modifier: modifier, horizontalArrangement: horizontalArrangement, verticalAlignment: verticalAlignment, action: action, isLazy: isLazy))

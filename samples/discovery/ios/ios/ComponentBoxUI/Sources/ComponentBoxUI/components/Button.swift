@@ -16,16 +16,36 @@ struct ComponentBoxUIButton: View, Identifiable {
     let isEnabled: Bool?
     let action: String?
     let variant: String?
-
+    
+    func log() {
+        print(components?.count ?? "NO components")
+    }
 
     var body: some View {
-        SwiftUI.Button {
+        
+        SwiftUI.Button(action: {}, label: {
+            
+            if (self.components != nil) {
+                ForEach(self.components!, id: \.self) { component in
+                    component.inflate()
+            }
+        }}).buttonStyle(PrimaryButton(fillMaxWidth: modifier?.fillMaxWidth as? Bool ?? false))
+    }
+}
 
-        } label: {
 
-            ForEach(self.components!, id: \.self) { component in
-                component.inflate()
 
-            }}.padding().frame(maxWidth: .infinity)
+@available(iOS 14.0, *)
+struct PrimaryButton: ButtonStyle {
+    
+    let fillMaxWidth: Bool
+
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+                .padding(12)
+                .frame(maxWidth: fillMaxWidth ? .infinity : .none)
+                .foregroundColor(Color.ui.onPrimary)
+                .font(.sharpGroteskBook(withStyle: .title3, size: 16))
+                .background(Color.ui.primary)
     }
 }
