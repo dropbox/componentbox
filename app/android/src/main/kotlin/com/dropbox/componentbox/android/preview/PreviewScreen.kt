@@ -1,12 +1,17 @@
 package com.dropbox.componentbox.android.preview
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import com.airbnb.mvrx.compose.collectAsState
 import com.airbnb.mvrx.compose.mavericksViewModel
@@ -21,7 +26,7 @@ import com.dropbox.componentbox.samples.discovery.RealResourceProvider
 import com.dropbox.componentbox.samples.discovery.color.Colors
 import com.dropbox.componentbox.samples.discovery.type.materialTheme
 import com.google.accompanist.swiperefresh.SwipeRefresh
-import com.google.accompanist.swiperefresh.SwipeRefreshState
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,10 +38,7 @@ import javax.inject.Singleton
 fun PreviewScreen() {
 
     val presenter: PreviewPresenter = mavericksViewModel()
-
-    // LaunchedEffect(Unit) {
-    //     presenter.load()
-    // }
+    val isRefreshing by presenter.isRefreshing.collectAsState()
 
     LaunchedEffect(Unit) {
         presenter.pull()
@@ -45,7 +47,9 @@ fun PreviewScreen() {
     val state = presenter.collectAsState()
     val screen = presenter.screen.collectAsState()
 
-    when (val screen = presenter.screen.collectAsState().value) {
+    fun pull() = runBlocking { presenter.pull() }
+
+    when (screen.value) {
         null -> when (state.value.viewState) {
             PreviewViewState.Failure -> Text(text = "Failure")
             PreviewViewState.Initialized -> Text(text = "Init")
@@ -53,12 +57,10 @@ fun PreviewScreen() {
             PreviewViewState.Success -> {}
         }
         else -> {
-            SwipeRefresh(state = SwipeRefreshState(presenter.isRefreshing.value), onRefresh = {
-                runBlocking {
-                    presenter.subscribe()
+            SwipeRefresh(state = rememberSwipeRefreshState(isRefreshing), onRefresh = { pull() }) {
+                Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                    screen.value!!.Inflate(context = appScope().context)
                 }
-            }) {
-                screen.Inflate(context = appScope().context)
             }
         }
     }
