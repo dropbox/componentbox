@@ -6,6 +6,7 @@
 import Foundation
 import SwiftUI
 import componentbox
+import ComponentBoxUI
 
 @available(iOS 14.0, *)
 struct PlansScreen: View {
@@ -27,15 +28,17 @@ struct PlansScreen: View {
 
 }
 
+@available(iOS 14.0, *)
 private struct Content: View {
     
     let screen: ComponentBox.Screen?
+    let button: Component = Component.Button(id: "1", components: [Component.Text(id: "2", modifier: nil, text: "Upgrade", color: nil, textStyle: nil)], modifier: nil, isEnabled: true, action: nil, variant: nil)
     
     var body: some View {
         VStack {
-            
+            button.inflate()
             Text(screen?.title ?? "No title")
-
+            
         }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: Alignment.top).padding()
     }

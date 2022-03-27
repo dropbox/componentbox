@@ -15,6 +15,8 @@
 		33071932281A6A16230C3841 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33071ECAFCCA78581373E7B2 /* HomeScreen.swift */; };
 		33071DF31FDF10941C1EA2A2 /* AccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33071206F5D3CBC31B9A9765 /* AccountScreen.swift */; };
 		33071ED5854FEB12779EB378 /* PhotosScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33071576A17B16DDA1042633 /* PhotosScreen.swift */; };
+		6677D6A627F0E8EF003A69D2 /* ComponentBoxUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6677D6A527F0E8EF003A69D2 /* ComponentBoxUI */; };
+		6677D6A927F0ECEE003A69D2 /* ComponentBox in Frameworks */ = {isa = PBXBuildFile; productRef = 6677D6A827F0ECEE003A69D2 /* ComponentBox */; };
 		66A6A28027E7AD3500F27257 /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 66A6A27F27E7AD3500F27257 /* KMPNativeCoroutinesAsync */; };
 		66A6A28227E7AD3500F27257 /* KMPNativeCoroutinesCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 66A6A28127E7AD3500F27257 /* KMPNativeCoroutinesCombine */; };
 		66A6A28427E7AD3500F27257 /* KMPNativeCoroutinesCore in Frameworks */ = {isa = PBXBuildFile; productRef = 66A6A28327E7AD3500F27257 /* KMPNativeCoroutinesCore */; };
@@ -57,6 +59,7 @@
 		33071DE52D3A72CF8E3803F4 /* PlansScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlansScreen.swift; sourceTree = "<group>"; };
 		33071ECAFCCA78581373E7B2 /* HomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		33071FD0F45C1302364055B5 /* DiscoveryApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryApp.swift; sourceTree = "<group>"; };
+		6677D6A427F0E8D0003A69D2 /* ComponentBoxUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ComponentBoxUI; sourceTree = "<group>"; };
 		66A6A28727E7AD9600F27257 /* PlansScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansScreenViewModel.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF84242A565B00829871 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,9 +83,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6677D6A927F0ECEE003A69D2 /* ComponentBox in Frameworks */,
 				66A6A28027E7AD3500F27257 /* KMPNativeCoroutinesAsync in Frameworks */,
 				66A6A28227E7AD3500F27257 /* KMPNativeCoroutinesCombine in Frameworks */,
 				66A6A28427E7AD3500F27257 /* KMPNativeCoroutinesCore in Frameworks */,
+				6677D6A627F0E8EF003A69D2 /* ComponentBoxUI in Frameworks */,
 				66A6A28627E7AD3500F27257 /* KMPNativeCoroutinesRxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,13 +158,29 @@
 			path = photos;
 			sourceTree = "<group>";
 		};
+		6677D69F27F0E7A5003A69D2 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		6677D6A127F0E845003A69D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
+				6677D69F27F0E7A5003A69D2 /* Packages */,
 				7555FF7D242A565900829871 /* ios */,
 				7555FF94242A565B00829871 /* iosTests */,
 				7555FF9F242A565B00829871 /* iosUITests */,
 				7555FF7C242A565900829871 /* Products */,
+				6677D6A127F0E845003A69D2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -176,6 +197,7 @@
 		7555FF7D242A565900829871 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				6677D6A427F0E8D0003A69D2 /* ComponentBoxUI */,
 				7555FF84242A565B00829871 /* Assets.xcassets */,
 				C95CD00E27E5463300B0986F /* Font */,
 				7555FF86242A565B00829871 /* Preview Content */,
@@ -252,6 +274,8 @@
 				66A6A28127E7AD3500F27257 /* KMPNativeCoroutinesCombine */,
 				66A6A28327E7AD3500F27257 /* KMPNativeCoroutinesCore */,
 				66A6A28527E7AD3500F27257 /* KMPNativeCoroutinesRxSwift */,
+				6677D6A527F0E8EF003A69D2 /* ComponentBoxUI */,
+				6677D6A827F0ECEE003A69D2 /* ComponentBox */,
 			);
 			productName = ios;
 			productReference = 7555FF7B242A565900829871 /* ios.app */;
@@ -327,6 +351,7 @@
 			mainGroup = 7555FF72242A565900829871;
 			packageReferences = (
 				66A6A27E27E7AD3500F27257 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */,
+				6677D6A727F0ECED003A69D2 /* XCRemoteSwiftPackageReference "ComponentBoxPackage" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
@@ -740,6 +765,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6677D6A727F0ECED003A69D2 /* XCRemoteSwiftPackageReference "ComponentBoxPackage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/matt-ramotar/ComponentBoxPackage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		66A6A27E27E7AD3500F27257 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rickclephas/KMP-NativeCoroutines.git";
@@ -751,6 +784,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6677D6A527F0E8EF003A69D2 /* ComponentBoxUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ComponentBoxUI;
+		};
+		6677D6A827F0ECEE003A69D2 /* ComponentBox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6677D6A727F0ECED003A69D2 /* XCRemoteSwiftPackageReference "ComponentBoxPackage" */;
+			productName = ComponentBox;
+		};
 		66A6A27F27E7AD3500F27257 /* KMPNativeCoroutinesAsync */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 66A6A27E27E7AD3500F27257 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;

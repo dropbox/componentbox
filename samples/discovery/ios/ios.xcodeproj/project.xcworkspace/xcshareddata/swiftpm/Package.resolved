@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "componentboxpackage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/matt-ramotar/ComponentBoxPackage.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "567fd919c0c222b7187bd17090ba142e0595f60b"
+      }
+    },
+    {
       "identity" : "kmp-nativecoroutines",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/rickclephas/KMP-NativeCoroutines.git",
