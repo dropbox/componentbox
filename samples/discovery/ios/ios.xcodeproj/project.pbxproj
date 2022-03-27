@@ -15,8 +15,8 @@
 		33071932281A6A16230C3841 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33071ECAFCCA78581373E7B2 /* HomeScreen.swift */; };
 		33071DF31FDF10941C1EA2A2 /* AccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33071206F5D3CBC31B9A9765 /* AccountScreen.swift */; };
 		33071ED5854FEB12779EB378 /* PhotosScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33071576A17B16DDA1042633 /* PhotosScreen.swift */; };
-		6677D6A627F0E8EF003A69D2 /* ComponentBoxUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6677D6A527F0E8EF003A69D2 /* ComponentBoxUI */; };
 		6677D6A927F0ECEE003A69D2 /* ComponentBox in Frameworks */ = {isa = PBXBuildFile; productRef = 6677D6A827F0ECEE003A69D2 /* ComponentBox */; };
+		6677D6AB27F1245E003A69D2 /* ComponentBoxUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6677D6AA27F1245E003A69D2 /* ComponentBoxUI */; };
 		66A6A28027E7AD3500F27257 /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 66A6A27F27E7AD3500F27257 /* KMPNativeCoroutinesAsync */; };
 		66A6A28227E7AD3500F27257 /* KMPNativeCoroutinesCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 66A6A28127E7AD3500F27257 /* KMPNativeCoroutinesCombine */; };
 		66A6A28427E7AD3500F27257 /* KMPNativeCoroutinesCore in Frameworks */ = {isa = PBXBuildFile; productRef = 66A6A28327E7AD3500F27257 /* KMPNativeCoroutinesCore */; };
@@ -87,7 +87,7 @@
 				66A6A28027E7AD3500F27257 /* KMPNativeCoroutinesAsync in Frameworks */,
 				66A6A28227E7AD3500F27257 /* KMPNativeCoroutinesCombine in Frameworks */,
 				66A6A28427E7AD3500F27257 /* KMPNativeCoroutinesCore in Frameworks */,
-				6677D6A627F0E8EF003A69D2 /* ComponentBoxUI in Frameworks */,
+				6677D6AB27F1245E003A69D2 /* ComponentBoxUI in Frameworks */,
 				66A6A28627E7AD3500F27257 /* KMPNativeCoroutinesRxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,8 +274,8 @@
 				66A6A28127E7AD3500F27257 /* KMPNativeCoroutinesCombine */,
 				66A6A28327E7AD3500F27257 /* KMPNativeCoroutinesCore */,
 				66A6A28527E7AD3500F27257 /* KMPNativeCoroutinesRxSwift */,
-				6677D6A527F0E8EF003A69D2 /* ComponentBoxUI */,
 				6677D6A827F0ECEE003A69D2 /* ComponentBox */,
+				6677D6AA27F1245E003A69D2 /* ComponentBoxUI */,
 			);
 			productName = ios;
 			productReference = 7555FF7B242A565900829871 /* ios.app */;
@@ -784,14 +784,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6677D6A527F0E8EF003A69D2 /* ComponentBoxUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = ComponentBoxUI;
-		};
 		6677D6A827F0ECEE003A69D2 /* ComponentBox */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6677D6A727F0ECED003A69D2 /* XCRemoteSwiftPackageReference "ComponentBoxPackage" */;
 			productName = ComponentBox;
+		};
+		6677D6AA27F1245E003A69D2 /* ComponentBoxUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ComponentBoxUI;
 		};
 		66A6A27F27E7AD3500F27257 /* KMPNativeCoroutinesAsync */ = {
 			isa = XCSwiftPackageProductDependency;

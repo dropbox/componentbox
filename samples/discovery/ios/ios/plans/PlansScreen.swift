@@ -32,21 +32,8 @@ struct PlansScreen: View {
 private struct Content: View {
     
     let screen: ComponentBox.Screen?
-    let button: Component = Component.Button(id: "1", components: [Component.Text(id: "2", modifier: nil, text: "Upgrade", color: nil, textStyle: nil)], modifier: nil, isEnabled: true, action: nil, variant: nil)
     
     var body: some View {
-        VStack {
-            
-            if (screen?.components != nil) {
-                ForEach(screen!.components, id: \.self) { component in
-                    component.inflate()
-                }
-            }
-            
-            
-            Text(screen?.title ?? "No title")
-            
-        }
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: Alignment.top).padding()
+        ComponentBoxScreen(id: UUID().uuidString, title: screen?.title, verticalArrangement: screen?.verticalArrangement, horizontalAlignment: screen?.horizontalAlignment, components: screen?.components )
     }
 }

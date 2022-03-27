@@ -88,5 +88,3 @@ enum ComponentBoxUI {
         }
     }
 }
-
-

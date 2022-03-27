@@ -17,7 +17,7 @@ struct ComponentBoxUIIcon: View, Identifiable {
     let color: componentbox.Color?
     
     func getForegroundColor() -> SwiftUI.Color {
-        return color?.title != nil ? color!.title.ui() : "On background".ui()
+        return color?.title != nil ? color!.title.ui() : modifier?.background?.title != nil ? modifier!.background!.title.ui() : "On background".ui()
     }
 
     var body: some View {
