@@ -6,6 +6,7 @@
 import Foundation
 import SwiftUI
 import componentbox
+import ComponentBoxUI
 
 @available(iOS 14.0, *)
 struct PlansScreen: View {
@@ -27,16 +28,12 @@ struct PlansScreen: View {
 
 }
 
+@available(iOS 14.0, *)
 private struct Content: View {
     
     let screen: ComponentBox.Screen?
     
     var body: some View {
-        VStack {
-            
-            Text(screen?.title ?? "No title")
-
-        }
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: Alignment.top).padding()
+        ComponentBoxScreen(id: UUID().uuidString, title: screen?.title, verticalArrangement: screen?.verticalArrangement, horizontalAlignment: screen?.horizontalAlignment, components: screen?.components )
     }
 }
