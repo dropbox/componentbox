@@ -16,7 +16,7 @@ public extension Component {
         case let box as Component.Box:
             let ui = ComponentBoxUI.Box(
                 id: box.id,
-                components: box.components as! [componentbox.Component],
+                components: box.components as? [componentbox.Component],
                 modifier: box.modifier,
                 horizontalArrangement: box.horizontalArrangement,
                 verticalAlignment: box.verticalAlignment,
@@ -26,7 +26,20 @@ public extension Component {
             return AnyView(ui.inflate())
             
         case let button as Component.Button:
-            let ui = ComponentBoxUI.Button(id: button.id, components: button.components as! [Component], modifier: button.modifier, isEnabled: button.isEnabled as! Bool, action: button.action, variant: button.variant)
+            let ui = ComponentBoxUI.Button(id: button.id, components: button.components as? [componentbox.Component], modifier: button.modifier, isEnabled: button.isEnabled as? Bool, action: button.action, variant: button.variant)
+            return AnyView(ui.inflate())
+            
+        case let row as Component.Row:
+            let ui = ComponentBoxUI.Row(
+                id: row.id,
+                components: row.components as? [componentbox.Component],
+                modifier: row.modifier,
+                horizontalArrangement: row.horizontalArrangement,
+                verticalAlignment: row.verticalAlignment,
+                action: row.action,
+                isLazy: row.isLazy as? Bool
+            )
+            
             return AnyView(ui.inflate())
             
         case let text as Component.Text:
