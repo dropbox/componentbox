@@ -10,7 +10,7 @@ import componentbox
 
 @available(iOS 14.0, *)
 public extension Component {
-    @ViewBuilder func inflate() -> some View {
+    func inflate() -> some View {
         switch self {
             
         case let box as Component.Box:
@@ -27,6 +27,19 @@ public extension Component {
             
         case let button as Component.Button:
             let ui = ComponentBoxUI.Button(id: button.id, components: button.components as? [componentbox.Component], modifier: button.modifier, isEnabled: button.isEnabled as? Bool, action: button.action, variant: button.variant)
+            return AnyView(ui.inflate())
+            
+        case let column as Component.Column:
+            let ui = ComponentBoxUI.Column(
+                id: column.id,
+                components: column.components as? [componentbox.Component],
+                modifier: column.modifier,
+                verticalArrangement: column.verticalArrangement,
+                horizontalAlignment: column.horizontalAlignment,
+                action: column.action,
+                isLazy: column.isLazy as? Bool
+            )
+            
             return AnyView(ui.inflate())
             
         case let row as Component.Row:
