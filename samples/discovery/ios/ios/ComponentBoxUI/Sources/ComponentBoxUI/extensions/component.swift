@@ -42,6 +42,10 @@ public extension Component {
             
             return AnyView(ui.inflate())
             
+        case let image as Component.Drawable:
+            let ui = ComponentBoxUI.Image(id: image.id, name: image.name, url: image.url, contentDescription: image.contentDescription, modifier: image.modifier, alignment: image.alignment, contentScale: image.contentScale)
+            return AnyView(ui.inflate())
+            
         case let row as Component.Row:
             let ui = ComponentBoxUI.Row(
                 id: row.id,

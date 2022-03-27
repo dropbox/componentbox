@@ -18,6 +18,8 @@ enum ComponentBoxUI {
         action: String?
     )
     
+    case Button(id: String, components: [componentbox.Component]?, modifier: componentbox.Modifier?, isEnabled: Bool?, action: String?, variant: String?)
+    
     case Column(
         id: String,
         components: [componentbox.Component]?,
@@ -28,7 +30,15 @@ enum ComponentBoxUI {
         isLazy: Bool?
     )
     
-    case Button(id: String, components: [componentbox.Component]?, modifier: componentbox.Modifier?, isEnabled: Bool?, action: String?, variant: String?)
+    case Image(
+        id: String,
+        name: String?,
+        url: String?,
+        contentDescription: String?,
+        modifier: componentbox.Modifier?,
+        alignment: componentbox.Alignment?,
+        contentScale: componentbox.ContentScale?
+    )
     
     case Row(
         id: String,
@@ -54,6 +64,9 @@ enum ComponentBoxUI {
             
         case let .Column(id, components, modifier, verticalArrangement, horizontalAlignment, action, isLazy):
             return AnyView(ComponentBoxUIColumn(id: id, components: components, modifier: modifier, verticalArrangement: verticalArrangement, horizontalAlignment: horizontalAlignment, action: action, isLazy: isLazy))
+            
+        case let .Image(id, name, url, contentDescription, modifier, alignment, contentScale):
+            return AnyView(ComponentBoxUIImage(id: id, name: name, url: url, contentDescription: contentDescription, modifier: modifier, alignment: alignment, contentScale: contentScale))
             
         case let .Row(id, components, modifier, horizontalArrangement, verticalAlignment, action, isLazy):
             return AnyView(ComponentBoxUIRow(id: id, components: components, modifier: modifier, horizontalArrangement: horizontalArrangement, verticalAlignment: verticalAlignment, action: action, isLazy: isLazy))

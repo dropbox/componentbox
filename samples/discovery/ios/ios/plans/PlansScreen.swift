@@ -36,7 +36,14 @@ private struct Content: View {
     
     var body: some View {
         VStack {
-            button.inflate()
+            
+            if (screen?.components != nil) {
+                ForEach(screen!.components, id: \.self) { component in
+                    component.inflate()
+                }
+            }
+            
+            
             Text(screen?.title ?? "No title")
             
         }
