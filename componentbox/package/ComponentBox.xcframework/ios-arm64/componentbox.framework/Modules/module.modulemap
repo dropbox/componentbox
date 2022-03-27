@@ -1,0 +1,6 @@
+framework module componentbox {
+    umbrella header "componentbox.h"
+
+    export *
+    module * { export * }
+}
