@@ -58,13 +58,17 @@ dependencies {
     annotationProcessor("androidx.hilt:hilt-compiler:1.0.0")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
-    implementation("io.ktor:ktor-client-core:1.6.8")
-    implementation("io.ktor:ktor-client-android:1.6.8")
-    implementation("io.ktor:ktor-client-okhttp:1.6.8")
-    implementation("io.ktor:ktor-utils-jvm:1.6.8")
-    implementation("io.ktor:ktor-client-logging-jvm:1.6.8")
+    implementation("io.ktor:ktor-client-core:2.0.0-beta-1")
+    implementation("io.ktor:ktor-client-android:2.0.0-beta-1")
+    implementation("io.ktor:ktor-client-okhttp:2.0.0-beta-1")
+    implementation("io.ktor:ktor-utils-jvm:2.0.0-beta-1")
+    implementation("io.ktor:ktor-client-logging-jvm:2.0.0-beta-1")
+    implementation("io.ktor:ktor-client-content-negotiation:2.0.0-beta-1")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.0.0-beta-1")
 //    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:1.6.10")
-
+    implementation("io.ktor:ktor-client-cio:2.0.0-beta-1")
+    implementation("io.ktor:ktor-client-websockets:2.0.0-beta-1")
+    implementation("com.google.accompanist:accompanist-swiperefresh:0.24.5-alpha")
 
 
     with(Deps.Mavericks) {

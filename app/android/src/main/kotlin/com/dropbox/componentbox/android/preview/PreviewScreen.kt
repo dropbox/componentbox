@@ -2,20 +2,31 @@ package com.dropbox.componentbox.android.preview
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.text.TextStyle
 import com.airbnb.mvrx.compose.collectAsState
 import com.airbnb.mvrx.compose.mavericksViewModel
-import com.dropbox.componentbox.foundation.*
+import com.dropbox.componentbox.foundation.Context
+import com.dropbox.componentbox.foundation.Inflater
+import com.dropbox.componentbox.foundation.Manager
+import com.dropbox.componentbox.foundation.ResourceProvider
+import com.dropbox.componentbox.foundation.Themer
 import com.dropbox.componentbox.material.Inflate
 import com.dropbox.componentbox.samples.discovery.RealInflater
 import com.dropbox.componentbox.samples.discovery.RealResourceProvider
 import com.dropbox.componentbox.samples.discovery.color.Colors
 import com.dropbox.componentbox.samples.discovery.type.materialTheme
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.SwipeRefreshState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.runBlocking
 import javax.inject.Singleton
 
 @Composable
@@ -23,14 +34,18 @@ fun PreviewScreen() {
 
     val presenter: PreviewPresenter = mavericksViewModel()
 
+    // LaunchedEffect(Unit) {
+    //     presenter.load()
+    // }
+
     LaunchedEffect(Unit) {
-        presenter.load()
+        presenter.pull()
     }
 
     val state = presenter.collectAsState()
     val screen = presenter.screen.collectAsState()
 
-    when (screen.value) {
+    when (val screen = presenter.screen.collectAsState().value) {
         null -> when (state.value.viewState) {
             PreviewViewState.Failure -> Text(text = "Failure")
             PreviewViewState.Initialized -> Text(text = "Init")
@@ -38,10 +53,15 @@ fun PreviewScreen() {
             PreviewViewState.Success -> {}
         }
         else -> {
-            screen.value!!.Inflate(context = appScope().context)
+            SwipeRefresh(state = SwipeRefreshState(presenter.isRefreshing.value), onRefresh = {
+                runBlocking {
+                    presenter.subscribe()
+                }
+            }) {
+                screen.Inflate(context = appScope().context)
+            }
         }
     }
-
 }
 
 @InstallIn(SingletonComponent::class)
@@ -52,7 +72,6 @@ object PreviewModule {
     @Singleton
     fun provideAppScope(): AppScope = appScope()
 }
-
 
 data class AppScope(
     val inflater: Inflater,
@@ -65,7 +84,6 @@ fun appScope() = AppScope(
     resourceProvider = RealResourceProvider(),
     context = Context(RealInflater(), DiscoveryThemer(), DiscoveryManager())
 )
-
 
 class DiscoveryThemer : Themer() {
     @Composable
