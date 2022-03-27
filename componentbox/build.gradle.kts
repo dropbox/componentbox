@@ -13,6 +13,16 @@ plugins {
     id("org.jetbrains.dokka")
     id("org.jetbrains.kotlin.native.cocoapods")
     id("com.rickclephas.kmp.nativecoroutines")
+    id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
+}
+
+multiplatformSwiftPackage {
+    packageName("ComponentBox")
+    swiftToolsVersion("5.3")
+    targetPlatforms {
+        iOS { v("14") }
+    }
+    outputDirectory(File(projectDir, "package"))
 }
 
 group = "com.dropbox.componentbox"
