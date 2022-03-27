@@ -12,6 +12,19 @@ import componentbox
 public extension Component {
     @ViewBuilder func inflate() -> some View {
         switch self {
+            
+        case let box as Component.Box:
+            let ui = ComponentBoxUI.Box(
+                id: box.id,
+                components: box.components as! [componentbox.Component],
+                modifier: box.modifier,
+                horizontalArrangement: box.horizontalArrangement,
+                verticalAlignment: box.verticalAlignment,
+                action: box.action
+            )
+            
+            return AnyView(ui.inflate())
+            
         case let button as Component.Button:
             let ui = ComponentBoxUI.Button(id: button.id, components: button.components as! [Component], modifier: button.modifier, isEnabled: button.isEnabled as! Bool, action: button.action, variant: button.variant)
             return AnyView(ui.inflate())
