@@ -1,23 +1,23 @@
 package com.dropbox.componentbox.discovery.discovery.scaffold
 
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.dropbox.componentbox.discovery.android.R
 
 @Composable
-fun topBar(title: String, actions: List<@Composable () -> Unit>): @Composable () -> Unit {
+fun topBar(
+    title: String,
+    actions: List<@Composable () -> Unit>,
+    leadingNavigationIconButton: LeadingNavigationIconButton?
+): @Composable () -> Unit {
     return {
         TopAppBar(
             backgroundColor = MaterialTheme.colors.background,
-            navigationIcon = topBarNavigationIcon(),
+            navigationIcon = { leadingNavigationIconButton?.Inflate() },
             title = topBarTitle(title),
             actions = {
                 actions.forEach { action ->
@@ -40,11 +40,12 @@ private fun topBarTitle(title: String): @Composable () -> Unit {
     }
 }
 
+
 @Composable
-private fun topBarNavigationIcon(): @Composable () -> Unit {
-    return {
+private fun LeadingNavigationIconButton.Inflate() {
+    IconButton(onClick = action) {
         Icon(
-            painter = painterResource(R.drawable.ic_dig_list_view_line),
+            painter = painterResource(icon),
             modifier = Modifier.size(32.dp),
             contentDescription = null,
             tint = MaterialTheme.colors.onBackground
