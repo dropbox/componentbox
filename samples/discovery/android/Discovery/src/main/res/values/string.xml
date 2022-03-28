@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Device Limits -->
+    <string name="device_limits_title">Get your content on all your devices with Plus</string>
+    <string name="device_limits_benefit_one">2 TB (2,000 GB), $11.99 per month</string>
+    <string name="device_limits_benefit_two">Link and sync unlimited devices</string>
+    <string name="device_limits_benefit_three">Remotely remove files from lost devices</string>
+    <string name="device_limits_benefit_four">Set up entire folders for offline access</string>
+</resources>
