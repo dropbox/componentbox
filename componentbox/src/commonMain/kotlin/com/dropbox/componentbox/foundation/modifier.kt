@@ -13,7 +13,7 @@ data class Modifier(
     var margin: Margin? = null,
     var background: Color? = null,
     var weight: Float? = null
-)
+): Parcelable
 
 @Serializable
 data class Margin(
@@ -21,7 +21,7 @@ data class Margin(
     val top: Int? = null,
     val end: Int? = null,
     val bottom: Int? = null
-)
+): Parcelable
 
 @Serializable
 data class Padding(
@@ -29,10 +29,10 @@ data class Padding(
     val top: Int? = null,
     val end: Int? = null,
     val bottom: Int? = null
-)
+): Parcelable
 
 @Serializable
-enum class ContentScale {
+enum class ContentScale: Parcelable {
     Crop,
     Fit,
     FillHeight,

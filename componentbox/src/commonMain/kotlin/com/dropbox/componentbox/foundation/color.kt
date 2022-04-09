@@ -12,7 +12,7 @@ data class Color(
     val title: String,
     val light: Long,
     val dark: Long
-)
+): Parcelable
 
 interface Colors {
     val primary: Color

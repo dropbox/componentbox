@@ -3,7 +3,7 @@ package com.dropbox.componentbox.foundation
 import kotlinx.serialization.Serializable
 
 @Serializable
-sealed class Component {
+sealed class Component: Parcelable {
 
     @Serializable
     data class Box(
@@ -13,7 +13,7 @@ sealed class Component {
         var horizontalArrangement: Arrangement? = null,
         var verticalAlignment: Alignment? = null,
         var action: String? = null,
-    ) : Component()
+    ) : Component(), Parcelable
 
     @Serializable
     data class Row(
@@ -24,7 +24,7 @@ sealed class Component {
         var verticalAlignment: Alignment? = null,
         var action: String? = null,
         var isLazy: Boolean? = null
-    ) : Component()
+    ) : Component(), Parcelable
 
     @Serializable
     data class Column(
@@ -36,7 +36,7 @@ sealed class Component {
         var isLazy: Boolean? = null,
         var isTable: Boolean? = null,
         var action: String? = null
-    ) : Component()
+    ) : Component(), Parcelable
 
     @Serializable
     data class Text(
@@ -45,7 +45,7 @@ sealed class Component {
         var text: String? = null,
         var color: Color? = null,
         var textStyle: String? = null
-    ) : Component()
+    ) : Component(), Parcelable
 
     @Serializable
     data class Button(
@@ -55,7 +55,7 @@ sealed class Component {
         var isEnabled: Boolean? = null,
         var action: String? = null,
         var variant: String? = null,
-    ) : Component()
+    ) : Component(), Parcelable
 
     @Serializable
     data class Switch(
@@ -63,7 +63,7 @@ sealed class Component {
         var isChecked: Boolean? = null,
         var modifier: Modifier? = null,
         var action: String? = null,
-    ) : Component()
+    ) : Component(), Parcelable
 
     @Serializable
     data class Drawable(
@@ -74,7 +74,7 @@ sealed class Component {
         var modifier: Modifier? = null,
         var alignment: Alignment? = null,
         var contentScale: ContentScale? = null
-    ) : Component()
+    ) : Component(), Parcelable
 
     @Serializable
     data class Vector(
@@ -84,7 +84,7 @@ sealed class Component {
         var alignment: Alignment? = null,
         var contentScale: ContentScale? = null,
         var color: Color? = null
-    ) : Component()
+    ) : Component(), Parcelable
 
     @Serializable
     data class Surface(
@@ -96,6 +96,6 @@ sealed class Component {
         var borderStroke: BorderStroke? = null,
         var elevation: Int? = null,
         var components: MutableList<Component>? = null,
-    ) : Component()
+    ) : Component(), Parcelable
 }
 

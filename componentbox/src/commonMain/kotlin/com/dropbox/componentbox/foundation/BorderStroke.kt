@@ -6,4 +6,4 @@ import kotlinx.serialization.Serializable
 data class BorderStroke(
     val width: Int,
     val color: Color
-)
+): Parcelable
