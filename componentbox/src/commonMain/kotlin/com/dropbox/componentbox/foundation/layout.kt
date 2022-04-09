@@ -2,9 +2,9 @@ package com.dropbox.componentbox.foundation
 
 import kotlinx.serialization.Serializable
 
-@Parcelize
+@IsPassable
 @Serializable
-enum class Alignment: Parcelable {
+enum class Alignment: Passable {
     TopStart,
     TopCenter,
     TopEnd,
@@ -22,9 +22,9 @@ enum class Alignment: Parcelable {
     End
 }
 
-@Parcelize
+@IsPassable
 @Serializable
-enum class Arrangement: Parcelable {
+enum class Arrangement: Passable {
     Start,
     End,
     Top,

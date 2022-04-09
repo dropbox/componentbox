@@ -2,9 +2,9 @@ package com.dropbox.componentbox.foundation
 
 import kotlinx.serialization.Serializable
 
-@Parcelize
+@IsPassable
 @Serializable
-enum class ComponentBoxType: Parcelable {
+enum class ComponentBoxType: Passable {
     Screen,
     Modal,
     Banner

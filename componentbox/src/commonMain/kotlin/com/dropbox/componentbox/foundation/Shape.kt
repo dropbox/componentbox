@@ -2,9 +2,9 @@ package com.dropbox.componentbox.foundation
 
 import kotlinx.serialization.Serializable
 
-@Parcelize
+@IsPassable
 @Serializable
-enum class Shape: Parcelable {
+enum class Shape: Passable {
     RectangleShape,
     RoundedCornerShape,
     CircleShape

@@ -2,9 +2,9 @@ package com.dropbox.componentbox.foundation
 
 import kotlinx.serialization.Serializable
 
-@Parcelize
+@IsPassable
 @Serializable
-enum class ButtonVariant: Parcelable {
+enum class ButtonVariant: Passable {
     Contained,
     Text,
     Outlined,
