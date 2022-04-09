@@ -2,8 +2,9 @@ package com.dropbox.componentbox.foundation
 
 import kotlinx.serialization.Serializable
 
+@Parcelize
 @Serializable
-enum class Alignment {
+enum class Alignment: Parcelable {
     TopStart,
     TopCenter,
     TopEnd,
@@ -21,8 +22,9 @@ enum class Alignment {
     End
 }
 
+@Parcelize
 @Serializable
-enum class Arrangement {
+enum class Arrangement: Parcelable {
     Start,
     End,
     Top,
