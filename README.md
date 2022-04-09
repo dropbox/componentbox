@@ -14,7 +14,7 @@ A Kotlin multiplatform library for building dynamic server-driven UI.
 ## Installation
 
 ```kotlin
-implementation("com.dropbox.componentbox:componentbox:0.1.0-alpha")
+implementation("com.dropbox.componentbox:componentbox:0.1.0")
 ```
 
 ## Documentation
