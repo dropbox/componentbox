@@ -2,9 +2,11 @@ package com.dropbox.componentbox.foundation
 
 import kotlinx.serialization.Serializable
 
+@Parcelize
 @Serializable
 sealed class Component: Parcelable {
 
+    @Parcelize
     @Serializable
     data class Box(
         val id: String,
@@ -15,6 +17,7 @@ sealed class Component: Parcelable {
         var action: String? = null,
     ) : Component(), Parcelable
 
+    @Parcelize
     @Serializable
     data class Row(
         val id: String,
@@ -26,6 +29,7 @@ sealed class Component: Parcelable {
         var isLazy: Boolean? = null
     ) : Component(), Parcelable
 
+    @Parcelize
     @Serializable
     data class Column(
         val id: String,
@@ -38,6 +42,7 @@ sealed class Component: Parcelable {
         var action: String? = null
     ) : Component(), Parcelable
 
+    @Parcelize
     @Serializable
     data class Text(
         val id: String,
@@ -47,6 +52,7 @@ sealed class Component: Parcelable {
         var textStyle: String? = null
     ) : Component(), Parcelable
 
+    @Parcelize
     @Serializable
     data class Button(
         val id: String,
@@ -57,6 +63,7 @@ sealed class Component: Parcelable {
         var variant: String? = null,
     ) : Component(), Parcelable
 
+    @Parcelize
     @Serializable
     data class Switch(
         val id: String,
@@ -65,6 +72,7 @@ sealed class Component: Parcelable {
         var action: String? = null,
     ) : Component(), Parcelable
 
+    @Parcelize
     @Serializable
     data class Drawable(
         val id: String,
@@ -76,6 +84,7 @@ sealed class Component: Parcelable {
         var contentScale: ContentScale? = null
     ) : Component(), Parcelable
 
+    @Parcelize
     @Serializable
     data class Vector(
         val id: String,
@@ -86,6 +95,7 @@ sealed class Component: Parcelable {
         var color: Color? = null
     ) : Component(), Parcelable
 
+    @Parcelize
     @Serializable
     data class Surface(
         val id: String,

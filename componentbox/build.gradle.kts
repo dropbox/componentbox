@@ -14,6 +14,7 @@ plugins {
     id("org.jetbrains.kotlin.native.cocoapods")
     id("com.rickclephas.kmp.nativecoroutines")
     id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
+    id("kotlin-android-extensions")
 }
 
 multiplatformSwiftPackage {
