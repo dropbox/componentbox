@@ -2,9 +2,9 @@ package com.dropbox.componentbox.foundation
 
 import kotlinx.serialization.Serializable
 
-@Parcelize
+@IsPassable
 @Serializable
-enum class ComponentType: Parcelable {
+enum class ComponentType: Passable {
     Box,
     Button,
     Column,

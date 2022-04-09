@@ -2,7 +2,7 @@ package com.dropbox.componentbox.foundation
 
 import kotlinx.serialization.Serializable
 
-@Parcelize
+@IsPassable
 @Serializable
 data class Modifier(
     var fillMaxSize: Boolean? = null,
@@ -14,29 +14,29 @@ data class Modifier(
     var margin: Margin? = null,
     var background: Color? = null,
     var weight: Float? = null
-): Parcelable
+): Passable
 
-@Parcelize
+@IsPassable
 @Serializable
 data class Margin(
     val start: Int? = null,
     val top: Int? = null,
     val end: Int? = null,
     val bottom: Int? = null
-): Parcelable
+): Passable
 
-@Parcelize
+@IsPassable
 @Serializable
 data class Padding(
     val start: Int? = null,
     val top: Int? = null,
     val end: Int? = null,
     val bottom: Int? = null
-): Parcelable
+): Passable
 
-@Parcelize
+@IsPassable
 @Serializable
-enum class ContentScale: Parcelable {
+enum class ContentScale: Passable {
     Crop,
     Fit,
     FillHeight,

@@ -7,13 +7,13 @@ import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.JsonTransformingSerializer
 import kotlinx.serialization.json.jsonPrimitive
 
-@Parcelize
+@IsPassable
 @Serializable
 data class Color(
     val title: String,
     val light: Long,
     val dark: Long
-): Parcelable
+): Passable
 
 interface Colors {
     val primary: Color
