@@ -12,10 +12,14 @@ pluginManagement {
 rootProject.name = "componentbox"
 
 include(":componentbox")
-include(":desktop")
 include(":material")
 include(":util")
 include(":ui")
+
+include(":app:android")
+include(":app:desktop")
+include(":app:ios")
+include(":app:server")
 
 include(":samples:discovery:android:Discovery")
 include(":samples:discovery:android:zipline")
