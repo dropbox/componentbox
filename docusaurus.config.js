@@ -15,7 +15,7 @@ const config = {
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "dropbox",
-  projectName: "dropbox.componentbox.io",
+  projectName: "componentbox",
   trailingSlash: false,
   deploymentBranch: "site",
 
