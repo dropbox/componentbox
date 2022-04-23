@@ -9,8 +9,8 @@ const config = {
   title: "Component Box",
   tagline:
     "A Kotlin multiplatform library for building dynamic server-driven UI",
-  url: "https://dropbox.github.io/componentbox",
-  baseUrl: "/",
+  url: "https://dropbox.github.io",
+  baseUrl: "/componentbox",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
