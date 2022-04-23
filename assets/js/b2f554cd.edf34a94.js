@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcomponentbox=self.webpackChunkcomponentbox||[]).push([[477],{10:function(o){o.exports={blogPosts:[]}}}]);
