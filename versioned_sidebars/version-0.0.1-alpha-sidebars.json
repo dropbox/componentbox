@@ -1,0 +1,10 @@
+{
+  "docsSidebar": [
+    "index",
+    "installation"
+  ],
+  "apiSidebar": [
+    "component-box",
+    "component"
+  ]
+}
