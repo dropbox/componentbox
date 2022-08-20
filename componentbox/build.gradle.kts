@@ -15,6 +15,7 @@ plugins {
     id("com.rickclephas.kmp.nativecoroutines")
     id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
     id("kotlin-android-extensions")
+    id("app.cash.zipline")
 }
 
 multiplatformSwiftPackage {
@@ -58,16 +59,17 @@ kotlin {
                     api(serializationJson)
                 }
 
-                with(Deps.Zipline) {
-                    implementation(ziplineSnapshot)
-                    implementation(ziplineLoader)
+                with(Deps.Cash.Zipline) {
+                    implementation(zipline)
                 }
 
-                implementation("io.ktor:ktor-client-core:2.0.0-beta-1")
-                implementation("io.ktor:ktor-client-serialization:2.0.0-beta-1")
-                implementation("io.ktor:ktor-client-content-negotiation:2.0.0-beta-1")
-                implementation("io.ktor:ktor-serialization-kotlinx-json:2.0.0-beta-1")
-                implementation("io.ktor:ktor-client-logging:2.0.0-beta-1")
+                with(Deps.Ktor){
+                    implementation(clientCore)
+                    implementation(clientSerialization)
+                    implementation(clientContentNegotiation)
+                    implementation(serializationKotlinxJson)
+                    implementation(clientLogging)
+                }
             }
         }
 
@@ -99,11 +101,11 @@ kotlin {
                     implementation(mavericksCompose)
                 }
 
-                with(Deps.Ok) {
+                with(Deps.Cash) {
                     implementation(okhttp)
                 }
 
-                implementation("com.airbnb.android:lottie-compose:5.0.3")
+                implementation(Deps.Airbnb.lottieCompose)
 
             }
         }
@@ -121,13 +123,7 @@ kotlin {
             dependsOn(commonMain)
 
             dependencies {
-                implementation("io.ktor:ktor-client-ios:2.0.0-beta-1")
-
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt") {
-                    version {
-                        strictly("1.6.0-native-mt")
-                    }
-                }
+                implementation(Deps.Ktor.clientIos)
             }
 
             iosX64Main.dependsOn(this)
@@ -152,10 +148,6 @@ android {
         kotlinCompilerVersion = Version.baseKotlin
     }
 
-}
-
-dependencies {
-    add(org.jetbrains.kotlin.gradle.plugin.PLUGIN_CLASSPATH_CONFIGURATION_NAME, Deps.Zipline.pluginSnapshot)
 }
 
 tasks.withType<DokkaTask>().configureEach {

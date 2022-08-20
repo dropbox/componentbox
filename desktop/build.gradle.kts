@@ -28,7 +28,7 @@ kotlin {
 
                 implementation(Deps.Kotlinx.serializationCore)
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:0.20.0")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
                 implementation("org.reduxkotlin:redux-kotlin-threadsafe-jvm:0.5.5")
             }
         }

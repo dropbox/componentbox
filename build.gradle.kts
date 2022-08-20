@@ -16,14 +16,15 @@ plugins {
         jcenter()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:7.0.2")
+        classpath("com.android.tools.build:gradle:7.0.4")
         classpath(Deps.Kotlin.gradlePlugin)
         classpath(Deps.Kotlin.serializationCore)
-        classpath("com.google.dagger:hilt-android-gradle-plugin:2.38.1")
+        classpath("com.google.dagger:hilt-android-gradle-plugin:2.42")
         classpath("com.vanniktech:gradle-maven-publish-plugin:0.18.0")
         classpath("org.jetbrains.kotlinx:kover:0.5.0")
         classpath("org.jetbrains.kotlinx:kotlinx-cli:0.3.4")
-        classpath("com.rickclephas.kmp:kmp-nativecoroutines-gradle-plugin:0.11.3")
+        classpath("com.rickclephas.kmp:kmp-nativecoroutines-gradle-plugin:0.12.6-new-mm")
+        classpath("app.cash.zipline:zipline-gradle-plugin:0.9.1")
     }
 }
 

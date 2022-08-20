@@ -5,6 +5,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.compose") version Version.composeMultiplatform
     id("dagger.hilt.android.plugin")
+    id("app.cash.zipline")
 }
 
 group = "com.dropbox.componentbox.discovery"
@@ -47,8 +48,8 @@ dependencies {
     implementation(project(":samples:discovery:theme"))
     implementation(project(":samples:discovery:android:zipline"))
 
-    implementation("com.google.dagger:hilt-android:2.40.3")
-    kapt("com.google.dagger:hilt-android-compiler:2.40.3")
+    implementation("com.google.dagger:hilt-android:2.42")
+    kapt("com.google.dagger:hilt-android-compiler:2.42")
     implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
     annotationProcessor("androidx.hilt:hilt-compiler:1.0.0")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
@@ -75,12 +76,9 @@ dependencies {
     implementation(Deps.Kotlinx.serializationCore)
     implementation(Deps.Kotlinx.serializationJson)
 
-    with(Deps.Zipline) {
-        implementation(ziplineSnapshot)
-        implementation(ziplineLoader)
+    with(Deps.Cash.Zipline) {
+        implementation(zipline)
     }
-
-    add(org.jetbrains.kotlin.gradle.plugin.PLUGIN_CLASSPATH_CONFIGURATION_NAME, Deps.Zipline.pluginSnapshot)
 }
 
 kapt {

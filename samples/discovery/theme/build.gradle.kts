@@ -22,7 +22,10 @@ kotlin {
                 implementation(compose.foundation)
                 implementation(compose.preview)
                 implementation(compose.material)
-                implementation("org.jetbrains.kotlin:kotlin-reflect:1.6.10")
+
+                with(Deps.Kotlin){
+                    implementation(reflect)
+                }
 
                 with(Deps.AndroidX){
                     implementation(appCompat)

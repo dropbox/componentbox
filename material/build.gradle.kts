@@ -8,6 +8,7 @@ plugins {
     kotlin("plugin.serialization")
     id("com.android.library")
     id("org.jetbrains.compose") version Version.composeMultiplatform
+    id("app.cash.zipline")
 }
 
 group = "com.dropbox.componentbox"
@@ -37,8 +38,8 @@ kotlin {
                     api(serializationJson)
                 }
 
-                with(Deps.Zipline) {
-                    implementation(ziplineSnapshot)
+                with(Deps.Cash.Zipline) {
+                    implementation(zipline)
                     implementation(ziplineLoader)
                 }
 
@@ -54,12 +55,11 @@ kotlin {
                     implementation(mavericksCompose)
                 }
 
-                with(Deps.Ok) {
+                with(Deps.Cash) {
                     implementation(okhttp)
                 }
 
-                implementation("com.airbnb.android:lottie-compose:5.0.3")
-
+                implementation(Deps.Airbnb.lottieCompose)
             }
         }
     }

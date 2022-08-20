@@ -5,6 +5,7 @@ plugins {
     kotlin("plugin.serialization")
     id("com.android.library")
     id("org.jetbrains.compose") version Version.composeMultiplatform
+    id("app.cash.zipline")
 }
 
 group = "com.dropbox.componentbox.discovery"
@@ -20,16 +21,30 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(compose.runtime)
-                implementation(Deps.Kotlinx.serializationCore)
-                implementation(Deps.Kotlinx.serializationJson)
-                implementation(Deps.Zipline.ziplineSnapshot)
                 implementation(project(":componentbox"))
+
+                implementation(compose.runtime)
+                implementation(Deps.Cash.Zipline.zipline)
+
+                with(Deps.Kotlinx){
+                    implementation(serializationCore)
+                    implementation(serializationJson)
+                    implementation(coroutinesCore)
+                }
+            }
+        }
+
+        val jvmMain by getting {
+            dependencies {
+                with(Deps.Cash) {
+                    implementation(okhttp)
+                }
             }
         }
 
         val androidMain by getting {
             dependencies {
+                dependsOn(jvmMain)
                 with(Deps.Kotlinx) {
                     implementation(coroutinesAndroid)
                     implementation(serializationCore)
@@ -37,23 +52,6 @@ kotlin {
                 with(Deps.AndroidX) {
                     implementation(coreKtx)
                     implementation(appCompat)
-                }
-                with(Deps.Ok) {
-                    implementation(okhttp)
-                }
-            }
-        }
-
-        val jvmMain by getting {
-            dependencies {
-                with(Deps.Ok) {
-                    implementation(okhttp)
-                }
-            }
-            dependencies {
-                with(Deps.Zipline) {
-                    implementation(ziplineSnapshot)
-                    implementation(ziplineLoader)
                 }
             }
         }
@@ -68,26 +66,4 @@ rootProject.plugins.withType<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJ
     val nodeJsRootExtension = rootProject.the<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension>()
     nodeJsRootExtension.versions.webpackCli.version = "4.9.0"
     nodeJsRootExtension.nodeVersion = "16.0.0"
-}
-
-val compilerConfiguration by configurations.creating {}
-
-
-dependencies {
-    add(PLUGIN_CLASSPATH_CONFIGURATION_NAME, Deps.Zipline.pluginSnapshot)
-    compilerConfiguration(Deps.Zipline.ziplineGradlePlugin)
-}
-
-val compileZipline by tasks.creating(JavaExec::class) {
-    dependsOn("compileProductionExecutableKotlinJs")
-    classpath = compilerConfiguration
-    main = "app.cash.zipline.gradle.ZiplineCompilerKt"
-    args = listOf(
-        "$buildDir/compileSync/main/productionExecutable/kotlin",
-        "$buildDir/zipline",
-    )
-}
-
-val jsBrowserProductionRun by tasks.getting {
-    dependsOn(compileZipline)
 }
