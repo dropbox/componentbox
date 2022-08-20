@@ -50,6 +50,10 @@ object Deps {
             "com.google.accompanist:accompanist-navigation-animation:${Version.accompanist}"
     }
 
+    object Dropbox {
+        const val store = "com.dropbox.mobile.store:store4:4.0.5"
+    }
+
     object Kotlin {
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.baseKotlin}"
         const val serializationCore = "org.jetbrains.kotlin:kotlin-serialization:${Version.baseKotlin}"
