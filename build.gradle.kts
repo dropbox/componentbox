@@ -1,24 +1,28 @@
+@file:Suppress("UnstableApiUsage")
+
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import com.vanniktech.maven.publish.SonatypeHost
-import kotlinx.kover.tasks.KoverMergedHtmlReportTask
-import kotlinx.kover.tasks.KoverMergedXmlReportTask
 
 plugins {
-    kotlin("jvm") version Version.baseKotlin
-    id("org.jetbrains.dokka") version Version.baseKotlin
-    id("org.jetbrains.kotlinx.kover") version "0.5.0"
+    kotlin("jvm") version "1.7.10"
+    id("org.jetbrains.dokka") version "1.7.10"
+    id("org.jetbrains.kotlinx.kover") version "0.6.0"
 }
-@Suppress("JcenterRepositoryObsolete") buildscript {
+
+buildscript {
+    val kotlinVersion = "1.7.10"
+
     repositories {
         gradlePluginPortal()
         google()
         mavenCentral()
-        jcenter()
     }
     dependencies {
         classpath("com.android.tools.build:gradle:7.0.4")
-        classpath(Deps.Kotlin.gradlePlugin)
-        classpath(Deps.Kotlin.serializationCore)
+
+        classpath(kotlin("gradle-plugin", version = kotlinVersion))
+        classpath(kotlin("serialization", version = kotlinVersion))
+
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.42")
         classpath("com.vanniktech:gradle-maven-publish-plugin:0.18.0")
         classpath("org.jetbrains.kotlinx:kover:0.5.0")
@@ -72,46 +76,20 @@ allprojects {
     }
 }
 
-tasks.withType<KoverMergedHtmlReportTask>().configureEach {
-    isEnabled = true
-}
-tasks.withType<KoverMergedXmlReportTask>().configureEach {
-    isEnabled = true
-}
+koverMerged {
+    enable()
 
-tasks.register("printVersionName") {
-    doLast {
-        val VERSION_NAME: String by project
-        println(VERSION_NAME)
+    xmlReport {
+        onCheck.set(true)
+        reportFile.set(layout.projectDirectory.file("kover/coverage.xml"))
     }
-}
 
-val included = listOf(
-    "com.dropbox.componentbox.models.*"
-)
-val excluded = listOf(
-    "com.dropbox.componentbox.discovery.*",
-    "com.dropbox.componentbox.samples.*",
-    "com.dropbox.componentbox.desktop.*"
-)
-
-tasks.koverMergedVerify {
-    includes = included
-    excludes = excluded
-
-    rule {
-        // TODO(mramotar) 80%
-        name = "0% Coverage"
-        bound {
-            minValue = 0
-        }
+    htmlReport {
+        onCheck.set(true)
+        reportDir.set(layout.projectDirectory.dir("kover/html"))
     }
-}
 
-tasks.koverMergedHtmlReport {
-    isEnabled = true
-    htmlReportDir.set(layout.buildDirectory.dir("generated/kover"))
-
-    includes = included
-    excludes = excluded
+    verify {
+        onCheck.set(true)
+    }
 }

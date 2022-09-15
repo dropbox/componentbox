@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 import com.vanniktech.maven.publish.JavadocJar.Dokka
 import com.vanniktech.maven.publish.KotlinMultiplatform
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
@@ -8,23 +10,8 @@ plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization")
     id("com.android.library")
-    id("org.jetbrains.compose") version Version.composeMultiplatform
     id("com.vanniktech.maven.publish.base")
     id("org.jetbrains.dokka")
-    id("org.jetbrains.kotlin.native.cocoapods")
-    id("com.rickclephas.kmp.nativecoroutines")
-    id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
-    id("kotlin-android-extensions")
-    id("app.cash.zipline")
-}
-
-multiplatformSwiftPackage {
-    packageName("ComponentBox")
-    swiftToolsVersion("5.3")
-    targetPlatforms {
-        iOS { v("14") }
-    }
-    outputDirectory(File(projectDir, "package"))
 }
 
 group = "com.dropbox.componentbox"
@@ -45,74 +32,24 @@ kotlin {
         }
     }
 
-    cocoapods {
-        summary = "ComponentBox"
-        homepage = "https://github.com/dropbox/componentbox"
-    }
-
     sourceSets {
         val commonMain by getting {
             dependencies {
-
-                with(Deps.Kotlinx) {
-                    api(serializationCore)
-                    api(serializationJson)
-                }
-
-                with(Deps.Cash.Zipline) {
-                    implementation(zipline)
-                }
-
-                with(Deps.Ktor){
-                    implementation(clientCore)
-                    implementation(clientSerialization)
-                    implementation(clientContentNegotiation)
-                    implementation(serializationKotlinxJson)
-                    implementation(clientLogging)
-                }
+                implementation(libs.kotlinx.serialization.core)
+                implementation(libs.kotlinx.serialization.json)
             }
         }
 
         val jvmMain by getting {
-            dependencies {
-                api(compose.runtime)
-                api(compose.material)
-                api(compose.ui)
-                api(compose.foundation)
-                implementation(Deps.Compose.coilCompose)
-            }
         }
 
         val androidMain by getting {
             dependencies {
-
-                with(Deps.AndroidX) {
-                    api(appCompat)
-                    api(coreKtx)
-                }
-
-                api(compose.runtime)
-                api(compose.material)
-                api(compose.ui)
-                api(compose.foundation)
-                implementation(Deps.Compose.coilCompose)
-
-                with(Deps.Mavericks) {
-                    implementation(mavericksCompose)
-                }
-
-                with(Deps.Cash) {
-                    implementation(okhttp)
-                }
-
-                implementation(Deps.Airbnb.lottieCompose)
-
             }
         }
 
         val jsMain by getting {
             dependencies {
-                api(compose.runtime)
             }
         }
 
@@ -123,7 +60,6 @@ kotlin {
             dependsOn(commonMain)
 
             dependencies {
-                implementation(Deps.Ktor.clientIos)
             }
 
             iosX64Main.dependsOn(this)
@@ -134,7 +70,7 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(Version.androidCompileSdk)
+    compileSdkVersion(31)
 
     lintOptions {
         disable += "ComposableModifierFactory"
@@ -144,10 +80,9 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Version.composeCompiler
-        kotlinCompilerVersion = Version.baseKotlin
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
+        kotlinCompilerVersion = libs.versions.kotlin.get()
     }
-
 }
 
 tasks.withType<DokkaTask>().configureEach {

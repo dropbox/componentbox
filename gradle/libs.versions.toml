@@ -1,0 +1,19 @@
+[versions]
+android-min-sdk = "24"
+android-compile-sdk = "31"
+android-target-sdk = "31"
+compose-androidx = "1.3.0-beta02"
+compose-compiler = "1.3.0"
+compose-jetbrains = "1.2.0-alpha01-dev725"
+kotlin = "1.7.10"
+kotlinx-serialization = "1.4.0"
+zipline = "0.9.1"
+
+[libraries]
+kotlinx-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+
+compose-compiler = { group = "androidx.compose.compiler", name = "compiler", version.ref = "compose-compiler" }
+compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose-androidx" }
+compose-material = { group = "androidx.compose.material", name = "material", version.ref = "compose-androidx" }
+compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "compose-androidx" }
