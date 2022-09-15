@@ -4,64 +4,7 @@
 
 A Kotlin Multiplatform library for building dynamic server-driven UI.
 
-- **Material Component-Based**
-- **Interoperable**
-- **Dynamic**
-- **What You See Is What You Get**
-
 ![Component Box Desktop](.github/componentbox.gif)
-
-[Learn how to use Component Box in your project](https://componentbox.io/docs/).
-
-## Installation
-
-```kotlin
-implementation("com.dropbox.componentbox:componentbox:0.1.0")
-```
-
-## Documentation
-
-You can find Component Box documentation [on the website](https://componentbox.io).
-
-Check out the [Getting Started](https://componentbox.io/docs/) page for a quick overview.
-
-## Examples
-
-```kotlin
-class Screen(
-    private val componentBoxUrl: String,
-    private val presenter: ComponentBoxPresenter,
-    private val context: Context
-): ComponentBoxFragment()
-```
-
-```kotlin
-@Composable
-fun Screen() {
-    val zipline = ComponentBoxZipline(getZiplineUrl(), getScript())
-    val presenter = ComponentBoxPresenter(zipline)
-
-    ComponentBoxView(
-        componentBoxUrl = getComponentBoxUrl(),
-        presenter = presenter,
-        context = getContext(),
-        Loading = { Loading() },
-        Fallback = { Fallback() }
-    )
-}
-```
-
-## Contributing
-
-Evolving Component Box is the main reason we published this repository. PRs are welcome!
-
-### [Contributing Guide](https://componentbox.io)
-
-Read our [contributing guide](https://componentbox.io) to learn about our development process, how to propose fixes and enhancements, and how to build and test your changes.
-
-### Good First Issues
-
-Start with one of our [good first issues](https://github.com/dropbox/componentbox/labels/good%20first%20issue)!
 
 ### License
 
