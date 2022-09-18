@@ -28,7 +28,7 @@ buildscript {
         classpath("org.jetbrains.kotlinx:kover:0.5.0")
         classpath("org.jetbrains.kotlinx:kotlinx-cli:0.3.4")
         classpath("com.rickclephas.kmp:kmp-nativecoroutines-gradle-plugin:0.12.6-new-mm")
-        classpath("app.cash.zipline:zipline-gradle-plugin:0.9.1")
+        classpath("app.cash.zipline:zipline-gradle-plugin:0.9.4")
     }
 }
 

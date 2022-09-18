@@ -12,3 +12,6 @@ pluginManagement {
 rootProject.name = "componentbox"
 
 include(":componentbox")
+include(":viewmodel")
+include(":repository")
+include(":ui")
