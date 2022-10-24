@@ -11,9 +11,12 @@ kotlinx-serialization = "1.4.0"
 store = "4.0.5"
 okio = "3.2.0"
 okHttp = "4.9.1"
+viewmodel = "2.6.0-alpha02"
 zipline = "0.9.4"
 
 [libraries]
+androidx-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "viewmodel"}
+
 kotlinx-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 kotlinx-coroutines-core = {group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines"}
