@@ -8,6 +8,7 @@ import com.dropbox.componentbox.impl.ComponentBoxIcon
 interface Icon<Id : Any> : Asset {
     var id: Id
     var color: Color?
+    val contentDescription: String?
 
     companion object {
         fun <Id : Any> of(

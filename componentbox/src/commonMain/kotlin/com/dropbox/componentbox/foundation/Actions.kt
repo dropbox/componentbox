@@ -1,3 +1,5 @@
 package com.dropbox.componentbox.foundation
 
-interface Actions
+interface Actions {
+    val onClick: ComponentBoxAction?
+}

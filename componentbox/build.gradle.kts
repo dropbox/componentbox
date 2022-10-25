@@ -83,6 +83,8 @@ android {
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
         kotlinCompilerVersion = libs.versions.kotlin.get()
     }
+
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
 }
 
 tasks.withType<DokkaTask>().configureEach {

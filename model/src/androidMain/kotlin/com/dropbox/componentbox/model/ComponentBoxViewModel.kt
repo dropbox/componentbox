@@ -1,5 +1,6 @@
 package com.dropbox.componentbox.model
 
+import com.dropbox.componentbox.foundation.ComponentBoxEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -1,6 +1,7 @@
 package com.dropbox.componentbox.model
 
 import androidx.lifecycle.ViewModel
+import com.dropbox.componentbox.foundation.ComponentBoxEvent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
