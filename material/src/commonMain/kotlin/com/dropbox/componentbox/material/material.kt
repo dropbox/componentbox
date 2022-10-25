@@ -3,7 +3,9 @@ package com.dropbox.componentbox.material
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -17,6 +19,7 @@ import com.dropbox.componentbox.component.Component
 import com.dropbox.componentbox.component.ContainedButton
 import com.dropbox.componentbox.component.Icon
 import com.dropbox.componentbox.component.LazyColumn
+import com.dropbox.componentbox.component.LazyRow
 import com.dropbox.componentbox.component.LocalImage
 import com.dropbox.componentbox.component.NetworkImage
 import com.dropbox.componentbox.component.OutlinedButton
@@ -37,7 +40,7 @@ private fun Component.material(kit: ComponentBoxKit) {
         is LocalImage<*> -> localImage(kit)
         is NetworkImage<*> -> networkImage(kit)
         is Column -> column(kit)
-        is Row -> TODO()
+        is Row -> row(kit)
         is Stack -> TODO()
         is ContainedButton -> containedButton(kit)
         is OutlinedButton -> TODO()
@@ -179,6 +182,37 @@ private fun Column.column(kit: ComponentBoxKit) {
             modifier = kit.modifierTransformer(modifier),
             verticalArrangement = kit.verticalArrangementConverter(this.verticalArrangement) ?: Arrangement.Top,
             horizontalAlignment = kit.horizontalAlignmentConverter(this.horizontalAlignment) ?: Alignment.Start
+        ) {
+            components?.forEach { component ->
+                component.material(kit)
+            }
+        }
+    }
+}
+
+@Composable
+private fun Row.row(kit: ComponentBoxKit) {
+    when (this) {
+        is LazyRow -> {
+            LazyRow(
+                modifier = kit.modifierTransformer(modifier),
+                verticalAlignment = kit.verticalAlignmentConverter(this.verticalAlignment) ?: Alignment.Top,
+                horizontalArrangement = kit.horizontalArrangementConverter(this.horizontalArrangement)
+                    ?: Arrangement.Start
+            ) {
+                if (components != null) {
+                    items(components!!) { component ->
+                        component.material(kit)
+                    }
+                }
+            }
+        }
+
+        else -> Row(
+            modifier = kit.modifierTransformer(modifier),
+            verticalAlignment = kit.verticalAlignmentConverter(this.verticalAlignment) ?: Alignment.Top,
+            horizontalArrangement = kit.horizontalArrangementConverter(this.horizontalArrangement)
+                ?: Arrangement.Start
         ) {
             components?.forEach { component ->
                 component.material(kit)
