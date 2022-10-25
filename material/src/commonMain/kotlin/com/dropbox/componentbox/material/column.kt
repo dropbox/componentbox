@@ -16,8 +16,8 @@ internal fun Column.column(kit: ComponentBoxKit) {
         is LazyColumn -> {
             LazyColumn(
                 modifier = kit.modifierTransformer(modifier),
-                verticalArrangement = kit.verticalArrangementConverter(this.verticalArrangement) ?: Arrangement.Top,
-                horizontalAlignment = kit.horizontalAlignmentConverter(this.horizontalAlignment) ?: Alignment.Start
+                verticalArrangement = kit.verticalArrangementTransformer(this.verticalArrangement) ?: Arrangement.Top,
+                horizontalAlignment = kit.horizontalAlignmentTransformer(this.horizontalAlignment) ?: Alignment.Start
             ) {
                 if (components != null) {
                     items(components!!) { component ->
@@ -29,8 +29,8 @@ internal fun Column.column(kit: ComponentBoxKit) {
 
         else -> Column(
             modifier = kit.modifierTransformer(modifier),
-            verticalArrangement = kit.verticalArrangementConverter(this.verticalArrangement) ?: Arrangement.Top,
-            horizontalAlignment = kit.horizontalAlignmentConverter(this.horizontalAlignment) ?: Alignment.Start
+            verticalArrangement = kit.verticalArrangementTransformer(this.verticalArrangement) ?: Arrangement.Top,
+            horizontalAlignment = kit.horizontalAlignmentTransformer(this.horizontalAlignment) ?: Alignment.Start
         ) {
             components?.forEach { component ->
                 component.material(kit)

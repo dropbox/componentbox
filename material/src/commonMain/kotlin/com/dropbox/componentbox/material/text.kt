@@ -8,7 +8,7 @@ import com.dropbox.componentbox.ui.ComponentBoxKit
 @Composable
 internal fun Text.text(kit: ComponentBoxKit) {
     if (text != null) {
-        val style = kit.textStyler(textStyle)
+        val style = kit.textStyleTransformer(textStyle)
         if (style != null) {
             if (color != null) {
                 Text(

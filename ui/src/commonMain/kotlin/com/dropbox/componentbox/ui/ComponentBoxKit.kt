@@ -19,16 +19,16 @@ import androidx.compose.ui.layout.ContentScale as ComposeContentScale
 import androidx.compose.ui.text.TextStyle as ComposeTextStyle
 
 interface ComponentBoxKit {
-    val modifierTransformer: (modifier: Modifier?) -> ComposeModifier
     val actionHandler: (action: ComponentBoxAction?) -> Unit
-    val colorTransformer: (color: Color) -> ComposeColor
     val textProcessor: (text: String) -> String
-    val textStyler: (textStyle: TextStyle?) -> ComposeTextStyle?
+    val modifierTransformer: (modifier: Modifier?) -> ComposeModifier
+    val colorTransformer: (color: Color) -> ComposeColor
+    val textStyleTransformer: (textStyle: TextStyle?) -> ComposeTextStyle?
+    val contentScaleTransformer: (contentScale: ContentScale?) -> ComposeContentScale
+    val verticalArrangementTransformer: (arrangement: Arrangement.Vertical?) -> ComposeArrangement.Vertical?
+    val verticalAlignmentTransformer: (alignment: Alignment.Vertical?) -> ComposeAlignment.Vertical?
+    val horizontalArrangementTransformer: (arrangement: Arrangement.Horizontal?) -> ComposeArrangement.Horizontal?
+    val horizontalAlignmentTransformer: (alignment: Alignment.Horizontal?) -> ComposeAlignment.Horizontal?
     val imagePainterConverter: (image: Image) -> Painter
     val iconPainterConverter: (icon: Icon<*>) -> Painter
-    val contentScaleTransformer: (contentScale: ContentScale?) -> ComposeContentScale
-    val verticalArrangementConverter: (arrangement: Arrangement.Vertical?) -> ComposeArrangement.Vertical?
-    val verticalAlignmentConverter: (alignment: Alignment.Vertical?) -> ComposeAlignment.Vertical?
-    val horizontalArrangementConverter: (arrangement: Arrangement.Horizontal?) -> ComposeArrangement.Horizontal?
-    val horizontalAlignmentConverter: (alignment: Alignment.Horizontal?) -> ComposeAlignment.Horizontal?
 }
