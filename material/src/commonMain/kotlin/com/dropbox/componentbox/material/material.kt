@@ -11,7 +11,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
+import androidx.compose.material.OutlinedButton
+import androidx.compose.material.Switch
 import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import com.dropbox.componentbox.ComponentBox
@@ -44,39 +47,74 @@ private fun Component.material(kit: ComponentBoxKit) {
         is Row -> row(kit)
         is Stack -> stack(kit)
         is ContainedButton -> containedButton(kit)
-        is OutlinedButton -> TODO()
-        is TextButton -> TODO()
-        is Switch -> TODO()
+        is OutlinedButton -> outlinedButton(kit)
+        is TextButton -> textButton(kit)
+        is Switch -> switch(kit)
         is Text -> text(kit)
     }
 }
 
 @Composable
-private fun ContainedButton.containedButton(kit: ComponentBoxKit) {
-    if (modifier?.background != null) {
-        Button(
-            modifier = kit.modifierTransformer(modifier),
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = kit.colorTransformer(modifier!!.background!!),
-            ),
-            onClick = {
-                kit.actionHandler(actions?.onClick)
-            }
-        ) {
-            components?.forEach { component ->
-                component.material(kit)
-            }
+private fun OutlinedButton.outlinedButton(kit: ComponentBoxKit) {
+
+    val colors = if (modifier?.background != null) {
+        ButtonDefaults.buttonColors(
+            backgroundColor = kit.colorTransformer(modifier!!.background!!),
+        )
+    } else ButtonDefaults.buttonColors()
+
+    OutlinedButton(
+        modifier = kit.modifierTransformer(modifier),
+        colors = colors,
+        onClick = {
+            kit.actionHandler(actions?.onClick)
         }
-    } else {
-        Button(
-            modifier = kit.modifierTransformer(modifier),
-            onClick = {
-                kit.actionHandler(actions?.onClick)
-            }
-        ) {
-            components?.forEach { component ->
-                component.material(kit)
-            }
+    ) {
+        components?.forEach { component ->
+            component.material(kit)
+        }
+    }
+}
+
+@Composable
+private fun TextButton.textButton(kit: ComponentBoxKit) {
+    val colors = if (modifier?.background != null) {
+        ButtonDefaults.buttonColors(
+            backgroundColor = kit.colorTransformer(modifier!!.background!!),
+        )
+    } else ButtonDefaults.buttonColors()
+
+    TextButton(
+        modifier = kit.modifierTransformer(modifier),
+        colors = colors,
+        onClick = {
+            kit.actionHandler(actions?.onClick)
+        }
+    ) {
+        components?.forEach { component ->
+            component.material(kit)
+        }
+    }
+}
+
+@Composable
+private fun ContainedButton.containedButton(kit: ComponentBoxKit) {
+
+    val colors = if (modifier?.background != null) {
+        ButtonDefaults.buttonColors(
+            backgroundColor = kit.colorTransformer(modifier!!.background!!),
+        )
+    } else ButtonDefaults.buttonColors()
+
+    Button(
+        modifier = kit.modifierTransformer(modifier),
+        colors = colors,
+        onClick = {
+            kit.actionHandler(actions?.onClick)
+        }
+    ) {
+        components?.forEach { component ->
+            component.material(kit)
         }
     }
 }
@@ -229,4 +267,15 @@ private fun Stack.stack(kit: ComponentBoxKit) {
             component.material(kit)
         }
     }
+}
+
+@Composable
+private fun Switch.switch(kit: ComponentBoxKit) {
+    Switch(
+        modifier = kit.modifierTransformer(modifier),
+        checked = checked ?: false,
+        onCheckedChange = {
+            kit.actionHandler(this.actions?.onCheckedChange)
+        },
+    )
 }
