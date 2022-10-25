@@ -2,6 +2,7 @@ package com.dropbox.componentbox.material
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.lazy.LazyColumn
@@ -41,7 +42,7 @@ private fun Component.material(kit: ComponentBoxKit) {
         is NetworkImage<*> -> networkImage(kit)
         is Column -> column(kit)
         is Row -> row(kit)
-        is Stack -> TODO()
+        is Stack -> stack(kit)
         is ContainedButton -> containedButton(kit)
         is OutlinedButton -> TODO()
         is TextButton -> TODO()
@@ -217,6 +218,15 @@ private fun Row.row(kit: ComponentBoxKit) {
             components?.forEach { component ->
                 component.material(kit)
             }
+        }
+    }
+}
+
+@Composable
+private fun Stack.stack(kit: ComponentBoxKit) {
+    Box(modifier = kit.modifierTransformer(modifier)) {
+        components?.forEach { component ->
+            component.material(kit)
         }
     }
 }
