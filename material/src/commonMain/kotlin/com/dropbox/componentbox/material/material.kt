@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import com.dropbox.componentbox.ComponentBox
 import com.dropbox.componentbox.component.Column
@@ -36,7 +37,7 @@ private fun Component.material(kit: ComponentBoxKit) {
         is OutlinedButton -> TODO()
         is TextButton -> TODO()
         is Switch -> TODO()
-        is Text -> TODO()
+        is Text -> text(kit)
     }
 }
 
@@ -110,6 +111,42 @@ private fun <Id : Any> Icon<Id>?.icon(kit: ComponentBoxKit) {
                 contentDescription = contentDescription,
                 modifier = kit.modifierTransformer(modifier),
             )
+        }
+    }
+}
+
+@Composable
+private fun Text.text(kit: ComponentBoxKit) {
+    if (text != null) {
+        val style = kit.textStyler(textStyle)
+        if (style != null) {
+            if (color != null) {
+                Text(
+                    text = kit.textProcessor(text!!),
+                    style = style,
+                    modifier = kit.modifierTransformer(modifier),
+                    color = kit.colorTransformer(color!!)
+                )
+            } else {
+                Text(
+                    text = kit.textProcessor(text!!),
+                    modifier = kit.modifierTransformer(modifier),
+                    style = style
+                )
+            }
+        } else {
+            if (color != null) {
+                Text(
+                    text = kit.textProcessor(text!!),
+                    modifier = kit.modifierTransformer(modifier),
+                    color = kit.colorTransformer(color!!)
+                )
+            } else {
+                Text(
+                    text = kit.textProcessor(text!!),
+                    modifier = kit.modifierTransformer(modifier),
+                )
+            }
         }
     }
 }

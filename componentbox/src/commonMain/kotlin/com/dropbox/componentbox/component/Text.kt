@@ -8,8 +8,8 @@ import com.dropbox.componentbox.impl.ComponentBoxText
 
 interface Text : Component {
     var text: String?
-    var color: Color?
-    var textStyle: TextStyle?
+    val color: Color?
+    val textStyle: TextStyle?
 
     companion object {
         fun of(
