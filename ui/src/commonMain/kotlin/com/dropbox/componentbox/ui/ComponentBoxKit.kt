@@ -4,10 +4,15 @@ import androidx.compose.ui.graphics.painter.Painter
 import com.dropbox.componentbox.component.ContentScale
 import com.dropbox.componentbox.component.Icon
 import com.dropbox.componentbox.component.Image
+import com.dropbox.componentbox.foundation.Alignment
+import com.dropbox.componentbox.foundation.Arrangement
 import com.dropbox.componentbox.foundation.Color
 import com.dropbox.componentbox.foundation.ComponentBoxAction
 import com.dropbox.componentbox.foundation.Modifier
 import com.dropbox.componentbox.foundation.TextStyle
+import androidx.compose.foundation.layout.Arrangement as ComposeArrangement
+import androidx.compose.ui.Alignment as ComposeAlignment
+
 import androidx.compose.ui.Modifier as ComposeModifier
 import androidx.compose.ui.graphics.Color as ComposeColor
 import androidx.compose.ui.layout.ContentScale as ComposeContentScale
@@ -22,4 +27,8 @@ interface ComponentBoxKit {
     val imagePainterConverter: (image: Image) -> Painter
     val iconPainterConverter: (icon: Icon<*>) -> Painter
     val contentScaleTransformer: (contentScale: ContentScale?) -> ComposeContentScale
+    val verticalArrangementConverter: (arrangement: Arrangement.Vertical?) -> ComposeArrangement.Vertical?
+    val verticalAlignmentConverter: (alignment: Alignment.Vertical?) -> ComposeAlignment.Vertical?
+    val horizontalArrangementConverter: (arrangement: Arrangement.Horizontal?) -> ComposeArrangement.Horizontal?
+    val horizontalAlignmentConverter: (alignment: Alignment.Horizontal?) -> ComposeAlignment.Horizontal?
 }
