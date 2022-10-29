@@ -1,0 +1,5 @@
+package com.dropbox.componentbox.campaigns.xplat.componentbox
+
+import com.dropbox.componentbox.model.ComponentBoxService
+
+interface CampaignsComponentBoxService : ComponentBoxService<CampaignsComponentBoxModel>

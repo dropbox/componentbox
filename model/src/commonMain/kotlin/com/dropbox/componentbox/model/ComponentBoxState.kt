@@ -1,3 +1,3 @@
 package com.dropbox.componentbox.model
 
-interface ComponentBoxState
+expect interface ComponentBoxState

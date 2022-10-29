@@ -8,23 +8,23 @@ import kotlinx.coroutines.flow.Flow
 import okhttp3.OkHttpClient
 import java.util.concurrent.Executors
 
-class ComponentBoxController<Model : ComponentBoxModel<*, *>>(
-    private val manifestUrl: String,
-    private val applicationName: String,
-    private val serviceName: String
+actual class ComponentBoxController<Model : ComponentBoxModel<*, State, Event>, State : ComponentBoxState, Event : ComponentBoxEvent>(
+    val manifestUrl: String,
+    val applicationName: String,
+    val serviceName: String
 ) {
     private val ziplineExecutorService = Executors.newSingleThreadExecutor { Thread(it, "Zipline") }
-    private val ziplineDispatcher = ziplineExecutorService.asCoroutineDispatcher()
+    val ziplineDispatcher = ziplineExecutorService.asCoroutineDispatcher()
     private val okHttpClient = OkHttpClient()
 
-    private val ziplineLoader = ZiplineLoader(
+    val ziplineLoader = ZiplineLoader(
         dispatcher = ziplineDispatcher,
         manifestVerifier = ManifestVerifier.NO_SIGNATURE_CHECKS,
         httpClient = okHttpClient
     )
 
-    internal inline fun <reified Service : ComponentBoxService<Model>> models(
-        noinline initializer: (Zipline) -> Unit = {}
+    actual inline fun <reified Service : ComponentBoxService<Model>> models(
+        noinline initializer: (Zipline) -> Unit
     ): Flow<Model> = flowOfModels<Model, Service>(
         dispatcher = ziplineDispatcher,
         ziplineLoader = ziplineLoader,

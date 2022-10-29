@@ -1,9 +1,9 @@
 package com.dropbox.componentbox.model
 
-import com.dropbox.componentbox.foundation.ComponentBoxEvent
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
 
-interface ComponentBoxModel<State : ComponentBoxState, Event : ComponentBoxEvent> {
-    fun launch(events: MutableSharedFlow<Event>): MutableStateFlow<State>
+interface ComponentBoxModel<Data : ComponentBoxData, State : ComponentBoxState, Event : ComponentBoxEvent> {
+    fun launch(data: Data, events: Flow<Event>, scope: CoroutineScope): StateFlow<State>
 }
