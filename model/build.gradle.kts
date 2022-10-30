@@ -28,6 +28,7 @@ kotlin {
                 api(project(":componentbox"))
                 implementation(libs.okio.core)
                 implementation(libs.zipline.zipline)
+                api(kotlin("stdlib"))
             }
         }
 

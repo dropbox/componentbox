@@ -10,11 +10,11 @@ actual abstract class ComponentBoxPresenter<Data : ComponentBoxData, Model : Com
     initialState: State
 ) : MavericksViewModel<State>(initialState) {
 
-    protected actual abstract val serviceName: String
-    protected actual abstract val applicationName: String
-    protected actual abstract val fetcher: suspend () -> ComponentBoxNetworkResponse<Data>
+    actual abstract val serviceName: String
+    actual abstract val applicationName: String
+    actual abstract val fetcher: suspend () -> ComponentBoxNetworkResponse<Data>
 
-    protected actual val events: MutableSharedFlow<Event> = MutableSharedFlow()
+    actual val events: MutableSharedFlow<Event> = MutableSharedFlow()
 
     actual fun emit(event: Event) {
         viewModelScope.launch {
@@ -22,7 +22,12 @@ actual abstract class ComponentBoxPresenter<Data : ComponentBoxData, Model : Com
         }
     }
 
-    protected actual inline fun <reified Service : ComponentBoxService<Model>> launch(
+    @PublishedApi
+    internal fun setState(nextState: State) {
+        setState { nextState }
+    }
+
+    actual inline fun <reified Service : ComponentBoxService<Model>> launch(
         noinline initializer: (Zipline) -> Unit
     ) {
         viewModelScope.launch {
@@ -35,7 +40,7 @@ actual abstract class ComponentBoxPresenter<Data : ComponentBoxData, Model : Com
             val models = controller.models<Service>(initializer)
             models.collectLatest { model ->
                 model.launch(networkResponse.data, events, viewModelScope).collectLatest { state ->
-                    setState { state }
+                    setState(state)
                 }
             }
         }

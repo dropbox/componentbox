@@ -1,8 +1,6 @@
 package com.dropbox.componentbox.campaigns.xplat.componentbox
 
-import app.cash.zipline.Zipline
-
-private val zipline by lazy { Zipline.get() }
+import com.dropbox.componentbox.model.zipline
 
 @OptIn(ExperimentalJsExport::class)
 @JsExport

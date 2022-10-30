@@ -25,6 +25,7 @@ kotlin {
                 api(libs.zipline.zipline)
                 api(project(":componentbox"))
                 implementation(project(":model"))
+                implementation(kotlin("stdlib"))
             }
         }
         val hostMain by creating {

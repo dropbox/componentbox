@@ -7,6 +7,7 @@
     <application
             android:theme="@style/Theme.AppCompat.Light"
             android:name="com.dropbox.componentbox.campaigns.android.CampaignsApp"
+            android:networkSecurityConfig="@xml/network_security_config"
             android:label="Campaigns App">
 
         <activity android:name="com.dropbox.componentbox.campaigns.android.CampaignsActivity" android:exported="true">
