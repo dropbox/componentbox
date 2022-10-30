@@ -15,7 +15,8 @@ interface Icon<Id : Any> : Asset {
             id: Id,
             modifier: Modifier? = null,
             actions: Actions? = null,
-            color: Color? = null
-        ): Icon<Id> = ComponentBoxIcon(id, modifier, actions, color)
+            color: Color? = null,
+            contentDescription: String? = null
+        ): Icon<Id> = ComponentBoxIcon(id, modifier, actions, color, contentDescription)
     }
 }
