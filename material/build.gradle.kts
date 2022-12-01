@@ -4,6 +4,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("org.jetbrains.compose")
+    id("com.vanniktech.maven.publish.base")
 }
 
 group = "com.dropbox.componentbox"
@@ -30,4 +31,9 @@ android {
     val minSdk = libs.versions.android.min.sdk.get()
     compileSdk = minSdk.toInt()
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+}
+
+mavenPublishing {
+    publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.S01)
+    signAllPublications()
 }
