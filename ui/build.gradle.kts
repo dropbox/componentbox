@@ -9,10 +9,8 @@ plugins {
 group = "com.dropbox.componentbox"
 
 kotlin {
-    iosArm64()
-    iosX64()
-    iosSimulatorArm64()
     android()
+    ios()
 
     sourceSets {
         val commonMain by getting {
@@ -23,13 +21,7 @@ kotlin {
             }
         }
 
-        val iosMain by creating {
-            dependsOn(commonMain)
-        }
-        targets.withType<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget> {
-            val main by compilations.getting
-            main.defaultSourceSet.dependsOn(iosMain)
-        }
+        val iosMain by getting
     }
 }
 
