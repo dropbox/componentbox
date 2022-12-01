@@ -1,12 +1,10 @@
-# 🚧 Under development. Not ready for use in production!
+# 🧰 Component Box
 
-# [Component Box](https://componentbox.io) &middot; [![GitHub license](https://img.shields.io/badge/license-APACHE-red.svg)](https://github.com/dropbox/componentbox/blob/main/LICENSE.txt)
+**🚧 Under development!**
 
-A Kotlin Multiplatform library for building dynamic server-driven UI.
+**[dropbox.github.io/componentbox](https://dropbox.github.io/componentbox/)**
 
-![Component Box Desktop](.github/componentbox.gif)
-
-### License
+## License
 
 ```text
 Copyright (c) 2022 Dropbox, Inc.
