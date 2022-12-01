@@ -57,8 +57,8 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(31)
 
+    compileSdk = 33
     lintOptions {
         disable += "ComposableModifierFactory"
         disable += "ModifierFactoryExtensionFunction"

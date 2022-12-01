@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.launch
 
-internal inline fun <Model : ComponentBoxModel<*, *>, reified Service : ComponentBoxService<Model>> flowOfModels(
+inline fun <Model : ComponentBoxModel<*, *, *>, reified Service : ComponentBoxService<Model>> flowOfModels(
     dispatcher: CoroutineDispatcher,
     ziplineLoader: ZiplineLoader,
     manifestUrl: String,
@@ -26,7 +26,8 @@ internal inline fun <Model : ComponentBoxModel<*, *>, reified Service : Componen
     scope.launch(dispatcher + SupervisorJob()) {
         var job: Job? = null
 
-        val zipline = ziplineLoader.loadOnce(applicationName, manifestUrl, initializer = initializer).zipline
+        val zipline =
+            ziplineLoader.loadOnce(applicationName, manifestUrl, initializer = initializer).zipline
         val service = zipline.take<Service>(serviceName)
 
         val emitModels = launch {

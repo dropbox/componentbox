@@ -10,4 +10,5 @@ internal class ComponentBoxIcon<Id : Any>(
     override var modifier: Modifier? = null,
     override var actions: Actions? = null,
     override var color: Color? = null,
+    override val contentDescription: String?,
 ) : Icon<Id>
