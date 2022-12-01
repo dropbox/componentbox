@@ -1,6 +1,14 @@
-@Suppress("JcenterRepositoryObsolete")
+enableFeaturePreview("VERSION_CATALOGS")
 
 pluginManagement {
+    plugins {
+        val composeVersion = extra["composeVersion"] as String
+        id("org.jetbrains.compose").version(composeVersion)
+
+        val kmmBridgeVersion = extra["kmmBridgeVersion"] as String
+        id("co.touchlab.faktory.kmmbridge").version(kmmBridgeVersion)
+    }
+
     repositories {
         google()
         gradlePluginPortal()
@@ -12,16 +20,14 @@ pluginManagement {
 rootProject.name = "componentbox"
 
 include(":componentbox")
-include(":desktop")
 include(":material")
-include(":util")
-include(":ui")
+include(":kit")
 
-include(":samples:discovery:android:Discovery")
-include(":samples:discovery:android:zipline")
-
-include(":samples:discovery:common")
-include(":samples:discovery:components")
-include(":samples:discovery:desktop")
-include(":samples:discovery:theme")
-include(":samples:discovery:ios:Shared")
+include(":samples:campaigns:android:app")
+include(":samples:campaigns:android:common:scoping")
+include(":samples:campaigns:android:common:binding")
+include(":samples:campaigns:android:common:annotation")
+include(":samples:campaigns:android:common:codegen")
+include(":samples:campaigns:android:common:user")
+include(":samples:campaigns:android:feature:account")
+include(":samples:campaigns:xplat:componentbox")
