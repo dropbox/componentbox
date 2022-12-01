@@ -8,7 +8,7 @@ plugins {
     id("com.android.library")
     id("com.vanniktech.maven.publish.base")
     id("org.jetbrains.dokka")
-    id("co.touchlab.faktory.kmmbridge") version libs.versions.kmm.bridge.get()
+    id("co.touchlab.faktory.kmmbridge")
     `maven-publish`
     kotlin("native.cocoapods")
 }
@@ -59,16 +59,9 @@ kotlin {
 android {
 
     compileSdk = 33
-    lintOptions {
-        disable += "ComposableModifierFactory"
-        disable += "ModifierFactoryExtensionFunction"
-        disable += "ModifierFactoryReturnType"
-        disable += "ModifierFactoryUnreferencedReceiver"
-    }
 
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
-        kotlinCompilerVersion = libs.versions.kotlin.get()
     }
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
@@ -89,7 +82,6 @@ kmmbridge {
     versionPrefix.set("0.2.0-alpha0")
     spm()
 }
-
 
 mavenPublishing {
     publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.S01)

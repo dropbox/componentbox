@@ -19,22 +19,22 @@ viewmodel = "2.6.0-alpha02"
 zipline = "0.9.4"
 
 [libraries]
-androidx-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "viewmodel"}
-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose"}
+androidx-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "viewmodel" }
+activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
 
 kotlinx-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
-kotlinx-coroutines-core = {group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines"}
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 
 compose-compiler = { group = "androidx.compose.compiler", name = "compiler", version.ref = "compose-compiler" }
 compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose-androidx" }
 compose-material = { group = "androidx.compose.material", name = "material", version.ref = "compose-androidx" }
 compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "compose-androidx" }
 
-dagger-dagger = {group = "com.google.dagger", name = "dagger", version.ref = "dagger" }
-dagger-compiler = {group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger"}
+dagger-dagger = { group = "com.google.dagger", name = "dagger", version.ref = "dagger" }
+dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger" }
 
-store = {group = "com.dropbox.mobile.store", name="store4", version.ref = "store"}
+store = { group = "com.dropbox.mobile.store", name = "store4", version.ref = "store" }
 
 okio-core = { group = "com.squareup.okio", name = "okio", version.ref = "okio" }
 okHttp-core = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHttp" }

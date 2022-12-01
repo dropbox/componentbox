@@ -2,8 +2,11 @@ enableFeaturePreview("VERSION_CATALOGS")
 
 pluginManagement {
     plugins {
-        val composeVersion = extra["compose.version"] as String
+        val composeVersion = extra["composeVersion"] as String
         id("org.jetbrains.compose").version(composeVersion)
+
+        val kmmBridgeVersion = extra["kmmBridgeVersion"] as String
+        id("co.touchlab.faktory.kmmbridge").version(kmmBridgeVersion)
     }
 
     repositories {
@@ -18,8 +21,7 @@ rootProject.name = "componentbox"
 
 include(":componentbox")
 include(":material")
-include(":model")
-include(":ui")
+include(":kit")
 
 include(":samples:campaigns:android:app")
 include(":samples:campaigns:android:common:scoping")
