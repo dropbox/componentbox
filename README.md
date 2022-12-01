@@ -2,7 +2,7 @@
 
 **🚧 Under development!**
 
-**[dropbox.github.io/componentbox](https://dropbox.github.io/componentbox/)**
+**[componentbox.io](https://www.componentbox.io/)**
 
 ## License
 
