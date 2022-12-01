@@ -36,6 +36,8 @@ kotlin {
             dependencies {
                 api(libs.kotlinx.serialization.core)
                 api(libs.kotlinx.serialization.json)
+                api(libs.kotlin.std.lib)
+                api(libs.kotlinx.atomic.fu)
             }
         }
 
