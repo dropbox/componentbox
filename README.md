@@ -4,6 +4,10 @@
 
 **[componentbox.io](https://www.componentbox.io/)**
 
+## Snapshots
+
+Snapshots are available in [Sonatype's snapshots repository](https://s01.oss.sonatype.org/content/repositories/snapshots/com/dropbox/componentbox/).
+
 ## License
 
 ```text
