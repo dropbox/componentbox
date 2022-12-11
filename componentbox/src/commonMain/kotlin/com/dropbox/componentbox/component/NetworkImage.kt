@@ -1,6 +1,6 @@
 package com.dropbox.componentbox.component
 
-import com.dropbox.componentbox.foundation.Actions
+import com.dropbox.componentbox.foundation.Events
 import com.dropbox.componentbox.foundation.Alignment
 import com.dropbox.componentbox.foundation.Modifier
 import com.dropbox.componentbox.impl.ComponentBoxNetworkImage
@@ -15,7 +15,7 @@ interface NetworkImage<Id : Any> : Image {
             lightUrl: String,
             darkUrl: String,
             modifier: Modifier? = null,
-            actions: Actions? = null,
+            events: Events? = null,
             contentDescription: String? = null,
             alignment: Alignment? = null,
             contentScale: ContentScale? = null,
@@ -24,7 +24,7 @@ interface NetworkImage<Id : Any> : Image {
             lightUrl = lightUrl,
             darkUrl = darkUrl,
             modifier = modifier,
-            actions = actions,
+            events = events,
             contentDescription = contentDescription,
             alignment = alignment,
             contentScale = contentScale,

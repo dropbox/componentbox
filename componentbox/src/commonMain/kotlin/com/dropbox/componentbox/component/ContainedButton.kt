@@ -1,6 +1,6 @@
 package com.dropbox.componentbox.component
 
-import com.dropbox.componentbox.foundation.Actions
+import com.dropbox.componentbox.foundation.Events
 import com.dropbox.componentbox.foundation.Modifier
 import com.dropbox.componentbox.impl.ComponentBoxContainedButton
 
@@ -10,12 +10,12 @@ interface ContainedButton : Button {
             components: MutableList<Component>? = null,
             disabled: Boolean? = false,
             modifier: Modifier? = null,
-            actions: Actions? = null
+            events: Events? = null
         ): ContainedButton = ComponentBoxContainedButton(
             components = components,
             disabled = disabled,
             modifier = modifier,
-            actions = actions
+            events = events
         )
     }
 }

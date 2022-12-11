@@ -10,16 +10,16 @@ internal fun <Id : Any> Icon<Id>?.icon(kit: ComponentBoxKit) {
     if (this != null) {
         if (color != null) {
             Icon(
-                painter = kit.iconPainterConverter(this),
+                painter = kit.converter.icon(this),
                 contentDescription = contentDescription,
-                modifier = kit.modifierTransformer(modifier),
-                tint = kit.colorTransformer(color!!)
+                modifier = kit.converter.modifier(modifier),
+                tint = kit.converter.color(color!!)
             )
         } else {
             Icon(
-                painter = kit.iconPainterConverter(this),
+                painter = kit.converter.icon(this),
                 contentDescription = contentDescription,
-                modifier = kit.modifierTransformer(modifier),
+                modifier = kit.converter.modifier(modifier),
             )
         }
     }

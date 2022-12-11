@@ -8,10 +8,10 @@ import com.dropbox.componentbox.ui.ComponentBoxKit
 @Composable
 internal fun Switch.switch(kit: ComponentBoxKit) {
     Switch(
-        modifier = kit.modifierTransformer(modifier),
+        modifier = kit.converter.modifier(modifier),
         checked = checked ?: false,
         onCheckedChange = {
-            kit.actionHandler(this.actions?.onCheckedChange)
+            kit.eventHandler(this.events?.onCheckedChange)
         },
     )
 }

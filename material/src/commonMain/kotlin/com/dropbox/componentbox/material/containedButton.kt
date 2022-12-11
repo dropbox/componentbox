@@ -11,15 +11,15 @@ internal fun ContainedButton.containedButton(kit: ComponentBoxKit) {
 
     val colors = if (modifier?.background != null) {
         ButtonDefaults.buttonColors(
-            backgroundColor = kit.colorTransformer(modifier!!.background!!),
+            backgroundColor = kit.converter.color(modifier!!.background!!),
         )
     } else ButtonDefaults.buttonColors()
 
     Button(
-        modifier = kit.modifierTransformer(modifier),
+        modifier = kit.converter.modifier(modifier),
         colors = colors,
         onClick = {
-            kit.actionHandler(actions?.onClick)
+            kit.eventHandler(events?.onClick)
         }
     ) {
         components?.forEach { component ->

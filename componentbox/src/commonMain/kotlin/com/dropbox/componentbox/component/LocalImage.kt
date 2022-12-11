@@ -1,6 +1,6 @@
 package com.dropbox.componentbox.component
 
-import com.dropbox.componentbox.foundation.Actions
+import com.dropbox.componentbox.foundation.Events
 import com.dropbox.componentbox.foundation.Alignment
 import com.dropbox.componentbox.foundation.Modifier
 import com.dropbox.componentbox.impl.ComponentBoxDrawable
@@ -15,14 +15,14 @@ interface LocalImage<Id : Any> : Image {
             fun <Id : Any> of(
                 id: Id,
                 modifier: Modifier? = null,
-                actions: Actions? = null,
+                events: Events? = null,
                 contentDescription: String? = null,
                 alignment: Alignment? = null,
                 contentScale: ContentScale? = null,
             ): Drawable<Id> = ComponentBoxDrawable(
                 id = id,
                 modifier = modifier,
-                actions = actions,
+                events = events,
                 contentDescription = contentDescription,
                 alignment = alignment,
                 contentScale = contentScale,
@@ -35,14 +35,14 @@ interface LocalImage<Id : Any> : Image {
             fun <Id : Any> of(
                 id: Id,
                 modifier: Modifier? = null,
-                actions: Actions? = null,
+                events: Events? = null,
                 contentDescription: String? = null,
                 alignment: Alignment? = null,
                 contentScale: ContentScale? = null,
             ): Vector<Id> = ComponentBoxVector(
                 id = id,
                 modifier = modifier,
-                actions = actions,
+                events = events,
                 contentDescription = contentDescription,
                 alignment = alignment,
                 contentScale = contentScale,
@@ -55,14 +55,14 @@ interface LocalImage<Id : Any> : Image {
             fun <Id : Any> of(
                 id: Id,
                 modifier: Modifier? = null,
-                actions: Actions? = null,
+                events: Events? = null,
                 contentDescription: String? = null,
                 alignment: Alignment? = null,
                 contentScale: ContentScale? = null,
             ): Raw<Id> = ComponentBoxRaw(
                 id = id,
                 modifier = modifier,
-                actions = actions,
+                events = events,
                 contentDescription = contentDescription,
                 alignment = alignment,
                 contentScale = contentScale,

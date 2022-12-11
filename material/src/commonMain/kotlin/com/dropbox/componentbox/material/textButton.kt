@@ -10,15 +10,15 @@ import com.dropbox.componentbox.ui.ComponentBoxKit
 internal fun TextButton.textButton(kit: ComponentBoxKit) {
     val colors = if (modifier?.background != null) {
         ButtonDefaults.buttonColors(
-            backgroundColor = kit.colorTransformer(modifier!!.background!!),
+            backgroundColor = kit.converter.color(modifier!!.background!!),
         )
     } else ButtonDefaults.buttonColors()
 
     TextButton(
-        modifier = kit.modifierTransformer(modifier),
+        modifier = kit.converter.modifier(modifier),
         colors = colors,
         onClick = {
-            kit.actionHandler(actions?.onClick)
+            kit.eventHandler(events?.onClick)
         }
     ) {
         components?.forEach { component ->

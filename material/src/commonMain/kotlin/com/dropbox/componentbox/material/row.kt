@@ -15,9 +15,9 @@ internal fun Row.row(kit: ComponentBoxKit) {
     when (this) {
         is LazyRow -> {
             LazyRow(
-                modifier = kit.modifierTransformer(modifier),
-                verticalAlignment = kit.verticalAlignmentTransformer(this.verticalAlignment) ?: Alignment.Top,
-                horizontalArrangement = kit.horizontalArrangementTransformer(this.horizontalArrangement)
+                modifier = kit.converter.modifier(modifier),
+                verticalAlignment = kit.converter.verticalAlignment(this.verticalAlignment) ?: Alignment.Top,
+                horizontalArrangement = kit.converter.horizontalArrangement(this.horizontalArrangement)
                     ?: Arrangement.Start
             ) {
                 if (components != null) {
@@ -29,9 +29,9 @@ internal fun Row.row(kit: ComponentBoxKit) {
         }
 
         else -> Row(
-            modifier = kit.modifierTransformer(modifier),
-            verticalAlignment = kit.verticalAlignmentTransformer(this.verticalAlignment) ?: Alignment.Top,
-            horizontalArrangement = kit.horizontalArrangementTransformer(this.horizontalArrangement)
+            modifier = kit.converter.modifier(modifier),
+            verticalAlignment = kit.converter.verticalAlignment(this.verticalAlignment) ?: Alignment.Top,
+            horizontalArrangement = kit.converter.horizontalArrangement(this.horizontalArrangement)
                 ?: Arrangement.Start
         ) {
             components?.forEach { component ->

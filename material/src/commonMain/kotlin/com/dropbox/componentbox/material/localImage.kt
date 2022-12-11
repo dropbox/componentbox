@@ -9,9 +9,9 @@ import com.dropbox.componentbox.ui.ComponentBoxKit
 internal fun <Id : Any> LocalImage<Id>?.localImage(kit: ComponentBoxKit) {
     if (this != null) {
         Image(
-            painter = kit.imagePainterConverter(this),
-            modifier = kit.modifierTransformer(modifier),
-            contentScale = kit.contentScaleTransformer(contentScale),
+            painter = kit.converter.image(this),
+            modifier = kit.converter.modifier(modifier),
+            contentScale = kit.converter.contentScale(contentScale),
             contentDescription = contentDescription
         )
     }

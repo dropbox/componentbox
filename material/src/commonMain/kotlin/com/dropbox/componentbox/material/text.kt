@@ -8,19 +8,19 @@ import com.dropbox.componentbox.ui.ComponentBoxKit
 @Composable
 internal fun Text.text(kit: ComponentBoxKit) {
     if (text != null) {
-        val style = kit.textStyleTransformer(textStyle)
+        val style = kit.converter.textStyle(textStyle)
         if (style != null) {
             if (color != null) {
                 Text(
                     text = kit.textProcessor(text!!),
                     style = style,
-                    modifier = kit.modifierTransformer(modifier),
-                    color = kit.colorTransformer(color!!)
+                    modifier = kit.converter.modifier(modifier),
+                    color = kit.converter.color(color!!)
                 )
             } else {
                 Text(
                     text = kit.textProcessor(text!!),
-                    modifier = kit.modifierTransformer(modifier),
+                    modifier = kit.converter.modifier(modifier),
                     style = style
                 )
             }
@@ -28,13 +28,13 @@ internal fun Text.text(kit: ComponentBoxKit) {
             if (color != null) {
                 Text(
                     text = kit.textProcessor(text!!),
-                    modifier = kit.modifierTransformer(modifier),
-                    color = kit.colorTransformer(color!!)
+                    modifier = kit.converter.modifier(modifier),
+                    color = kit.converter.color(color!!)
                 )
             } else {
                 Text(
                     text = kit.textProcessor(text!!),
-                    modifier = kit.modifierTransformer(modifier),
+                    modifier = kit.converter.modifier(modifier),
                 )
             }
         }

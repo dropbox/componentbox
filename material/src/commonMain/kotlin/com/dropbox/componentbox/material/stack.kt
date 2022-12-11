@@ -7,7 +7,7 @@ import com.dropbox.componentbox.ui.ComponentBoxKit
 
 @Composable
 internal fun Stack.stack(kit: ComponentBoxKit) {
-    Box(modifier = kit.modifierTransformer(modifier)) {
+    Box(modifier = kit.converter.modifier(modifier)) {
         components?.forEach { component ->
             component.material(kit)
         }
