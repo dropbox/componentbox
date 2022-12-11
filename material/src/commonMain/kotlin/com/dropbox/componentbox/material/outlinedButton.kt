@@ -4,7 +4,7 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.OutlinedButton
 import androidx.compose.runtime.Composable
 import com.dropbox.componentbox.component.OutlinedButton
-import com.dropbox.componentbox.ui.ComponentBoxKit
+import com.dropbox.componentbox.kit.ComponentBoxKit
 
 @Composable
 internal fun OutlinedButton.outlinedButton(kit: ComponentBoxKit) {
@@ -19,7 +19,7 @@ internal fun OutlinedButton.outlinedButton(kit: ComponentBoxKit) {
         modifier = kit.converter.modifier(modifier),
         colors = colors,
         onClick = {
-            kit.eventHandler(events?.onClick)
+            kit.eventHandler.handle(events?.onClick)
         }
     ) {
         components?.forEach { component ->

@@ -14,7 +14,7 @@ import com.dropbox.componentbox.component.Stack
 import com.dropbox.componentbox.component.Switch
 import com.dropbox.componentbox.component.Text
 import com.dropbox.componentbox.component.TextButton
-import com.dropbox.componentbox.ui.ComponentBoxKit
+import com.dropbox.componentbox.kit.ComponentBoxKit
 
 @Composable
 fun ComponentBox.material(kit: ComponentBoxKit) = root.material(kit)

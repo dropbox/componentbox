@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import com.dropbox.componentbox.component.LazyRow
 import com.dropbox.componentbox.component.Row
-import com.dropbox.componentbox.ui.ComponentBoxKit
+import com.dropbox.componentbox.kit.ComponentBoxKit
 
 @Composable
 internal fun Row.row(kit: ComponentBoxKit) {

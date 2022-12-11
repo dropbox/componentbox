@@ -4,7 +4,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.runtime.Composable
 import com.dropbox.componentbox.component.ContainedButton
-import com.dropbox.componentbox.ui.ComponentBoxKit
+import com.dropbox.componentbox.kit.ComponentBoxKit
 
 @Composable
 internal fun ContainedButton.containedButton(kit: ComponentBoxKit) {
@@ -19,7 +19,7 @@ internal fun ContainedButton.containedButton(kit: ComponentBoxKit) {
         modifier = kit.converter.modifier(modifier),
         colors = colors,
         onClick = {
-            kit.eventHandler(events?.onClick)
+            kit.eventHandler.handle(events?.onClick)
         }
     ) {
         components?.forEach { component ->

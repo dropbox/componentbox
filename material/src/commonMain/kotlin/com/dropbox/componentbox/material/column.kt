@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import com.dropbox.componentbox.component.Column
 import com.dropbox.componentbox.component.LazyColumn
-import com.dropbox.componentbox.ui.ComponentBoxKit
+import com.dropbox.componentbox.kit.ComponentBoxKit
 
 @Composable
 internal fun Column.column(kit: ComponentBoxKit) {
