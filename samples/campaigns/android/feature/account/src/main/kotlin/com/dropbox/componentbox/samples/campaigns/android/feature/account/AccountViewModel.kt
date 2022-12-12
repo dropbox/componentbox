@@ -20,6 +20,7 @@ data class AccountCampaigns(
 
 data class User(
     val name: String,
+    val email: String,
     val avatarUrl: String,
 )
 
@@ -95,7 +96,7 @@ class AccountViewModel(initialState: AccountState = AccountState()) : ViewModel<
         }
     }
 
-    private fun fetchUser(): User = User("Tag", "https://i.imgur.com/ALgZy8X.jpg")
+    private fun fetchUser(): User = User("Tag", "tag@dropbox.com", "https://i.imgur.com/ALgZy8X.jpg")
     private fun fetchPlan(): Plan = Plan.Basic
     private fun fetchSpaceUsage(): SpaceUsage = SpaceUsage(500, 2000)
     private fun fetchDeviceUsage() = DeviceUsage(

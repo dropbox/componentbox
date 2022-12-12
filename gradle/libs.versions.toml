@@ -5,6 +5,7 @@ android-compile-sdk = "33"
 android-target-sdk = "33"
 anvil-gradle-plugin = "2.4.2"
 atomic-fu = "0.18.5"
+coil-compose = "1.3.2"
 compose-androidx = "1.3.0-beta02"
 compose-compiler = "1.3.0"
 compose-jetbrains = "1.3.0-beta04-dev873"
@@ -29,6 +30,8 @@ kotlinx-atomic-fu = { group = "org.jetbrains.kotlinx", name = "atomicfu", versio
 kotlinx-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil-compose" }
 
 compose-compiler = { group = "androidx.compose.compiler", name = "compiler", version.ref = "compose-compiler" }
 compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose-androidx" }

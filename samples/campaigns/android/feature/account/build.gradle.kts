@@ -41,6 +41,7 @@ dependencies {
     implementation(libs.compose.ui)
     implementation(libs.androidx.viewmodel)
     implementation(libs.androidx.viewmodel.compose)
+    implementation(libs.coil.compose)
     implementation(project(":componentbox"))
     implementation(project(":kit"))
     implementation(project(":material"))
