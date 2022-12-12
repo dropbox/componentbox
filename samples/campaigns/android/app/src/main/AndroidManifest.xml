@@ -7,7 +7,8 @@
 
     <application
         android:name="com.dropbox.componentbox.samples.campaigns.android.app.CampaignsApp"
-        android:label="Component Box Sample"
+        android:label="Component Box"
+        android:icon="@mipmap/ic_launcher"
         android:networkSecurityConfig="@xml/network_security_config">
 
         <activity

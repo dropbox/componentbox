@@ -25,10 +25,10 @@ data class User(
 )
 
 data class SpaceUsage(
-    val bytesUsed: Int,
-    val bytesTotal: Int
+    val bytesUsed: Float,
+    val bytesTotal: Float
 ) {
-    val percentageUsed = bytesUsed / bytesTotal
+    val percentageUsed = bytesUsed.div(bytesTotal).times(100f)
 }
 
 
@@ -98,7 +98,7 @@ class AccountViewModel(initialState: AccountState = AccountState()) : ViewModel<
 
     private fun fetchUser(): User = User("Tag", "tag@dropbox.com", "https://i.imgur.com/ALgZy8X.jpg")
     private fun fetchPlan(): Plan = Plan.Basic
-    private fun fetchSpaceUsage(): SpaceUsage = SpaceUsage(500, 2000)
+    private fun fetchSpaceUsage(): SpaceUsage = SpaceUsage(500f, 2000f)
     private fun fetchDeviceUsage() = DeviceUsage(
         3, 3, listOf(
             LinkedDevice("Tag's M1", LinkedDevice.Platform.Desktop),

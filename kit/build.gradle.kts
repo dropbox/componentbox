@@ -12,6 +12,10 @@ group = "com.dropbox.componentbox"
 kotlin {
     android()
     ios()
+    js {
+        browser()
+        binaries.executable()
+    }
 
     sourceSets {
         val commonMain by getting {
@@ -27,6 +31,7 @@ kotlin {
 }
 
 android {
+    namespace = "com.dropbox.componentbox.kit"
     val minSdk = libs.versions.android.min.sdk.get()
     compileSdk = minSdk.toInt()
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")

@@ -60,7 +60,8 @@ kotlin {
 
 android {
 
-    compileSdk = 33
+    val minSdk = libs.versions.android.min.sdk.get()
+    compileSdk = minSdk.toInt()
 
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()

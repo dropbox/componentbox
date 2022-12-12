@@ -1,6 +1,6 @@
 [versions]
 activity-compose = "1.4.0-beta01"
-android-min-sdk = "24"
+android-min-sdk = "27"
 android-compile-sdk = "33"
 android-target-sdk = "33"
 anvil-gradle-plugin = "2.4.2"
