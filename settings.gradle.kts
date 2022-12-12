@@ -22,4 +22,4 @@ rootProject.name = "componentbox"
 include(":componentbox")
 include(":kit")
 include(":material")
-include(":model")
+include(":zipline")
