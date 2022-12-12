@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 inline fun <reified Service : ComponentBoxService<Model, State>, Model : ComponentBoxModel<State>, State : ComponentBoxState> componentBoxModelStateFlow(
     coroutineScope: CoroutineScope,
     ziplineLoader: ZiplineLoader,
-    serviceCoordinates: ServiceCoordinates,
+    ziplineMetadata: ZiplineMetadata,
     noinline initializer: (Zipline) -> Unit = {}
 ): StateFlow<Model?> {
     val model = MutableStateFlow<Model?>(null)
@@ -20,8 +20,8 @@ inline fun <reified Service : ComponentBoxService<Model, State>, Model : Compone
     coroutineScope.launch(coroutineScope.coroutineContext + SupervisorJob()) {
         var job: Job? = null
 
-        val zipline = ziplineLoader.loadOnce(serviceCoordinates.applicationName, serviceCoordinates.manifestUrl, initializer = initializer).zipline
-        val service = zipline.take<Service>(serviceCoordinates.serviceName)
+        val zipline = ziplineLoader.loadOnce(ziplineMetadata.applicationName, ziplineMetadata.manifestUrl, initializer = initializer).zipline
+        val service = zipline.take<Service>(ziplineMetadata.serviceName)
 
         val loadModel = launch {
             model.value = service.load(service.componentBoxUrl)

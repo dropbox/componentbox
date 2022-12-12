@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.flow
 @Composable
 inline fun <reified Service : ComponentBoxService<Model, State>, Model : ComponentBoxModel<State>, State : ComponentBoxState, Event : ComponentBoxEvent> ComponentBoxStateFlow(
     initialState: State,
-    noinline serviceCoordinatesFetcher: suspend () -> ServiceCoordinates,
+    noinline ziplineMetadataFetcher: suspend () -> ZiplineMetadata,
     key: Any? = null,
     events: Flow<Event> = flow { },
     coroutineScope: CoroutineScope = rememberCoroutineScope(),
@@ -28,8 +28,8 @@ inline fun <reified Service : ComponentBoxService<Model, State>, Model : Compone
         if (loadingState != null) {
             stateFlow.value = loadingState
         }
-        val coordinates = serviceCoordinatesFetcher.invoke()
-        val controller = com.dropbox.componentbox.zipline.componentBoxController(serviceCoordinates = coordinates, coroutineScope = coroutineScope)
+        val coordinates = ziplineMetadataFetcher.invoke()
+        val controller = com.dropbox.componentbox.zipline.componentBoxController(ziplineMetadata = coordinates, coroutineScope = coroutineScope)
         modelStateFlow.value = controller.model<Service, Model, State>().value
     }
 

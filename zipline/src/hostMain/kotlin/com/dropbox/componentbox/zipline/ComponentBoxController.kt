@@ -13,7 +13,7 @@ expect class ComponentBoxController {
 }
 
 expect fun componentBoxController(
-    serviceCoordinates: ServiceCoordinates,
+    ziplineMetadata: ZiplineMetadata,
     dispatcher: CoroutineDispatcher = Dispatchers.Default,
     coroutineScope: CoroutineScope = CoroutineScope(dispatcher)
 ): com.dropbox.componentbox.zipline.ComponentBoxController

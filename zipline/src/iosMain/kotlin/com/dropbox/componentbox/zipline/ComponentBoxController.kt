@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.StateFlow
 import platform.Foundation.NSURLSession
 
 actual class ComponentBoxController(
-    val serviceCoordinates: ServiceCoordinates,
+    val ziplineMetadata: ZiplineMetadata,
     private val dispatcher: CoroutineDispatcher = Dispatchers.Default,
     val coroutineScope: CoroutineScope = CoroutineScope(dispatcher),
 ) {
@@ -28,14 +28,14 @@ actual class ComponentBoxController(
     ): StateFlow<Model?> = componentBoxModelStateFlow<Service, Model, State>(
         coroutineScope = coroutineScope,
         ziplineLoader = ziplineLoader,
-        serviceCoordinates = serviceCoordinates,
+        ziplineMetadata = ziplineMetadata,
         initializer = initializer
     )
 }
 
 actual fun componentBoxController(
-    serviceCoordinates: ServiceCoordinates,
+    ziplineMetadata: ZiplineMetadata,
     dispatcher: CoroutineDispatcher,
     coroutineScope: CoroutineScope
 ): com.dropbox.componentbox.zipline.ComponentBoxController =
-    com.dropbox.componentbox.zipline.ComponentBoxController(serviceCoordinates, dispatcher, coroutineScope)
+    com.dropbox.componentbox.zipline.ComponentBoxController(ziplineMetadata, dispatcher, coroutineScope)

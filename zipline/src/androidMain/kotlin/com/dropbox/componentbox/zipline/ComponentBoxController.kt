@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.StateFlow
 import okhttp3.OkHttpClient
 
 actual class ComponentBoxController(
-    val serviceCoordinates: ServiceCoordinates,
+    val ziplineMetadata: ZiplineMetadata,
     private val coroutineDispatcher: CoroutineDispatcher = Dispatchers.Default,
     val coroutineScope: CoroutineScope = CoroutineScope(coroutineDispatcher),
 ) {
@@ -28,13 +28,13 @@ actual class ComponentBoxController(
     ): StateFlow<Model?> = componentBoxModelStateFlow<Service, Model, State>(
         coroutineScope = coroutineScope,
         ziplineLoader = ziplineLoader,
-        serviceCoordinates = serviceCoordinates,
+        ziplineMetadata = ziplineMetadata,
         initializer = initializer
     )
 }
 
 actual fun componentBoxController(
-    serviceCoordinates: ServiceCoordinates,
+    ziplineMetadata: ZiplineMetadata,
     dispatcher: CoroutineDispatcher,
     coroutineScope: CoroutineScope
-): ComponentBoxController = ComponentBoxController(serviceCoordinates, dispatcher, coroutineScope)
+): ComponentBoxController = ComponentBoxController(ziplineMetadata, dispatcher, coroutineScope)
