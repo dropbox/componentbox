@@ -4,6 +4,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("com.vanniktech.maven.publish.base")
+    id("app.cash.zipline")
 }
 
 group = "com.dropbox.componentbox"
@@ -28,7 +29,7 @@ kotlin {
         val hostMain by creating {
             dependsOn(commonMain)
             dependencies {
-                api(libs.zipline.loader)
+                implementation(libs.zipline.loader)
             }
         }
 
@@ -47,8 +48,10 @@ kotlin {
 }
 
 android {
-    val minSdk = libs.versions.android.min.sdk.get()
-    compileSdk = minSdk.toInt()
+    compileSdk = libs.versions.android.compile.sdk.get().toInt()
+    defaultConfig {
+        minSdk = libs.versions.android.min.sdk.get().toInt()
+    }
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
 }
 
@@ -56,3 +59,5 @@ mavenPublishing {
     publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.S01)
     signAllPublications()
 }
+
+tasks.withType(org.jetbrains.kotlin.gradle.targets.js.dukat.DukatTask::class) { enabled = false }

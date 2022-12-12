@@ -32,8 +32,10 @@ kotlin {
 
 android {
     namespace = "com.dropbox.componentbox.kit"
-    val minSdk = libs.versions.android.min.sdk.get()
-    compileSdk = minSdk.toInt()
+    compileSdk = libs.versions.android.compile.sdk.get().toInt()
+    defaultConfig {
+        minSdk = libs.versions.android.min.sdk.get().toInt()
+    }
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
 }
 

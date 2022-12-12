@@ -8,8 +8,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.StateFlow
 
 expect class ComponentBoxController {
-    inline fun <reified Service : ComponentBoxService<Model, State>, Model : ComponentBoxModel<State, Event>, State : ComponentBoxState, Event : ComponentBoxEvent> model(
-        noinline initializer: (Zipline) -> Unit = {}
+    inline fun <reified Service : ComponentBoxService<Model, State, Event>, Model : ComponentBoxModel<State, Event>, State : ComponentBoxState, Event : ComponentBoxEvent> model(
+        noinline ziplineInitializer: (Zipline) -> Unit = {}
     ): StateFlow<Model?>
 }
 

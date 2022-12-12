@@ -24,13 +24,13 @@ actual class ComponentBoxController(
         urlSession = urlSession
     )
 
-    actual inline fun <reified Service : ComponentBoxService<Model, State>, Model : ComponentBoxModel<State, Event>, State : ComponentBoxState, Event : ComponentBoxEvent> model(
-        noinline initializer: (Zipline) -> Unit
-    ): StateFlow<Model?> = componentBoxModelStateFlow<Service, Model, State>(
+    actual inline fun <reified Service : ComponentBoxService<Model, State, Event>, Model : ComponentBoxModel<State, Event>, State : ComponentBoxState, Event : ComponentBoxEvent> model(
+        noinline ziplineInitializer: (Zipline) -> Unit
+    ): StateFlow<Model?> = componentBoxModelStateFlow<Service, Model, State, Event>(
         coroutineScope = coroutineScope,
         ziplineLoader = ziplineLoader,
         ziplineMetadata = ziplineMetadata,
-        initializer = initializer
+        ziplineInitializer = ziplineInitializer
     )
 }
 

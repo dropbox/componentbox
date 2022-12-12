@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface ComponentBoxService<Model : ComponentBoxModel<State, Event>, State : ComponentBoxState, Event : ComponentBoxEvent> : ZiplineService {
     val componentBoxUrls: Flow<String>
-    suspend fun load(manifestUrl: String): Model
+    suspend fun load(): Model
 }

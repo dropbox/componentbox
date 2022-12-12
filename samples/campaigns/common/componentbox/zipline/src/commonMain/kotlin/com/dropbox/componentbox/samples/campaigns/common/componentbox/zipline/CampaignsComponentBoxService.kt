@@ -17,4 +17,4 @@ sealed class CampaignsComponentBoxEvent : ComponentBoxEvent {
 
 interface CampaignsComponentBoxModel : ComponentBoxModel<CampaignsComponentBoxState, CampaignsComponentBoxEvent>
 
-interface CampaignsComponentBoxService : ComponentBoxService<CampaignsComponentBoxModel, CampaignsComponentBoxState, CampaignsComponentBoxEvent>
+typealias CampaignsComponentBoxService = ComponentBoxService<CampaignsComponentBoxModel, CampaignsComponentBoxState, CampaignsComponentBoxEvent>

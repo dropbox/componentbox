@@ -7,5 +7,5 @@ class RealCampaignsComponentBoxService : CampaignsComponentBoxService {
         emit("https://api.componentbox.io/samples/campaigns/componentbox/1")
     }
 
-    override suspend fun load(manifestUrl: String): CampaignsComponentBoxModel = RealCampaignsComponentBoxModel(componentBoxUrls)
+    override suspend fun load(): CampaignsComponentBoxModel = RealCampaignsComponentBoxModel(componentBoxUrls)
 }

@@ -60,11 +60,14 @@ kotlin {
 
 android {
 
-    val minSdk = libs.versions.android.min.sdk.get()
-    compileSdk = minSdk.toInt()
+    compileSdk = libs.versions.android.compile.sdk.get().toInt()
 
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
+    }
+
+    defaultConfig {
+        minSdk = libs.versions.android.min.sdk.get().toInt()
     }
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")

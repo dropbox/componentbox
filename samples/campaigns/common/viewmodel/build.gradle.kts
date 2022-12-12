@@ -18,9 +18,9 @@ kotlin {
                 implementation(compose.material)
                 implementation(compose.ui)
                 implementation(project(":componentbox"))
-                implementation(project(":kit"))
                 implementation(project(":material"))
                 implementation(project(":zipline"))
+                implementation(libs.zipline.zipline)
             }
         }
 
@@ -34,8 +34,10 @@ kotlin {
 
 
 android {
-    val minSdk = libs.versions.android.min.sdk.get()
-    compileSdk = minSdk.toInt()
+    compileSdk = libs.versions.android.compile.sdk.get().toInt()
+    defaultConfig {
+        minSdk = libs.versions.android.min.sdk.get().toInt()
+    }
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
 
 
