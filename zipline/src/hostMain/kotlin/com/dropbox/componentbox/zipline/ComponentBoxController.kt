@@ -16,4 +16,4 @@ expect fun componentBoxController(
     ziplineMetadata: ZiplineMetadata,
     dispatcher: CoroutineDispatcher = Dispatchers.Default,
     coroutineScope: CoroutineScope = CoroutineScope(dispatcher)
-): com.dropbox.componentbox.zipline.ComponentBoxController
+): ComponentBoxController

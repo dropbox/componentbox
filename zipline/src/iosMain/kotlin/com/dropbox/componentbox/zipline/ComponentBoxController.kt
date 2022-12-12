@@ -37,5 +37,4 @@ actual fun componentBoxController(
     ziplineMetadata: ZiplineMetadata,
     dispatcher: CoroutineDispatcher,
     coroutineScope: CoroutineScope
-): com.dropbox.componentbox.zipline.ComponentBoxController =
-    com.dropbox.componentbox.zipline.ComponentBoxController(ziplineMetadata, dispatcher, coroutineScope)
+): ComponentBoxController = ComponentBoxController(ziplineMetadata, dispatcher, coroutineScope)

@@ -29,7 +29,7 @@ inline fun <reified Service : ComponentBoxService<Model, State>, Model : Compone
             stateFlow.value = loadingState
         }
         val coordinates = ziplineMetadataFetcher.invoke()
-        val controller = com.dropbox.componentbox.zipline.componentBoxController(ziplineMetadata = coordinates, coroutineScope = coroutineScope)
+        val controller = componentBoxController(ziplineMetadata = coordinates, coroutineScope = coroutineScope)
         modelStateFlow.value = controller.model<Service, Model, State>().value
     }
 
