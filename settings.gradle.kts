@@ -23,3 +23,7 @@ include(":componentbox")
 include(":kit")
 include(":material")
 include(":zipline")
+
+include(":samples:campaigns:android:app")
+include(":samples:campaigns:android:feature:account")
+include(":samples:campaigns:common:viewmodel")

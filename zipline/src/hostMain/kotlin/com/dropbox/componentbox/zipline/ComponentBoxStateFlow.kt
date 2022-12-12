@@ -1,43 +1,24 @@
 package com.dropbox.componentbox.zipline
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.rememberCoroutineScope
 import com.dropbox.componentbox.foundation.ComponentBoxEvent
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flow
 
-@Composable
+@Suppress("FunctionName")
 inline fun <reified Service : ComponentBoxService<Model, State>, Model : ComponentBoxModel<State>, State : ComponentBoxState, Event : ComponentBoxEvent> ComponentBoxStateFlow(
     initialState: State,
     noinline ziplineMetadataFetcher: suspend () -> ZiplineMetadata,
-    key: Any? = null,
     events: Flow<Event> = flow { },
-    coroutineScope: CoroutineScope = rememberCoroutineScope(),
+    coroutineDispatcher: CoroutineDispatcher = Dispatchers.Default,
+    coroutineScope: CoroutineScope = CoroutineScope(coroutineDispatcher),
     loadingState: State? = null,
-): StateFlow<State> {
-    val stateFlow = MutableStateFlow(initialState)
-
-    val modelStateFlow = MutableStateFlow<Model?>(null)
-
-    LaunchedEffect(key) {
-        if (loadingState != null) {
-            stateFlow.value = loadingState
-        }
-        val coordinates = ziplineMetadataFetcher.invoke()
-        val controller = componentBoxController(ziplineMetadata = coordinates, coroutineScope = coroutineScope)
-        modelStateFlow.value = controller.model<Service, Model, State>().value
-    }
-
-    val model = modelStateFlow.collectAsState().value
-
-    if (model != null) {
-        stateFlow.value = modelStateFlow.value!!.present(events).value
-    }
-
-    return stateFlow
-}
+): StateFlow<State> = RealComponentBoxStateFlow<Model, State, Event>(
+    initialState = initialState,
+    ziplineMetadataFetcher = ziplineMetadataFetcher,
+    coroutineScope = coroutineScope,
+    loadingState = loadingState
+).launch<Service>(events)
