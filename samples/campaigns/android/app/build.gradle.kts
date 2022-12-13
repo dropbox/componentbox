@@ -44,6 +44,5 @@ dependencies {
     implementation(project(":componentbox"))
     implementation(project(":kit"))
     implementation(project(":material"))
-    implementation(project(":zipline"))
     implementation(project(":samples:campaigns:android:feature:account"))
 }

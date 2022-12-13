@@ -19,7 +19,6 @@ kotlin {
                 implementation(compose.ui)
                 implementation(project(":componentbox"))
                 implementation(project(":material"))
-                implementation(project(":zipline"))
                 implementation(libs.zipline.zipline)
             }
         }

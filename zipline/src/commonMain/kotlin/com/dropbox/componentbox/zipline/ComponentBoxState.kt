@@ -1,3 +1,0 @@
-package com.dropbox.componentbox.zipline
-
-interface ComponentBoxState

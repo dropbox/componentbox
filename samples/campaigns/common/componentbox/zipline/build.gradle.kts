@@ -24,7 +24,6 @@ kotlin {
                 implementation(compose.ui)
                 implementation(libs.zipline.zipline)
                 implementation(project(":componentbox"))
-                implementation(project(":zipline"))
             }
         }
 
@@ -32,6 +31,7 @@ kotlin {
             dependsOn(commonMain)
             dependencies {
                 api(libs.zipline.loader)
+                api(libs.okio.core)
             }
         }
 
@@ -39,6 +39,7 @@ kotlin {
             dependsOn(hostMain)
             dependencies {
                 api(libs.androidx.viewmodel)
+                implementation(libs.okHttp.core)
             }
         }
 
