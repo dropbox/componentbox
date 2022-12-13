@@ -17,9 +17,9 @@ actual abstract class ViewModel<State : Any, Event : Any>(
 
     protected actual abstract fun onEvent(event: Event)
 
-    protected fun setState(state: State) {
+    protected actual fun setState(state: State) {
         stateFlow.value = state
     }
 
-    protected fun withState(block: (state: State) -> Unit) = block(state.value)
+    protected actual fun withState(block: (state: State) -> Unit) = block(state.value)
 }

@@ -1,7 +1,6 @@
 package com.dropbox.componentbox.samples.campaigns.common.componentbox.zipline
 
 import app.cash.zipline.Zipline
-import com.dropbox.componentbox.foundation.ComponentBoxEvent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -10,18 +9,18 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flow
 
 @Suppress("FunctionName")
-inline fun <reified Service : ComponentBoxService<Model, State, Event>, Model : ComponentBoxModel<State, Event>, State : ComponentBoxState, Event : ComponentBoxEvent> ComponentBoxStateFlow(
-    initialState: State,
-    noinline ziplineMetadataFetcher: suspend () -> ZiplineMetadata,
-    noinline ziplineInitializer: (zipline: Zipline) -> Unit,
-    events: Flow<Event> = flow { },
+fun CampaignsComponentBoxStateFlow(
+    initialState: CampaignsComponentBoxState,
+    ziplineMetadataFetcher: suspend () -> ZiplineMetadata,
+    ziplineInitializer: (Zipline) -> Unit,
+    events: Flow<CampaignsComponentBoxEvent> = flow { },
     coroutineDispatcher: CoroutineDispatcher = Dispatchers.Default,
     coroutineScope: CoroutineScope = CoroutineScope(coroutineDispatcher),
-    loadingState: State? = null,
-): StateFlow<State> = RealComponentBoxStateFlow<Model, State, Event>(
+    loadingState: CampaignsComponentBoxState? = null,
+): StateFlow<CampaignsComponentBoxState> = RealCampaignsComponentBoxStateFlow(
     initialState = initialState,
     ziplineMetadataFetcher = ziplineMetadataFetcher,
     ziplineInitializer = ziplineInitializer,
     coroutineScope = coroutineScope,
     loadingState = loadingState
-).launch<Service>(events)
+).launch(events)

@@ -10,7 +10,6 @@ group = "com.dropbox.componentbox.samples.campaigns"
 
 kotlin {
     android()
-    ios()
 
     sourceSets {
         val commonMain by getting {
@@ -18,6 +17,7 @@ kotlin {
                 implementation(compose.material)
                 implementation(compose.ui)
                 implementation(project(":componentbox"))
+                implementation(project(":samples:campaigns:common:componentbox:zipline"))
                 implementation(project(":material"))
                 implementation(libs.zipline.zipline)
             }

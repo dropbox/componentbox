@@ -3,8 +3,8 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("org.jetbrains.compose")
     id("app.cash.zipline")
+    kotlin("plugin.serialization")
 }
 
 group = "com.dropbox.componentbox.samples.campaigns"
@@ -15,14 +15,13 @@ kotlin {
         browser()
         binaries.executable()
     }
-    ios()
+    jvm()
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(compose.material)
-                implementation(compose.ui)
-                implementation(libs.zipline.zipline)
+                implementation(libs.kotlinx.serialization.core)
+                api(libs.zipline.zipline)
                 implementation(project(":componentbox"))
             }
         }
@@ -30,7 +29,7 @@ kotlin {
         val hostMain by creating {
             dependsOn(commonMain)
             dependencies {
-                api(libs.zipline.loader)
+                implementation(libs.zipline.loader)
                 api(libs.okio.core)
             }
         }
@@ -41,10 +40,6 @@ kotlin {
                 api(libs.androidx.viewmodel)
                 implementation(libs.okHttp.core)
             }
-        }
-
-        val iosMain by getting {
-            dependsOn(hostMain)
         }
     }
 }
@@ -57,14 +52,7 @@ android {
     }
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
 
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
-    }
+    namespace = "com.dropbox.componentbox.samples.campaigns.common.componentbox.zipline"
 
 }
 

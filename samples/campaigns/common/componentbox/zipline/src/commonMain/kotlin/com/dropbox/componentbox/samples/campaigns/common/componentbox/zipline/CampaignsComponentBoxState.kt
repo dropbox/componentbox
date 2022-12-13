@@ -1,10 +1,10 @@
 package com.dropbox.componentbox.samples.campaigns.common.componentbox.zipline
 
+import com.dropbox.componentbox.ComponentBox
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ZiplineMetadata(
-    val manifestUrl: String,
-    val serviceName: String,
-    val applicationName: String
+data class CampaignsComponentBoxState(
+    val componentBox: ComponentBox? = null
 )
+
