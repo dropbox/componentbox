@@ -18,6 +18,7 @@ class RealCampaignsComponentBoxStateFlow(
 
     private val stateFlow = MutableStateFlow(initialState)
     private val modelStateFlow = MutableStateFlow<CampaignsComponentBoxModel?>(null)
+    private var count = 0
 
     fun launch(events: Flow<CampaignsComponentBoxEvent>): StateFlow<CampaignsComponentBoxState> =
         stateFlow.also { launchModels() }.also { subscribeToModels(events) }
@@ -26,6 +27,9 @@ class RealCampaignsComponentBoxStateFlow(
         if (loadingState != null) {
             stateFlow.value = loadingState
         }
+
+        count++
+        println("LAUNCHING $count")
 
         val metadata = ziplineMetadataFetcher.invoke()
         val controller =

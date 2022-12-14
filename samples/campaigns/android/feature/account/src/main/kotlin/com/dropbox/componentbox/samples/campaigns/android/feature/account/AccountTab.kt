@@ -9,6 +9,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -19,9 +20,18 @@ import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 
 @Composable
-fun AccountTab(viewModel: AccountViewModel = viewModel()) {
+fun AccountTab(
+    viewModel: AccountViewModel = viewModel(),
+    campaignsViewModel: AccountTabCampaignsViewModel = AccountTabCampaignsViewModel(),
+) {
+
+    LaunchedEffect(campaignsViewModel) {
+        campaignsViewModel.present()
+    }
 
     val state = viewModel.state.collectAsState()
+    val campaignsState = campaignsViewModel.state.collectAsState()
+
 
 
     Column {
@@ -41,6 +51,8 @@ fun AccountTab(viewModel: AccountViewModel = viewModel()) {
 
             is AccountViewState.Success -> {
                 Text("Account Tab - Success")
+
+                Text("Campaigns State - ${campaignsState.value.componentBox.toString()}")
 
                 with(viewState.user) {
                     Text("User", style = MaterialTheme.typography.h5)

@@ -17,7 +17,7 @@ kotlin {
                 implementation(compose.material)
                 implementation(compose.ui)
                 implementation(project(":componentbox"))
-                implementation(project(":samples:campaigns:common:componentbox:zipline"))
+                api(project(":samples:campaigns:common:componentbox:zipline"))
                 implementation(project(":material"))
                 implementation(libs.zipline.zipline)
             }
