@@ -24,8 +24,11 @@ fun campaignsComponentBoxModelStateFlow(
         val ziplineResult = ziplineLoader.loadOnce(ziplineMetadata.applicationName, ziplineMetadata.manifestUrl, initializer = ziplineInitializer)
         if (ziplineResult is LoadResult.Success) {
             val service = ziplineResult.zipline.take<CampaignsComponentBoxService>(ziplineMetadata.serviceName)
-            val loadModel = launch { service.loadComponentBoxModel().collect { model.value = it } }
-            job = loadModel
+            //   val loadModel = launch { service.loadComponentBoxModel().collect { model.value = it } }
+            //   job = loadModel
+
+
+            launch { model.value = FakeCampaignsComponentBoxModel() }
         }
 
     }

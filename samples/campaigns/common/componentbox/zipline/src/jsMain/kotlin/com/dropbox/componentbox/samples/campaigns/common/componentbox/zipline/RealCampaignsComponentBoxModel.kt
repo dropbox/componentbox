@@ -17,7 +17,7 @@ class RealCampaignsComponentBoxModel(private val componentBoxUrls: Flow<String?>
     private val componentBoxFlow = MutableStateFlow<ComponentBox?>(null)
     private val coroutineScope = CoroutineScope(Dispatchers.Default)
 
-    override fun present(events: Flow<CampaignsComponentBoxEvent?>): StateFlow<CampaignsComponentBoxState> = stateFlow
+    override fun present(events: Flow<CampaignsComponentBoxEvent>): StateFlow<CampaignsComponentBoxState> = stateFlow
         .also { launchComponentBox() }
         .also { componentBoxFlow.subscribe() }
         .also { events.subscribe() }

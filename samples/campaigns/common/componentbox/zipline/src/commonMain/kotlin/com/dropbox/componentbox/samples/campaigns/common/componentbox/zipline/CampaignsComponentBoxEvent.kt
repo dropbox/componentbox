@@ -5,5 +5,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 sealed class CampaignsComponentBoxEvent : ComponentBoxEvent {
+    @Serializable
     object Dismiss : CampaignsComponentBoxEvent()
 }

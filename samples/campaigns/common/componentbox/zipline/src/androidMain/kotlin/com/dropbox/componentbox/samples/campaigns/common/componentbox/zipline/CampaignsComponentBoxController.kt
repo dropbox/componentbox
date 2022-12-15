@@ -4,6 +4,7 @@ import app.cash.zipline.Call
 import app.cash.zipline.CallResult
 import app.cash.zipline.EventListener
 import app.cash.zipline.Zipline
+import app.cash.zipline.ZiplineService
 import app.cash.zipline.loader.ManifestVerifier
 import app.cash.zipline.loader.ZiplineLoader
 import kotlinx.coroutines.CoroutineDispatcher
@@ -52,6 +53,31 @@ class DbxEventListener : EventListener() {
     override fun applicationLoadSuccess(applicationName: String, manifestUrl: String?, zipline: Zipline, startValue: Any?) {
         println("APPLICATION LOAD SUCCESS ==== $manifestUrl")
         super.applicationLoadSuccess(applicationName, manifestUrl, zipline, startValue)
+    }
+
+    override fun ziplineClosed(zipline: Zipline) {
+        println("ZIPLINE CLOSED === $zipline")
+        super.ziplineClosed(zipline)
+    }
+
+    override fun bindService(zipline: Zipline, name: String, service: ZiplineService) {
+        println("BIND SERVICE ==== $zipline --- $name --- $service")
+        super.bindService(zipline, name, service)
+    }
+
+    override fun ziplineCreated(zipline: Zipline) {
+        println("ZIPLINE CREATED === $zipline")
+        super.ziplineCreated(zipline)
+    }
+
+    override fun takeService(zipline: Zipline, name: String, service: ZiplineService) {
+        println("TAKE SERVICE === $zipline --- $name --- $service")
+        super.takeService(zipline, name, service)
+    }
+
+    override fun moduleLoadEnd(zipline: Zipline, moduleId: String, startValue: Any?) {
+        println("MODULE LOAD END === $zipline --- $moduleId")
+        super.moduleLoadEnd(zipline, moduleId, startValue)
     }
 }
 

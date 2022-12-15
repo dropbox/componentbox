@@ -14,6 +14,7 @@ android {
     defaultConfig {
         minSdk = libs.versions.android.min.sdk.get().toInt()
         targetSdkVersion(libs.versions.android.target.sdk.get())
+        namespace = "com.dropbox.componentbox.samples.campaigns.android.feature.account"
     }
 
     compileOptions {

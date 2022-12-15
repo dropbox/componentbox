@@ -1,6 +1,5 @@
 package com.dropbox.componentbox.samples.campaigns.common.componentbox.zipline
 
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class RealCampaignsComponentBoxService : CampaignsComponentBoxService {
@@ -8,5 +7,5 @@ class RealCampaignsComponentBoxService : CampaignsComponentBoxService {
         emit("https://api.componentbox.io/samples/campaigns/componentbox/1")
     }
 
-    override fun loadComponentBoxModel(): Flow<CampaignsComponentBoxModel> = flow { emit(RealCampaignsComponentBoxModel(flowOfComponentBoxUrls())) }
+//    override fun loadComponentBoxModel(): Flow<CampaignsComponentBoxModel> = flow { emit(RealCampaignsComponentBoxModel(flowOfComponentBoxUrls())) }
 }

@@ -12,7 +12,7 @@ class AccountTabCampaignsViewModel(initialState: CampaignsComponentBoxState = Ca
     override suspend fun ziplineMetadataFetcher(): ZiplineMetadata = ZiplineMetadata(
         manifestUrl = "http://10.0.2.2:8080/manifest.zipline.json",
         serviceName = "CampaignsComponentBoxService",
-        applicationName = "CampaignsApp"
+        applicationName = "com.dropbox.componentbox.samples.campaigns"
     )
 
     override fun ziplineInitializer(zipline: Zipline) {}

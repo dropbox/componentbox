@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface CampaignsComponentBoxService : ZiplineService {
     fun flowOfComponentBoxUrls(): Flow<String>
-    fun loadComponentBoxModel(): Flow<CampaignsComponentBoxModel>
+//    fun loadComponentBoxModel(): Flow<CampaignsComponentBoxModel>
 }

@@ -21,8 +21,8 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(libs.kotlinx.serialization.core)
-                api(libs.zipline.zipline)
                 implementation(project(":componentbox"))
+                api(libs.zipline.zipline)
             }
         }
 
