@@ -22,13 +22,7 @@ class RealCampaignsComponentBoxStateFlow(
     private var count = 0
 
     fun launch(events: Flow<CampaignsComponentBoxEvent>): StateFlow<CampaignsComponentBoxState> =
-        stateFlow.also {
-            println("LAUNCHING MODELS")
-            launchModels()
-        }.also {
-            println("SUBSCRIBING MODELS")
-            subscribeToModels(events)
-        }
+        stateFlow.also { launchModels() }.also { subscribeToModels(events) }
 
     private fun launchModels() = coroutineScope.launch {
         if (loadingState != null) {
@@ -36,14 +30,12 @@ class RealCampaignsComponentBoxStateFlow(
         }
 
         count++
-        println("LAUNCHING $count")
 
         val metadata = ziplineMetadataFetcher.invoke()
         val controller =
             campaignsComponentBoxControllerOf(ziplineMetadata = metadata, coroutineDispatcher = Dispatchers.Default, coroutineScope = coroutineScope)
 
         controller.models(ziplineInitializer).collectLatest {
-            println("COLLECTING $it")
             modelStateFlow.value = it
         }
     }
@@ -52,7 +44,6 @@ class RealCampaignsComponentBoxStateFlow(
         modelStateFlow.collect { model ->
             if (model != null) {
                 val state = model.present(events).value
-                println("SETTING STATE!")
                 stateFlow.value = state
             }
         }

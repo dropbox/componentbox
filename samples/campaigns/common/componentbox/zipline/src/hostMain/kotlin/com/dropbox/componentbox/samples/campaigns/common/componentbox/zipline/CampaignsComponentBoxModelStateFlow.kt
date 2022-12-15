@@ -21,24 +21,12 @@ fun campaignsComponentBoxModelStateFlow(
     coroutineScope.launch(coroutineScope.coroutineContext + SupervisorJob()) {
         var job: Job? = null
 
-        println("TRYING TO LOAD ZIPLINE")
         val ziplineResult = ziplineLoader.loadOnce(ziplineMetadata.applicationName, ziplineMetadata.manifestUrl, initializer = ziplineInitializer)
 
-        println("ZIPLINE RESULT === $ziplineResult")
         if (ziplineResult is LoadResult.Success) {
             val service = ziplineResult.zipline.take<CampaignsComponentBoxService>(ziplineMetadata.serviceName)
-            println("SERVICE ==== $service")
-            //   val loadModel = launch { service.loadComponentBoxModel().collect { model.value = it } }
-            //   job = loadModel
-            println("HITTING IN STATEFLOW")
-
             launch { model.value = FakeCampaignsComponentBoxModel() }
-        } else if (ziplineResult is LoadResult.Failure) {
-            println("HITTING IN STATEFLOW -- FAIL")
-            println("${ziplineResult.exception}")
-
         }
-
     }
     return model
 }
