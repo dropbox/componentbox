@@ -1,6 +1,6 @@
 package com.dropbox.componentbox.component
 
-import com.dropbox.componentbox.foundation.Actions
+import com.dropbox.componentbox.foundation.Events
 import com.dropbox.componentbox.foundation.Modifier
 import com.dropbox.componentbox.impl.ComponentBoxSwitch
 
@@ -10,11 +10,11 @@ interface Switch : Component {
     companion object {
         fun of(
             modifier: Modifier? = null,
-            actions: Actions? = null,
+            events: Events? = null,
             checked: Boolean? = null,
         ): Switch = ComponentBoxSwitch(
             modifier = modifier,
-            actions = actions,
+            events = events,
             checked = checked,
         )
     }

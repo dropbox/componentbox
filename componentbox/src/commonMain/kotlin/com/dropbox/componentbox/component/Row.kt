@@ -1,6 +1,6 @@
 package com.dropbox.componentbox.component
 
-import com.dropbox.componentbox.foundation.Actions
+import com.dropbox.componentbox.foundation.Events
 import com.dropbox.componentbox.foundation.Alignment
 import com.dropbox.componentbox.foundation.Arrangement
 import com.dropbox.componentbox.foundation.Modifier
@@ -13,13 +13,13 @@ interface Row : Component.Box {
     companion object {
         fun of(
             modifier: Modifier? = null,
-            actions: Actions? = null,
+            events: Events? = null,
             components: MutableList<Component>? = null,
             horizontalArrangement: Arrangement.Horizontal? = null,
             verticalAlignment: Alignment.Vertical? = null
         ): Row = ComponentBoxRow(
             modifier = modifier,
-            actions = actions,
+            events = events,
             components = components,
             horizontalArrangement = horizontalArrangement,
             verticalAlignment = verticalAlignment

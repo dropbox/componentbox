@@ -1,3 +1,3 @@
 package com.dropbox.componentbox.foundation
 
-interface ComponentBoxAction
+interface ComponentBoxEvent

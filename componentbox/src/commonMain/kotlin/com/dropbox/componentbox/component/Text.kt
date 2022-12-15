@@ -1,6 +1,6 @@
 package com.dropbox.componentbox.component
 
-import com.dropbox.componentbox.foundation.Actions
+import com.dropbox.componentbox.foundation.Events
 import com.dropbox.componentbox.foundation.Color
 import com.dropbox.componentbox.foundation.Modifier
 import com.dropbox.componentbox.foundation.TextStyle
@@ -14,13 +14,13 @@ interface Text : Component {
     companion object {
         fun of(
             modifier: Modifier? = null,
-            actions: Actions? = null,
+            events: Events? = null,
             text: String? = null,
             color: Color? = null,
             textStyle: TextStyle? = null,
         ): Text = ComponentBoxText(
             modifier = modifier,
-            actions = actions,
+            events = events,
             text = text,
             color = color,
             textStyle = textStyle,

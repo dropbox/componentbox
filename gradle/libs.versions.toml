@@ -1,26 +1,28 @@
 [versions]
 activity-compose = "1.4.0-beta01"
-android-min-sdk = "24"
+android-min-sdk = "27"
 android-compile-sdk = "33"
 android-target-sdk = "33"
 anvil-gradle-plugin = "2.4.2"
 atomic-fu = "0.18.5"
-compose-androidx = "1.3.0-beta02"
-compose-compiler = "1.3.0"
-compose-jetbrains = "1.3.0-beta04-dev873"
-coroutines = "1.6.4"
+coil-compose = "1.3.2"
+compose-androidx = "1.3.0-alpha01"
+compose-compiler = "1.3.2"
+compose-jetbrains = "1.3.0-beta02"
+coroutines = "1.6.3-native-mt"
 dagger = "2.44"
 kmm-bridge = "0.3.2"
-kotlin = "1.7.21"
-kotlinx-serialization = "1.4.0"
+kotlin = "1.7.20"
+kotlinx-serialization = "1.4.1"
 store = "4.0.5"
 okio = "3.2.0"
 okHttp = "4.9.1"
 viewmodel = "2.6.0-alpha02"
-zipline = "0.9.4"
+zipline = "0.9.12"
 
 [libraries]
 androidx-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "viewmodel" }
+androidx-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "viewmodel" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
 
 kotlin-std-lib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
@@ -28,6 +30,8 @@ kotlinx-atomic-fu = { group = "org.jetbrains.kotlinx", name = "atomicfu", versio
 kotlinx-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil-compose" }
 
 compose-compiler = { group = "androidx.compose.compiler", name = "compiler", version.ref = "compose-compiler" }
 compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose-androidx" }

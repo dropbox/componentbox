@@ -1,6 +1,6 @@
 package com.dropbox.componentbox.component
 
-import com.dropbox.componentbox.foundation.Actions
+import com.dropbox.componentbox.foundation.Events
 import com.dropbox.componentbox.foundation.Color
 import com.dropbox.componentbox.foundation.Modifier
 import com.dropbox.componentbox.impl.ComponentBoxIcon
@@ -14,9 +14,9 @@ interface Icon<Id : Any> : Asset {
         fun <Id : Any> of(
             id: Id,
             modifier: Modifier? = null,
-            actions: Actions? = null,
+            events: Events? = null,
             color: Color? = null,
             contentDescription: String? = null
-        ): Icon<Id> = ComponentBoxIcon(id, modifier, actions, color, contentDescription)
+        ): Icon<Id> = ComponentBoxIcon(id, modifier, events, color, contentDescription)
     }
 }

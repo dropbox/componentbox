@@ -60,10 +60,14 @@ kotlin {
 
 android {
 
-    compileSdk = 33
+    compileSdk = libs.versions.android.compile.sdk.get().toInt()
 
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
+    }
+
+    defaultConfig {
+        minSdk = libs.versions.android.min.sdk.get().toInt()
     }
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")

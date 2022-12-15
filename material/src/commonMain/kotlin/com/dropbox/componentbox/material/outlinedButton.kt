@@ -4,22 +4,22 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.OutlinedButton
 import androidx.compose.runtime.Composable
 import com.dropbox.componentbox.component.OutlinedButton
-import com.dropbox.componentbox.ui.ComponentBoxKit
+import com.dropbox.componentbox.kit.ComponentBoxKit
 
 @Composable
 internal fun OutlinedButton.outlinedButton(kit: ComponentBoxKit) {
 
     val colors = if (modifier?.background != null) {
         ButtonDefaults.buttonColors(
-            backgroundColor = kit.colorTransformer(modifier!!.background!!),
+            backgroundColor = kit.converter.color(modifier!!.background!!),
         )
     } else ButtonDefaults.buttonColors()
 
     OutlinedButton(
-        modifier = kit.modifierTransformer(modifier),
+        modifier = kit.converter.modifier(modifier),
         colors = colors,
         onClick = {
-            kit.actionHandler(actions?.onClick)
+            kit.eventHandler.handle(events?.onClick)
         }
     ) {
         components?.forEach { component ->

@@ -20,14 +20,10 @@ pluginManagement {
 rootProject.name = "componentbox"
 
 include(":componentbox")
-include(":material")
 include(":kit")
+include(":material")
 
 include(":samples:campaigns:android:app")
-include(":samples:campaigns:android:common:scoping")
-include(":samples:campaigns:android:common:binding")
-include(":samples:campaigns:android:common:annotation")
-include(":samples:campaigns:android:common:codegen")
-include(":samples:campaigns:android:common:user")
 include(":samples:campaigns:android:feature:account")
-include(":samples:campaigns:xplat:componentbox")
+include(":samples:campaigns:common:componentbox:zipline")
+include(":samples:campaigns:common:viewmodel")
