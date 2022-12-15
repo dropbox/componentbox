@@ -20,7 +20,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(libs.kotlinx.serialization.core)
+                api(libs.kotlinx.serialization.core)
+                api(libs.kotlinx.coroutines.core)
                 implementation(project(":componentbox"))
                 api(libs.zipline.zipline)
             }

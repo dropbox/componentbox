@@ -7,6 +7,8 @@ import com.dropbox.componentbox.samples.campaigns.common.componentbox.zipline.Zi
 import com.dropbox.componentbox.samples.campaigns.common.viewmodel.CampaignsComponentBoxViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class AccountTabCampaignsViewModel(initialState: CampaignsComponentBoxState = CampaignsComponentBoxState()) : CampaignsComponentBoxViewModel(initialState) {
     override suspend fun ziplineMetadataFetcher(): ZiplineMetadata = ZiplineMetadata(
@@ -15,11 +17,23 @@ class AccountTabCampaignsViewModel(initialState: CampaignsComponentBoxState = Ca
         applicationName = "com.dropbox.componentbox.samples.campaigns"
     )
 
+    init {
+        listenToComponentBoxState()
+    }
+
     override fun ziplineInitializer(zipline: Zipline) {}
 
 
     private val _events = MutableSharedFlow<CampaignsComponentBoxEvent>()
     override val events: Flow<CampaignsComponentBoxEvent> = _events
+
+    fun listenToComponentBoxState() {
+        viewModelScope.launch {
+            state.collectLatest {
+                println("STATE === $it")
+            }
+        }
+    }
 
     override fun onEvent(event: CampaignsComponentBoxEvent) = when (event) {
         CampaignsComponentBoxEvent.Dismiss -> {}

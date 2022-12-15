@@ -100,12 +100,16 @@ actual class CampaignsComponentBoxController(
         eventListener = listener
     )
 
-    actual fun models(ziplineInitializer: (Zipline) -> Unit): StateFlow<CampaignsComponentBoxModel?> = campaignsComponentBoxModelStateFlow(
-        coroutineScope = coroutineScope,
-        ziplineLoader = ziplineLoader,
-        ziplineMetadata = ziplineMetadata,
-        ziplineInitializer = ziplineInitializer
-    )
+    actual fun models(ziplineInitializer: (Zipline) -> Unit): StateFlow<CampaignsComponentBoxModel?> {
+        println("HITTING IN MODELS")
+
+        return campaignsComponentBoxModelStateFlow(
+            coroutineScope = coroutineScope,
+            ziplineLoader = ziplineLoader,
+            ziplineMetadata = ziplineMetadata,
+            ziplineInitializer = ziplineInitializer
+        )
+    }
 }
 
 actual fun campaignsComponentBoxControllerOf(

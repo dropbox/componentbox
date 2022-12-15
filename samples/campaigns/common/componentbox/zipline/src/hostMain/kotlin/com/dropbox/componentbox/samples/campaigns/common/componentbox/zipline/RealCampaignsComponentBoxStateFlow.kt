@@ -6,6 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class RealCampaignsComponentBoxStateFlow(
@@ -21,7 +22,13 @@ class RealCampaignsComponentBoxStateFlow(
     private var count = 0
 
     fun launch(events: Flow<CampaignsComponentBoxEvent>): StateFlow<CampaignsComponentBoxState> =
-        stateFlow.also { launchModels() }.also { subscribeToModels(events) }
+        stateFlow.also {
+            println("LAUNCHING MODELS")
+            launchModels()
+        }.also {
+            println("SUBSCRIBING MODELS")
+            subscribeToModels(events)
+        }
 
     private fun launchModels() = coroutineScope.launch {
         if (loadingState != null) {
@@ -34,13 +41,18 @@ class RealCampaignsComponentBoxStateFlow(
         val metadata = ziplineMetadataFetcher.invoke()
         val controller =
             campaignsComponentBoxControllerOf(ziplineMetadata = metadata, coroutineDispatcher = Dispatchers.Default, coroutineScope = coroutineScope)
-        modelStateFlow.value = controller.models(ziplineInitializer).value
+
+        controller.models(ziplineInitializer).collectLatest {
+            println("COLLECTING $it")
+            modelStateFlow.value = it
+        }
     }
 
     private fun subscribeToModels(events: Flow<CampaignsComponentBoxEvent>) = coroutineScope.launch {
         modelStateFlow.collect { model ->
             if (model != null) {
                 val state = model.present(events).value
+                println("SETTING STATE!")
                 stateFlow.value = state
             }
         }

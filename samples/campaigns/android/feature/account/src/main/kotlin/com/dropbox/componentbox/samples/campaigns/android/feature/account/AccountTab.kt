@@ -26,6 +26,7 @@ fun AccountTab(
 ) {
 
     LaunchedEffect(campaignsViewModel) {
+        println("PRESENTING")
         campaignsViewModel.present()
     }
 
