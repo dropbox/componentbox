@@ -1,8 +1,10 @@
-# 🧰 Component Box
+<img src="https://user-images.githubusercontent.com/59468153/226168774-5c086794-652b-4bf9-bc67-f1dc4b86d81f.svg" alt="componentbox" width=220/>
+
+# Component Box
 
 **🚧 Under development!**
 
-**[componentbox.io](https://www.componentbox.io/)**
+**[componentbox.io](https://www.componentbox.io)**
 
 ## Snapshots
 
@@ -11,7 +13,7 @@ Snapshots are available in [Sonatype's snapshots repository](https://s01.oss.son
 ## License
 
 ```text
-Copyright (c) 2022 Dropbox, Inc.
+Copyright (c) 2023 Dropbox, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
