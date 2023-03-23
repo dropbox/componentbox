@@ -1,6 +1,0 @@
-package com.dropbox.componentbox.samples.campaigns.common.viewmodel
-
-import com.dropbox.componentbox.samples.campaigns.common.componentbox.zipline.CampaignsComponentBoxEvent
-import com.dropbox.componentbox.samples.campaigns.common.componentbox.zipline.CampaignsComponentBoxState
-
-expect abstract class CampaignsComponentBoxViewModel : ViewModel<CampaignsComponentBoxState, CampaignsComponentBoxEvent>

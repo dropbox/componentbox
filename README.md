@@ -6,9 +6,76 @@
 
 **[componentbox.io](https://www.componentbox.io)**
 
+### Sample
+
+#### Model
+
+```kotlin
+class Counter : ComposableModel<Int, String>(0) {
+    private fun increment() {
+        withState {
+            setState(state.value + 1)
+        }
+    }
+
+    private fun decrement() {
+        withState {
+            setState(state.value - 1)
+        }
+    }
+
+    override fun on(event: String) = when (event) {
+        "increment" -> increment()
+        "decrement" -> decrement()
+        else -> {}
+    }
+}
+```
+
+#### View
+
+```kotlin
+val tree = column(
+    verticalArrangement = Arrangement.SpaceEvenly(2.dp),
+    horizontalAlignment = Alignment.Start
+) {
+    val counter = Counter()
+
+    child(
+        text(
+            text = "Component Box Counter",
+            style = TextStyle(fontWeight = FontWeight.ExtraBold)
+        )
+    )
+    child(
+        text(
+            text = "Count: ${counter.state.value}",
+            style = TextStyle(color = Color.Hex("#FF0000"))
+        )
+    )
+    child(textButton(text = "+1") { counter.on("increment") })
+    child(textButton(text = "-1") { counter.on("decrement") })
+}
+```
+
+#### Binaries
+
+```shell
+./gradlew componentBoxJs --inputFile=/path/to/input/file
+```
+
+```shell
+./gradlew componentBoxWasm --inputFile=/path/to/input/file
+```
+
+```shell
+./gradlew componentBoxJson --inputFile=/path/to/input/file
+```
+
 ## Snapshots
 
-Snapshots are available in [Sonatype's snapshots repository](https://s01.oss.sonatype.org/content/repositories/snapshots/com/dropbox/componentbox/).
+Snapshots are available
+in [Sonatype's snapshots repository](https://s01.oss.sonatype.org/content/repositories/snapshots/com/dropbox/componentbox/).
 
 ## License
 

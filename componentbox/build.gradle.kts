@@ -24,6 +24,10 @@ kotlin {
     }
     ios()
 
+    wasm {
+        binaries.executable()
+    }
+
     cocoapods {
         summary = "ComponentBox"
         homepage = "https://github.com/dropbox/componentbox"
@@ -37,7 +41,7 @@ kotlin {
                 api(libs.kotlinx.serialization.core)
                 api(libs.kotlinx.serialization.json)
                 api(libs.kotlin.std.lib)
-                api(libs.kotlinx.atomic.fu)
+                api(libs.kotlinx.coroutines.core)
             }
         }
 
@@ -61,10 +65,6 @@ kotlin {
 android {
 
     compileSdk = libs.versions.android.compile.sdk.get().toInt()
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
-    }
 
     defaultConfig {
         minSdk = libs.versions.android.min.sdk.get().toInt()
