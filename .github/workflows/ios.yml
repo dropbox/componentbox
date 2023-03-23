@@ -1,8 +1,0 @@
-name: iOS
-
-on:
-  workflow_dispatch:
-
-jobs:
-  Publish:
-    uses: touchlab/KMMBridgeGithubWorkflow/.github/workflows/faktorybuildbranches.yml@v0.6
