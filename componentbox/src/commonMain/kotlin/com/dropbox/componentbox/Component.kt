@@ -22,14 +22,15 @@ fun column(
 
 fun containedButton(
     modifier: Modifier = Modifier(),
-    enabled: Boolean = false,
+    enabled: Boolean = true,
     onClick: (() -> Unit)? = null,
     backgroundColor: Color,
     contentColor: Color,
     elevation: Dp,
     shape: Shape,
-    children: Button.() -> Unit
+    children: Button.Contained.() -> Unit
 ): Component = Button.Contained(modifier, enabled, onClick, backgroundColor, contentColor, elevation, shape)
+
 
 fun lazyColumn(
     modifier: Modifier = Modifier(),
