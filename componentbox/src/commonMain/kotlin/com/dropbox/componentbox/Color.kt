@@ -21,8 +21,15 @@ sealed class Color {
      */
     data class Hex(val value: String) : Color()
 
+    /**
+     * Represents a color identified by name.
+     * @property value The name of the color.
+     */
+    data class Name(val value: String) : Color()
+
     companion object {
         fun rgb(red: Int, green: Int, blue: Int, alpha: Float = 1f): Color = Rgb(red, green, blue, alpha)
         fun hex(value: String): Color = Hex(value)
+        fun named(value: String): Color = Name(value)
     }
 }
