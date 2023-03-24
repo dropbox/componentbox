@@ -8,9 +8,7 @@
 
 ### Sample
 
-#### Server
-
-##### Model
+#### Model
 
 ```kotlin
 class Counter : ComposableModel<Int, String>(0) {
@@ -34,7 +32,7 @@ class Counter : ComposableModel<Int, String>(0) {
 }
 ```
 
-##### UI
+#### UI
 
 ```kotlin
 @ComponentBox
@@ -66,7 +64,7 @@ class Tree : Tree {
 }
 ```
 
-##### Config
+#### .componentbox.json
 
 ```json
 [
