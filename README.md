@@ -8,7 +8,7 @@
 
 ### Sample
 
-#### Model
+#### Model (server)
 
 ```kotlin
 class Counter : ComposableModel<Int, String>(0) {
@@ -32,7 +32,7 @@ class Counter : ComposableModel<Int, String>(0) {
 }
 ```
 
-#### UI
+#### UI Representation (server)
 
 ```kotlin
 @ComponentBox
@@ -64,7 +64,7 @@ class Tree : Tree {
 }
 ```
 
-#### .componentbox.json
+#### .componentbox.json (server)
 
 ```json
 [
@@ -75,7 +75,7 @@ class Tree : Tree {
 ]
 ```
 
-#### Binaries
+#### Binaries (server)
 
 ```shell
 ./gradlew componentBoxJs --configFile=/path/to/config/file
@@ -89,7 +89,9 @@ class Tree : Tree {
 ./gradlew componentBoxJson --configFile=/path/to/config/file
 ```
 
-#### Jetpack Compose - Activity
+#### Jetpack Compose (android)
+
+##### Activity
 
 ```kotlin
 class ComponentBoxActivity : ComponentActivity() {
@@ -116,7 +118,7 @@ class ComponentBoxActivity : ComponentActivity() {
 }
 ```
 
-#### Jetpack Compose - Composable
+##### Composable
 
 ```kotlin
 @Composable
@@ -128,7 +130,7 @@ fun ComponentBoxView(componentBox: StateFlow<Component?>, render: RenderingEngin
 }
 ```
 
-#### React
+#### React (web)
 
 ```js
 export default function ComponentBoxView(props: {manifestUrl: string}) {
@@ -150,7 +152,7 @@ export default function ComponentBoxView(props: {manifestUrl: string}) {
 }
 ```
 
-#### SwiftUI
+#### SwiftUI (iOS)
 
 ```swift
 struct ComponentBoxView: View {
