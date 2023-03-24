@@ -1,5 +1,6 @@
-{
-  "componentBox": [
-    "com.dropbox.componentbox.samples.counter.Screen"
-  ]
-}
+[
+  {
+    "file": "src/commonMain/kotlin/com/dropbox/componentbox/samples/counter/Tree.kt",
+    "tree": "com.dropbox.componentbox.samples.counter.Tree"
+  }
+]

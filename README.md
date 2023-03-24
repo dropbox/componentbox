@@ -8,7 +8,9 @@
 
 ### Sample
 
-#### Model
+#### Server
+
+##### Model
 
 ```kotlin
 class Counter : ComposableModel<Int, String>(0) {
@@ -32,11 +34,11 @@ class Counter : ComposableModel<Int, String>(0) {
 }
 ```
 
-#### UI
+##### UI
 
 ```kotlin
 @ComponentBox
-object UI {
+class Tree : Tree {
     private val counter = Counter()
 
     private val header = text(
@@ -52,8 +54,7 @@ object UI {
     private val incrementButton = textButton(text = "+1") { counter.on("increment") }
     private val decrementButton = textButton(text = "-1") { counter.on("decrement") }
 
-
-    val tree = column(
+    override val root: Component = column(
             verticalArrangement = Arrangement.SpaceEvenly(2.dp),
             horizontalAlignment = Alignment.Start
     ) {
@@ -63,8 +64,17 @@ object UI {
         child(decrementButton)
     }
 }
+```
 
+##### Config
 
+```json
+[
+  {
+    "file": "src/commonMain/kotlin/com/dropbox/componentbox/samples/counter/Tree.kt",
+    "tree": "com.dropbox.componentbox.samples.counter.Tree"
+  }
+]
 ```
 
 #### Binaries

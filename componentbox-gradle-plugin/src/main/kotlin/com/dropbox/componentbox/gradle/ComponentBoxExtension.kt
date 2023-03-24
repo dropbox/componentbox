@@ -1,11 +1,9 @@
 package com.dropbox.componentbox.gradle
 
-import java.io.File
+import org.gradle.api.file.Directory
+import org.gradle.api.file.RegularFileProperty
 
 open class ComponentBoxExtension {
-    lateinit var inputFile: File
-    lateinit var jsonOutputFile: File
-    lateinit var jsOutputFile: File
-    lateinit var wasmOutputFile: File
-    lateinit var annotations: MutableList<Annotation>
+    lateinit var configFile: RegularFileProperty
+    lateinit var outputDir: Directory
 }

@@ -1,21 +1,24 @@
 package com.dropbox.componentbox.gradle
 
+import com.dropbox.componentbox.Component
 import org.gradle.api.DefaultTask
-import org.gradle.api.tasks.InputFile
-import org.gradle.api.tasks.OutputFile
+import org.gradle.api.file.Directory
+import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
-import java.io.File
 
 open class GenerateWasmTask : DefaultTask() {
-    @InputFile
-    lateinit var inputFile: File
+    @OutputDirectory
+    lateinit var outputDir: Directory
 
-    @OutputFile
-    lateinit var outputFile: File
+    lateinit var roots: List<Component>
 
     @TaskAction
-    fun generateWasm() {
-        val componentBox = project.extensions.getByType(ComponentBoxExtension::class.java).annotations
-        // TODO()
+    fun generateJs() {
+        roots.forEach { root ->
+            val path = "wasm/${root::class.simpleName}.wasm"
+            val outputFile = outputDir.file(path).asFile
+            // Generate WASM
+            // Write WASM to file
+        }
     }
 }
