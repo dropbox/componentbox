@@ -118,7 +118,7 @@ class MainActivity : ComponentActivity() {
 
 #### iOS
 
-```objectivec
+```swift
 struct ContentView: View {
     @StateObject private var service = ComponentBoxService()
     @State private var root: Component?
