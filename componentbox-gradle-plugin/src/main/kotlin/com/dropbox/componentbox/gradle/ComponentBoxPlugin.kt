@@ -2,9 +2,7 @@ package com.dropbox.componentbox.gradle
 
 
 import com.dropbox.componentbox.Component
-import com.dropbox.componentbox.ComponentBox
 import com.dropbox.componentbox.ComponentBoxConfig
-import com.dropbox.componentbox.Tree
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.gradle.api.Plugin
@@ -16,32 +14,8 @@ import java.io.DataInputStream
 import java.io.File
 import java.io.FileInputStream
 import java.net.URLClassLoader
-import kotlin.reflect.full.findAnnotation
 
-
-private fun findRoot(file: File, classLoader: ClassLoader): Component? {
-    if (file.extension != "kt") {
-        return null
-    }
-
-    val name = file.readText()
-            .substringAfter("object ")
-            .substringBefore(" {")
-            .replace("\n", "")
-            .replace(" ", "")
-
-    val cls = classLoader.loadClass(name).kotlin
-    val annotation = cls.findAnnotation<ComponentBox>() ?: return null
-
-    if (!annotation.tree.isInstance(cls.objectInstance)) {
-        return null
-    }
-
-    val tree = cls.objectInstance as Tree
-    return tree.root
-}
-
-public open class ComponentBoxPlugin : Plugin<Project> {
+open class ComponentBoxPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         target.pluginManager.apply("com.dropbox.componentbox.plugin")
 
@@ -50,20 +24,7 @@ public open class ComponentBoxPlugin : Plugin<Project> {
         val configFile = extension.configFile.get().asFile
         val configs = Json.decodeFromString<List<ComponentBoxConfig>>(configFile.readText())
 
-        val roots = mutableListOf<Component>()
-
-        configs.forEach { config ->
-            val file = File(config.file)
-            val inputStream = FileInputStream(file)
-            val input = DataInputStream(inputStream)
-            val bytes = ByteArray(file.length().toInt())
-            input.readFully(bytes)
-
-            val classLoader = URLClassLoader(arrayOf(file.toURI().toURL()), javaClass.classLoader)
-            val tree = classLoader.loadClass(config.tree)
-            val root = tree.newInstance() as Component
-            roots.add(root)
-        }
+        val roots = configs.map { config -> loadRoot(config, javaClass) }
 
         target.tasks.register("componentBoxJson", GenerateJsonTask::class.java) { task ->
             task.group = "componentBox"
@@ -96,6 +57,18 @@ public open class ComponentBoxPlugin : Plugin<Project> {
             task.outputDir = extension.outputDir
             task.roots = roots
         }
+    }
+
+    private fun loadRoot(config: ComponentBoxConfig, javaClass: Class<ComponentBoxPlugin>): Component {
+        val file = File(config.file)
+        val inputStream = FileInputStream(file)
+        val input = DataInputStream(inputStream)
+        val bytes = ByteArray(file.length().toInt())
+        input.readFully(bytes)
+
+        val classLoader = URLClassLoader(arrayOf(file.toURI().toURL()), javaClass.classLoader)
+        val tree = classLoader.loadClass(config.tree)
+        return tree.newInstance() as Component
     }
 }
 
