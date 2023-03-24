@@ -9,7 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 
 class MainActivity : ComponentActivity() {
-    private val scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
+    private val scope = CoroutineScope(Dispatchers.Default)
     private val service = ComponentBoxService(scope)
     private val componentBox = service.componentBox
     private val render = RenderingEngine()

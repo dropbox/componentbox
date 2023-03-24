@@ -116,6 +116,30 @@ class MainActivity : ComponentActivity() {
 }
 ```
 
+#### iOS
+
+```objectivec
+struct ContentView: View {
+    @StateObject private var service = ComponentBoxService()
+    @State private var root: Component?
+    
+    var body: some View {
+        render {
+            root
+        }
+        .onAppear {
+            service.launch(from: MANIFEST_URL) { result in
+                switch result {
+                case .success(let componentBox):
+                    DispatchQueue.main.async {
+                        self.root = componentBox.root
+                    }
+            }
+        }
+    }
+}
+```
+
 ## Snapshots
 
 Snapshots are available
