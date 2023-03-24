@@ -6,11 +6,12 @@ plugins {
 dependencies {
     compileOnly(gradleApi())
 
-    compileOnly(libs.kotlin.gradle.plugin)
+    implementation(libs.kotlin.gradle.plugin)
     compileOnly(libs.android.gradle.plugin)
     implementation(libs.kotlin.std.lib)
     implementation(project(":componentbox"))
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-js:1.8.20-Beta"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-js:1.8.0"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.8.0"
 
 }
 gradlePlugin {
