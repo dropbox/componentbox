@@ -12,7 +12,7 @@ import com.dropbox.componentbox.text
 import com.dropbox.componentbox.textButton
 
 @ComponentBox
-object Screen {
+object UI {
     private val counter = Counter()
 
     private val header = text(

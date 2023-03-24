@@ -32,30 +32,39 @@ class Counter : ComposableModel<Int, String>(0) {
 }
 ```
 
-#### View
+#### UI
 
 ```kotlin
-val tree = column(
-    verticalArrangement = Arrangement.SpaceEvenly(2.dp),
-    horizontalAlignment = Alignment.Start
-) {
-    val counter = Counter()
+@ComponentBox
+object UI {
+    private val counter = Counter()
 
-    child(
-        text(
+    private val header = text(
             text = "Component Box Counter",
             style = TextStyle(fontWeight = FontWeight.ExtraBold)
-        )
     )
-    child(
-        text(
+
+    private val count = text(
             text = "Count: ${counter.state.value}",
             style = TextStyle(color = Color.Hex("#FF0000"))
-        )
     )
-    child(textButton(text = "+1") { counter.on("increment") })
-    child(textButton(text = "-1") { counter.on("decrement") })
+
+    private val incrementButton = textButton(text = "+1") { counter.on("increment") }
+    private val decrementButton = textButton(text = "-1") { counter.on("decrement") }
+
+
+    val tree = column(
+            verticalArrangement = Arrangement.SpaceEvenly(2.dp),
+            horizontalAlignment = Alignment.Start
+    ) {
+        child(header)
+        child(count)
+        child(incrementButton)
+        child(decrementButton)
+    }
 }
+
+
 ```
 
 #### Binaries
