@@ -3,14 +3,10 @@
 import org.jetbrains.dokka.gradle.DokkaTask
 
 plugins {
-    kotlin("multiplatform")
+    kotlin("multiplatform") version "1.8.20-Beta"
     kotlin("plugin.serialization")
     id("com.android.library")
-    id("com.vanniktech.maven.publish.base")
     id("org.jetbrains.dokka")
-    id("co.touchlab.faktory.kmmbridge")
-    `maven-publish`
-    kotlin("native.cocoapods")
 }
 
 group = "com.dropbox.componentbox"
@@ -19,21 +15,22 @@ kotlin {
     android()
     jvm()
     js {
-        browser()
+        nodejs()
         binaries.executable()
     }
     ios()
 
     wasm {
         binaries.executable()
+        nodejs()
+        compilations.all {
+            kotlinOptions {
+                freeCompilerArgs = listOf("-Xopt-in=kotlin.RequiresOptIn")
+                languageVersion = "1.7"
+            }
+        }
     }
 
-    cocoapods {
-        summary = "ComponentBox"
-        homepage = "https://github.com/dropbox/componentbox"
-        ios.deploymentTarget = "13"
-        version = "0.2.0-alpha01"
-    }
 
     sourceSets {
         val commonMain by getting {
@@ -59,6 +56,8 @@ kotlin {
         }
 
         val iosMain by getting
+
+        val wasmMain by getting
     }
 }
 
@@ -80,17 +79,3 @@ tasks.withType<DokkaTask>().configureEach {
         jdkVersion.set(8)
     }
 }
-
-addGithubPackagesRepository()
-kmmbridge {
-    githubReleaseArtifacts()
-    githubReleaseVersions()
-    versionPrefix.set("0.2.0-alpha0")
-    spm()
-}
-
-mavenPublishing {
-    publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.S01)
-    signAllPublications()
-}
-

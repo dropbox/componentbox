@@ -3,12 +3,27 @@ android-min-sdk = "27"
 android-compile-sdk = "33"
 android-target-sdk = "33"
 coroutines = "1.7.0-Beta"
+gradle = "7.3.1"
+gradle-maven-publish-plugin = "0.23.2"
 kmm-bridge = "0.3.2"
-kotlin = "1.8.20-RC2"
+kotlin = "1.8.20-Beta"
+kotlin-gradle-plugin = "1.7.21"
+kotlinx-cli = "0.3.4"
 kotlinx-serialization = "1.5.0"
+kotlinx-wasm-jsinterop = "0.2.1"
+kover = "0.6.0"
+wasm-runtime = "0.0.48"
 
 [libraries]
+gradle-maven-publish-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "gradle-maven-publish-plugin" }
+kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
 kotlin-std-lib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version = "7.4.2" }
+
+kotlinx-cli = { module = "org.jetbrains.kotlinx:kotlinx-cli", version.ref = "kotlinx-cli" }
 kotlinx-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-wasm-jsinterop = { module = "org.jetbrains.kotlinx:kotlinx-wasm-jsinterop", version.ref = "kotlinx-wasm-jsinterop" }
+kover = { module = "org.jetbrains.kotlinx:kover", version.ref = "kover" }
