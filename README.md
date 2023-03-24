@@ -70,7 +70,7 @@ class Tree : Tree {
 [
   {
     "file": "src/commonMain/kotlin/com/dropbox/componentbox/samples/counter/Tree.kt",
-    "tree": "Tree"
+    "tree": "com.dropbox.componentbox.samples.counter.Tree"
   }
 ]
 ```
