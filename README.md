@@ -80,15 +80,15 @@ class Tree : Tree {
 #### Binaries
 
 ```shell
-./gradlew componentBoxJs --configFile=/path/to/input/file
+./gradlew componentBoxJs --configFile=/path/to/config/file
 ```
 
 ```shell
-./gradlew componentBoxWasm --configFile=/path/to/input/file
+./gradlew componentBoxWasm --configFile=/path/to/config/file
 ```
 
 ```shell
-./gradlew componentBoxJson --configFile=/path/to/input/file
+./gradlew componentBoxJson --configFile=/path/to/config/file
 ```
 
 ## Snapshots
