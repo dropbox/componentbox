@@ -152,7 +152,7 @@ export default function ComponentBoxView(props: {manifestUrl: string}) {
 
 #### SwiftUI
 
-```objectivec
+```swift
 struct ComponentBoxView: View {
     @StateObject private var service = ComponentBoxService()
     @State private var root: Component?
