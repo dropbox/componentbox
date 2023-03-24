@@ -13,6 +13,7 @@ kotlinx-serialization = "1.5.0"
 kotlinx-wasm-jsinterop = "0.2.1"
 kover = "0.6.0"
 wasm-runtime = "0.0.48"
+okio = "3.3.0"
 
 [libraries]
 gradle-maven-publish-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "gradle-maven-publish-plugin" }
@@ -27,3 +28,4 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 kotlinx-wasm-jsinterop = { module = "org.jetbrains.kotlinx:kotlinx-wasm-jsinterop", version.ref = "kotlinx-wasm-jsinterop" }
 kover = { module = "org.jetbrains.kotlinx:kover", version.ref = "kover" }
+okio-core = { module = "com.squareup.okio:okio", version.ref = "okio" }

@@ -70,7 +70,7 @@ class Tree : Tree {
 [
   {
     "file": "src/commonMain/kotlin/com/dropbox/componentbox/samples/counter/Tree.kt",
-    "tree": "com.dropbox.componentbox.samples.counter.Tree"
+    "tree": "Tree"
   }
 ]
 ```
@@ -87,6 +87,33 @@ class Tree : Tree {
 
 ```shell
 ./gradlew componentBoxJson --configFile=/path/to/config/file
+```
+
+#### Android
+
+```kotlin
+class MainActivity : ComponentActivity() {
+    private val scope = CoroutineScope(Dispatchers.Default)
+    private val service = ComponentBoxService(scope)
+    private val componentBox = service.componentBox
+    private val render = RenderingEngine()
+
+    override fun onStart() {
+        super.onStart()
+        service.launch(MANIFEST_URL)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setContent {
+            val root = componentBox.collectAsState()
+            render {
+                root.value
+            }
+        }
+    }
+}
 ```
 
 ## Snapshots
