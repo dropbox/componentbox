@@ -17,8 +17,8 @@ dependencies {
 gradlePlugin {
     plugins {
         create("componentBox") {
-            id = "com.dropbox.componentbox"
-            implementationClass = "com.dropbox.componentbox.plugin.ComponentBoxPlugin"
+            id = "com.dropbox.componentbox.plugin"
+            implementationClass = "com.dropbox.componentbox.gradle.ComponentBoxPlugin"
         }
     }
 }

@@ -12,4 +12,5 @@ pluginManagement {
 rootProject.name = "componentbox"
 
 include(":componentbox")
-include(":plugin")
+include(":componentbox-gradle-plugin")
+include(":samples:counter")

@@ -1,4 +1,4 @@
-package com.dropbox.componentbox.plugin
+package com.dropbox.componentbox.gradle
 
 import java.io.File
 

@@ -1,4 +1,4 @@
-package com.dropbox.componentbox.plugin
+package com.dropbox.componentbox.gradle
 
 
 import org.gradle.api.Plugin
@@ -7,8 +7,10 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJsProjectExtension
 import org.jetbrains.kotlin.gradle.plugin.mpp.pm20.util.targets
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
-open class ComponentBoxPlugin : Plugin<Project> {
+public open class ComponentBoxPlugin : Plugin<Project> {
     override fun apply(target: Project) {
+        target.pluginManager.apply("com.dropbox.componentbox.plugin")
+
         val extension = target.extensions.create("componentBox", ComponentBoxExtension::class.java)
         target.tasks.register("componentBoxJson", GenerateJsonTask::class.java) { task ->
             task.group = "componentBox"

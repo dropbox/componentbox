@@ -1,4 +1,4 @@
-package com.dropbox.componentbox.plugin
+package com.dropbox.componentbox.gradle
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.InputFile
