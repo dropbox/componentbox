@@ -89,7 +89,7 @@ class Tree : Tree {
 ./gradlew componentBoxJson --configFile=/path/to/config/file
 ```
 
-#### Jetpack Compose (android)
+#### Jetpack Compose (Android)
 
 ##### Activity
 
