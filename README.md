@@ -89,10 +89,10 @@ class Tree : Tree {
 ./gradlew componentBoxJson --configFile=/path/to/config/file
 ```
 
-#### Android
+#### Jetpack Compose - Activity
 
 ```kotlin
-class MainActivity : ComponentActivity() {
+class ComponentBoxActivity : ComponentActivity() {
     private val scope = CoroutineScope(Dispatchers.Default)
     private val service = ComponentBoxService(scope)
     private val componentBox = service.componentBox
@@ -116,10 +116,44 @@ class MainActivity : ComponentActivity() {
 }
 ```
 
-#### iOS
+#### Jetpack Compose - Composable
 
-```swift
-struct ContentView: View {
+```kotlin
+@Composable
+fun ComponentBoxView(componentBox: StateFlow<Component?>, render: RenderingEngine) {
+    val root = componentBox.collectAsState()
+    render {
+        root.value
+    }
+}
+```
+
+#### React
+
+```js
+export default function ComponentBoxView(props: {manifestUrl: string}) {
+  const [root, setRoot] = useState<Component | null>(null);
+  const service = new ComponentBoxService();
+  const render = new RenderingEngine();
+
+  useEffect(() => {
+    async function launch(manifestUrl: string): Tree {
+        const componentBox = await service.launch(manifestUrl)
+        setRoot(componentBox.root)
+    }
+    
+    launch(props.manifestUrl)
+ 
+  }, [props.manifestUrl]);
+  
+  return render(root)
+}
+```
+
+#### SwiftUI
+
+```objectivec
+struct ComponentBoxView: View {
     @StateObject private var service = ComponentBoxService()
     @State private var root: Component?
     
