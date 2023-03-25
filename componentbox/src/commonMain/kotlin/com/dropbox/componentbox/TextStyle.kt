@@ -1,5 +1,7 @@
 package com.dropbox.componentbox
 
+import kotlinx.serialization.Serializable
+
 
 /**
  * Represents a style to be applied to text.
@@ -10,6 +12,7 @@ package com.dropbox.componentbox
  * @property letterSpacing The letter spacing to be applied to the text, or null if not specified.
  * @property lineHeight The line height to be applied to the text, or null if not specified.
  */
+@Serializable
 data class TextStyle(
     val color: Color? = null,
     val fontWeight: FontWeight? = null,

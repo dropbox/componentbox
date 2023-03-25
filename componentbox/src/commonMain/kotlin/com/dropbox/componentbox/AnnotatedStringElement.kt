@@ -1,8 +1,11 @@
 package com.dropbox.componentbox
 
+import kotlinx.serialization.Serializable
+
 /**
  * Represents an element of an annotated string, which can be either a Text or a Span.
  */
+@Serializable
 sealed interface AnnotatedStringElement {
     /**
      * Represents a piece of text with optional style information and a soft break flag.

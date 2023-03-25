@@ -1,5 +1,7 @@
 package com.dropbox.componentbox
 
+import kotlinx.serialization.Serializable
+
 /**
  * Represents a modifier to be applied to a UI element.
  * @property background The background color to be applied to the UI element.
@@ -15,6 +17,7 @@ package com.dropbox.componentbox
  * @property zIndex The z-index value to be applied to the UI element.
  * @property clip Whether clipping should be applied to the UI element.
  */
+@Serializable
 data class Modifier(
     val background: Color? = null,
     val border: Border? = null,
@@ -36,6 +39,7 @@ data class Modifier(
  * @property color The color of the border.
  * @property shape The shape of the border.
  */
+@Serializable
 data class Border(
     val width: Dp,
     val color: Color,
@@ -50,6 +54,7 @@ data class Border(
  * @property end The end padding value.
  * @property bottom The bottom padding value.
  */
+@Serializable
 data class PaddingValues(
     val start: Dp,
     val top: Dp,
@@ -63,6 +68,7 @@ data class PaddingValues(
  * @property width The width of the UI element.
  * @property height The height of the UI element.
  */
+@Serializable
 data class Size(
     val width: Dp,
     val height: Dp
@@ -72,6 +78,7 @@ data class Size(
  * Represents a dimension value in density-independent pixels.
  * @property value The value of the dimension in density-independent pixels.
  */
+@Serializable
 data class Dp(val value: Float) {
     operator fun plus(other: Dp): Dp = Dp(value + other.value)
     operator fun minus(other: Dp): Dp = Dp(value - other.value)
@@ -91,6 +98,7 @@ val Int.dp: Dp
  * @property x The horizontal offset value.
  * @property y The vertical offset value.
  */
+@Serializable
 data class Offset(
     val x: Dp = 0.dp,
     val y: Dp = 0.dp

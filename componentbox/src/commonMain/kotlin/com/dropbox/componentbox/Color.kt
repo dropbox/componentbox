@@ -1,8 +1,11 @@
 package com.dropbox.componentbox
 
+import kotlinx.serialization.Serializable
+
 /**
  * Represents a color, which can be either in RGB format or hexadecimal format.
  */
+@Serializable
 sealed class Color {
 
     /**
@@ -28,7 +31,9 @@ sealed class Color {
     data class Name(val value: String) : Color()
 
     companion object {
-        fun rgb(red: Int, green: Int, blue: Int, alpha: Float = 1f): Color = Rgb(red, green, blue, alpha)
+        fun rgb(red: Int, green: Int, blue: Int, alpha: Float = 1f): Color =
+            Rgb(red, green, blue, alpha)
+
         fun hex(value: String): Color = Hex(value)
         fun named(value: String): Color = Name(value)
     }

@@ -1,8 +1,11 @@
 package com.dropbox.componentbox
 
+import kotlinx.serialization.Serializable
+
 /**
  * Represents an arrangement along a horizontal or vertical axis.
  */
+@Serializable
 sealed interface Arrangement {
     /**
      * Represents an arrangement along a horizontal axis.

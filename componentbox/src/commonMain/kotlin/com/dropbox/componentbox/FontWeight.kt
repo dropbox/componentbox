@@ -1,8 +1,11 @@
 package com.dropbox.componentbox
 
+import kotlinx.serialization.Serializable
+
 /**
  * Represents a font weight.
  */
+@Serializable
 sealed class FontWeight {
     object Thin : FontWeight()
     object ExtraLight : FontWeight()

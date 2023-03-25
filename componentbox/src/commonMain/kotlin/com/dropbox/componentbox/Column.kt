@@ -1,5 +1,8 @@
 package com.dropbox.componentbox
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 class Column(
     val modifier: Modifier,
     val events: Events? = null,

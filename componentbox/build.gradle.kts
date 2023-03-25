@@ -3,13 +3,12 @@
 import org.jetbrains.dokka.gradle.DokkaTask
 
 plugins {
-    kotlin("multiplatform") version "1.8.20-Beta"
+    kotlin("multiplatform") version "1.8.10"
     kotlin("plugin.serialization")
     id("com.android.library")
     id("org.jetbrains.dokka")
+    id("maven-publish")
 }
-
-group = "com.dropbox.componentbox"
 
 kotlin {
     android()
@@ -19,18 +18,6 @@ kotlin {
         binaries.executable()
     }
     ios()
-
-    wasm {
-        binaries.executable()
-        nodejs()
-        compilations.all {
-            kotlinOptions {
-                freeCompilerArgs = listOf("-Xopt-in=kotlin.RequiresOptIn")
-                languageVersion = "1.7"
-            }
-        }
-    }
-
 
     sourceSets {
         val commonMain by getting {
@@ -56,8 +43,6 @@ kotlin {
         }
 
         val iosMain by getting
-
-        val wasmMain by getting
     }
 }
 
@@ -77,5 +62,16 @@ tasks.withType<DokkaTask>().configureEach {
         reportUndocumented.set(false)
         skipDeprecated.set(true)
         jdkVersion.set(8)
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("componentBoxMavenPublication") {
+            from(components["kotlin"])
+            groupId = group.toString()
+            artifactId = "componentbox"
+            version = version.toString()
+        }
     }
 }

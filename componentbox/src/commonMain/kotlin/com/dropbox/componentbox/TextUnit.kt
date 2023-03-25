@@ -1,9 +1,12 @@
 package com.dropbox.componentbox
 
+import kotlinx.serialization.Serializable
+
 
 /**
  * Represents a text unit, which can be either in scaled pixels or pixels.
  */
+@Serializable
 sealed class TextUnit {
 
     /**

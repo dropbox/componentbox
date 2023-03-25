@@ -1,5 +1,7 @@
 package com.dropbox.componentbox
 
+import kotlinx.serialization.Serializable
+
 /**
  * Represents a style to be applied to a span of text.
  * @property color The text color to be applied to the span, or null if not specified.
@@ -10,6 +12,7 @@ package com.dropbox.componentbox
  * @property letterSpacing The letter spacing to be applied to the span, or null if not specified.
  * @property textDecoration The text decoration to be applied to the span, or null if not specified.
  */
+@Serializable
 data class SpanStyle(
     val color: Color? = null,
     val backgroundColor: Color? = null,
@@ -20,8 +23,13 @@ data class SpanStyle(
     val textDecoration: TextDecoration? = null
 ) {
     companion object {
-        fun from(style: SpanStyle? = null): SpanStyleBuilder = SpanStyleBuilder(style ?: SpanStyle())
+        fun from(style: SpanStyle? = null): SpanStyleBuilder = SpanStyleBuilder(
+            style
+                ?: SpanStyle()
+        )
     }
+
+    @Serializable
 
     class SpanStyleBuilder(private var style: SpanStyle) {
         fun color(color: Color) {

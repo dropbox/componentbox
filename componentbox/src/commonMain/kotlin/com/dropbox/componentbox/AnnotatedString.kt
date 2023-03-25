@@ -1,5 +1,7 @@
 package com.dropbox.componentbox
 
+import kotlinx.serialization.Serializable
+
 
 /**
  * Enables text with inline styling.
@@ -7,6 +9,7 @@ package com.dropbox.componentbox
  * @property text Convenience method for creating and adding [AnnotatedStringElement.Text]
  * @property span Convenience method for creating and adding [AnnotatedStringElement.Span]
  */
+@Serializable
 data class AnnotatedString(
     val elements: MutableList<AnnotatedStringElement> = mutableListOf()
 ) : Component {

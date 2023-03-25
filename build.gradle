@@ -2,6 +2,7 @@ buildscript {
     repositories {
         gradlePluginPortal()
         google()
+        mavenLocal()
         mavenCentral()
     }
     dependencies {
@@ -11,22 +12,24 @@ buildscript {
         classpath libs.kover
         classpath libs.kotlinx.cli
         classpath "app.cash.zipline:zipline-gradle-plugin:0.9.17"
+        classpath "org.jetbrains.kotlinx:atomicfu-gradle-plugin:0.20.1"
+        classpath "com.dropbox.componentbox:componentbox-gradle-plugin:0.3.0"
     }
 }
 
 plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version "1.8.20-Beta" apply false
+    id 'org.jetbrains.kotlin.multiplatform' version "1.8.10" apply false
     id 'org.jetbrains.dokka' version "1.7.20"
     id 'org.jetbrains.kotlinx.kover' version '0.6.0'
 }
+
 
 allprojects {
     version = project.property("VERSION_NAME") as String
 
     repositories {
         google()
+        mavenLocal()
         mavenCentral()
-        maven { url 'https://kotlin.bintray.com/kotlin-js-wrappers'}
-        maven { url "https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental" }
     }
 }

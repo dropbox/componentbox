@@ -2,6 +2,7 @@ enableFeaturePreview("VERSION_CATALOGS")
 
 pluginManagement {
     repositories {
+        mavenLocal()
         google()
         gradlePluginPortal()
         mavenCentral()
@@ -13,6 +14,7 @@ rootProject.name = "componentbox"
 
 include(":componentbox")
 include(":componentbox-gradle-plugin")
+include(":test-plugin")
 
 include(":samples:counter:android")
 include(":samples:counter:common:zipline")

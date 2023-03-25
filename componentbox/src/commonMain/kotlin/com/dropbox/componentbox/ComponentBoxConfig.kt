@@ -1,6 +1,9 @@
 package com.dropbox.componentbox
 
-interface ComponentBoxConfig {
-    val file: String
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class ComponentBoxConfig(
+    val file: String,
     val tree: String
-}
+)

@@ -1,5 +1,8 @@
 package com.dropbox.componentbox
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 sealed interface Component
 
 fun annotatedString(
@@ -29,7 +32,8 @@ fun containedButton(
     elevation: Dp,
     shape: Shape,
     children: Button.Contained.() -> Unit
-): Component = Button.Contained(modifier, enabled, onClick, backgroundColor, contentColor, elevation, shape)
+): Component =
+    Button.Contained(modifier, enabled, onClick, backgroundColor, contentColor, elevation, shape)
 
 
 fun lazyColumn(
@@ -39,7 +43,8 @@ fun lazyColumn(
     horizontalAlignment: Alignment.Horizontal? = null,
     contentPaddingValues: PaddingValues? = null,
     children: LazyColumn.() -> Unit
-): Component = LazyColumn(modifier, events, verticalArrangement, horizontalAlignment, contentPaddingValues)
+): Component =
+    LazyColumn(modifier, events, verticalArrangement, horizontalAlignment, contentPaddingValues)
 
 fun navigation(
     routes: MutableMap<String, Component> = mutableMapOf(),

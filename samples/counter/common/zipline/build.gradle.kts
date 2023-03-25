@@ -6,6 +6,9 @@ plugins {
 
 }
 
+apply(plugin = "kotlinx-atomicfu")
+
+
 kotlin {
     jvm()
 
@@ -49,4 +52,20 @@ kotlin {
             dependsOn(hostMain)
         }
     }
+}
+
+android {
+
+    compileSdk = libs.versions.android.compile.sdk.get().toInt()
+
+    defaultConfig {
+        minSdk = libs.versions.android.min.sdk.get().toInt()
+    }
+
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+}
+
+
+zipline {
+    mainFunction.set("com.dropbox.componentbox.samples.counter.common.zipline.launch")
 }

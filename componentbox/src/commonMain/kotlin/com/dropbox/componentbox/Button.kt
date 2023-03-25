@@ -1,5 +1,7 @@
 package com.dropbox.componentbox
 
+import kotlinx.serialization.Serializable
+
 /**
  * The base class for a button.
  *
@@ -7,6 +9,7 @@ package com.dropbox.componentbox
  * @property modifier The modifier to be applied to the button.
  * @property enabled Whether the button should be enabled or disabled.
  */
+@Serializable
 sealed class Button : Component {
 
     abstract val modifier: Modifier
@@ -21,6 +24,7 @@ sealed class Button : Component {
      * @property elevation The elevation of the button.
      * @property shape The shape of the button.
      */
+    @Serializable
     data class Contained(
         override val modifier: Modifier = Modifier(),
         override val enabled: Boolean = true,
@@ -41,6 +45,7 @@ sealed class Button : Component {
      *
      * @property contentColor: Color
      */
+    @Serializable
     data class Text(
         override val modifier: Modifier = Modifier(),
         val text: String,

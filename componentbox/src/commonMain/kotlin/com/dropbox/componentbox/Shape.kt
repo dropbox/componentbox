@@ -1,9 +1,12 @@
 package com.dropbox.componentbox
 
+import kotlinx.serialization.Serializable
+
 
 /**
  * Represents the shape of a UI element.
  */
+@Serializable
 sealed class Shape {
     /**
      * The circular shape.
