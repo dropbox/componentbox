@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.collectAsState
-import com.dropbox.componentbox.samples.counter.common.zipline.ComponentBoxService
+import com.dropbox.componentbox.zipline.ComponentBoxService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 

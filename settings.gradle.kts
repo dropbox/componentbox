@@ -14,7 +14,7 @@ rootProject.name = "componentbox"
 include(":componentbox")
 include(":componentbox-gradle-plugin")
 include(":test")
+include(":zipline")
 
 include(":samples:counter:android")
-include(":samples:counter:common:zipline")
 include(":samples:counter:server")
