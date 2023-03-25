@@ -38,7 +38,7 @@ class Counter : ComposableModel<Int, String>(0) {
 @ComponentBox
 class Tree : Tree {
     private val counter = Counter()
-    
+
     private val header = text(
         text = "Component Box Counter",
         style = TextStyle(fontWeight = FontWeight.ExtraBold)
@@ -64,27 +64,19 @@ class Tree : Tree {
 }
 ```
 
-#### .componentbox.json (server)
-
-```json
-{
-  "file": "src/commonMain/kotlin/com/dropbox/componentbox/samples/counter/Tree.kt",
-  "tree": "com.dropbox.componentbox.samples.counter.Tree"
-}
-```
-
 #### Binaries (server)
 
 ```shell
-./gradlew componentBoxJs --configFile=/path/to/config/file
+./gradlew componentBoxJs
 ```
 
 ```shell
-./gradlew componentBoxWasm --configFile=/path/to/config/file
+./gradlew componentBoxWasm
+
 ```
 
 ```shell
-./gradlew componentBoxJson --configFile=/path/to/config/file
+./gradlew componentBoxJson
 ```
 
 #### Jetpack Compose (Android)
