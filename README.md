@@ -35,10 +35,8 @@ class Counter : ComposableModel<Int, String>(0) {
 #### UI Representation (server)
 
 ```kotlin
-private val counter = Counter()
-
-@ComponentBox
 @Serializable()
+@ComponentBox
 class Tree : Tree {
     private val header = text(
         text = "Component Box Counter",
