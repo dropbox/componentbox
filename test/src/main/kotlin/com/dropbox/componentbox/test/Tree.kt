@@ -1,4 +1,4 @@
-package com.dropbox.componentbox.plugin.test
+package com.dropbox.componentbox.test
 
 import com.dropbox.componentbox.Alignment
 import com.dropbox.componentbox.Arrangement

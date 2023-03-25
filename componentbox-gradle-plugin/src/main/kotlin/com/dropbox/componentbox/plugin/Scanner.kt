@@ -1,41 +1,55 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package com.dropbox.componentbox.plugin
 
 import com.dropbox.componentbox.Component
-import com.dropbox.componentbox.ComponentBox
 import org.gradle.api.Project
-import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetContainer
+import java.io.File
+import java.net.URL
 import java.net.URLClassLoader
 import java.nio.file.Files
 
 class Scanner {
-    operator fun invoke(project: Project): List<Class<out Component>> {
-        val annotatedClasses = mutableListOf<Class<out Component>>()
+    operator fun invoke(project: Project): List<Class<Component>> {
+        val components = mutableListOf<Class<Component>>()
+        val container = project.extensions.getByName("kotlin") as KotlinSourceSetContainer
 
-        val mainSourceSet = project.kotlinExtension.sourceSets.getByName("main")
-        mainSourceSet.kotlin.setSrcDirs(setOf("src/main/kotlin"))
-        val classPath = mainSourceSet.kotlin.srcDirs.map { it.toURI().toURL() }.toTypedArray()
-        val classLoader = URLClassLoader(classPath, project.javaClass.classLoader)
+        val classNames = mutableListOf<String>()
+        val urls = mutableListOf<URL>()
 
-        for (file in mainSourceSet.kotlin.srcDirs) {
-            Files.walk(file.toPath())
-                .filter { it.toString().endsWith(".class") }
-                .map { it.toFile() }
-                .forEach {
-                    val className =
-                        it.absolutePath.substringAfter(file.absolutePath).removeSuffix(".class")
-                            .replace("/", ".")
-                    val clazz = classLoader.loadClass(className)
+        container.sourceSets.filter { it.name == "main" }.map { sourceSet ->
+            sourceSet.kotlin.sourceDirectories.forEach { dir ->
+                Files.walk(dir.toPath()).filter {
+                    Files.isRegularFile(it) && (it.toString().endsWith(".kt"))
+                }.forEach { file ->
+                    val url = file.toFile().toURI().toURL()
+                    val className = file.toAbsolutePath().toString()
+                        .substringAfter(dir.absolutePath.toString())
+                        .removePrefix("/")
+                        .removeSuffix(".kt")
+                        .replace(File.separatorChar, '.')
 
-                    if (clazz.isAnnotationPresent(ComponentBox::class.java) && Component::class.java.isAssignableFrom(
-                            clazz
-                        )
-                    ) {
-                        annotatedClasses.add(clazz as Class<out Component>)
-                    }
+                    urls.add(url)
+                    classNames.add(className)
                 }
+            }
         }
+        val loader = URLClassLoader(urls.toTypedArray())
 
-        return annotatedClasses
+        classNames.forEach {
+            try {
+                components.add(loader.loadClass(it) as Class<Component>)
+            } catch (error: Throwable) {
+                println(
+                    """
+                    Failed to load class: $it
+                    Error: ${error.message}
+                """.trimIndent()
+                )
+            }
+        }
+        return components
     }
 }
 

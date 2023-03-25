@@ -6,15 +6,15 @@ plugins {
 }
 
 dependencies {
-    compileOnly gradleApi()
+    compileOnly(gradleApi())
 
-    implementation libs.kotlin.gradle.plugin
-    compileOnly libs.android.gradle.plugin
-    implementation libs.kotlin.std.lib
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    implementation project(":componentbox")
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-js:1.8.0"
-    implementation "org.jetbrains.kotlin:kotlin-reflect:1.8.0"
+    implementation(libs.kotlin.gradle.plugin)
+    compileOnly(libs.android.gradle.plugin)
+    implementation(libs.kotlin.std.lib)
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation(project(":componentbox"))
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-js:1.8.0")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.0")
     api(libs.kotlinx.serialization.core)
     api(libs.kotlinx.serialization.json)
 
@@ -31,7 +31,7 @@ gradlePlugin {
 
 publishing {
     publications {
-        create("pluginMavenPublication", MavenPublication) {
+        create<MavenPublication>("pluginMavenPublication") {
             from(components["kotlin"])
             groupId = "com.dropbox.componentbox"
             artifactId = "componentbox-gradle-plugin"

@@ -16,6 +16,12 @@ open class ComponentBoxPlugin : Plugin<Project> {
         val extension =
             target.extensions.create("componentBox", ComponentBoxExtension::class.java, target)
 
+        val componentBoxDir = target.layout.buildDirectory.dir("componentbox").get().asFile
+        if (!componentBoxDir.exists()) {
+            componentBoxDir.mkdir()
+        }
+        extension.outputDir.set(componentBoxDir)
+
         val annotatedClasses = scanner(target)
 
         val jsonTask =
@@ -24,6 +30,9 @@ open class ComponentBoxPlugin : Plugin<Project> {
                 task.description = "Generates all JSON from Component Box"
                 task.taskList = annotatedClasses.map { annotatedClass ->
                     val root = annotatedClass.newInstance()
+
+
+
                     target.tasks.register(
                         "componentBoxJson-${root.javaClass.simpleName}",
                         GenerateJsonTask::class.java
@@ -98,6 +107,7 @@ open class ComponentBoxPlugin : Plugin<Project> {
 
     } catch (error: Throwable) {
         println(error)
+        println(error.cause)
     }
 }
 

@@ -8,6 +8,25 @@
 
 ### Sample
 
+```kotlin
+import com.dropbox.componentbox.plugin.componentBox
+
+plugins {
+    // ...
+    id("com.dropbox.componentbox.plugin")
+}
+
+dependencies {
+    implementation("com.dropbox.componentbox:componentbox:${COMPONENTBOX_VERSION}")
+}
+
+
+componentBox {
+    outputDir.set(project.layout.buildDirectory.dir("output/componentbox"))
+}
+
+```
+
 #### Model (server)
 
 ```kotlin

@@ -19,7 +19,6 @@ dependencies {
     compileOnly(libs.android.gradle.plugin)
     implementation(libs.kotlin.std.lib)
     implementation(project(":componentbox"))
-    implementation(project(":componentbox-gradle-plugin"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-js:1.8.0")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.0")
     api(libs.kotlinx.serialization.core)
@@ -28,5 +27,9 @@ dependencies {
 
 
 componentBox {
-    outputDir.apply { project.layout.buildDirectory.dir("output/componentbox") }
+    val dir = project.layout.buildDirectory.dir("componentbox").get().asFile
+    if (!dir.exists()) {
+        dir.mkdir()
+    }
+    outputDir.set(dir)
 }

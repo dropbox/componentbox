@@ -8,13 +8,12 @@ pluginManagement {
         mavenCentral()
         maven("https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental")
     }
-
 }
 rootProject.name = "componentbox"
 
 include(":componentbox")
 include(":componentbox-gradle-plugin")
-include(":test-plugin")
+include(":test")
 
 include(":samples:counter:android")
 include(":samples:counter:common:zipline")
