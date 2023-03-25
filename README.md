@@ -35,10 +35,11 @@ class Counter : ComposableModel<Int, String>(0) {
 #### UI Representation (server)
 
 ```kotlin
-@ComponentBox
-class Tree : Tree {
-    private val counter = Counter()
+private val counter = Counter()
 
+@ComponentBox
+@Serializable()
+class Tree : Tree {
     private val header = text(
         text = "Component Box Counter",
         style = TextStyle(fontWeight = FontWeight.ExtraBold)
@@ -67,12 +68,10 @@ class Tree : Tree {
 #### .componentbox.json (server)
 
 ```json
-[
-  {
-    "file": "src/commonMain/kotlin/com/dropbox/componentbox/samples/counter/Tree.kt",
-    "tree": "com.dropbox.componentbox.samples.counter.Tree"
-  }
-]
+{
+  "file": "src/commonMain/kotlin/com/dropbox/componentbox/samples/counter/Tree.kt",
+  "tree": "com.dropbox.componentbox.samples.counter.Tree"
+}
 ```
 
 #### Binaries (server)
