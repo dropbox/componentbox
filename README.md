@@ -40,21 +40,21 @@ class Tree : Tree {
     private val counter = Counter()
 
     private val header = text(
-            text = "Component Box Counter",
-            style = TextStyle(fontWeight = FontWeight.ExtraBold)
+        text = "Component Box Counter",
+        style = TextStyle(fontWeight = FontWeight.ExtraBold)
     )
 
     private val count = text(
-            text = "Count: ${counter.state.value}",
-            style = TextStyle(color = Color.Hex("#FF0000"))
+        text = "Count: ${counter.state.value}",
+        style = TextStyle(color = Color.Hex("#FF0000"))
     )
 
     private val incrementButton = textButton(text = "+1") { counter.on("increment") }
     private val decrementButton = textButton(text = "-1") { counter.on("decrement") }
 
     override val root: Component = column(
-            verticalArrangement = Arrangement.SpaceEvenly(2.dp),
-            horizontalAlignment = Alignment.Start
+        verticalArrangement = Arrangement.SpaceEvenly(2.dp),
+        horizontalAlignment = Alignment.Start
     ) {
         child(header)
         child(count)
