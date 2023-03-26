@@ -4,6 +4,7 @@ buildscript {
         google()
         mavenLocal()
         mavenCentral()
+        maven { url = "https://maven.pkg.jetbrains.space/public/p/compose/dev" }
     }
     dependencies {
         classpath libs.android.gradle.plugin
@@ -23,6 +24,7 @@ plugins {
     id 'org.jetbrains.kotlinx.kover' version '0.6.0'
 }
 
+apply plugin: "kotlinx-atomicfu"
 
 allprojects {
     version = project.property("VERSION_NAME") as String
@@ -31,5 +33,6 @@ allprojects {
         google()
         mavenLocal()
         mavenCentral()
+        maven { url = "https://maven.pkg.jetbrains.space/public/p/compose/dev" }
     }
 }

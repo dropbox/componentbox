@@ -1,5 +1,6 @@
 package com.dropbox.componentbox
 
+import androidx.compose.runtime.Composable
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -15,12 +16,13 @@ fun box(
     children: Box.() -> Unit
 ): Component = Box(modifier, events)
 
+@Composable
 fun column(
     modifier: Modifier = Modifier(),
     events: Events? = null,
     verticalArrangement: Arrangement.Vertical? = null,
     horizontalAlignment: Alignment.Horizontal? = null,
-    children: Column.() -> Unit
+    children: @Composable Column.() -> Unit
 ): Component = Column(modifier, events, verticalArrangement, horizontalAlignment)
 
 fun containedButton(

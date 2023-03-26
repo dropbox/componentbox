@@ -1,6 +1,6 @@
 package com.dropbox.componentbox.test
 
-import com.dropbox.componentbox.ComposableModel
+import com.dropbox.componentbox.model.ComposableModel
 
 class Counter : ComposableModel<Int, String>(0) {
     private fun increment() {

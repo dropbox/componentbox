@@ -1,8 +1,12 @@
-package com.dropbox.componentbox
+package com.dropbox.componentbox.model
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
+/**
+ * Represents a stateful unidirectional data flow model.
+ * @param initialState The initial state of the model.
+ */
 abstract class ComposableModel<State : Any, Event : Any>(
     initialState: State
 ) {

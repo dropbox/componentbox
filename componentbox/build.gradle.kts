@@ -8,13 +8,15 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.dokka")
     id("maven-publish")
+    id("org.jetbrains.compose") version "1.3.1"
 }
+
 
 kotlin {
     android()
     jvm()
     js {
-        nodejs()
+        browser()
         binaries.executable()
     }
     ios()
@@ -26,6 +28,7 @@ kotlin {
                 api(libs.kotlinx.serialization.json)
                 api(libs.kotlin.std.lib)
                 api(libs.kotlinx.coroutines.core)
+                implementation(compose.runtime)
             }
         }
 
