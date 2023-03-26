@@ -11,7 +11,7 @@
 #### Model (server)
 
 ```kotlin
-class Counter : ComposableModel<Int, String>(0) {
+class Counter : ComposableModel<Int, CounterEvent>(0) {
     private fun increment() {
         withState {
             setState(state.value + 1)
@@ -24,10 +24,9 @@ class Counter : ComposableModel<Int, String>(0) {
         }
     }
 
-    override fun on(event: String) = when (event) {
-        "increment" -> increment()
-        "decrement" -> decrement()
-        else -> {}
+    override fun on(event: CounterEvent) = when (event) {
+        Increment -> increment()
+        Decrement -> decrement()
     }
 }
 ```
@@ -36,40 +35,32 @@ class Counter : ComposableModel<Int, String>(0) {
 
 ```kotlin
 @Composable
-fun export() {
+@ComponentBoxExport
+fun CounterScreen() {
     StatefulComponentBox {
-        @ComponentBox
-        object : Tree {
-            override val root: Component
-                @Composable
-                get() = column(
-                    verticalArrangement = Arrangement.SpaceEvenly(2.dp),
-                    horizontalAlignment = Alignment.Start
-                ) {
-                    child(header)
-                    child(Count())
-                    child(IncrementButton(text = "+1"))
-                    child(DecrementButton(text = "-1"))
-                }
+        Tree {
+            Column(
+                verticalArrangement = Arrangement.SpaceEvenly(2.dp),
+                horizontalAlignment = Alignment.Start
+            ) {
+                child(header)
+                child(Count())
+                child(IncrementButton("+1"))
+                child(DecrementButton("-1"))
+            }
         }
     }
 }
 
-
 @Composable
 fun IncrementButton(text: String) = StatefulComposable<Counter> {
-    textButton(text = text) { it.on("increment") }
+    textButton(text = text) { it.on(Increment) }
 }
 
 @Composable
 fun DecrementButton(text: String) = StatefulComposable<Counter> {
-    textButton(text = text) { it.on("decrement") }
+    textButton(text = text) { it.on(Decrement) }
 }
-
-val header = text(
-    text = "Component Box Counter",
-    style = TextStyle(fontWeight = FontWeight.ExtraBold)
-)
 
 @Composable
 fun Count() = StatefulComposable<Counter> {
@@ -78,6 +69,7 @@ fun Count() = StatefulComposable<Counter> {
         style = TextStyle(color = Color.Hex("#FF0000"))
     )
 }
+
 ```
 
 #### Binaries (server)

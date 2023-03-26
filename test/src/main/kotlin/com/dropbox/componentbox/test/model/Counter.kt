@@ -2,6 +2,8 @@ package com.dropbox.componentbox.test.model
 
 import com.dropbox.componentbox.model.ComposableModel
 import com.dropbox.componentbox.test.ui.static.CounterEvent
+import com.dropbox.componentbox.test.ui.static.CounterEvent.Decrement
+import com.dropbox.componentbox.test.ui.static.CounterEvent.Increment
 
 class Counter : ComposableModel<Int, CounterEvent>(0) {
     private fun increment() {
@@ -17,7 +19,7 @@ class Counter : ComposableModel<Int, CounterEvent>(0) {
     }
 
     override fun on(event: CounterEvent) = when (event) {
-        CounterEvent.Increment -> increment()
-        CounterEvent.Decrement -> decrement()
+        Increment -> increment()
+        Decrement -> decrement()
     }
 }
