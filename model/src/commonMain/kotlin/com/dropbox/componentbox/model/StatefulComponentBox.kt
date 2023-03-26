@@ -7,11 +7,14 @@ import com.dropbox.componentbox.ComponentBox
 import com.dropbox.componentbox.Tree
 
 @Composable
-fun StatefulComponentBox(componentBox: @Composable () -> @ComponentBox Tree) {
+fun StatefulComponentBox(componentBox: @Composable () -> Tree) {
 
     val modelProvider = remember { ComposableModelProvider() }
 
     CompositionLocalProvider(LocalComposableModelProvider provides modelProvider) {
-        componentBox()
+        object : ComponentBox.Dynamic {
+            override val root: Tree
+                @Composable get() = componentBox()
+        }
     }
 }

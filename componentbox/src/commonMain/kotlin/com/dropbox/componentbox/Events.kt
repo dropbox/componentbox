@@ -2,25 +2,16 @@ package com.dropbox.componentbox
 
 import kotlinx.serialization.Serializable
 
-/**
- * Represents user-triggered events.
- */
-@Serializable
+
 sealed class Events {
-    /**
-     * Models events with semantic identifiers.
-     * @param Id Used on deserialization to map the event to a lambda function.
-     */
+    @Serializable
     data class Semantic<Id : Any>(
-        val onClick: Id,
-        val onLongClick: Id,
+        val onClick: Event.Semantic<Id>,
+        val onLongClick: Event.Semantic<Id>
     ) : Events()
 
-    /**
-     * Models events with lambda functions.
-     */
     data class Lambda(
-        val onClick: (() -> Unit)? = null,
-        val onLongClick: (() -> Unit)? = null
+        val onClick: Event.Lambda,
+        val onLongClick: Event.Lambda
     ) : Events()
 }

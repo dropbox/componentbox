@@ -10,20 +10,35 @@ fun annotatedString(
     elements: MutableList<AnnotatedStringElement> = mutableListOf()
 ): Component = AnnotatedString(elements)
 
-fun box(
+fun <Event : Any> box(
     modifier: Modifier = Modifier(),
-    events: Events? = null,
+    events: Events.Semantic<Event>? = null,
     children: Box.() -> Unit
-): Component = Box(modifier, events)
+): Component = Box.Static(modifier, events)
 
 @Composable
-fun column(
+fun Box(
     modifier: Modifier = Modifier(),
-    events: Events? = null,
+    events: Events.Lambda? = null,
+    children: @Composable Box.() -> Unit
+): Component = Box.Dynamic(modifier, events)
+
+fun <Event : Any> column(
+    modifier: Modifier = Modifier(),
+    events: Events.Semantic<Event>? = null,
     verticalArrangement: Arrangement.Vertical? = null,
     horizontalAlignment: Alignment.Horizontal? = null,
-    children: @Composable Column.() -> Unit
-): Component = Column(modifier, events, verticalArrangement, horizontalAlignment)
+    children: Column.Static<Event>.() -> Unit
+): Component = Column.Static(modifier, events, verticalArrangement, horizontalAlignment)
+
+@Composable
+fun Column(
+    modifier: Modifier = Modifier(),
+    events: Events.Lambda? = null,
+    verticalArrangement: Arrangement.Vertical? = null,
+    horizontalAlignment: Alignment.Horizontal? = null,
+    children: @Composable Column.Dynamic.() -> Unit
+): Component = Column.Dynamic(modifier, events, verticalArrangement, horizontalAlignment)
 
 fun containedButton(
     modifier: Modifier = Modifier(),
@@ -67,3 +82,9 @@ fun textButton(
     enabled: Boolean = false,
     onClick: (() -> Unit)? = null,
 ): Component = Button.Text(modifier, text, contentColor, enabled, onClick)
+
+
+@Composable
+fun Tree(root: @Composable () -> Component): Tree = Tree(root())
+
+fun tree(root: () -> Component): Tree = Tree(root())

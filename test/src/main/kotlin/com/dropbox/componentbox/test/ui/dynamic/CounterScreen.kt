@@ -1,54 +1,50 @@
-package com.dropbox.componentbox.test
+package com.dropbox.componentbox.test.ui.dynamic
 
 import androidx.compose.runtime.Composable
 import com.dropbox.componentbox.Alignment
 import com.dropbox.componentbox.Arrangement
 import com.dropbox.componentbox.Color
-import com.dropbox.componentbox.Component
-import com.dropbox.componentbox.FontWeight
+import com.dropbox.componentbox.Column
+import com.dropbox.componentbox.ComponentBoxExport
 import com.dropbox.componentbox.TextStyle
 import com.dropbox.componentbox.Tree
-import com.dropbox.componentbox.column
 import com.dropbox.componentbox.dp
 import com.dropbox.componentbox.model.StatefulComponentBox
 import com.dropbox.componentbox.model.StatefulComposable
+import com.dropbox.componentbox.test.model.Counter
+import com.dropbox.componentbox.test.ui.static.CounterEvent.Decrement
+import com.dropbox.componentbox.test.ui.static.CounterEvent.Increment
+import com.dropbox.componentbox.test.ui.static.header
 import com.dropbox.componentbox.text
 import com.dropbox.componentbox.textButton
 
 @Composable
-fun export() {
+@ComponentBoxExport
+fun CounterScreen() {
     StatefulComponentBox {
-        object : Tree {
-            override val root: Component
-                @Composable
-                get() = column(
-                    verticalArrangement = Arrangement.SpaceEvenly(2.dp),
-                    horizontalAlignment = Alignment.Start
-                ) {
-                    child(header)
-                    child(Count())
-                    child(IncrementButton(text = "+1"))
-                    child(DecrementButton(text = "-1"))
-                }
+        Tree {
+            Column(
+                verticalArrangement = Arrangement.SpaceEvenly(2.dp),
+                horizontalAlignment = Alignment.Start
+            ) {
+                child(header)
+                child(Count())
+                child(IncrementButton("+1"))
+                child(DecrementButton("-1"))
+            }
         }
     }
 }
 
-
 @Composable
 fun IncrementButton(text: String) = StatefulComposable<Counter> {
-    textButton(text = text) { it.on("increment") }
+    textButton(text = text) { it.on(Increment) }
 }
 
 @Composable
 fun DecrementButton(text: String) = StatefulComposable<Counter> {
-    textButton(text = text) { it.on("decrement") }
+    textButton(text = text) { it.on(Decrement) }
 }
-
-val header = text(
-    text = "Component Box Counter",
-    style = TextStyle(fontWeight = FontWeight.ExtraBold)
-)
 
 @Composable
 fun Count() = StatefulComposable<Counter> {

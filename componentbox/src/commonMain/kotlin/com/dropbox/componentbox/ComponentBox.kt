@@ -1,9 +1,14 @@
 package com.dropbox.componentbox
 
-import kotlin.reflect.KClass
+import androidx.compose.runtime.Composable
 
-@MustBeDocumented
-@Retention(AnnotationRetention.SOURCE)
-@Target(allowedTargets = [AnnotationTarget.CLASS, AnnotationTarget.PROPERTY, AnnotationTarget.TYPE, AnnotationTarget.LOCAL_VARIABLE])
-annotation class ComponentBox(val tree: KClass<out Any> = Tree::class)
+sealed interface ComponentBox {
+    interface Static {
+        val root: Tree
+    }
 
+    interface Dynamic {
+        val root: Tree
+            @Composable get
+    }
+}
