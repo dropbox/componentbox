@@ -35,32 +35,48 @@ class Counter : ComposableModel<Int, String>(0) {
 #### UI Representation (server)
 
 ```kotlin
-@ComponentBox
-class Tree : Tree {
-    private val counter = Counter()
+@Composable
+fun export() {
+    StatefulComponentBox {
+        @ComponentBox
+        object : Tree {
+            override val root: Component
+                @Composable
+                get() = column(
+                    verticalArrangement = Arrangement.SpaceEvenly(2.dp),
+                    horizontalAlignment = Alignment.Start
+                ) {
+                    child(header)
+                    child(Count())
+                    child(IncrementButton(text = "+1"))
+                    child(DecrementButton(text = "-1"))
+                }
+        }
+    }
+}
 
-    private val header = text(
-        text = "Component Box Counter",
-        style = TextStyle(fontWeight = FontWeight.ExtraBold)
-    )
 
-    private val count = text(
-        text = "Count: ${counter.state.value}",
+@Composable
+fun IncrementButton(text: String) = StatefulComposable<Counter> {
+    textButton(text = text) { it.on("increment") }
+}
+
+@Composable
+fun DecrementButton(text: String) = StatefulComposable<Counter> {
+    textButton(text = text) { it.on("decrement") }
+}
+
+val header = text(
+    text = "Component Box Counter",
+    style = TextStyle(fontWeight = FontWeight.ExtraBold)
+)
+
+@Composable
+fun Count() = StatefulComposable<Counter> {
+    text(
+        text = "Count: ${it.state.value}",
         style = TextStyle(color = Color.Hex("#FF0000"))
     )
-
-    private val incrementButton = textButton(text = "+1") { counter.on("increment") }
-    private val decrementButton = textButton(text = "-1") { counter.on("decrement") }
-
-    override val root: Component = column(
-        verticalArrangement = Arrangement.SpaceEvenly(2.dp),
-        horizontalAlignment = Alignment.Start
-    ) {
-        child(header)
-        child(count)
-        child(incrementButton)
-        child(decrementButton)
-    }
 }
 ```
 
@@ -72,7 +88,6 @@ class Tree : Tree {
 
 ```shell
 ./gradlew componentBoxWasm
-
 ```
 
 ```shell
