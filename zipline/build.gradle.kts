@@ -6,9 +6,6 @@ plugins {
 
 }
 
-apply(plugin = "kotlinx-atomicfu")
-
-
 kotlin {
     ios()
     android()

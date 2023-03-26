@@ -24,7 +24,9 @@ plugins {
     id 'org.jetbrains.kotlinx.kover' version '0.6.0'
 }
 
-apply plugin: "kotlinx-atomicfu"
+subprojects {
+    plugins.apply("kotlinx-atomicfu")
+}
 
 allprojects {
     version = project.property("VERSION_NAME") as String
