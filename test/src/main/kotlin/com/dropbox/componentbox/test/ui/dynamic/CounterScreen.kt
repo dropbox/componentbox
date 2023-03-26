@@ -15,15 +15,15 @@ import com.dropbox.componentbox.model.StatefulComposable
 import com.dropbox.componentbox.test.model.Counter
 import com.dropbox.componentbox.test.ui.static.CounterEvent.Decrement
 import com.dropbox.componentbox.test.ui.static.CounterEvent.Increment
-import com.dropbox.componentbox.test.ui.static.default
 import com.dropbox.componentbox.test.ui.static.header
+import com.dropbox.componentbox.test.ui.static.static
 import com.dropbox.componentbox.text
 import com.dropbox.componentbox.textButton
 
 
 @Composable
 @ComponentBoxExport
-fun CounterScreen() = StatefulComponentBox(default()) {
+fun dynamic() = StatefulComponentBox(default = static()) {
     ComponentBox {
         Tree {
             Column(

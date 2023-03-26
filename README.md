@@ -33,24 +33,64 @@ class Counter : ComposableModel<Int, CounterEvent>(0) {
 
 #### UI Representation (server)
 
+##### Static
+
 ```kotlin
-@Composable
-@ComponentBoxExport
-fun CounterScreen() {
-    StatefulComponentBox {
-        Tree {
-            Column(
+@SerializableComponentBox
+fun static() = componentBox {
+        tree {
+            column<CounterEvent>(
                 verticalArrangement = Arrangement.SpaceEvenly(2.dp),
                 horizontalAlignment = Alignment.Start
             ) {
                 child(header)
-                child(Count())
-                child(IncrementButton("+1"))
-                child(DecrementButton("-1"))
+                child(count)
+                child(incrementButton("+1"))
+                child(decrementButton("-1"))
             }
         }
     }
-}
+
+
+val header = text(
+    text = "Component Box Counter",
+    style = TextStyle(fontWeight = FontWeight.ExtraBold)
+)
+
+val count = text(
+    text = "Count: \${COUNTER_STATE}",
+    style = TextStyle(color = Color.Hex("#FF0000"))
+)
+
+fun incrementButton(text: String) = textButton(
+    text = text
+)
+
+fun decrementButton(text: String) = textButton(
+    text = text
+)
+```
+
+##### Dynamic
+
+```kotlin
+@Composable
+@ComponentBoxExport
+fun dynamic() = StatefulComponentBox(default = static()) {
+        ComponentBox {
+            Tree {
+                Column(
+                    verticalArrangement = Arrangement.SpaceEvenly(2.dp),
+                    horizontalAlignment = Alignment.Start
+                ) {
+                    child(header)
+                    child(Count())
+                    child(IncrementButton("+1"))
+                    child(DecrementButton("-1"))
+                }
+            }
+        }
+    }
 
 @Composable
 fun IncrementButton(text: String) = StatefulComposable<Counter> {
@@ -69,6 +109,7 @@ fun Count() = StatefulComposable<Counter> {
         style = TextStyle(color = Color.Hex("#FF0000"))
     )
 }
+
 
 ```
 

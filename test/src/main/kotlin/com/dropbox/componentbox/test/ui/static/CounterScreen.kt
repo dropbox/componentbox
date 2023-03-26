@@ -14,7 +14,7 @@ import com.dropbox.componentbox.textButton
 import com.dropbox.componentbox.tree
 
 @SerializableComponentBox
-fun default() = componentBox {
+fun static() = componentBox {
     tree {
         column<CounterEvent>(
             verticalArrangement = Arrangement.SpaceEvenly(2.dp),
