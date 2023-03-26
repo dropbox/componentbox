@@ -1,8 +1,10 @@
 package com.dropbox.componentbox
 
 import androidx.compose.runtime.Composable
+import kotlinx.serialization.Serializable
 
 sealed interface ComponentBox {
+    @Serializable
     data class Static(
         val root: Tree
     ) : ComponentBox
