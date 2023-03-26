@@ -6,24 +6,27 @@ import com.dropbox.componentbox.Color
 import com.dropbox.componentbox.FontWeight
 import com.dropbox.componentbox.SerializableComponentBox
 import com.dropbox.componentbox.TextStyle
-import com.dropbox.componentbox.column
 import com.dropbox.componentbox.componentBox
 import com.dropbox.componentbox.dp
+import com.dropbox.componentbox.lazyColumn
+import com.dropbox.componentbox.semantic
+import com.dropbox.componentbox.test.ui.static.CounterEvent.Decrement
+import com.dropbox.componentbox.test.ui.static.CounterEvent.Increment
 import com.dropbox.componentbox.text
 import com.dropbox.componentbox.textButton
 import com.dropbox.componentbox.tree
 
 @SerializableComponentBox
-fun static() = componentBox {
+val static = componentBox {
     tree {
-        column<CounterEvent>(
+        lazyColumn<CounterEvent>(
             verticalArrangement = Arrangement.SpaceEvenly(2.dp),
             horizontalAlignment = Alignment.Start
         ) {
             child(header)
             child(count)
-            child(incrementButton("+1"))
-            child(decrementButton("-1"))
+            child(incrementButton)
+            child(decrementButton)
         }
     }
 }
@@ -39,10 +42,12 @@ val count = text(
     style = TextStyle(color = Color.Hex("#FF0000"))
 )
 
-fun incrementButton(text: String) = textButton(
-    text = text
+val incrementButton = textButton(
+    text = "+1",
+    onClick = semantic { Increment }
 )
 
-fun decrementButton(text: String) = textButton(
-    text = text
+val decrementButton = textButton(
+    text = "-1",
+    onClick = semantic { Decrement }
 )

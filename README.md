@@ -37,20 +37,19 @@ class Counter : ComposableModel<Int, CounterEvent>(0) {
 
 ```kotlin
 @SerializableComponentBox
-fun static() = componentBox {
+val static = componentBox {
         tree {
-            column<CounterEvent>(
+            lazyColumn<CounterEvent>(
                 verticalArrangement = Arrangement.SpaceEvenly(2.dp),
                 horizontalAlignment = Alignment.Start
             ) {
                 child(header)
                 child(count)
-                child(incrementButton("+1"))
-                child(decrementButton("-1"))
+                child(incrementButton)
+                child(decrementButton)
             }
         }
     }
-
 
 val header = text(
     text = "Component Box Counter",
@@ -62,12 +61,14 @@ val count = text(
     style = TextStyle(color = Color.Hex("#FF0000"))
 )
 
-fun incrementButton(text: String) = textButton(
-    text = text
+val incrementButton = textButton(
+    text = "+1",
+    onClick = semantic { Increment }
 )
 
-fun decrementButton(text: String) = textButton(
-    text = text
+val decrementButton = textButton(
+    text = "-1",
+    onClick = semantic { Decrement }
 )
 ```
 
@@ -76,30 +77,34 @@ fun decrementButton(text: String) = textButton(
 ```kotlin
 @Composable
 @ComponentBoxExport
-fun dynamic() = StatefulComponentBox(default = static()) {
+fun dynamic() = statefulComponentBox(init = static) {
         ComponentBox {
             Tree {
-                Column(
+                LazyColumn(
                     verticalArrangement = Arrangement.SpaceEvenly(2.dp),
                     horizontalAlignment = Alignment.Start
                 ) {
                     child(header)
                     child(Count())
-                    child(IncrementButton("+1"))
-                    child(DecrementButton("-1"))
+                    child(IncrementButton())
+                    child(DecrementButton())
                 }
             }
         }
     }
 
 @Composable
-fun IncrementButton(text: String) = StatefulComposable<Counter> {
-    textButton(text = text) { it.on(Increment) }
+fun IncrementButton() = StatefulComposable<Counter> {
+    ContainedButton(onClick = lambda { it.on(Increment) }) {
+        text(text = "+1")
+    }
 }
 
 @Composable
-fun DecrementButton(text: String) = StatefulComposable<Counter> {
-    textButton(text = text) { it.on(Decrement) }
+fun DecrementButton() = StatefulComposable<Counter> {
+    ContainedButton(onClick = lambda { it.on(Decrement) }) {
+        text(text = "-1")
+    }
 }
 
 @Composable

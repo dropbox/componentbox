@@ -6,12 +6,12 @@ import kotlinx.serialization.Serializable
 sealed class Events {
     @Serializable
     data class Semantic<Id : Any>(
-        val onClick: Event.Semantic<Id>,
-        val onLongClick: Event.Semantic<Id>
+        val onClick: Action.Semantic<Id>,
+        val onLongClick: Action.Semantic<Id>
     ) : Events()
 
     data class Lambda(
-        val onClick: Event.Lambda,
-        val onLongClick: Event.Lambda
+        val onClick: Action.Lambda,
+        val onLongClick: Action.Lambda
     ) : Events()
 }

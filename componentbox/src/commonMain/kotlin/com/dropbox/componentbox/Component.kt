@@ -40,28 +40,51 @@ fun Column(
     children: @Composable Column.Dynamic.() -> Unit
 ): Component = Column.Dynamic(modifier, events, verticalArrangement, horizontalAlignment)
 
-fun containedButton(
+
+fun <Event : Any> containedButton(
     modifier: Modifier = Modifier(),
     enabled: Boolean = true,
-    onClick: (() -> Unit)? = null,
-    backgroundColor: Color,
-    contentColor: Color,
-    elevation: Dp,
+    onClick: Action.Semantic<Event>? = null,
+    backgroundColor: Color? = null,
+    contentColor: Color? = null,
+    elevation: Dp? = null,
     shape: Shape,
-    children: Button.Contained.() -> Unit
-): Component =
-    Button.Contained(modifier, enabled, onClick, backgroundColor, contentColor, elevation, shape)
+    children: Button.Contained.Static<Event>.() -> Unit
+): Component = Button.Contained.Static(modifier, enabled, onClick, backgroundColor, contentColor, elevation, shape)
 
 
-fun lazyColumn(
+@Composable
+fun ContainedButton(
     modifier: Modifier = Modifier(),
-    events: Events? = null,
+    enabled: Boolean = true,
+    onClick: Action.Lambda? = null,
+    backgroundColor: Color? = null,
+    contentColor: Color? = null,
+    elevation: Dp? = null,
+    shape: Shape? = null,
+    children: @Composable Button.Contained.Dynamic.() -> Unit
+): Component = Button.Contained.Dynamic(modifier, enabled, onClick, backgroundColor, contentColor, elevation, shape)
+
+@Composable
+fun LazyColumn(
+    modifier: Modifier = Modifier(),
+    events: Events.Lambda? = null,
     verticalArrangement: Arrangement.Vertical? = null,
     horizontalAlignment: Alignment.Horizontal? = null,
     contentPaddingValues: PaddingValues? = null,
-    children: LazyColumn.() -> Unit
-): Component =
-    LazyColumn(modifier, events, verticalArrangement, horizontalAlignment, contentPaddingValues)
+    children: @Composable LazyColumn.Dynamic.() -> Unit
+): Component = LazyColumn.Dynamic(modifier, events, verticalArrangement, horizontalAlignment, contentPaddingValues)
+
+
+fun <Event : Any> lazyColumn(
+    modifier: Modifier = Modifier(),
+    events: Events.Semantic<Event>? = null,
+    verticalArrangement: Arrangement.Vertical? = null,
+    horizontalAlignment: Alignment.Horizontal? = null,
+    contentPaddingValues: PaddingValues? = null,
+    children: LazyColumn.Static<Event>.() -> Unit
+): Component = LazyColumn.Static(modifier, events, verticalArrangement, horizontalAlignment, contentPaddingValues)
+
 
 fun navigation(
     routes: MutableMap<String, Component> = mutableMapOf(),
@@ -75,13 +98,23 @@ fun text(
     style: TextStyle? = null
 ): Component = Text(text, color, style)
 
-fun textButton(
+
+fun <Event : Any> textButton(
     modifier: Modifier = Modifier(),
     text: String,
     contentColor: Color? = null,
     enabled: Boolean = false,
-    onClick: (() -> Unit)? = null,
-): Component = Button.Text(modifier, text, contentColor, enabled, onClick)
+    onClick: Action.Semantic<Event>? = null,
+): Component = Button.Text.Static(modifier, text, contentColor, enabled, onClick)
+
+@Composable
+fun TextButton(
+    modifier: Modifier = Modifier(),
+    text: String,
+    contentColor: Color? = null,
+    enabled: Boolean = false,
+    onClick: Action.Lambda? = null,
+): Component = Button.Text.Dynamic(modifier, text, contentColor, enabled, onClick)
 
 
 @Composable

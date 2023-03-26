@@ -8,12 +8,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 @Composable
-fun StatefulComponentBox(default: ComponentBox, creator: @Composable () -> ComponentBox.Dynamic): StateFlow<ComponentBox> {
+fun <Output : ComponentBox?> statefulComponentBox(init: Output, creator: @Composable () -> Output): StateFlow<Output> {
 
     val modelProvider = remember { ComposableModelProvider() }
 
-    val stateFlow: MutableStateFlow<ComponentBox> = MutableStateFlow(default)
-    val componentBox: StateFlow<ComponentBox> = stateFlow
+    val stateFlow: MutableStateFlow<Output> = MutableStateFlow(init)
+    val componentBox: StateFlow<Output> = stateFlow
 
     CompositionLocalProvider(LocalComposableModelProvider provides modelProvider) {
         stateFlow.value = creator()
