@@ -15,7 +15,6 @@ include(":componentbox")
 include(":componentbox-gradle-plugin")
 include(":zipline")
 include(":model")
-include(":test")
 
 include(":samples:counter:android")
 include(":samples:counter:server")

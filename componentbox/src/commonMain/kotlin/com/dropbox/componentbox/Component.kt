@@ -50,7 +50,15 @@ fun <Event : Any> containedButton(
     elevation: Dp? = null,
     shape: Shape,
     children: Button.Contained.Static<Event>.() -> Unit
-): Component = Button.Contained.Static(modifier, enabled, onClick, backgroundColor, contentColor, elevation, shape)
+): Component = Button.Contained.Static(
+    modifier,
+    enabled,
+    onClick,
+    backgroundColor,
+    contentColor,
+    elevation,
+    shape
+)
 
 
 @Composable
@@ -63,7 +71,15 @@ fun ContainedButton(
     elevation: Dp? = null,
     shape: Shape? = null,
     children: @Composable Button.Contained.Dynamic.() -> Unit
-): Component = Button.Contained.Dynamic(modifier, enabled, onClick, backgroundColor, contentColor, elevation, shape)
+): Component = Button.Contained.Dynamic(
+    modifier,
+    enabled,
+    onClick,
+    backgroundColor,
+    contentColor,
+    elevation,
+    shape
+)
 
 @Composable
 fun LazyColumn(
@@ -73,7 +89,13 @@ fun LazyColumn(
     horizontalAlignment: Alignment.Horizontal? = null,
     contentPaddingValues: PaddingValues? = null,
     children: @Composable LazyColumn.Dynamic.() -> Unit
-): Component = LazyColumn.Dynamic(modifier, events, verticalArrangement, horizontalAlignment, contentPaddingValues)
+): Component = LazyColumn.Dynamic(
+    modifier,
+    events,
+    verticalArrangement,
+    horizontalAlignment,
+    contentPaddingValues
+)
 
 
 fun <Event : Any> lazyColumn(
@@ -83,13 +105,19 @@ fun <Event : Any> lazyColumn(
     horizontalAlignment: Alignment.Horizontal? = null,
     contentPaddingValues: PaddingValues? = null,
     children: LazyColumn.Static<Event>.() -> Unit
-): Component = LazyColumn.Static(modifier, events, verticalArrangement, horizontalAlignment, contentPaddingValues)
+): Component = LazyColumn.Static(
+    modifier,
+    events,
+    verticalArrangement,
+    horizontalAlignment,
+    contentPaddingValues
+)
 
 
-fun navigation(
-    routes: MutableMap<String, Component> = mutableMapOf(),
+fun <Route : Any> navigation(
+    routes: Routes<Route> = mutableMapOf(),
     start: String,
-    routing: Navigation.() -> Unit
+    routing: Navigation<Route>.() -> Unit
 ): Component = Navigation(routes, start)
 
 fun text(
