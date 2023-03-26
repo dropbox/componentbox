@@ -5,6 +5,7 @@ import com.dropbox.componentbox.Alignment
 import com.dropbox.componentbox.Arrangement
 import com.dropbox.componentbox.Color
 import com.dropbox.componentbox.Column
+import com.dropbox.componentbox.ComponentBox
 import com.dropbox.componentbox.ComponentBoxExport
 import com.dropbox.componentbox.TextStyle
 import com.dropbox.componentbox.Tree
@@ -14,14 +15,16 @@ import com.dropbox.componentbox.model.StatefulComposable
 import com.dropbox.componentbox.test.model.Counter
 import com.dropbox.componentbox.test.ui.static.CounterEvent.Decrement
 import com.dropbox.componentbox.test.ui.static.CounterEvent.Increment
+import com.dropbox.componentbox.test.ui.static.default
 import com.dropbox.componentbox.test.ui.static.header
 import com.dropbox.componentbox.text
 import com.dropbox.componentbox.textButton
 
+
 @Composable
 @ComponentBoxExport
-fun CounterScreen() {
-    StatefulComponentBox {
+fun CounterScreen() = StatefulComponentBox(default()) {
+    ComponentBox {
         Tree {
             Column(
                 verticalArrangement = Arrangement.SpaceEvenly(2.dp),

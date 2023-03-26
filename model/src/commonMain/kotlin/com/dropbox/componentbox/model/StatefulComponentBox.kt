@@ -4,17 +4,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import com.dropbox.componentbox.ComponentBox
-import com.dropbox.componentbox.Tree
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
 @Composable
-fun StatefulComponentBox(componentBox: @Composable () -> Tree) {
+fun StatefulComponentBox(default: ComponentBox, creator: @Composable () -> ComponentBox.Dynamic): StateFlow<ComponentBox> {
 
     val modelProvider = remember { ComposableModelProvider() }
 
+    val stateFlow: MutableStateFlow<ComponentBox> = MutableStateFlow(default)
+    val componentBox: StateFlow<ComponentBox> = stateFlow
+
     CompositionLocalProvider(LocalComposableModelProvider provides modelProvider) {
-        object : ComponentBox.Dynamic {
-            override val root: Tree
-                @Composable get() = componentBox()
-        }
+        stateFlow.value = creator()
     }
+
+    return componentBox
 }
