@@ -39,7 +39,7 @@ class Counter : ComposableModel<Int, CounterEvent>(0) {
 
 ```kotlin
 @SerializableComponentBox
-fun homeScreen() = componentBox {
+fun main() = componentBox {
         tree {
             lazyColumn<CounterEvent>(
                 verticalArrangement = Arrangement.SpaceEvenly(2.dp),
@@ -81,11 +81,11 @@ val decrementButton = textButton(
 ```kotlin
 @Composable
 @ComponentBoxExport
-fun graph() = statefulComponentBoxGraph(init = null) {
+fun main() = statefulComponentBoxGraph(init = null) {
         Graph(start = CounterOnboardingFlow.value) {
-            componentBox(CounterLoginScreen.value, loginScreen())
-            componentBox(CounterOnboardingFlow.value, onboardingFlow())
-            componentBox(CounterScreen.Home.value, homeScreen())
+            componentBox(CounterLoginScreen.value, LoginScreen())
+            componentBox(CounterOnboardingFlow.value, OnboardingFlow())
+            componentBox(CounterScreen.Home.value, HomeScreen())
         }
     }
 ```
@@ -94,33 +94,27 @@ fun graph() = statefulComponentBoxGraph(init = null) {
 
 ```kotlin
 @Composable
-@ComponentBoxExport
-fun statefulOnboardingFlow() = statefulComponentBox<Trail.Dynamic?>(init = null) {
-        Trail {
-            node(welcomeScreen())
-            node(featureDiscoveryScreen())
-            node(homeScreen())
-        }
-    } 
+fun OnboardingFlow() = Trail {
+        node(WelcomeScreen())
+        node(FeatureDiscoveryScreen())
+        node(HomeScreen())
+    }
 ```
 
 ###### Screen
 
 ```kotlin
 @Composable
-@ComponentBoxExport
-fun homeScreen() = statefulComponentBox(init = static) {
-        ComponentBox {
-            Tree {
-                LazyColumn(
-                    verticalArrangement = Arrangement.SpaceEvenly(2.dp),
-                    horizontalAlignment = Alignment.Start
-                ) {
-                    child(header)
-                    child(Count())
-                    child(IncrementButton())
-                    child(DecrementButton())
-                }
+fun HomeScreen() = ComponentBox {
+        Tree {
+            LazyColumn(
+                verticalArrangement = Arrangement.SpaceEvenly(2.dp),
+                horizontalAlignment = Alignment.Start
+            ) {
+                child(header)
+                child(Count())
+                child(IncrementButton())
+                child(DecrementButton())
             }
         }
     }
