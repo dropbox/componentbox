@@ -35,9 +35,11 @@ class Counter : ComposableModel<Int, CounterEvent>(0) {
 
 ##### Static
 
+###### Screen
+
 ```kotlin
 @SerializableComponentBox
-val static = componentBox {
+fun homeScreen() = componentBox {
         tree {
             lazyColumn<CounterEvent>(
                 verticalArrangement = Arrangement.SpaceEvenly(2.dp),
@@ -74,10 +76,40 @@ val decrementButton = textButton(
 
 ##### Dynamic
 
+###### Graph
+
 ```kotlin
 @Composable
 @ComponentBoxExport
-fun dynamic() = statefulComponentBox(init = static) {
+fun graph() = statefulComponentBoxGraph(init = null) {
+        Graph(start = CounterOnboardingFlow.value) {
+            componentBox(CounterLoginScreen.value, loginScreen())
+            componentBox(CounterOnboardingFlow.value, onboardingFlow())
+            componentBox(CounterScreen.Home.value, homeScreen())
+        }
+    }
+```
+
+###### Trail
+
+```kotlin
+@Composable
+@ComponentBoxExport
+fun statefulOnboardingFlow() = statefulComponentBox<Trail.Dynamic?>(init = null) {
+        Trail {
+            node(welcomeScreen())
+            node(featureDiscoveryScreen())
+            node(homeScreen())
+        }
+    } 
+```
+
+###### Screen
+
+```kotlin
+@Composable
+@ComponentBoxExport
+fun homeScreen() = statefulComponentBox(init = static) {
         ComponentBox {
             Tree {
                 LazyColumn(

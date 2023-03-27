@@ -24,12 +24,12 @@ import com.dropbox.componentbox.text
 
 @Composable
 @ComponentBoxExport
-fun screen() = statefulComponentBox(init = static) {
-    screenUI()
+fun statefulCounterScreen() = statefulComponentBox(init = static) {
+    counterScreen()
 }
 
 @Composable
-fun screenUI() = Tree {
+fun counterScreenUI() = Tree {
     LazyColumn(
         verticalArrangement = Arrangement.SpaceEvenly(2.dp),
         horizontalAlignment = Alignment.Start
@@ -42,8 +42,8 @@ fun screenUI() = Tree {
 }
 
 @Composable
-fun screenForestUI() = Forest {
-    tree("screen", screenUI())
+fun counterScreen() = Forest {
+    tree("screen", counterScreenUI())
 }
 
 @Composable

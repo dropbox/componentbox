@@ -8,12 +8,12 @@ import com.dropbox.componentbox.model.statefulComponentBox
 
 @Composable
 @ComponentBoxExport
-fun hybridForest() = statefulComponentBox<Forest.Dynamic?>(init = null) {
-    hybridForestUI()
+fun statefulLoginScreen() = statefulComponentBox<Forest.Dynamic?>(init = null) {
+    loginScreen()
 }
 
 @Composable
-fun hybridForestUI() = Forest {
+fun loginScreen() = Forest {
     tree("increment_button", Tree { IncrementButton() })
     tree("decrement_button", Tree { DecrementButton() })
 }

@@ -5,11 +5,12 @@ import androidx.compose.runtime.Composable
 
 sealed interface ComponentBox
 
+typealias ComponentBoxId = String
 typealias GraphId = String
 typealias ForestId = String
 typealias TreeId = String
 
-fun graph(start: ForestId, builder: Graph.Static.() -> Unit): Graph.Static =
+fun <T : ComponentBox> graph(start: ComponentBoxId, builder: Graph.Static.() -> Unit): Graph.Static =
     StaticGraph(start)
 
 fun componentBox(builder: Forest.Static.() -> Unit): Forest.Static =
@@ -34,5 +35,10 @@ fun ComponentBox(builder: @Composable Forest.Dynamic.() -> Unit) =
     DynamicForest()
 
 @Composable
-fun Graph(start: ForestId, builder: @Composable Graph.Dynamic.() -> Unit) =
+fun Graph(start: ComponentBoxId, builder: @Composable Graph.Dynamic.() -> Unit) =
     DynamicGraph(start)
+
+@Composable
+fun Trail(builder: @Composable Trail.Dynamic.() -> Unit) = DynamicTrail()
+
+fun trail(builder: Trail.Static.() -> Unit) = Trail.Static()

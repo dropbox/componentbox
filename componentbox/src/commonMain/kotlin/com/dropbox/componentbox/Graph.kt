@@ -6,50 +6,50 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.Serializable
 
 
-sealed interface Graph<T : Forest<*>> : ComponentBox {
-    val start: ForestId
-    val forests: MutableMap<ForestId, T>
+sealed interface Graph {
+    val start: ComponentBoxId
+    val componentBoxes: MutableMap<ComponentBoxId, ComponentBox>
 
 
-    interface Static : Graph<Forest.Static> {
-        fun forest(id: ForestId, forest: Forest.Static)
+    interface Static : Graph {
+        fun componentBox(id: ComponentBoxId, componentBox: ComponentBox)
     }
 
-    interface Dynamic : Graph<Forest.Dynamic> {
-        val forest: StateFlow<Forest.Dynamic>
+    interface Dynamic : Graph {
+        val componentBox: StateFlow<ComponentBox>
 
         @Composable
-        fun forest(id: ForestId, forest: Forest.Dynamic)
+        fun componentBox(id: ComponentBoxId, componentBox: ComponentBox)
 
-        fun navigateTo(forestId: ForestId)
+        fun navigateTo(componentBoxId: ComponentBoxId)
     }
 }
 
 @Serializable
 class StaticGraph(
-    override val start: ForestId,
-    override val forests: MutableMap<ForestId, Forest.Static> = mutableMapOf()
+    override val start: ComponentBoxId,
+    override val componentBoxes: MutableMap<ComponentBoxId, ComponentBox> = mutableMapOf()
 ) : Graph.Static {
-    override fun forest(id: ForestId, forest: Forest.Static) {
-        forests[id] = forest
+    override fun componentBox(id: ComponentBoxId, componentBox: ComponentBox) {
+        componentBoxes[id] = componentBox
     }
 }
 
 class DynamicGraph(
-    override val start: ForestId,
-    override val forests: MutableMap<ForestId, Forest.Dynamic> = mutableMapOf()
+    override val start: ComponentBoxId,
+    override val componentBoxes: MutableMap<ComponentBoxId, ComponentBox> = mutableMapOf()
 ) : Graph.Dynamic {
 
-    private val stateFlow = MutableStateFlow(requireNotNull(forests[start]))
-    override val forest: StateFlow<Forest.Dynamic> = stateFlow
+    private val stateFlow = MutableStateFlow(requireNotNull(componentBoxes[start]))
+    override val componentBox: StateFlow<ComponentBox> = stateFlow
 
     @Composable
-    override fun forest(id: ForestId, forest: Forest.Dynamic) {
-        forests[id] = forest
+    override fun componentBox(id: ComponentBoxId, componentBox: ComponentBox) {
+        componentBoxes[id] = componentBox
     }
 
-    override fun navigateTo(forestId: ForestId) {
-        val next = forests[forestId]
+    override fun navigateTo(componentBoxId: ComponentBoxId) {
+        val next = componentBoxes[componentBoxId]
         if (next != null) {
             stateFlow.value = next
         }
