@@ -3,7 +3,7 @@ package com.dropbox.componentbox
 import kotlinx.serialization.Serializable
 
 @Serializable
-class Woods<Route : Any>(
+class Trail<Route : Any>(
     private val routes: Routes<Route> = mutableMapOf(),
     val start: String,
 ) : Forest {

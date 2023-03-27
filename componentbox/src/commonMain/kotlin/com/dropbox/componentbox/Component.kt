@@ -117,8 +117,8 @@ fun <Event : Any> lazyColumn(
 fun <Route : Any> navigation(
     routes: Routes<Route> = mutableMapOf(),
     start: String,
-    routing: Woods<Route>.() -> Unit
-): Forest = Woods(routes, start)
+    routing: Trail<Route>.() -> Unit
+): Forest = Trail(routes, start)
 
 fun text(
     text: String,
