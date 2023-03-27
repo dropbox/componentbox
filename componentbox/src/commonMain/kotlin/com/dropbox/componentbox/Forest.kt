@@ -4,6 +4,11 @@ import androidx.compose.runtime.Composable
 import kotlinx.serialization.Serializable
 
 
+/**
+ * A set of trees.
+ * Represents a hybrid module or feature in the application.
+ * For example, a screen with some of its UI components driven by Component Box.
+ */
 sealed interface Forest<T : Tree> : ComponentBox {
     val trees: MutableMap<TreeId, T>
 

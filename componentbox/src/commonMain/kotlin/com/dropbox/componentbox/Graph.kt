@@ -5,6 +5,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.Serializable
 
+/**
+ * A collection of forests and trails.
+ * Represents the navigation hierarchy for an application.
+ */
 
 sealed interface Graph {
     val start: ComponentBoxId

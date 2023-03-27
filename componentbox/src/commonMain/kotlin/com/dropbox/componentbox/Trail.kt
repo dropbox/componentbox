@@ -3,7 +3,11 @@ package com.dropbox.componentbox
 import androidx.compose.runtime.Composable
 import kotlinx.serialization.Serializable
 
-
+/**
+ * A sequence of trees.
+ * Represents the connection of root components.
+ * For example, an onboarding flow.
+ */
 sealed interface Trail<T : Tree> : ComponentBox {
     var root: Node<T>?
     val nodes: MutableList<Node<T>>
