@@ -11,10 +11,10 @@ A map of forests. It represents the navigation hierarchy for an application.
 A set of trees. It represents a hybrid module or feature in the
 application. For example, a screen with some of its UI components driven by Component Box.
 
-### [Navigation](src/commonMain/kotlin/com/dropbox/componentbox/Navigation.kt)
+### [Woods](src/commonMain/kotlin/com/dropbox/componentbox/Woods.kt)
 
-A forest of joined trees. It represents the sequenced structure of root UI
-components. For example, a flow in the application.
+A forest of joined trees. It represents the connection of root components. For example, a
+login or onboarding flow.
 
 ### [Tree](src/commonMain/kotlin/com/dropbox/componentbox/Tree.kt)
 
