@@ -136,15 +136,3 @@ fun TextButton(
     enabled: Boolean = false,
     onClick: Action.Lambda? = null,
 ): Component = Button.Text.Dynamic(modifier, text, contentColor, enabled, onClick)
-
-
-@Composable
-fun Tree(root: @Composable () -> Component): Tree = Tree.Dynamic(root())
-
-fun tree(root: () -> Component): Tree = Tree.Static(root())
-
-@Composable
-fun Forest(start: TreeId, trees: @Composable Forest.Dynamic.() -> Unit): Forest.Dynamic =
-    DynamicForest(start)
-
-fun forest(start: TreeId, trees: Forest.Static.() -> Unit): Forest.Static = Forest.Static(start)

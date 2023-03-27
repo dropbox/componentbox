@@ -5,12 +5,10 @@ import kotlinx.serialization.Serializable
 
 
 sealed interface Forest<T : Tree> : ComponentBox {
-    val start: TreeId
     val trees: MutableMap<TreeId, T>
 
     @Serializable
     class Static(
-        override val start: TreeId,
         override val trees: MutableMap<TreeId, Tree.Static> = mutableMapOf()
     ) : Forest<Tree.Static> {
         fun tree(id: TreeId, tree: Tree.Static) {
@@ -25,7 +23,6 @@ sealed interface Forest<T : Tree> : ComponentBox {
 }
 
 data class DynamicForest(
-    override val start: TreeId,
     override val trees: MutableMap<TreeId, Tree.Dynamic> = mutableMapOf()
 ) : Forest.Dynamic {
 

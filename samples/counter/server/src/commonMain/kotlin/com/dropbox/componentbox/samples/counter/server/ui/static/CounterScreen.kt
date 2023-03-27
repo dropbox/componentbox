@@ -6,7 +6,6 @@ import com.dropbox.componentbox.Color
 import com.dropbox.componentbox.FontWeight
 import com.dropbox.componentbox.SerializableComponentBox
 import com.dropbox.componentbox.TextStyle
-import com.dropbox.componentbox.componentBox
 import com.dropbox.componentbox.dp
 import com.dropbox.componentbox.lazyColumn
 import com.dropbox.componentbox.samples.counter.server.model.CounterEvent
@@ -18,17 +17,15 @@ import com.dropbox.componentbox.textButton
 import com.dropbox.componentbox.tree
 
 @SerializableComponentBox
-val static = componentBox {
-    tree {
-        lazyColumn<CounterEvent>(
-            verticalArrangement = Arrangement.SpaceEvenly(2.dp),
-            horizontalAlignment = Alignment.Start
-        ) {
-            child(header)
-            child(count)
-            child(incrementButton)
-            child(decrementButton)
-        }
+val static = tree {
+    lazyColumn<CounterEvent>(
+        verticalArrangement = Arrangement.SpaceEvenly(2.dp),
+        horizontalAlignment = Alignment.Start
+    ) {
+        child(header)
+        child(count)
+        child(incrementButton)
+        child(decrementButton)
     }
 }
 

@@ -4,11 +4,12 @@ import androidx.compose.runtime.Composable
 import com.dropbox.componentbox.Alignment
 import com.dropbox.componentbox.Arrangement
 import com.dropbox.componentbox.Color
-import com.dropbox.componentbox.ComponentBox
 import com.dropbox.componentbox.ComponentBoxExport
 import com.dropbox.componentbox.ContainedButton
+import com.dropbox.componentbox.Forest
 import com.dropbox.componentbox.LazyColumn
 import com.dropbox.componentbox.TextStyle
+import com.dropbox.componentbox.Tree
 import com.dropbox.componentbox.dp
 import com.dropbox.componentbox.lambda
 import com.dropbox.componentbox.model.StatefulComposable
@@ -23,18 +24,26 @@ import com.dropbox.componentbox.text
 
 @Composable
 @ComponentBoxExport
-fun dynamic() = statefulComponentBox(init = static) {
-    ComponentBox {
-        LazyColumn(
-            verticalArrangement = Arrangement.SpaceEvenly(2.dp),
-            horizontalAlignment = Alignment.Start
-        ) {
-            child(header)
-            child(Count())
-            child(IncrementButton())
-            child(DecrementButton())
-        }
+fun screen() = statefulComponentBox(init = static) {
+    screenUI()
+}
+
+@Composable
+fun screenUI() = Tree {
+    LazyColumn(
+        verticalArrangement = Arrangement.SpaceEvenly(2.dp),
+        horizontalAlignment = Alignment.Start
+    ) {
+        child(header)
+        child(Count())
+        child(IncrementButton())
+        child(DecrementButton())
     }
+}
+
+@Composable
+fun screenForestUI() = Forest {
+    tree("screen", screenUI())
 }
 
 @Composable
