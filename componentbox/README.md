@@ -1,5 +1,28 @@
 # Component Box
 
+## Data Structures
+
+### [Graph](src/commonMain/kotlin/com/dropbox/componentbox/Graph.kt)
+
+A map of forests. It represents the navigation hierarchy for an application.
+
+### [Forest](src/commonMain/kotlin/com/dropbox/componentbox/Forest.kt)
+
+A set of trees. It represents a hybrid module or feature in the
+application. For example, a screen with some of its UI components driven by Component Box.
+
+### [Navigation](src/commonMain/kotlin/com/dropbox/componentbox/Navigation.kt)
+
+A forest of joined trees. It represents the sequenced structure of root UI
+components. For example, a flow in the application.
+
+### [Tree](src/commonMain/kotlin/com/dropbox/componentbox/Tree.kt)
+
+A root component container. It represents the hierarchical structure of UI components. For
+example, a screen.
+
+## Components
+
 ### AnnotatedString
 
 ```kotlin

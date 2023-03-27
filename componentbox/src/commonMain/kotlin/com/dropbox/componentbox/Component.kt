@@ -149,3 +149,8 @@ fun TextButton(
 fun Tree(root: @Composable () -> Component): Tree = Tree(root())
 
 fun tree(root: () -> Component): Tree = Tree(root())
+
+@Composable
+fun <Id : Any> Forest(trees: @Composable Forest<Id>.() -> Unit): Forest<Id> = Forest()
+
+fun <Id : Any> forest(trees: Forest<Id>.() -> Unit): Forest<Id> = Forest()

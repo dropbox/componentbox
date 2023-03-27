@@ -1,25 +1,23 @@
 package com.dropbox.componentbox
 
 import androidx.compose.runtime.Composable
-import kotlinx.serialization.Serializable
-
-sealed interface ComponentBox {
-    @Serializable
-    data class Static(
-        val root: Tree
-    ) : ComponentBox
-
-    interface Dynamic : ComponentBox {
-        val root: Tree
-            @Composable get
-    }
-}
 
 
-fun componentBox(tree: () -> Tree): ComponentBox.Static = ComponentBox.Static(tree())
+sealed interface ComponentBox
+
+typealias GraphId = String
+typealias ForestId = String
+typealias TreeId = String
+
+fun componentBox(start: ForestId, builder: Graph.Static.() -> Unit): Graph.Static = Graph.Static(start)
+fun componentBox(start: TreeId, builder: Forest.Static.() -> Unit): Forest.Static = Forest.Static(start)
+fun componentBox(root: () -> Component): Tree.Static = Tree.Static(root())
 
 @Composable
-fun ComponentBox(tree: @Composable () -> Tree): ComponentBox.Dynamic = object : ComponentBox.Dynamic {
-    override val root: Tree
-        @Composable get() = tree()
-}
+fun ComponentBox(root: @Composable () -> Component): Tree.Dynamic = Tree.Dynamic(root())
+
+@Composable
+fun ComponentBox(start: TreeId, builder: @Composable Forest.Dynamic.() -> Unit) = Forest.Dynamic(start)
+
+@Composable
+fun ComponentBox(start: ForestId, builder: @Composable Graph.Dynamic.() -> Unit) = Graph.Dynamic(start)

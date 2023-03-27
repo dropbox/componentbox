@@ -6,9 +6,9 @@ import kotlinx.serialization.Serializable
 class Navigation<Route : Any>(
     private val routes: Routes<Route> = mutableMapOf(),
     val start: String,
-) : Component {
+) : Forest {
 
-    fun route(id: Route, component: Component) {
+    fun route(id: Route, component: Tree) {
         routes[id] = component
     }
 }
