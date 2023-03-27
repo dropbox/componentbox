@@ -35,7 +35,7 @@ class Counter : ComposableModel<Int, CounterEvent>(0) {
 
 ##### Static
 
-###### Screen
+###### [Tree](componentbox/src/commonMain/kotlin/com/dropbox/componentbox/Tree.kt)
 
 ```kotlin
 @SerializableComponentBox
@@ -76,7 +76,7 @@ val decrementButton = textButton(
 
 ##### Dynamic
 
-###### Graph
+###### [Graph](componentbox/src/commonMain/kotlin/com/dropbox/componentbox/Graph.kt)
 
 ```kotlin
 @Composable
@@ -90,7 +90,17 @@ fun main() = statefulComponentBoxGraph(init = null) {
     }
 ```
 
-###### Trail
+###### [Forest](componentbox/src/commonMain/kotlin/com/dropbox/componentbox/Forest.kt)
+
+```kotlin
+@Composable
+fun LoginScreen() = Forest {
+        tree("heading", Tree { LoginHeading() })
+        tree("button", Tree { LoginButton() })
+    }
+```
+
+###### [Trail](componentbox/src/commonMain/kotlin/com/dropbox/componentbox/Trail.kt)
 
 ```kotlin
 @Composable
@@ -101,7 +111,7 @@ fun OnboardingFlow() = Trail {
     }
 ```
 
-###### Screen
+###### [Tree](componentbox/src/commonMain/kotlin/com/dropbox/componentbox/Tree.kt)
 
 ```kotlin
 @Composable
