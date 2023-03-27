@@ -29,7 +29,7 @@ fun launchComponentBoxZipline(
 
             val job = launch {
                 componentBox.value = when (componentBoxZipline) {
-                    is ComponentBoxForest -> TODO()
+                    is ComponentBoxForest -> componentBoxZipline
                     is ComponentBoxGraph -> componentBoxZipline
                     is ComponentBoxTrail -> TODO()
                     is ComponentBoxTree -> TODO()

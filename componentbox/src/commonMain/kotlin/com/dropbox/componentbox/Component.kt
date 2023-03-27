@@ -113,13 +113,6 @@ fun <Event : Any> lazyColumn(
     contentPaddingValues
 )
 
-
-fun <Route : Any> navigation(
-    routes: Routes<Route> = mutableMapOf(),
-    start: String,
-    routing: Trail<Route>.() -> Unit
-): Forest = Trail(routes, start)
-
 fun text(
     text: String,
     color: Color? = null,
@@ -151,7 +144,7 @@ fun Tree(root: @Composable () -> Component): Tree = Tree.Dynamic(root())
 fun tree(root: () -> Component): Tree = Tree.Static(root())
 
 @Composable
-fun Forest(start: TreeId, trees: @Composable Forest.() -> Unit): Forest.Dynamic =
-    Forest.Dynamic(start)
+fun Forest(start: TreeId, trees: @Composable Forest.Dynamic.() -> Unit): Forest.Dynamic =
+    DynamicForest(start)
 
-fun forest(start: TreeId, trees: Forest.() -> Unit): Forest.Static = Forest.Static(start)
+fun forest(start: TreeId, trees: Forest.Static.() -> Unit): Forest.Static = Forest.Static(start)

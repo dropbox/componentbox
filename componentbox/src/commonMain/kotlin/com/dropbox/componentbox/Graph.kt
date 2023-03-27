@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.Serializable
 
 
-sealed interface Graph<T : Forest> : ComponentBox {
-    val start: String
+sealed interface Graph<T : Forest<*>> : ComponentBox {
+    val start: ForestId
     val forests: MutableMap<ForestId, T>
 
 
@@ -26,7 +26,7 @@ sealed interface Graph<T : Forest> : ComponentBox {
 }
 
 @Serializable
-data class StaticGraph(
+class StaticGraph(
     override val start: ForestId,
     override val forests: MutableMap<ForestId, Forest.Static> = mutableMapOf()
 ) : Graph.Static {

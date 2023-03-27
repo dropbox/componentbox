@@ -1,31 +1,36 @@
 package com.dropbox.componentbox
 
+import androidx.compose.runtime.Composable
 import kotlinx.serialization.Serializable
 
 
-interface Forest : ComponentBox {
+sealed interface Forest<T : Tree> : ComponentBox {
+    val start: TreeId
+    val trees: MutableMap<TreeId, T>
+
     @Serializable
-    data class Static(
-        val start: TreeId,
-        val trees: MutableMap<TreeId, Tree.Static> = mutableMapOf()
-    ) : Forest {
+    class Static(
+        override val start: TreeId,
+        override val trees: MutableMap<TreeId, Tree.Static> = mutableMapOf()
+    ) : Forest<Tree.Static> {
         fun tree(id: TreeId, tree: Tree.Static) {
             trees[id] = tree
         }
-
-        fun get(id: TreeId): Tree? = trees[id]
-        fun remove(id: TreeId) = trees.remove(id)
     }
 
-    data class Dynamic(
-        val start: TreeId,
-        val trees: MutableMap<TreeId, Tree.Dynamic> = mutableMapOf()
-    ) : Forest {
-        fun tree(id: TreeId, tree: Tree.Dynamic) {
-            trees[id] = tree
-        }
+    interface Dynamic : Forest<Tree.Dynamic> {
+        @Composable
+        fun tree(id: TreeId, tree: Tree.Dynamic)
+    }
+}
 
-        fun get(id: TreeId): Tree? = trees[id]
-        fun remove(id: TreeId) = trees.remove(id)
+data class DynamicForest(
+    override val start: TreeId,
+    override val trees: MutableMap<TreeId, Tree.Dynamic> = mutableMapOf()
+) : Forest.Dynamic {
+
+    @Composable
+    override fun tree(id: TreeId, tree: Tree.Dynamic) {
+        trees[id] = tree
     }
 }
