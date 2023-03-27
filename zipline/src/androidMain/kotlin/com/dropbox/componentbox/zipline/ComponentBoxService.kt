@@ -2,7 +2,7 @@ package com.dropbox.componentbox.zipline
 
 import app.cash.zipline.loader.ManifestVerifier
 import app.cash.zipline.loader.ZiplineLoader
-import com.dropbox.componentbox.Component
+import com.dropbox.componentbox.ComponentBox
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,8 +18,8 @@ actual class ComponentBoxService(
     private val ziplineDispatcher = ziplineExecutorService.asCoroutineDispatcher()
     private val okHttpClient = OkHttpClient()
 
-    private val stateFlow: MutableStateFlow<Component?> = MutableStateFlow(null)
-    val componentBox: StateFlow<Component?> = stateFlow
+    private val stateFlow: MutableStateFlow<ComponentBox?> = MutableStateFlow(null)
+    val componentBox: StateFlow<ComponentBox?> = stateFlow
 
 
     actual fun launch(manifestUrl: String) {

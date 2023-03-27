@@ -146,11 +146,12 @@ fun TextButton(
 
 
 @Composable
-fun Tree(root: @Composable () -> Component): Tree = Tree(root())
+fun Tree(root: @Composable () -> Component): Tree = Tree.Dynamic(root())
 
-fun tree(root: () -> Component): Tree = Tree(root())
+fun tree(root: () -> Component): Tree = Tree.Static(root())
 
 @Composable
-fun <Id : Any> Forest(trees: @Composable Forest<Id>.() -> Unit): Forest<Id> = Forest()
+fun Forest(start: TreeId, trees: @Composable Forest.() -> Unit): Forest.Dynamic =
+    Forest.Dynamic(start)
 
-fun <Id : Any> forest(trees: Forest<Id>.() -> Unit): Forest<Id> = Forest()
+fun forest(start: TreeId, trees: Forest.() -> Unit): Forest.Static = Forest.Static(start)

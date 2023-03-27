@@ -2,7 +2,7 @@ package com.dropbox.componentbox.zipline
 
 import app.cash.zipline.loader.LoadResult
 import app.cash.zipline.loader.ZiplineLoader
-import com.dropbox.componentbox.Component
+import com.dropbox.componentbox.ComponentBox
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -15,7 +15,7 @@ fun launchComponentBoxZipline(
     ziplineDispatcher: CoroutineDispatcher,
     ziplineLoader: ZiplineLoader,
     manifestUrl: String,
-    componentBox: MutableStateFlow<Component?>
+    componentBox: MutableStateFlow<ComponentBox?>
 ) {
     scope.launch(ziplineDispatcher + SupervisorJob()) {
         val result = ziplineLoader.loadOnce(
@@ -28,7 +28,12 @@ fun launchComponentBoxZipline(
             val componentBoxZipline = zipline.take<ComponentBoxZipline>("ComponentBoxZipline")
 
             val job = launch {
-                componentBox.value = componentBoxZipline.root
+                componentBox.value = when (componentBoxZipline) {
+                    is ComponentBoxForest -> TODO()
+                    is ComponentBoxGraph -> componentBoxZipline
+                    is ComponentBoxTrail -> TODO()
+                    is ComponentBoxTree -> TODO()
+                }
             }
 
             job.invokeOnCompletion {

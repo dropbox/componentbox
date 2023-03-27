@@ -9,14 +9,13 @@ import com.dropbox.componentbox.ComponentBoxExport
 import com.dropbox.componentbox.ContainedButton
 import com.dropbox.componentbox.LazyColumn
 import com.dropbox.componentbox.TextStyle
-import com.dropbox.componentbox.Tree
 import com.dropbox.componentbox.dp
 import com.dropbox.componentbox.lambda
 import com.dropbox.componentbox.model.StatefulComposable
 import com.dropbox.componentbox.model.statefulComponentBox
 import com.dropbox.componentbox.samples.counter.server.model.Counter
-import com.dropbox.componentbox.samples.counter.server.model.CounterEvent
-import com.dropbox.componentbox.samples.counter.server.model.CounterEvent.*
+import com.dropbox.componentbox.samples.counter.server.model.CounterEvent.Decrement
+import com.dropbox.componentbox.samples.counter.server.model.CounterEvent.Increment
 import com.dropbox.componentbox.samples.counter.server.ui.static.header
 import com.dropbox.componentbox.samples.counter.server.ui.static.static
 import com.dropbox.componentbox.text
@@ -26,16 +25,14 @@ import com.dropbox.componentbox.text
 @ComponentBoxExport
 fun dynamic() = statefulComponentBox(init = static) {
     ComponentBox {
-        Tree {
-            LazyColumn(
-                verticalArrangement = Arrangement.SpaceEvenly(2.dp),
-                horizontalAlignment = Alignment.Start
-            ) {
-                child(header)
-                child(Count())
-                child(IncrementButton())
-                child(DecrementButton())
-            }
+        LazyColumn(
+            verticalArrangement = Arrangement.SpaceEvenly(2.dp),
+            horizontalAlignment = Alignment.Start
+        ) {
+            child(header)
+            child(Count())
+            child(IncrementButton())
+            child(DecrementButton())
         }
     }
 }

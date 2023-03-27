@@ -3,7 +3,7 @@ package com.dropbox.componentbox
 import kotlinx.serialization.Serializable
 
 
-sealed interface Forest : ComponentBox {
+interface Forest : ComponentBox {
     @Serializable
     data class Static(
         val start: TreeId,
