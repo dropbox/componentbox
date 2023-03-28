@@ -20,4 +20,8 @@ data class AnnotatedString(
     fun span(start: Int, end: Int, style: SpanStyle) {
         elements.add(AnnotatedStringElement.Span(start, end, style))
     }
+
+    fun inlineContent(id: String, content: InlineTextContent) {
+        elements.add(AnnotatedStringElement.InlineContent(id, content))
+    }
 }

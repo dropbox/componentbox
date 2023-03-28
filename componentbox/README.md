@@ -7,6 +7,21 @@
 ```kotlin
 val annotatedString = annotatedString()
 
+annotatedString.inlineContent(
+    id = "componentBox",
+    content = InlineTextContent(
+        placeholder = Placeholder(
+            20.sp,
+            20.sp,
+            PlaceholderVerticalAlign.TextCenter
+        )
+    )
+) {
+    Image(
+        painter = painter,
+        contentDescription = "componentBox"
+    )
+}
 annotatedString.text("Component", TextStyle(fontSize = 24.sp))
 annotatedString.text(" ")
 annotatedString.text("Box")
