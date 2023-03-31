@@ -1,6 +1,6 @@
 package com.dropbox.componentbox
 
 @MustBeDocumented
-@Retention(AnnotationRetention.SOURCE)
-@Target(allowedTargets = [AnnotationTarget.FUNCTION])
+@Retention(AnnotationRetention.RUNTIME)
+@Target(allowedTargets = [AnnotationTarget.FUNCTION, AnnotationTarget.CLASS])
 annotation class ComponentBoxExport

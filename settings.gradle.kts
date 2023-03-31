@@ -12,9 +12,8 @@ pluginManagement {
 rootProject.name = "componentbox"
 
 include(":componentbox")
-include(":componentbox-gradle-plugin")
 include(":zipline")
 include(":model")
-
+include(":componentbox-gradle-plugin")
 include(":samples:counter:android")
 include(":samples:counter:server")

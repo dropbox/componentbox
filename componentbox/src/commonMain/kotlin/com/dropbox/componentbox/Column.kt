@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import kotlinx.serialization.Serializable
 
 
+@Serializable
 sealed class Column : Component {
     abstract val modifier: Modifier
     abstract val verticalArrangement: Arrangement.Vertical?

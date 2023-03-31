@@ -2,7 +2,7 @@ package com.dropbox.componentbox
 
 import kotlinx.serialization.Serializable
 
-
+@Serializable
 sealed class Events {
     @Serializable
     data class Semantic<Id : Any>(

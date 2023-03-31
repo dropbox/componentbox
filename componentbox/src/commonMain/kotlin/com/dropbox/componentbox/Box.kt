@@ -3,6 +3,7 @@ package com.dropbox.componentbox
 import androidx.compose.runtime.Composable
 import kotlinx.serialization.Serializable
 
+@Serializable
 sealed class Box : Component {
 
     abstract val modifier: Modifier

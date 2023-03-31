@@ -14,6 +14,7 @@ sealed interface AnnotatedStringElement {
      * @property style The style of the text, or null if not specified.
      * @property softBreak Whether the text should be followed by a soft break.
      */
+    @Serializable
     data class Text(
         val text: String,
         val style: TextStyle? = null,
@@ -27,6 +28,7 @@ sealed interface AnnotatedStringElement {
      * @property end The end index of the span in the annotated string.
      * @property style The style applied to the span.
      */
+    @Serializable
     data class Span(
         val start: Int,
         val end: Int,
@@ -62,6 +64,7 @@ data class InlineTextContent(
  * @param height The height of the placeholder.
  * @param verticalAlign A [PlaceholderVerticalAlign] enum value that specifies how the placeholder should be vertically aligned with respect to the surrounding text.
  */
+@Serializable
 data class Placeholder(
     val width: TextUnit.Sp,
     val height: TextUnit.Sp,

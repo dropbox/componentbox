@@ -30,7 +30,6 @@ data class SpanStyle(
     }
 
     @Serializable
-
     class SpanStyleBuilder(private var style: SpanStyle) {
         fun color(color: Color) {
             style = style.copy(color = color)

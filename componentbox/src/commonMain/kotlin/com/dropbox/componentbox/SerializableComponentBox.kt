@@ -1,6 +1,6 @@
 package com.dropbox.componentbox
 
 @MustBeDocumented
-@Retention(AnnotationRetention.SOURCE)
-@Target(allowedTargets = [AnnotationTarget.PROPERTY])
+@Retention(AnnotationRetention.RUNTIME)
+@Target(allowedTargets = [AnnotationTarget.CLASS, AnnotationTarget.FUNCTION])
 annotation class SerializableComponentBox

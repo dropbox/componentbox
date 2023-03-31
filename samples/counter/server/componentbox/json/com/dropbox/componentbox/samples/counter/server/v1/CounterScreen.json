@@ -1,0 +1,14 @@
+{
+    "root": {
+        "type": "com.dropbox.componentbox.LazyColumn.Static",
+        "verticalArrangement": {
+            "type": "com.dropbox.componentbox.Arrangement.SpaceEvenly",
+            "space": {
+                "value": 2.0
+            }
+        },
+        "horizontalAlignment": {
+            "type": "com.dropbox.componentbox.Alignment.Start"
+        }
+    }
+}

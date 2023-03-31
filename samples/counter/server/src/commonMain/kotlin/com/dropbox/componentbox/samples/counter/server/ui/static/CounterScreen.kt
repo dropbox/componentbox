@@ -16,7 +16,7 @@ import com.dropbox.componentbox.text
 import com.dropbox.componentbox.textButton
 import com.dropbox.componentbox.tree
 
-@SerializableComponentBox
+
 val static = tree {
     lazyColumn<CounterEvent>(
         verticalArrangement = Arrangement.SpaceEvenly(2.dp),

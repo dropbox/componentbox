@@ -1,5 +1,6 @@
 package com.dropbox.componentbox
 
+import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 
 /**
@@ -22,6 +23,7 @@ sealed class Button : Component {
      * @property elevation The elevation of the button.
      * @property shape The shape of the button.
      */
+    @Serializable
     sealed class Contained : Button() {
         abstract val backgroundColor: Color?
         abstract val contentColor: Color?
@@ -52,6 +54,7 @@ sealed class Button : Component {
          * A button with a contained style and semantically identifiable event handler.
          * @property onClick The action to be performed when the button is clicked.
          */
+        @Serializable
         data class Static<Event : Any>(
             override val modifier: Modifier = Modifier(),
             override val enabled: Boolean = true,
@@ -74,6 +77,7 @@ sealed class Button : Component {
      *
      * @property contentColor: Color
      */
+    @Serializable
     sealed class Text : Button() {
         abstract val text: String
         abstract val contentColor: Color?
@@ -86,7 +90,8 @@ sealed class Button : Component {
             override val onClick: Action.Lambda? = null
         ) : Text()
 
-        data class Static<Event : Any>(
+        @Serializable
+        data class Static<Event : @Contextual Any>(
             override val modifier: Modifier = Modifier(),
             override val text: String,
             override val contentColor: Color? = null,

@@ -14,6 +14,7 @@ sealed class FontWeight {
     object Medium : FontWeight()
     object SemiBold : FontWeight()
     object Bold : FontWeight()
+    @Serializable
     object ExtraBold : FontWeight()
     object Black : FontWeight()
 }

@@ -9,6 +9,7 @@ import kotlinx.serialization.Serializable
  * Represents a hybrid module or feature in the application.
  * For example, a screen with some of its UI components driven by Component Box.
  */
+@Serializable
 sealed interface Forest<T : Tree> : ComponentBox {
     val trees: MutableMap<TreeId, T>
 

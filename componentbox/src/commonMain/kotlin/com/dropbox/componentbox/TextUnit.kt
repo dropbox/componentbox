@@ -13,12 +13,14 @@ sealed class TextUnit {
      * Represents a text unit in scaled pixels.
      * @property value The value of the text unit in scaled pixels.
      */
+    @Serializable
     data class Sp(val value: Float) : TextUnit()
 
     /**
      * Represents a text unit in pixels.
      * @property value The value of the text unit in pixels.
      */
+    @Serializable
     data class Px(val value: Int) : TextUnit()
 
     companion object {

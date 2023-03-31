@@ -1,8 +1,9 @@
 package com.dropbox.componentbox
 
 import androidx.compose.runtime.Composable
+import kotlinx.serialization.Serializable
 
-
+@Serializable
 sealed class LazyColumn : Component {
     abstract val modifier: Modifier
     abstract val events: Events?
@@ -25,6 +26,7 @@ sealed class LazyColumn : Component {
         }
     }
 
+    @Serializable
     data class Static<Event : Any>(
         override val modifier: Modifier = Modifier(),
         override val events: Events.Semantic<Event>? = null,
