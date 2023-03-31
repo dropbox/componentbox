@@ -161,10 +161,6 @@ fun Count() = StatefulComposable<Counter> {
 ```
 
 ```shell
-./gradlew componentBoxWasm
-```
-
-```shell
 ./gradlew componentBoxJson
 ```
 
