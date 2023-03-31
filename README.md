@@ -275,6 +275,5 @@ limitations under the License.
 ```
 
 ## Acknowledgments
-
-Thanks to our friends at [Cash App](http://github.com/cashapp)
-  for [Zipline](http://github.com/cashapp/zipline)
+| [<img src="https://avatars.githubusercontent.com/u/49219790?s=200&v=4" alt="cashapp" width="25px"/>](https://github.com/cashapp) | Thanks to our friends at [Cash App](http://github.com/cashapp) for [Zipline](http://github.com/cashapp/zipline) |
+|:-:|---|
