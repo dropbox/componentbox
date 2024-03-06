@@ -2,9 +2,11 @@
 
 # Component Box
 
-**🚧 Under development!**
-
-**[componentbox.io](https://www.componentbox.io)**
+> [!NOTE]
+>
+> **No longer active!**
+> 
+> After internal experimentation and discussion, we've decided to move forward with other options.
 
 ### Sample
 
